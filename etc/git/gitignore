@@ -1,0 +1,8 @@
+/.gitignore
+/nbproject/
+/docroot/sites/default/settings.php
+/docroot/sites/default/files/
+/docroot/sites/default/private_files/
+/etc/vhosts/splashawardsswiss.local
+/etc/drupal/settings_local.php
+/etc/drupal/splashawardsswiss.local.php
