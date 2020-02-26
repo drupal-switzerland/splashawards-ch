@@ -1,0 +1,26 @@
+services:
+  - mysql:5.7
+
+variables:
+  MYSQL_DATABASE: test
+  MYSQL_ROOT_PASSWORD: test
+
+stages:
+  - test
+
+test infra compatibility:
+  stage: test
+  image:
+    name: registry.gitlab.com/dropsolid/containers/dropsolid_shell:1-7.1
+    entrypoint: ["/bin/bash", "-c"]
+  before_script:
+    - echo "$GITLAB_AUTH_TOKEN" > /home/dlp/.composer/auth.json
+    - mkdir -p /root/.ssh
+    - echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
+    - chmod 600 /root/.ssh/id_rsa
+    - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+    - ssh-keyscan 52.167.219.168 >> ~/.ssh/known_hosts
+    - git config --global user.email "test@dropsolid.com"
+    - git config --global user.email "test"
+  script:
+    - bash ./ci/test_workflow.sh

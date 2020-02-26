@@ -1,0 +1,40 @@
+diff --git a/core/includes/install.core.inc b/core/includes/install.core.inc
+index c398611698..54a4199302 100644
+--- a/core/includes/install.core.inc
++++ b/core/includes/install.core.inc
+@@ -797,7 +797,7 @@ function install_tasks($install_state) {
+     ],
+     'install_write_profile' => [],
+     'install_verify_database_ready' => [
+-      'run' => $install_state['database_ready'] ? INSTALL_TASK_SKIP : INSTALL_TASK_RUN_IF_NOT_COMPLETED,
++      'run' => INSTALL_TASK_RUN_IF_REACHED,
+     ],
+     'install_base_system' => [
+       'run' => $install_state['base_system_verified'] ? INSTALL_TASK_SKIP : INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+@@ -1187,15 +1187,18 @@ function install_verify_database_settings($site_path) {
+ /**
+  * Verify that the database is ready (no existing Drupal installation).
+  */
+-function install_verify_database_ready() {
+-  $system_schema = system_schema();
+-  end($system_schema);
+-  $table = key($system_schema);
+-
+-  if ($database = Database::getConnectionInfo()) {
+-    if (Database::getConnection()->schema()->tableExists($table)) {
+-      throw new AlreadyInstalledException(\Drupal::service('string_translation'));
++function install_verify_database_ready(&$install_state) {
++  // If the installation fails mid-install, we want the database to be empty on
++  // the next run.
++  if (!$install_state['database_ready'] && !isset($install_state['parameters']['db_cleared'])) {
++    $tables = Database::getConnection()->schema()->findTables('%');
++    if ($tables) {
++      foreach ($tables as $table) {
++        Database::getConnection()->schema()->dropTable($table);
++      }
+     }
++    $install_state['database_ready'] = TRUE;
++    $install_state['parameters']['db_cleared'] = TRUE;
+   }
+ }
+ 

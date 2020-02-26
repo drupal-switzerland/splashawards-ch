@@ -1,0 +1,10 @@
+parameters:
+  twig.config:
+    debug: true
+    auto_reload: true
+    cache: false
+# Uncomment this if you have installed Memcache locally as well
+#services:
+#  lock:
+#    class: Drupal\Core\Lock\LockBackendInterface
+#    factory: memcache.lock.factory:get

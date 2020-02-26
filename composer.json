@@ -1,0 +1,103 @@
+{
+  "name": "dropsolid/standard",
+  "description": "Drupal is an open source content management platform powering millions of websites and applications.",
+  "type": "project",
+  "license": "GPL-2.0+",
+  "require": {
+    "composer/installers": "~1.0.21",
+    "cweagans/composer-patches": "~1.0",
+    "drupal-composer/drupal-scaffold": "~2.2",
+    "drupal/core": "~8.7",
+    "drush/drush": "~8.1"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "preferred-install": "dist",
+    "autoloader-suffix": "Drupal8",
+    "platform": {
+      "php": "7.0.28"
+    }
+  },
+  "extra": {
+    "_readme": [
+      "By default Drupal loads the autoloader from ./vendor/autoload.php.",
+      "To change the autoloader you can edit ./autoload.php."
+    ],
+    "composer-exit-on-patch-failure": true,
+    "patchLevel": {
+      "drupal/core": "-p2"
+    },
+    "enable-patching": true,
+    "patches": {
+      "drupal/core": {
+        "Allow dropping the database when restarting the installer": "etc/patches/drop_tables_on_site_reinstall.patch"
+      }
+    },
+    "installer-paths": {
+      "docroot/core": [
+        "type:drupal-core"
+      ],
+      "docroot/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "docroot/profiles/{$name}": [
+        "type:drupal-profile"
+      ],
+      "docroot/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "docroot/modules/custom/{$name}": [
+        "type:drupal-custom-module"
+      ],
+      "docroot/themes/custom/{$name}": [
+        "type:drupal-custom-theme"
+      ],
+      "docroot/libraries/{$name}": [
+        "type:drupal-library"
+      ]
+    },
+    "drupal-scaffold": {
+      "excludes": [
+        "robots.txt",
+        ".htaccess"
+      ],
+      "initial": {
+        "robots.txt": "robots.txt",
+        ".htaccess": ".htaccess"
+      }
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Drupal\\Core\\Composer\\": "core/lib/Drupal/Core/Composer"
+    }
+  },
+  "scripts": {
+    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "pre-autoload-dump": "Drupal\\Core\\Composer\\Composer::preAutoloadDump",
+    "post-autoload-dump": "Drupal\\Core\\Composer\\Composer::ensureHtaccess",
+    "post-package-install": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
+    "post-package-update": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
+    "post-install-cmd": [
+      "cd vendor && find . -name \".git\" -type d -prune -exec rm -r \"{}\" \\; && cd .."
+    ],
+    "post-update-cmd": [
+      "@drupal-scaffold",
+      "cd vendor && find . -name \".git\" -type d -prune -exec rm -r \"{}\" \\; && cd .."
+    ]
+  },
+  "require-dev": {
+    "webflo/drupal-core-require-dev": "^8.6.0"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.dropsolid.com"
+    }
+  ]
+}
