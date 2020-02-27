@@ -114,6 +114,39 @@ if (!function_exists('dropsolidGetLocalAliases')) {
 // Generate a list of public-facing IP addresses of the local machine.
 $addrList = dropsolidGetIP();
 
+// live
+// Server
+$env_live     = 'shared05.dropsolid.com';
+// User
+$remote_user_live     = 'splashawardsswiss';
+
+// Alias
+$aliases[$project . '.live'] = array(
+    'root'                    => '/var/www/splashawardsswiss/docroot',
+    'php' => '/opt/php/7.2/php', //ansible generated for live, do not remove
+    'path-aliases'            => array(
+        '%dump' => sprintf('/tmp/sql-sync-live-%s-local.sql', $project),
+        '%drush' => '/usr/bin/drush8',
+        '%drush-script' => '/usr/bin/drush8',
+    ),
+    'ssh-options' => '-o StrictHostKeyChecking=no',
+    'command-specific'        => array(
+        'core-rsync' => array(
+            'mode' => 'rlvz',
+            'perms' => TRUE
+        ),
+        'rsync'      => array(
+            'mode' => 'rlvz',
+            'perms' => TRUE
+        ),
+    ),
+    'target-command-specific' => array(
+        'sql-sync' => array(
+            'no-ordered-dump' => true,
+        ),
+    ),
+);
+
 // staging
 // Server
 $env_staging     = 'dev-1.dropsolid.com';
@@ -201,6 +234,10 @@ if (!empty($local_files)) {
 // running on, add the remote host parameters for the respective environment.
 // This is located after the include to allow developers to overwrite 
 // remote-host and remote-user with their own values.
+if (!in_array($env_live, $addrList) && !in_array(gethostbyname($env_live), $addrList)) {
+    $aliases[$project . '.live']['remote-host'] = $env_live;
+    $aliases[$project . '.live']['remote-user'] = $remote_user_live;
+}
 if (!in_array($env_staging, $addrList) && !in_array(gethostbyname($env_staging), $addrList)) {
     $aliases[$project . '.staging']['remote-host'] = $env_staging;
     $aliases[$project . '.staging']['remote-user'] = $remote_user_staging;
