@@ -1,0 +1,130 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * event meta on full page: part of the header
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__meta--event-header {
+  //
+
+  // ** price
+
+  .field--name-field-event-price {
+    //
+  }
+
+  // ** date
+
+  .event-daterange-wrapper {
+    //
+  }
+
+  // ** Subscribe (if Advanced module)
+
+  .apply-now-button {
+    //
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node__meta--event-header {
+
+    top: 0; // needed for fixed animation
+
+    // -- Center and inline the text with flexbox and space-between
+
+    display: flex;
+
+    .field--name-field-events {
+      flex-grow: 1; // push subscribe button to the end
+
+      // make sure whole div is filled
+      > .entity-type--event {
+        width: 100%;
+      }
+    }
+
+    .layout__top {
+      display: flex;
+      align-items: flex-end; // align the text vertically on its baseline
+      justify-content: space-between; // align text to the edges
+
+      // use the clearfix element to force date to center
+      // you can display:none the pseudo if you don't need that
+      &:after {
+        display: block;
+        content: '';
+      }
+    }
+
+    // ** price
+
+    .field--name-field-event-price {
+      @include text-nobreak;
+    }
+
+    // ** date
+
+    .event-daterange-wrapper {
+
+      div {
+        display: inline;
+      }
+    }
+
+    // ** Subscribe (if Advanced module)
+
+    .apply-now-button {
+      //
+    }
+
+  }
+
+  // ** sticky bar
+
+  .node__meta--event-header.js-sticky {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    @include z-index(header);
+    transition: top $duration $easing;
+    padding-left: rem($container-padding);
+    padding-right: rem($container-padding);
+
+    // compensate for space made by fixed toolbar
+    // TO DO: in case of fixed header, need to add space then as well
+    .toolbar-fixed.toolbar-horizontal & {
+      top: rem(79);
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  //
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large screen
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  //
+
+}

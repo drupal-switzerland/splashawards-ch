@@ -1,0 +1,29 @@
+uuid: a4c836b8-9971-468e-84bc-4f1a3615e5e3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_award_jahr
+    - node.type.product
+    - taxonomy.vocabulary.award_jahr
+id: node.product.field_award_jahr
+field_name: field_award_jahr
+entity_type: node
+bundle: product
+label: Award-Jahr
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      award_jahr: award_jahr
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

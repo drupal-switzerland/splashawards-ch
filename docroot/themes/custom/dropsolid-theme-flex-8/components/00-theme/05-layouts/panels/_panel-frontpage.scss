@@ -1,0 +1,254 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog frontpage overview
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+// ** paragraphs on frontpage, UNDER the rest
+//    no top space bc of space from row blog-events
+
+.panel-layout--front {
+
+  .block-region-visual {
+    .block--type-hero-block {
+      position: relative;
+      .field--name-field-subtitle {
+        @include font-size(20);
+      }
+      .field--name-field-background-image {
+        position: absolute;
+        left: calc(-1 * (100vw - 100%) / 2);
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        width: 100vw;
+
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          min-width: 100vw;
+          min-height: 100%;
+          max-width: none;
+          z-index: -1;
+        }
+      }
+      .group_content {
+        padding: rem(100) rem($gap-hor) rem(110);
+        &,
+        & h1 {
+          color: white;
+        }
+        @include bp-sm {
+          padding: rem(130) rem($gap-hor) rem(180);
+        }
+        @include bp-md {
+          padding: rem(150) rem($gap-hor) rem(220);
+        }
+      }
+    }
+  }
+
+  .panel-layout__header {
+    h2 {
+      color: $color-white;
+    }
+    color: $color-white;
+
+    .paragraph--type-p-001 {
+      padding-bottom: 9.5rem;
+    }
+  }
+
+  .paragraph--type-p-003 {
+    margin-top: rem(20);
+  }
+
+  .block-region-header {
+    .block--type-simple-cta-block {
+      padding: rem(60) rem($gap-hor);
+      text-align: center;
+      position: relative;
+      &:after {
+        position: absolute;
+        z-index: -1;
+        content: '';
+        top: 0;
+        bottom: 0;
+        left: calc(-1 * (100vw - 100%) / 2);
+        display: block;
+        width: 100vw;
+      }
+    }
+
+    .block--type-simple-cta-block:first-child:after {
+      background-color: $color-spot-3;
+    }
+    .block--type-simple-cta-block:nth-child(2):after {
+      background-color: $color-spot-2;
+    }
+    .field--name-field-button {
+      margin-top: rem(20);
+    }
+
+    @include bp-sm {
+      display: flex;
+      flex-wrap: wrap;
+      .block--type-simple-cta-block {
+        padding: rem(100) rem($gap-hor * 2) rem(90);
+        width: 50%;
+        &:after {
+          left: calc(-1 * (100vw - 100%) / 2);
+          width: 50vw;
+        }
+        &:first-child:after {
+          right: 0;
+          left: auto;
+        }
+        &:nth-child(2):after {
+          left: 0;
+        }
+      }
+    }
+  }
+  //.panel-layout__header:before {
+  //  content: '';
+  //  position: absolute;
+  //  top: 0;
+  //  right: 0;
+  //  bottom: 0;
+  //  left: 0;
+  //  //display: block;
+  //  height: 70%;
+  //  z-index: -1;
+  //  background-image: url('../../../../../../../sites/default/files/bg-splash-dark-comp.jpg');
+  //  background-repeat: no-repeat;
+  //  background-size: cover;
+  //  min-width: 100vw;
+  //  margin-left: calc((-100vw + 100%) / 2);
+  //  background-attachment: fixed;
+  //  border-bottom: 5px solid $color-spot-1;
+  //}
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * different height for when an admin is logged in (when the tabs are visible)
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+.path-frontpage.has-tabs {
+  .panel-layout--front {
+    //.panel-layout__header:before {
+    //  height: 90% !important;
+    //}
+  }
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: phone only
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-only {
+  //body.has-tabs {
+  //  .panel-layout--front {
+  //    .paragraph--type-p-003 {
+  //      margin-top: rem(70) !important;
+  //      padding-top: 0 !important;
+  //    }
+  //  }
+  //}
+  .panel-layout--front {
+    //.panel-layout__header {
+    //
+    //  &:before {
+    //    height: 80%;
+    //  }
+    //
+    //  .paragraph--type-p-001 {
+    //    padding-bottom: rem(30);
+    //
+    //    .field--name-field-p-button a {
+    //      display: none;
+    //    }
+    //
+    //    .field--name-field-p-image {
+    //      height: 250px;
+    //      width: 250px;
+    //    }
+    //
+    //    .field--name-field-p-text {
+    //      padding-bottom: rem(15);
+    //    }
+    //  }
+    //}
+
+    //.paragraph--type-p-003 {
+    //  margin-top: rem(90) !important;
+    //  padding-top: rem(130) !important;
+    //}
+    //
+    //.p-003--bg--spot-1 {
+    //  padding-top: rem(40) !important;
+    //  padding-bottom: rem(40) !important;
+    //}
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: phone only
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-small-only {
+
+  .panel-layout--front {
+
+    .block-region-visual {
+      .block--type-hero-block {
+        .group_content {
+          &,
+          & h1 {
+            @include font-size(45, (45 * 1.2));
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+  body.has-tabs {
+    //
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+  body.has-tabs {
+    //
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+  .path-frontpage {
+    //
+  }
+}

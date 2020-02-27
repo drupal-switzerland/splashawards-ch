@@ -1,0 +1,21 @@
+uuid: 06656771-5380-4eb2-9a0c-4bfc415466b4
+langcode: de
+status: true
+dependencies:
+  module:
+    - block_field
+    - paragraphs
+_core:
+  default_config_hash: 6qJLdn54DKhhD7_8IKQ9tFCT4hMT7A-_FKIzx1TiVyM
+id: paragraph.field_overview_sidebar_blocks
+field_name: field_overview_sidebar_blocks
+entity_type: paragraph
+type: block_field
+settings: {  }
+module: block_field
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

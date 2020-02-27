@@ -1,0 +1,46 @@
+uuid: d2194ce6-5eaf-4ccf-809e-3de315122643
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: _7tnXj5WjpDNs2gESbYWZyqz3_wt9oBhuFUmvTvQTpk
+id: authenticated
+label: 'Authenticated user'
+weight: -9
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access user profiles'
+  - 'search content'
+  - 'use text format restricted_html'
+  - userprotect.account.edit
+  - userprotect.mail.edit
+  - userprotect.pass.edit
+  - 'view own unpublished content'
+  - 'view paragraph content jury_paragraph'
+  - 'view paragraph content overview'
+  - 'view paragraph content p_001'
+  - 'view paragraph content p_002'
+  - 'view paragraph content p_003'
+  - 'view paragraph content p_004'
+  - 'view paragraph content p_005'
+  - 'view paragraph content p_006'
+  - 'view paragraph content p_007'
+  - 'view paragraph content p_007_child'
+  - 'view paragraph content p_008'
+  - 'view paragraph content p_009'
+  - 'view paragraph content p_010'
+  - 'view paragraph content p_010_child'
+  - 'view paragraph content p_011'
+  - 'view paragraph content p_012'
+  - 'view paragraph content p_012_child'
+  - 'view paragraph content p_016'
+  - 'view paragraph content p_017'
+  - 'view paragraph content p_fblikebox'
+  - 'view paragraph content simple_header'
+  - 'view terms in blog_tags'
+  - 'view terms in news_tags'
+  - 'view terms in product_category'
+  - 'view terms in product_property_one'
+  - 'view terms in product_property_two'
+  - 'view terms in sponsor_categories'

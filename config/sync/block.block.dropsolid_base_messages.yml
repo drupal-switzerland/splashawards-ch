@@ -1,0 +1,22 @@
+uuid: 10da1c28-feaf-432b-bd35-51fb81c36601
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dropsolid_base
+_core:
+  default_config_hash: P7PJaRUMSQ6g0EoH_-FK1qtqsGyxME2kICRnpVhr_QY
+id: dropsolid_base_messages
+theme: dropsolid_base
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

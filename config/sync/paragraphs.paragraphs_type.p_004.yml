@@ -1,0 +1,11 @@
+uuid: 32e56dd6-c3e0-4f33-a5b9-6ffde7ecb481
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: feYWRXZKAFTxshf0nZu8HrXag3_NbIc5PJ-EpadQdfo
+id: p_004
+label: 'P004 FAQ'
+icon_uuid: null
+description: 'Add questions & answers in a structured way'
+behavior_plugins: {  }

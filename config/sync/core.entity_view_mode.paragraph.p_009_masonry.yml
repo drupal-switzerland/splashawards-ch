@@ -1,0 +1,12 @@
+uuid: 9c929229-7384-429b-9eb3-64bbc23ff056
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: t8Y5gJvjje-YZZEiZw9A9Bf229aKHRRUpHsZ_DL44EY
+id: paragraph.p_009_masonry
+label: 'Masonry (P009)'
+targetEntityType: paragraph
+cache: true

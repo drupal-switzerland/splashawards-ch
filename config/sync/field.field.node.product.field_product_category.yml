@@ -1,0 +1,31 @@
+uuid: a121baf1-3f13-4388-af03-7675563881d8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_category
+    - node.type.product
+    - taxonomy.vocabulary.product_category
+_core:
+  default_config_hash: RiAmcuUtinRNKcirFPObYvggqtj7aADMo3hvn9WFsc8
+id: node.product.field_product_category
+field_name: field_product_category
+entity_type: node
+bundle: product
+label: 'Category (max. 3)'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      product_category: product_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: product_category
+field_type: entity_reference

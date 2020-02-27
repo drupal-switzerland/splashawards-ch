@@ -1,0 +1,12 @@
+uuid: 0db47844-e20c-459b-8c08-b3e7fe23c076
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: GqiN_omTZNAVgC9_X7u00n-ouSHlLY0EYK0JfHD5uH8
+id: paragraph.two_column
+label: two-column
+targetEntityType: paragraph
+cache: true

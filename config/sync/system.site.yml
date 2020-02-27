@@ -1,0 +1,15 @@
+uuid: e83c5006-0b72-4129-8e20-d04259aa6460
+name: 'Splash Awards Deutschland 2020'
+mail: hello@splashawards.org
+slogan: ''
+page:
+  403: /node/6
+  404: /node/5
+  front: /node/4
+admin_compact_mode: false
+weight_select_max: 100
+langcode: de
+default_langcode: de
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+mail_notification: ''

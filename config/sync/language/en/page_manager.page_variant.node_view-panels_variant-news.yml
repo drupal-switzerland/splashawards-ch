@@ -1,0 +1,8 @@
+label: News
+variant_settings:
+  blocks:
+    72068d71-6067-4e08-aa50-e7b0ea283b6f:
+      label: 'Entity view (Content)'
+    b632ecba-b62f-445c-b923-de7c25c741a5:
+      label: 'Entity view (Content)'
+  page_title: '[node:title]'

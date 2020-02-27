@@ -1,0 +1,23 @@
+uuid: 7e5a9063-1b55-46d8-a7ed-b1643f3b79a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_winneroftheyear
+    - node.type.product
+id: node.product.field_winneroftheyear
+field_name: field_winneroftheyear
+entity_type: node
+bundle: product
+label: 'Winner of the year'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

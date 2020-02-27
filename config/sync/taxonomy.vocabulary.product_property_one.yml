@@ -1,0 +1,10 @@
+uuid: bab974fa-1380-4548-847c-f9dbf55c8c31
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: hoVJwVLuG7fbL5CGfhb8tuiH1a-pn6VYdD0iTcRL__I
+name: Country
+vid: product_property_one
+description: ''
+weight: 0

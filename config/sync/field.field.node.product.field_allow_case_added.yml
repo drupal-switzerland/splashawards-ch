@@ -1,0 +1,23 @@
+uuid: 9373fbbb-e7a3-4ecc-8af6-6751a297c531
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_allow_case_added
+    - node.type.product
+id: node.product.field_allow_case_added
+field_name: field_allow_case_added
+entity_type: node
+bundle: product
+label: 'Yes, I would like to help Drupal and allow this case to be added to the Drupal Pitch Deck'
+description: 'View the <a href="https://www.drupal.org/community/agency-marketing/pitch-deck" target="_blank">Drupal Pitch Deck</a>'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

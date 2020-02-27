@@ -1,0 +1,12 @@
+uuid: a961c8fc-ba3b-465c-9bf2-702271a901f1
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9E_lRENQILbw_IuliynavZ37cNYxViQPRd4LWeb7LXc
+id: rocketship_content
+label: 'Rocketship Content'
+description: 'Contains homepage, 404 and 403 pages'
+source_type: ''
+module: null
+shared_configuration: null

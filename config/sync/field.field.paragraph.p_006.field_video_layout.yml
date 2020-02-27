@@ -1,0 +1,25 @@
+uuid: b9638904-771c-4fb7-9859-2749288e118c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video_layout
+    - paragraphs.paragraphs_type.p_006
+  module:
+    - options
+_core:
+  default_config_hash: kiH21tLUslGA10D8oFgxzY2drhJqxQC0_6SqJ3m9H7A
+id: paragraph.p_006.field_video_layout
+field_name: field_video_layout
+entity_type: paragraph
+bundle: p_006
+label: 'Video layout'
+description: 'By default, the video is aligned with the sides of the content container. <br />If you select the second option, the video will stretch to fill the entire width of the page and be bigger'
+required: true
+translatable: false
+default_value:
+  -
+    value: video_normal
+default_value_callback: ''
+settings: {  }
+field_type: list_string

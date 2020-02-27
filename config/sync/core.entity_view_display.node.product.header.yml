@@ -1,0 +1,95 @@
+uuid: 1e076760-fba7-4c9b-bad0-a5910aff9c3d
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.header
+    - field.field.node.product.field_challenges
+    - field.field.node.product.field_community_contributions
+    - field.field.node.product.field_email
+    - field.field.node.product.field_extra
+    - field.field.node.product.field_field_agree
+    - field.field.node.product.field_logo_client
+    - field.field.node.product.field_mail_invoice
+    - field.field.node.product.field_name_
+    - field.field.node.product.field_node_title_replacement
+    - field.field.node.product.field_nominee
+    - field.field.node.product.field_organisation
+    - field.field.node.product.field_paragraphs
+    - field.field.node.product.field_phone_number
+    - field.field.node.product.field_product_category
+    - field.field.node.product.field_product_images
+    - field.field.node.product.field_product_property_one
+    - field.field.node.product.field_product_property_two
+    - field.field.node.product.field_product_teaser
+    - field.field.node.product.field_project_de
+    - field.field.node.product.field_project_link
+    - field.field.node.product.field_show_breadcrumb
+    - field.field.node.product.field_submitted_by
+    - field.field.node.product.field_winner
+    - node.type.product
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: rocketship_layout_321col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - field_header_paragraph
+_core:
+  default_config_hash: Jw7ek8Qc8iuKPJWPjb7HwkBQGX5Lo67R1qCWnK8YVFQ
+id: node.product.header
+targetEntityType: node
+bundle: product
+mode: header
+content: {  }
+hidden:
+  dropsolid_social_widgets: true
+  field_allow_case_added: true
+  field_attend: true
+  field_case_video: true
+  field_challenges: true
+  field_client_name: true
+  field_client_permission: true
+  field_community_contributions: true
+  field_country_text: true
+  field_date_when_website_went_liv: true
+  field_email: true
+  field_extra: true
+  field_field_agree: true
+  field_invoice_address: true
+  field_invoide_postal: true
+  field_logo_client: true
+  field_mail_invoice: true
+  field_meta_tags: true
+  field_name_: true
+  field_node_title_replacement: true
+  field_nominee: true
+  field_organisation: true
+  field_paragraphs: true
+  field_phone_number: true
+  field_product_category: true
+  field_product_images: true
+  field_product_property_one: true
+  field_product_property_two: true
+  field_product_teaser: true
+  field_project_de: true
+  field_project_link: true
+  field_project_name: true
+  field_runnerup: true
+  field_show_breadcrumb: true
+  field_sign_up_newsletter: true
+  field_submitted_by: true
+  field_vat_registration_id: true
+  field_why: true
+  field_winner: true
+  field_winneroftheyear: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

@@ -1,0 +1,194 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Product: info fields
+// *
+// * Categories, properties and attributes
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__info--product-full {
+
+  .field--name-field-submitted-by {
+    img {
+      max-width: rem(300);
+      max-height: rem(180);
+    }
+    .media--image {
+
+      //img {
+      //  transition: 1s ease;
+      //
+      //  &:hover {
+      //    transform: scale(0.8);
+      //    transition: 1s ease;
+      //  }
+      //}
+    }
+  }
+
+  margin-top: rem($gap-vert);
+  margin-bottom: rem($gap-vert);
+  //display: flex;
+  //flex-wrap: wrap;
+  //flex-direction: row;
+  //min-height: 100%;
+  //
+  //
+  //> div {
+  //  display: flex;
+  //  flex: 1 0 auto;
+  //  width: 50%;
+  //  flex-direction: column;
+  //}
+  //
+  //> div > div {
+  //  display: flex;
+  //  flex-direction: row;
+  //  padding: 0;
+  //}
+
+  .field--name-field-node-title-replacement {
+    h2 {
+      //
+    }
+  }
+
+  .h3,
+  .h4 {
+    //font-family: $font-heading;
+    //@include font-size($h3-size, $h3-line);
+    //font-weight: 600;
+    //margin: 0;
+    //color: $color-spot-2;
+    //text-transform: uppercase;
+  }
+
+  .field--name-field-project-link a {
+    @include button-secondary();
+  }
+
+  .field--name-field-product-category {
+    h3 {
+      margin-bottom: rem(15) !important;
+    }
+    .field__item {
+      margin-right: rem(7);
+      text-decoration: underline;
+    }
+
+    //padding-left: rem(40);
+  }
+
+  // ** Properties & categories: Facet filters
+
+  .field--type-entity-reference {
+
+    // label
+    h3,
+    h4 {
+
+      //@include text-nobreak;
+
+      //&:after {
+      //  content: ':';
+      //  margin-left: rem(-4);
+      //}
+    }
+
+    .field__items {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+
+    .field__item {
+      //
+    }
+    
+    // value
+    a {
+      //
+    }
+  }
+
+  // ** Product attributes
+
+  .field--name-field-product-attributes {
+
+    .field__items {
+      //
+    }
+  }
+
+  .field__item--name-field-product-attributes {
+    //
+  }
+
+  // label
+
+  .label-value-item-label {
+    display: block;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0;
+
+    @include text-nobreak;
+  }
+
+  // value
+
+  .label-value-item-value {
+    display: inline;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+@include bp-sm {
+
+  .node__info--product-full {
+
+    display: flex;
+
+    .field--name-field-submitted-by {
+      flex: 1 0 auto;
+      width: 50%;
+    }
+
+    .field--type-entity-reference {
+
+      flex: 1 0 auto;
+      width: 50%;
+
+      .h3 {
+        text-align: right;
+      }
+
+      .field__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+    }
+
+    // ** Product attributes
+
+    .label-value-item {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    // label
+
+    .label-value-item-label {
+      display: inline-block;
+      padding-right: rem(20);
+      min-width: 33%; // force a min-width on table cell
+    }
+
+  }
+}

@@ -1,0 +1,25 @@
+uuid: 5df65be8-7694-432d-8501-4842287ae4b0
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:content:63376e5a-bdcd-4458-b0aa-0ab38a8f62a3'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: goldsponsors
+theme: dropsolid_flex
+region: hidden
+weight: -6
+provider: null
+plugin: 'block_content:63376e5a-bdcd-4458-b0aa-0ab38a8f62a3'
+settings:
+  id: 'block_content:63376e5a-bdcd-4458-b0aa-0ab38a8f62a3'
+  label: 'Gold sponsors'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

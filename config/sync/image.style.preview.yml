@@ -1,0 +1,17 @@
+uuid: 06a3c5e1-5454-44d5-88e1-49e79e42a334
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: AfsswNNCcB2Vy0sg5inJlk6SjtLcB-eIVZwphjbpO5I
+name: preview
+label: Preview
+effects:
+  25e3a9c0-23bc-4845-a8db-2ac8304f747e:
+    uuid: 25e3a9c0-23bc-4845-a8db-2ac8304f747e
+    id: image_scale
+    weight: 1
+    data:
+      width: 300
+      height: null
+      upscale: false

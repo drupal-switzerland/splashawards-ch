@@ -1,0 +1,6 @@
+label: 'Default Node'
+variant_settings:
+  blocks:
+    680115f2-1153-468e-aa73-682bb6d21741:
+      label: 'Entity view (Content)'
+  page_title: '[node:title]'

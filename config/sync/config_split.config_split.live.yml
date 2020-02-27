@@ -1,0 +1,30 @@
+uuid: e9282707-74ed-4914-97bc-62cd1df98c5e
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Styr_Iu5o44QWL0dEkcBOFsVGTMElqxzyvHOGXTCv3o
+id: live
+label: Live
+description: ''
+folder: ../config/splits/live
+module:
+  dropsolid_purge: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
+  purge_queuer_coretags: 0
+  memcache: 0
+theme: {  }
+blacklist:
+  - advagg.settings
+  - advagg_js_minify.settings
+  - environment_indicator.indicator
+  - environment_indicator.settings
+  - system.logging
+  - system.performance
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

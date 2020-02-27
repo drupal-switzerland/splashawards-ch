@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Display Suite 2 columns child template: 7/12 + 5/12
+ *
+ */
+#}
+
+{% set cols = {
+    first: '7-12',
+    content: '5-12'
+  }
+%}
+
+{% include '@templates/_layouts/ds/col-2--permanent.html.twig' with {
+    wrapperClass: '7-5',
+    cols:cols
+  }
+%}

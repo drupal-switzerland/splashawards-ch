@@ -1,0 +1,147 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * office detail full: has its own view-mode of the news CT, with a DS template
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// ** sidebar
+.layout__sidebar--node--office--office-promoted--left {
+  //
+}
+
+// ** main content
+.layout__content--node--office--office-promoted,
+.layout__content--node--office--office-promoted--right {
+  //
+}
+
+// ** groups
+.node__header__info--office--office-promoted,
+.node__header__contact--office--office-promoted {
+  //
+}
+
+// -- address
+.node__header__info--office--office-promoted {
+  //
+}
+
+// -- office hours
+.node__header__hours--office--office-promoted {
+  //
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  // ** sidebar
+
+  .layout__sidebar--node--office--office-promoted--left {
+    //
+  }
+
+  // ** main content
+
+  .layout__content--node--office--office-promoted,
+  .layout__content--node--office--office-promoted--right {
+    //
+  }
+
+  // ** groups
+
+  // -- text
+
+  .node__header__info--office--office-promoted {
+    //
+  }
+
+  // -- address
+
+  .node__header__contact--office--office-promoted {
+    //
+  }
+
+  // -- office hours
+
+  .node__header__hours--office--office-promoted {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  // ** sidebar
+
+  .layout__sidebar--node--office--office-promoted--left {
+    //
+  }
+
+  // ** main content
+
+  .layout__content--node--office--office-promoted,
+  .layout__content--node--office--office-promoted--right {
+    //
+  }
+
+  // ** groups
+
+  // -- text
+
+  .node__header__info--office--office-promoted {
+    //
+  }
+
+  // -- address
+
+  .node__header__contact--office--office-promoted {
+    //
+  }
+
+  // -- office hours
+
+  .node__header__hours--office--office-promoted {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // *
+  // =============================================================================
+
+  // ** sidebar
+
+  .layout__sidebar--node--office--office-promoted--left {
+    //
+  }
+
+  // ** main content
+
+  .layout__content--node--office--office-promoted,
+  .layout__content--node--office--office-promoted--right {
+    //
+  }
+
+}

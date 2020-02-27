@@ -1,0 +1,32 @@
+uuid: 7b7edf7e-59c3-469d-a1c7-8d66812382de
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: o8f5zbelR7noNxHlgExvQamIMCSdT8Anyi9vMzYVW1o
+id: paragraph.field_p_007_view_mode
+field_name: field_p_007_view_mode
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: two_column
+      label: '2 columns'
+    -
+      value: three_column
+      label: '3 columns'
+    -
+      value: four_column
+      label: '4 columns'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

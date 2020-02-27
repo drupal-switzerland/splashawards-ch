@@ -1,0 +1,12 @@
+uuid: 29fb7413-b0b6-4279-b275-68d61c69d6cf
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: sRMu-RasWGMjkoDeNO_zMZ_UznZEmeEXDpZRng9HZeI
+id: paragraph.product_title_only
+label: 'Product title only'
+targetEntityType: paragraph
+cache: true

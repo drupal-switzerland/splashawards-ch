@@ -1,0 +1,9 @@
+uuid: fc78cc74-bc45-49a8-a234-0e3ab6be2dfa
+langcode: en
+status: true
+dependencies: {  }
+id: jury_paragraph
+label: 'Jury Paragraph'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

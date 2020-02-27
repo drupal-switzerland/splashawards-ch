@@ -1,0 +1,25 @@
+uuid: d8107d3c-a637-45a9-9e5e-d8b27818f2b0
+langcode: de
+status: false
+dependencies:
+  config:
+    - facets.facet.news_tags
+  module:
+    - facets
+  theme:
+    - seven
+_core:
+  default_config_hash: wOkonMc-2r9gW00ZT_iWdNGLHeiIkBiO2B80OxhH_us
+id: news_tags
+theme: seven
+region: header
+weight: 0
+provider: null
+plugin: 'facet_block:news_tags'
+settings:
+  id: 'facet_block:news_tags'
+  label: 'News tags'
+  provider: facets
+  label_display: '0'
+  block_id: news_tags
+visibility: {  }

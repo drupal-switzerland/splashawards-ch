@@ -1,0 +1,12 @@
+uuid: 8f9b6888-065e-4a4a-bd78-54519498b934
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: TfjvpejPWmwU9dliml_X9-25pBo8rknUAWHQd8OdgLk
+id: node.related
+label: Related
+targetEntityType: node
+cache: true

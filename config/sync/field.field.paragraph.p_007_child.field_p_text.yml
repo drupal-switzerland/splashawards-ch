@@ -1,0 +1,23 @@
+uuid: c5a1ff95-76b9-4584-a753-ad6ed4df9713
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_text
+    - paragraphs.paragraphs_type.p_007_child
+  module:
+    - text
+_core:
+  default_config_hash: N-EuNO_J433NDLADFYbRBhXD7QsMF4-1yL3ryyqSXn4
+id: paragraph.p_007_child.field_p_text
+field_name: field_p_text
+entity_type: paragraph
+bundle: p_007_child
+label: 'USP text'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,45 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * service meta on full page: bottom
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+.node__meta--service-full {
+  //
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node__meta--service-full {
+
+    //
+
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large screen
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  .node__meta--service-full {
+
+    justify-content: flex-start; // horizontal alignment
+
+    // ** date
+
+    .field--name-ds-time-ago {
+      //
+    }
+
+  }
+
+}

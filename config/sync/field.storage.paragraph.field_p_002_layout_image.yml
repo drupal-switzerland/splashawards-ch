@@ -1,0 +1,29 @@
+uuid: dd2578b2-2f92-4373-b972-f5d397211d10
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: o-Sfmcsc9Sxm8FnMZYhhT0kXmr5ni4SCgW_45Vks2m0
+id: paragraph.field_p_002_layout_image
+field_name: field_p_002_layout_image
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: image_normal
+      label: 'normal image'
+    -
+      value: image_stretched
+      label: 'stretched image'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

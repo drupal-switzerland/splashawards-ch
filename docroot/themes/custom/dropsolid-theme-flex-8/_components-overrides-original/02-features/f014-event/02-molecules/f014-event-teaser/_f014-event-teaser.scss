@@ -1,0 +1,159 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Event teasers
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+.node.event--teaser {
+
+  // ** visual
+
+  & > .layout__top {
+    position: relative;
+    margin-bottom: rem($gap-vert-sm);
+
+    // reset for nested layouts
+    .layout__top {
+      margin-bottom: 0;
+    }
+  }
+
+  // date on visual
+  .date-first-teaser {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding: rem(17) rem(20) rem(13) rem(20);
+    min-width: rem(79);
+    color: $color-white;
+    background-color: $color-spot-1;
+
+    .day {
+      display: block;
+      margin-bottom: rem(3);
+      @include font-size(26, 28);
+      font-weight: bold;
+    }
+
+    .month {
+      display: block;
+      @include font-size(13, 18);
+      text-transform: uppercase;
+    }
+  }
+
+  // date normal
+  .field--name-field-events {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: rem(10);
+    background: $color-gray-light-1;
+  }
+
+  // make separators for date and time if multiple
+  .time,
+  .date {
+
+    &:last-child {
+      &:before {
+        content: '- ';
+      }
+    }
+
+    &:first-child {
+      &:before {
+        content: '';
+      }
+    }
+  }
+
+  // image
+  .field--image {
+    margin-bottom: 0;
+  }
+
+  // ** title
+
+  h2,
+  h3,
+  h4 {
+    @extend .h3;
+  }
+
+  // -- place
+  //    (add a wrapper if more fields needed, call it node__meta--event-teaser)
+
+  .field--name-field-event-place {
+    margin-top: rem(-$gap-vert-sm);
+  }
+
+  // .field--name-field-event-location {
+
+  //   .address {
+  //     display: flex;
+  //     flex-wrap: wrap;
+  //     margin: 0;
+
+  //     br {
+  //       display: none;
+  //     }
+
+  //     // separate the elements with ','
+  //     > * {
+  //       &:after {
+  //         content: ',';
+  //         margin-right: rem(4);
+  //       }
+
+  //       &.postal-code:after,
+  //       &:last-child:after {
+  //         content: '';
+  //       }
+  //     }
+  //   }
+  // }
+
+  // ** read more
+
+  .field--name-node-link {
+    margin-top: rem($gap-vert-sm);
+
+    a {
+      @include link-more;
+    }
+  }
+
+  .field--name-field-event-tags {
+    margin-top: rem($gap-vert-sm);
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .event--teaser {
+
+    & > .layout__top {
+      margin-bottom: rem($gap-vert);
+
+      // reset for nested layouts
+      .layout__top {
+        margin-bottom: 0;
+      }
+    }
+
+    .field--name-node-link {
+      margin-top: rem($gap-vert);
+    }
+
+  }
+
+}

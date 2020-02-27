@@ -1,0 +1,6 @@
+label: Homepage
+variant_settings:
+  blocks:
+    727562de-516c-4b87-8f1d-6c2132348ac7:
+      label: 'Entity view (Content)'
+  page_title: '[node:title]'

@@ -1,0 +1,11 @@
+uuid: b0975289-ffa7-4cbb-b327-f15610db3299
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: VlrrR9NsFCyUVOfg3dK8Ct6jCiP9mmGFfxriOYPcN2E
+id: p_005
+label: 'P005 Testimonial'
+icon_uuid: null
+description: 'Add a testimonial'
+behavior_plugins: {  }

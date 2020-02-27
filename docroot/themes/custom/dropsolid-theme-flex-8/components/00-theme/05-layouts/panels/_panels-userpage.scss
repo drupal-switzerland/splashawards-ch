@@ -1,0 +1,38 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * User page overview
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+body.path-user {
+  .main__content {
+    margin-top: rem(110);
+  }
+  .layout__region--second {
+    border-left: 1px solid $color-spot-2;
+    padding-left: rem(10);
+    div.field {
+      margin-bottom: rem(10);
+      h3:first-child {
+        color: $color-spot-1;
+        border-bottom: 1px solid $color-spot-2;
+        text-transform: uppercase;
+        font-size: rem(22);
+        font-weight: 600;
+        letter-spacing: 1.5px;
+      }
+    }
+    div.field:not(h3:first-child) {
+      font-weight: lighter;
+      font-size: rem(16);
+    }
+    .field--name-username {
+      h3.h3 {
+        color: #333;
+        font-size: rem(16);
+        font-weight: 400;
+      }
+    }
+  }
+}

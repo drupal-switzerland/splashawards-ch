@@ -1,0 +1,18 @@
+uuid: a5bd6ffa-d83d-4e6e-92aa-4dbbec5bb924
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.product
+id: node.product.title
+field_name: title
+entity_type: node
+bundle: product
+label: Projekt-Titel
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: bbe2f334-cf99-4d17-afc7-37f768e3a77b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.p_012_child
+_core:
+  default_config_hash: VsOoYYAKBjmbza1oDAtfNDzOwCwLxq6BlKMJ-cfFf48
+id: paragraph.p_012_child.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: p_012_child
+label: 'Guide title'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+uuid: 921467fa-607e-43e7-9ce0-358e794a181c
+langcode: de
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+_core:
+  default_config_hash: YgaI1PMki9m-gc0FtfoZmU5o_nrZHkxCZd-7bNs6S_0
+id: paragraph.field_p_007_children
+field_name: field_p_007_children
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

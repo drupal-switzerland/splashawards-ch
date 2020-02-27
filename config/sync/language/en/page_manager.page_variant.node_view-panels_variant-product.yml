@@ -1,0 +1,8 @@
+label: Product
+variant_settings:
+  blocks:
+    7242ad4a-add4-4f27-979a-5aa1a784da4a:
+      label: 'Entity view (Content)'
+    5ccff3c7-6420-4d5e-a3a3-50dc48a90a6f:
+      label: 'Entity view (Content)'
+  page_title: '[node:title]'

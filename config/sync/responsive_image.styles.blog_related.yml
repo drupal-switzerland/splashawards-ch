@@ -1,0 +1,20 @@
+uuid: 9c6b5922-7ee5-4994-87c6-ead5767cf5de
+langcode: de
+status: true
+dependencies:
+  config:
+    - image.style.image_style_3_2_landscape_xs
+  module:
+    - rocketship_core
+_core:
+  default_config_hash: wu-2FZRZTtIRd-X6VBPYGqqbDzJZ-7OLQV7ROZDB9FI
+id: blog_related
+label: 'Blog Related'
+image_style_mappings:
+  -
+    breakpoint_id: rocketship_core.all
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_3_2_landscape_xs
+breakpoint_group: rocketship_core
+fallback_image_style: image_style_3_2_landscape_xs

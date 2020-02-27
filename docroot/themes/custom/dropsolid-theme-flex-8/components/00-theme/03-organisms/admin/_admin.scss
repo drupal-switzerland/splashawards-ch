@@ -1,0 +1,111 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Admin elements in the front-end theme
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+// * Admin toolbar
+// =============================================================================
+
+.toolbar-fixed .toolbar-bar {
+  @include z-index(admin-toolbar); // over the status messages
+}
+
+// make some space for Tabs
+// because the JS doesn't always do it properly when window is resized
+.toolbar-horizontal.toolbar-fixed {
+  padding-top: rem(79) !important;
+
+  // ** don't need separate padding for open tray
+  //    because it causes problems with fixed header
+  //&.toolbar-tray-open {
+  //  padding-top: rem(79) !important;
+  //}
+}
+
+.toolbar-tray a {
+  &,
+  &:visited {
+    color: #565656;
+  }
+}
+
+// * Contextual menus
+// =============================================================================
+
+.dialog-offcanvas__main-canvas.js-outside-in-edit-mode .outside-in-editable {
+  padding: rem(4);
+  margin: rem(4);
+  outline: 1px dashed rgba($color-black, 0.5);
+  box-shadow: 0 0 0 1px rgba($color-white, 0.7);
+}
+
+// ** Settings Tray & toolbar
+// =============================================================================
+
+// too light to see a bar
+body {
+
+  #toolbar-bar.js-outside-in-edit-mode {
+    background-color: #DDDDDD;
+  }
+
+  // same as hover
+  &.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active,
+  &.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tab > .toolbar-item:focus {
+    background-color: #2369A6;
+    background-image: linear-gradient(to bottom, #007BC6, #0071B8);
+    color: $color-white;
+  }
+
+  &.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tab > .toolbar-item {
+    background-image: none;
+    background-color: #2D2D2D;
+    color: $color-white;
+    text-decoration: none;
+  }
+
+  &.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tab > .toolbar-item:hover {
+    background-image: linear-gradient(to bottom, #007BC6, #0071B8);
+    background-color: #2369A6;
+    color: $color-white;
+  }
+}
+
+// * Place Block
+// =============================================================================
+
+body .block-place-region {
+  padding: 0;
+  margin: rem(5);
+
+  a.button {
+    display: block;
+    padding: rem(20);
+    background-color: $color-white;
+    // border: 1px solid #cccccc;
+    // border-radius: 50%;
+    width: auto;
+    border: 0 none;
+
+    &:hover {
+      background-color: rgba($color-black, 0.2);
+    }
+  }
+}
+
+// * Devel fix (not sure if needed, comes from D7)
+// =============================================================================
+
+div.krumo-root {
+  color: $color-black;
+
+  * {
+    float: none;
+  }
+  a.krumo-name {
+    color: #404000;
+  }
+}
+

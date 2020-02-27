@@ -1,0 +1,5 @@
+structural:
+  version: VERSION
+  css:
+    theme:
+      css/style.news.css: {minified: true, weight: 50}

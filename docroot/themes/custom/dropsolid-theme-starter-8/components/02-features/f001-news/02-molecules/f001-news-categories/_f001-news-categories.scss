@@ -1,0 +1,74 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * News filters
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * general styling: inline links
+// =============================================================================
+
+// -- issue: we wil possibly have multiple lists of filters
+//    and that has to look like 1 consistent list
+//    so be careful with comma-separated items
+
+.node__filters--news {
+
+  //
+
+  h3 {
+    //
+  }
+
+  .field {
+    //
+
+    a {
+      //
+    }
+
+    // ** make inline list by default, comma-separated
+
+    .field__items {
+      // d
+    }
+
+    .field__item {
+      //
+
+      &:after {
+        //
+      }
+
+    }
+
+    .field__item:before,
+    .field__item:after,
+    a {
+      //
+    }
+
+    // last item of last list
+    // does not need a separator
+
+    &:last-child {
+      .field__item:last-child {
+        &:after {
+          //
+        }
+      }
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  //
+
+}

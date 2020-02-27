@@ -1,0 +1,11 @@
+uuid: ff0c0988-171e-44b9-b0d3-99a3d80986bf
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: YPq-ZdkMKHgTslS16XR7w3RDNfxc_ku9hfDslrguZf0
+id: search_api__views_block__product_overview__product_overview_block
+name: 'search_api:views_block__product_overview__product_overview_block'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }

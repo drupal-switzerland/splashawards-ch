@@ -1,0 +1,25 @@
+uuid: a6b60a80-f784-472f-9b8f-91278b33e6bb
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:html_snippet_block:e1bf011c-9119-44ed-ac19-946c199b2324'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: mailchimpform
+theme: dropsolid_flex
+region: hidden
+weight: -11
+provider: null
+plugin: 'block_content:e1bf011c-9119-44ed-ac19-946c199b2324'
+settings:
+  id: 'block_content:e1bf011c-9119-44ed-ac19-946c199b2324'
+  label: 'Mailchimp Form'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: 25c46a3d-0962-4262-9639-368c77fbbd03
+langcode: de
+status: true
+dependencies:
+  config:
+    - image.style.image_style_3_2_landscape_xs_wide
+  module:
+    - rocketship_core
+_core:
+  default_config_hash: 86tq_Oobum8ESOr8peGZzwTdNaGKvKf8rsLLkpo2jO4
+id: paragraph_p009_image
+label: 'Paragraph p009 image (grid columns)'
+image_style_mappings:
+  -
+    breakpoint_id: rocketship_core.all
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_3_2_landscape_xs_wide
+breakpoint_group: rocketship_core
+fallback_image_style: image_style_3_2_landscape_xs_wide

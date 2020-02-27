@@ -1,0 +1,8 @@
+label: Page
+variant_settings:
+  blocks:
+    99c92b1a-2c3e-4d00-8f75-eaa90aa094ed:
+      label: 'Entity view (Content)'
+    f48ec6f2-93fb-435e-8e37-eeebf0040264:
+      label: 'Entity view (Content)'
+  page_title: '[node:title]'

@@ -1,0 +1,91 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * event meta on full page: bottom
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+.node__meta--event-full {
+
+  .field--name-field-event-price {
+    margin-bottom: rem(10);
+    @include text-nobreak;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node__meta--event-full {
+
+    // price & date: inline the elements
+    .bundle--event {
+
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: rem(-25);
+
+      .layout__region {
+        display: flex;
+        flex-wrap: wrap;
+        clear: none;
+
+        > * {
+          margin-left: rem(25);
+        }
+      }
+    }
+
+    // price itself
+    .field--name-field-event-price {
+      margin-bottom: 0;
+    }
+
+    // date itself: inline the elements
+    .event-daterange-wrapper {
+      div {
+        display: inline;
+      }
+    }
+
+    // place
+
+    .field--name-field-event-place {
+      //
+    }
+
+    // .field--name-field-event-location {
+    //   margin-left: rem(25);
+    // }
+
+    // .address {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   margin-bottom: 0;
+
+    //   br {
+    //     display: none;
+    //   }
+
+    //   // separate the elements with ','
+    //   > * {
+    //     &:after {
+    //       content: ',';
+    //       margin-right: rem(4);
+    //     }
+
+    //     &.postal-code:after,
+    //     &:last-child:after {
+    //       content: '';
+    //     }
+    //   }
+    // }
+  }
+
+}
+

@@ -1,0 +1,110 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * News meta: group of filters, share, author, …
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Header view mode has a meta group
+// =============================================================================
+
+.note__meta--news-full--top {
+
+  .field--name-node-post-date,
+  .node__filters--news-full {
+    margin-top: rem($gap-vert-top-xs);
+  }
+
+  // social share
+
+  .social-widgets__title {
+    margin-bottom: rem(10);
+    width: 100%;
+  }
+
+  // date
+
+  .field--name-node-post-date {
+    font-weight: $font-weight-bold;
+  }
+
+  // author
+
+  .field--name-node-author {
+    h3 {
+      display: inline-block;
+      margin: 0;
+      @include font-size($font-size-base, $line-height-base);
+      font-weight: $font-weight-normal;
+    }
+  }
+
+  // filters
+
+  .node__filters--news-full {
+    h3 {
+      @extend .h4;
+      margin-bottom: rem(10);
+      width: 100%;
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  .note__meta--news-full--top {
+
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: rem($gap-vert-top-sm);
+    padding-left: rem(10);
+
+    // -- reset row mode to column mode
+
+    margin-left: 0;
+    flex-direction: column;
+    align-items: flex-start;
+
+    & > * {
+      margin-left: 0;
+      margin-bottom: 0;
+    }
+
+    .field--name-node-post-date,
+    .node__filters--news-full {
+      margin-top: rem($gap-vert-top-sm);
+    }
+
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  .note__meta--news-full--top {
+    padding-left: rem(20);
+
+    .field--name-node-post-date,
+    .node__filters--news-full {
+      margin-top: rem($gap-vert-top-md);
+    }
+  }
+
+}

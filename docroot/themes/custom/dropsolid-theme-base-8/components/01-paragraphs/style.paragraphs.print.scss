@@ -1,0 +1,128 @@
+@charset 'UTF-8';
+
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Print css: paragraphs
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+@import '../00-theme/00-base/_libs.scss';
+@import '../00-theme/00-base/00-config/**/*.scss';
+@import '../00-theme/00-base/01-helpers/**/*.scss';
+
+@import '00-base/**/*.scss';
+
+@media print {
+
+  // Story
+  // =============================================================================
+
+  .paragraph--type-p-001 {
+
+    page-break-inside: avoid;
+    overflow: hidden; // keep floating stuff together
+
+    // ** image and text next to each other
+
+    .field--name-field-p-title,
+    .field--name-field-p-subtitle,
+    .text-long,
+    .field--buttons {
+      float: right;
+      margin-left: 0;
+      width: 56%;
+    }
+
+    .field--type-video-embed-field,
+    .field--image {
+      float: left;
+      margin-right: 0;
+      width: 40%;
+    }
+
+    .field--buttons {
+      float: right;
+    }
+
+    // ** STORY RIGHT
+
+    &.p-001--view-mode--right,
+    &.p-001--view-mode--image_right {
+
+      .field--name-field-p-title,
+      .field--name-field-p-subtitle,
+      .text-long,
+      .field--buttons {
+        float: left;
+      }
+
+      .field--type-video-embed-field,
+      .field--image {
+        float: right;
+      }
+
+      .field--buttons {
+        float: left;
+      }
+    }
+  }
+
+  // USP
+  // =============================================================================
+
+  .p-007--view-mode--4-column,
+  .p-007--view-mode--four-column {
+
+    page-break-inside: avoid;
+    overflow: hidden; // keep floating stuff together
+
+    // every item is a column
+
+    .field--name-field-p-007-children {
+
+      .field__items {
+
+        margin-left: -2%;
+
+        & > .field__item {
+          width: 23%;
+          margin-left: 2%;
+          float: left;
+        }
+      }
+    }
+  }
+
+  // 2 columns
+
+  .p-007--view-mode--2-column,
+  .p-007--view-mode--two-column {
+
+    page-break-inside: avoid;
+    overflow: hidden; // keep floating stuff together
+
+    // every item is a column
+
+    .field--name-field-p-007-children {
+
+      margin-left: -2%;
+
+      .field__items {
+
+        & > .field__item {
+          width: 48%;
+          margin-left: 2%;
+          float: left;
+        }
+      }
+    }
+  }
+
+  // Logobar
+  // =============================================================================
+
+  .paragraph--type-p-010 {
+    page-break-inside: avoid;
+    overflow: hidden; // keep floating stuff together
+  }
+}

@@ -1,0 +1,11 @@
+uuid: 5c072f86-3538-451d-9561-ca0fb68b251f
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Z2YrLpy92lO5kbaHJiWPBEJa1v1juVTaopdPDJxnYNM
+id: p_008
+label: 'P008 Focus'
+icon_uuid: null
+description: 'Like a CTA, add a group of textual elements with some background elements to draw focus'
+behavior_plugins: {  }

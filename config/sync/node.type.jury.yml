@@ -1,0 +1,39 @@
+uuid: 0355f266-1a57-46c5-8c9f-8dd4fd49b89a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - node_title_help_text
+    - rocketship_seo
+    - scheduler
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  node_title_help_text:
+    title_help: ''
+  rocketship_seo:
+    seo_fields: {  }
+    seo_title: Overview
+    seo_description: 'Content here is displayed on overview pages. Additionally, it is used for search engine and social media snippets. You can further finetune what exactly is used for each snippet in the "Metatags" tab.'
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+    publish_past_date_created: false
+name: Jury
+type: jury
+description: 'Add a Jury item for your Jury list'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

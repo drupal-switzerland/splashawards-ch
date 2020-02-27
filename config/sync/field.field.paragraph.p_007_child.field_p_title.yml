@@ -1,0 +1,21 @@
+uuid: 9992eb46-7b6b-411b-a57d-0e115891163f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.p_007_child
+_core:
+  default_config_hash: A8L3AP6CUYehCGaXZuqgrqAymAtAERTHoPUbh78Qd7o
+id: paragraph.p_007_child.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: p_007_child
+label: 'USP title'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

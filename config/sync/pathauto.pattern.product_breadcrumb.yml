@@ -1,0 +1,24 @@
+uuid: 3f206feb-561f-4841-856d-ec0b1d443be5
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 8BTYoRhuYHSPmZe0X4ks2jLo9TjI4uz61rYrB_Xjq94
+id: product_breadcrumb
+label: 'Nominee breadcrumb'
+type: 'canonical_entities:node'
+pattern: 'nominees/[node:title]'
+selection_criteria:
+  043b72e0-18f9-48fd-862e-cc2fb3325ef7:
+    id: node_type
+    bundles:
+      product: product
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 043b72e0-18f9-48fd-862e-cc2fb3325ef7
+selection_logic: and
+weight: -5
+relationships: {  }

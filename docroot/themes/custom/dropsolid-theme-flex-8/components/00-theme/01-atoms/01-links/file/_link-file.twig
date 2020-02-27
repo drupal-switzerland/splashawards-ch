@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Theme override for a link to a file.
+ *
+ * Available variables:
+ * - attributes: The HTML attributes for the containing element.
+ * - link_content: A link to the file.
+ *
+ * @see template_preprocess_file_link()
+ */
+#}
+
+{# {% set modifiers = [] %} #}
+{% set span_classes = 'file' %}
+{% set classes = 'icon icon--file' %}
+
+{% if link_content is not defined  %}
+  {% set link_content = link %}
+{% endif %}
+
+{% if attributes and attributes.class %}
+  {% for key, value in attributes.class %}
+    {% if value != "file" %}
+      {% set class_val = value|trim('file--') %}
+      {# {% set modifiers = modifiers|merge([class_val]) %} #}
+      {% set span_classes = span_classes ~ ' file--' ~ class_val %}
+      {% set classes = classes ~ ' icon--' ~ class_val %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{# {% set modifiers = modifiers|merge([attributes.class]) %} #}
+<span class="{{span_classes}}">
+  {# not working in PatternLab: <i {{bem('icon', modifiers)}}></i> #}
+  <i class="{{classes}}"></i>
+  {% block content %}
+    {{ link_content }}
+  {% endblock %}
+</span>
+

@@ -1,0 +1,21 @@
+uuid: 6acf7884-dc64-4d2a-9212-1ee5f11ed168
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.countdown
+    - field.storage.block_content.field_end_date
+  module:
+    - datetime
+id: block_content.countdown.field_end_date
+field_name: field_end_date
+entity_type: block_content
+bundle: countdown
+label: 'End date'
+description: 'Date to count down towards.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,11 @@
+uuid: fd597b75-5615-40b2-982e-7a79aabebbf7
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: LkCpzjVuNZI2lVVfUBNP-QudJ17tDOJRn9_UqOpgS58
+id: taxonomy_vocabulary_product_category
+action: page_redirect
+allow_override: 0
+redirect: '/nominees?f[0]=nominee_categories:[term:tid]'
+redirect_code: 301

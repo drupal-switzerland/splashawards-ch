@@ -1,0 +1,21 @@
+uuid: 28f83858-7e25-4b04-ba36-6a68877def58
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_extra_rule
+    - paragraphs.paragraphs_type.p_005
+_core:
+  default_config_hash: v8vrU1qQNHyiMWf_1FgKS8I27x8LVmuDo-ekRCOZ-O4
+id: paragraph.p_005.field_p_extra_rule
+field_name: field_p_extra_rule
+entity_type: paragraph
+bundle: p_005
+label: 'Extra rule'
+description: 'For example: the function or title of the person providing the testimony'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

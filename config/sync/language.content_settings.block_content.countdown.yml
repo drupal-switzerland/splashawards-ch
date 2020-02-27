@@ -1,0 +1,11 @@
+uuid: 28799bef-2589-444b-b0c0-5f8285b0f0e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.countdown
+id: block_content.countdown
+target_entity_type_id: block_content
+target_bundle: countdown
+default_langcode: site_default
+language_alterable: false

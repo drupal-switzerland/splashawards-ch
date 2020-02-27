@@ -1,0 +1,21 @@
+uuid: 68cd0131-7994-4995-ac5d-1907eb49360a
+langcode: de
+status: true
+dependencies:
+  module:
+    - block_field
+    - paragraphs
+_core:
+  default_config_hash: r5XiK-cnUn2rjkB2UFG4Hgc4-7HezeUWacgBqdmPtfM
+id: paragraph.field_p_fblikebox
+field_name: field_p_fblikebox
+entity_type: paragraph
+type: block_field
+settings: {  }
+module: block_field
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

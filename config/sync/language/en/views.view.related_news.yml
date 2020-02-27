@@ -1,0 +1,28 @@
+label: 'Related news'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      title: 'Related news items'
+      header:
+        area:
+          content:
+            value: '<h2>Related news items</h2>'
+      arguments:
+        nid:
+          exception:
+            title: All
+        field_news_tags:
+          exception:
+            title: All
+  related_news_items:
+    display_title: Block
+    display_options:
+      block_description: 'Related news items'

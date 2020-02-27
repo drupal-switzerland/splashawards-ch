@@ -1,0 +1,79 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Product: info fields
+// *
+// * Categories, properties and attributes
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+.node__info--product-related {
+  margin-top: rem(10);
+  margin-bottom: rem(10);
+
+  // ** Properties & categories: Facet filters
+
+  .field--type-entity-reference {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: rem(5);
+    align-items: flex-end;
+    @include font-size($font-size-xs, $font-size-xs * 1.4);
+
+    // label
+
+    h3,
+    h4 {
+      @include font-size($font-size-xs, $font-size-xs * 1.4);
+      margin: 0 rem(10) 0 0;
+
+      @include text-nobreak;
+
+      &:after {
+        content: ':';
+        margin-left: rem(-4); // counteract the spacing
+      }
+    }
+
+    // value
+    a {
+      //
+    }
+  }
+
+  // ** Product attributes
+
+  .field__item--name-field-product-attributes,
+  .label-value-item-label {
+    @include font-size($font-size-xs, $font-size-xs * 1.4);
+  }
+
+  .field--name-field-product-attributes {
+
+    .field__items {
+      //
+    }
+  }
+
+  .field__item--name-field-product-attributes {
+    //
+  }
+
+  .label-value-item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .label-value-item-label {
+    font-weight: $font-weight-bold;
+    margin-bottom: 0;
+    margin-right: rem(10);
+
+    @include text-nobreak;
+  }
+
+  .label-value-item-value {
+    //
+  }
+
+}

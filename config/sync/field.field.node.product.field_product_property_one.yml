@@ -1,0 +1,31 @@
+uuid: 637c673f-d99d-4dc3-8f69-547f3b1d8c41
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_property_one
+    - node.type.product
+    - taxonomy.vocabulary.product_property_one
+_core:
+  default_config_hash: A4Uld1-CSMhWBBmOfNOzvR6Te7QeMXivr5wrd3Ce3oY
+id: node.product.field_product_property_one
+field_name: field_product_property_one
+entity_type: node
+bundle: product
+label: Country
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      product_property_one: product_property_one
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

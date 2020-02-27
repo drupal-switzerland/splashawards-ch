@@ -1,0 +1,48 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog tags
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.field--name-field-blog-tags {
+  display: flex; // make it go in 1 row, always if space for the content
+  flex-wrap: wrap;
+
+  // ** make inline list by default
+
+  .field__items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: rem(-5) rem(-2) 0 rem(-2);
+  }
+
+  .field__item {
+    display: flex;
+    margin: rem(5) rem(2) 0 rem(2);
+
+    &:after {
+      content: ', ';
+    }
+
+    &:last-child {
+      &:after {
+        content: '';
+      }
+    }
+  }
+
+  .field__item:before,
+  .field__item:after,
+  a {
+    // @include font-size($font-size-base, $line-height-base);
+  }
+
+  a {
+    // @include link-underline((color: $color-link, color-hover: $color-link-hover));
+  }
+}

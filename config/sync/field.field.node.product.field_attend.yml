@@ -1,0 +1,23 @@
+uuid: e5072790-0479-436f-8f30-b669ca6e3187
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_attend
+    - node.type.product
+id: node.product.field_attend
+field_name: field_attend
+entity_type: node
+bundle: product
+label: 'I will attend'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Attend
+  off_label: 'Off'
+field_type: boolean

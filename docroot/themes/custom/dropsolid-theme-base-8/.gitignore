@@ -1,0 +1,12 @@
+#ignore sass cache files
+
+.sass-cache
+
+# Ignore node modules
+
+node_modules
+
+# Ignore maps because they tend to give conflicts on merge
+
+*/*.map
+**/*.map

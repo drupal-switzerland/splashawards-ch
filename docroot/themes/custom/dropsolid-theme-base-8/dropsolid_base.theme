@@ -1,0 +1,401 @@
+<?php
+/**
+ * @file
+ * Functions to support theming in the Dropsolid Base theme.
+ */
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Template\Attribute;
+use Drupal\block\Entity\Block;
+
+/**
+ * Implements hook_library_info_alter().
+ *
+ * @param $libraries
+ * @param $extension
+ */
+function dropsolid_base_library_info_alter(&$libraries, $extension) {
+  if(isset($libraries['drupal.tableresponsive'])) {
+    unset($libraries['drupal.tableresponsive']);
+  }
+}
+
+/**
+* Implements HOOK_page_attachments_HOOK().
+*
+* @param page
+*/
+function dropsolid_base_page_attachments_alter(array &$page) {
+  $theme_path = drupal_get_path('theme', 'dropsolid_base');
+
+  $header_tags = array(
+    // Responsive helper tags (based on html 5 boilerplate)
+    // Will always be needed: if it does not need to be zoomable the value must be changed here
+    'viewport' => array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'viewport',
+        'content' => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes',
+      ),
+    ),
+  );
+  foreach ($header_tags as $name => $tag) {
+    $page['#attached']['html_head'][] = [$tag, $name];
+  }
+}
+
+/**
+ * Implements template_preprocess(&$variables, $hook, $info).
+ *
+ * @param $variables
+ * @param $hook
+ * @param $info
+ */
+function dropsolid_base_preprocess(&$variables, $hook, $info) {
+
+  // get base path in order to properly construct theme path in twig, using {{ base_path ~ directory }}
+  // https://drupal.stackexchange.com/questions/184148/get-path-to-image-src-from-twig-template#187083
+  $variables['base_path'] = base_path();
+
+  // Try adding 'is_front' var to preprocess. This is needed for the branding block.
+  // An exception might be thrown.
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+
+    // Add a variable for the root path. This can be used to create a class and
+    // theme the page depending on the current path (e.g. node, admin, user) as
+    // well as more specific data like is-front.// get root path
+    if ($variables['is_front']) {
+      $variables['root_path'] = FALSE;
+    }
+    else {
+      $system_path = \Drupal::service('path.current')->getPath();
+      $variables['root_path'] = explode('/', $system_path) [1];
+    }
+  }
+  catch (Exception $e) {
+    // If the database is not yet available, set default values for these variables.
+    $variables['is_front'] = FALSE;
+    $variables['db_is_active'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ *
+ * Adds body classes if certain regions have content.
+ *
+ * @param $variables
+ */
+function dropsolid_base_preprocess_html(&$variables) {
+  // We get the twig service to see if the debug is active
+  $twig_service = \Drupal::service('twig');
+  if ($twig_service->isDebug()) {
+    $variables['attributes']['class'][] = 'theme-debug-mode';
+  }
+
+  // If you don't want it depending on twig debug mode
+  //$variables['attributes']['class'][] = 'theme-debug-mode';
+
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'layout-two-sidebars';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-sidebar-first';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-sidebar-second';
+  }
+  else {
+    $variables['attributes']['class'][] = 'layout-no-sidebars';
+  }
+
+  if (!empty($variables['page']['featured_top'])) {
+    $variables['attributes']['class'][] = 'has-featured-top';
+  }
+
+  if (!empty($variables['page']['primary_menu'])) {
+    $variables['attributes']['class'][] = 'has-off-canvas';
+  }
+
+  switch (\Drupal::service('path.current')->getPath()) {
+    case '/user/login':
+    case '/user/password':
+      $variables['attributes']['class'][] = 'user-pages';
+    case '/project/switch':
+      $variables['attributes']['class'][] = 'centered';
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for page templates.
+ *
+ * @param $variables
+ */
+function dropsolid_base_preprocess_page(&$variables) {
+  // Set the options that apply to both page and maintenance page.
+  _dropsolid_base_process_page($variables);
+
+  // Since the title and the shortcut link are both block level elements,
+  // positioning them next to each other is much simpler with a wrapper div.
+  if (!empty($variables['title_suffix']['add_or_remove_shortcut']) && $variables['title']) {
+    // Add a wrapper div using the title_prefix and title_suffix render elements.
+    $variables['title_prefix']['shortcut_wrapper'] = array(
+      '#markup' => '<div class="shortcut-wrapper clearfix">',
+      '#weight' => 100,
+    );
+    $variables['title_suffix']['shortcut_wrapper'] = array(
+      '#markup' => '</div>',
+      '#weight' => -99,
+    );
+    // Make sure the shortcut link is the first item in title_suffix.
+    $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
+  }
+}
+
+function dropsolid_base_preprocess_block(&$variables) {
+
+  // add extra names to build better block classes using BEM
+
+  $variables['attributes']['data-bem'] = [];
+
+  if (!empty($variables['elements']['#id'])) {
+    $block = Block::load($variables['elements']['#id']);
+    $originalId = $block->getOriginalId();
+    $region = $block->getRegion();
+
+    $variables['attributes']['data-bem']['originalId'] = $originalId;
+    $variables['attributes']['data-bem']['region'] = $region;
+
+  } else {
+
+    if (isset($variables['elements']['#configuration']['region'])) {
+      $region = $variables['elements']['#configuration']['region'];
+
+      $variables['attributes']['data-bem']['region'] = $region;
+    }
+  }
+
+  if(isset($variables['elements']['content']['#block_content']) && $variables['elements']['content']['#block_content'] instanceof \Drupal\block_content\BlockContentInterface){
+    /** @var \Drupal\block_content\BlockContentInterface $content_block */
+    $content_block = $variables['elements']['content']['#block_content'];
+    $type = $content_block->bundle();
+
+    $variables['attributes']['data-bem']['type'] = $type;
+  }
+
+
+//  } else if (isset($variables['elements']['#configuration']['region'])) {
+//    $region = $variables['elements']['#configuration']['region'];
+////    $provider = $variables['elements']['#configuration']['provider'];
+//
+//    // $suggestions[] = 'block__page_' . $variables['elements']['#configuration']['region'] . '__' . end(explode(':', $variables['elements']['#plugin_id']));
+//    $variables['attributes']['class'][] = 'block--' . $region;
+//  }
+
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for PAGE.
+ */
+function dropsolid_base_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $path_args = explode('/', trim(\Drupal::service('path.current')->getPath(), '/'));
+
+  $theme_suggestions = theme_get_suggestions($path_args, 'page');
+
+  // Remove duplicates
+  $duplicated_suggestions = array_intersect($theme_suggestions,$suggestions);
+  $unique_suggestions = array_diff($suggestions,$theme_suggestions);
+  $suggestions = array_merge($duplicated_suggestions,$unique_suggestions);
+
+  $http_error_suggestions = [
+    'system.401' => 'page__system__401',
+    'system.403' => 'page__system__403',
+    'system.404' => 'page__system__404',
+  ];
+
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (isset($http_error_suggestions[$route_name])) {
+    $suggestions[] = 'page__error';
+    $suggestions[] = $http_error_suggestions[$route_name];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for maintenance-page.html.twig.
+ *
+ * @param $variables
+ */
+function dropsolid_base_preprocess_maintenance_page(&$variables) {
+  // By default, site_name is set to Drupal if no db connection is available or during site installation.
+  // Setting site_name to an empty string makes the site and update pages look cleaner.
+  // @see template_preprocess_maintenance_page
+  if (!$variables['db_is_active']) {
+    $variables['site_name'] = '';
+  }
+
+  // Bartik has custom styling for the maintenance page.
+  $variables['#attached']['library'][] = 'bartik/maintenance_page';
+
+  // Set the options that apply to both page and maintenance page.
+  _dropsolid_base_process_page($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ *
+ * @param $variables
+ */
+function dropsolid_base_preprocess_node(&$variables) {
+  // Remove the "Add new comment" link on teasers or when the comment form is displayed on the page.
+  if ($variables['teaser'] || !empty($variables['content']['comments']['comment_form'])) {
+    unset($variables['content']['links']['comment']['#links']['comment-add']);
+  }
+
+  $node = $variables['node'];
+  $createdTime = $node->getCreatedTime();
+  $date = format_date($createdTime, 'custom', t('l F jS Y \a\t h:i'));
+  $variables['date'] = $date;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu.html.twig.
+ *
+ * @param $variables
+ */
+function dropsolid_base_preprocess_menu(&$variables) {
+  $variables['attributes']['class'][] = 'clearfix';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for inputs.
+ *
+ * Add suggestions for custom twig files for inputs.
+ *
+ * @param $suggestions
+ * @param $variables
+ */
+function dropsolid_base_theme_suggestions_input_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#type']) && $variables['element']['#type'] == 'entity_autocomplete') {
+    $suggestions[] = 'input__textfield__autocomplete';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function dropsolid_base_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['#id'])) {
+    $block_id = $variables['elements']['#id'];
+    $block = \Drupal\block\Entity\Block::load($block_id);
+    $region = $block->getRegion();
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $region;
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $region . '__' . $block_id;
+  }
+}
+
+/**
+ * Helper function for handling the site name and slogan.
+ *
+ * @param $variables
+ */
+function _dropsolid_base_process_page(&$variables) {
+  $site_config = \Drupal::config('system.site');
+  // Always print the site name and slogan, but if they are toggled off, we'll just hide them visually.
+  $variables['hide_site_name'] = theme_get_setting('features.name') ? FALSE : TRUE;
+  $variables['hide_site_slogan'] = theme_get_setting('features.slogan') ? FALSE : TRUE;
+  if ($variables['hide_site_name']) {
+    // If toggle_name is FALSE, the site_name will be empty, so we rebuild it.
+    $variables['site_name'] = $site_config->get('name');
+  }
+  if ($variables['hide_site_slogan'] && $site_config->get('slogan')) {
+    // If toggle_site_slogan is FALSE, the site_slogan will be empty, so we rebuild it.
+    $variables['site_slogan']['#markup'] = $site_config->get('slogan');
+  }
+
+  if (isset($variables['page']['#title'])) {
+    $variables['title'] = render($variables['page']['#title']);
+  }
+
+  if (isset($variables['page']['content']['messages'])) {
+    $variables['page']['messages'] = $variables['page']['content']['messages'];
+    unset($variables['page']['content']['messages']);
+  }
+}
+
+/**
+ * Implements template_preprocess_table().
+ *
+ * @param $variables
+ */
+function dropsolid_base_preprocess_table(&$variables) {
+
+  // Turn zebra striping (odd/even) off
+  $variables['no_striping'] = TRUE;
+
+  // Replacing drupal responsive, 'cause it's crap:
+  //
+  // - turn off the resp. table lib
+  // - remodel the html output:
+  // --- wrapper with classes AROUND the table: done in TWIG template
+  // --- add th's text into data-attributes on the td's in the Twig templates:
+  //     done in theme function
+  //
+  // Any tables that are not affected with this,
+  // will be handled by a javascript function called in the table component
+  // that checks for the presence of the responsive wrapper
+
+  if($variables['responsive']) {
+
+    _responsive_table($variables);
+
+    if (isset($variables['#attached']) && isset($variables['#attached']['library'])) {
+      $index = array_search('core/drupal.tableresponsive', $variables['#attached']['library']);
+      if ($index !== FALSE) {
+        unset($variables['#attached']['library'][$index]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_table for office hours
+ * @param $variables
+ */
+function dropsolid_base_preprocess_office_hours_table(&$variables) {
+
+  // we don't want the office hours table to be responsive
+  // because it will no longer be functional
+  //
+  // HOWEVER: better would be not to render it as a table but as divs
+  //
+  $variables['table']['#responsive'] = FALSE;
+}
+
+/**
+ * Custom function for responsive tables
+ *
+ * @param $variables
+ */
+function _responsive_table($variables) {
+
+  $rows = $variables['rows'];
+  foreach($variables['rows'] as $row) {
+    $cells = array();
+    foreach($row['cells'] as $key => $cell) {
+      if (isset($variables['header'][$key]['content'])) {
+        $cell['attributes']['data-title'] = $variables['header'][$key]['content'];
+      }
+      $cells[] = $cell;
+    }
+    $row = $cells;
+    $rows[] = $row;
+  }
+  $variables['rows'] = $rows;
+}
+

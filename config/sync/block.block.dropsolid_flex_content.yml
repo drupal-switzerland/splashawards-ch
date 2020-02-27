@@ -1,0 +1,22 @@
+uuid: 5526474e-4ca0-4e23-baa8-ca0244579585
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dropsolid_flex
+_core:
+  default_config_hash: ehuETYB9NjuHixbaniuxUeXWDkyNdglkcRW1hHpC_q8
+id: dropsolid_flex_content
+theme: dropsolid_flex
+region: content
+weight: -9
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

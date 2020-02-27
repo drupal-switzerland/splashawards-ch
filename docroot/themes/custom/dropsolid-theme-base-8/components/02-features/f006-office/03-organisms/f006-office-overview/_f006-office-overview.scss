@@ -1,0 +1,117 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * offices main overview
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+// ** map view
+//
+// // full width map
+//
+// .view--display-satellite-offices {
+// .geofield-google-map {
+//   position: relative;
+//   left: 50%;
+//   transform: translateX(-50vw);
+//   width: 100vw !important;
+// }
+// }
+
+// ** satellite offices
+
+.view--display-satellite-offices {
+
+  // ** count
+
+  .view__header {
+    //
+  }
+
+  // ** grid
+
+  .view__content {
+    //
+  }
+
+  .office--teaser {
+    //
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** the block with the view itself
+
+  .view--display-satellite-offices {
+
+    .view__header {
+      //
+    }
+
+    // ** make a grid
+
+    .view__content {
+      //
+    }
+
+    // normal overview is in 2 cols
+    .office--teaser {
+      //
+    }
+  }
+
+  .office__overview--advanced {
+    //
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .view--display-satellite-offices {
+    //
+  }
+
+  // ** offices COMPLEX
+  .office__overview--advanced {
+    //
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large screen
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  .view--display-satellite-offices {
+    //
+  }
+
+  .office__overview--advanced {
+
+    // -- all overview paragraphs:
+    //    we want the spacing between top - map - regular view to be same as in full view-mode
+    //    which is tricky here, because we need to override ONLY the overview paragraphs
+
+    .paragraph--type-overview {
+      padding: rem($gap-vert-top-lg) 0 rem($gap-vert-bottom-lg) 0;
+    }
+  }
+
+}

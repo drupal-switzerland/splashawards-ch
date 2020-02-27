@@ -1,0 +1,247 @@
+uuid: 954c5d5f-7122-48b0-a336-e1b593fa0bb7
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.related
+    - field.field.node.product.field_challenges
+    - field.field.node.product.field_community_contributions
+    - field.field.node.product.field_email
+    - field.field.node.product.field_extra
+    - field.field.node.product.field_field_agree
+    - field.field.node.product.field_logo_client
+    - field.field.node.product.field_mail_invoice
+    - field.field.node.product.field_name_
+    - field.field.node.product.field_node_title_replacement
+    - field.field.node.product.field_nominee
+    - field.field.node.product.field_organisation
+    - field.field.node.product.field_paragraphs
+    - field.field.node.product.field_phone_number
+    - field.field.node.product.field_product_category
+    - field.field.node.product.field_product_images
+    - field.field.node.product.field_product_property_one
+    - field.field.node.product.field_product_property_two
+    - field.field.node.product.field_product_teaser
+    - field.field.node.product.field_project_de
+    - field.field.node.product.field_project_link
+    - field.field.node.product.field_show_breadcrumb
+    - field.field.node.product.field_submitted_by
+    - field.field.node.product.field_winner
+    - node.type.product
+  module:
+    - blazy
+    - ds
+    - field_group
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: rocketship_layout_321col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      first:
+        - field_product_images
+      content:
+        - field_product_category
+        - node_title
+        - field_product_property_one
+        - field_product_property_two
+        - group_info
+        - field_product_attributes
+        - node_link
+        - group_actions
+    fields:
+      node_link:
+        plugin_id: node_link
+        weight: 5
+        label: hidden
+        formatter: default
+        settings:
+          'link text': 'View product'
+          'link class': ''
+          wrapper: ''
+          class: ''
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h3
+          class: ''
+  field_group:
+    group_actions:
+      children:
+        - node_link
+      parent_name: ''
+      weight: 6
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: 'node__actions node__actions--teaser node__actions--product node__actions--product-teaser'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Actions
+      region: content
+    group_info:
+      children:
+        - field_product_category
+        - field_product_property_one
+        - field_product_property_two
+        - field_product_attributes
+      parent_name: ''
+      weight: 2
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: 'node__info node__info--related node__info--product node__info--product-related'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Info
+      region: content
+_core:
+  default_config_hash: FQmRNZFknvGJmCYqhqrA1l4oGppQ_CFcwpIOQC_mH_4
+id: node.product.related
+targetEntityType: node
+bundle: product
+mode: related
+content:
+  field_product_category:
+    type: entity_reference_label
+    weight: 0
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+  field_product_images:
+    type: blazy
+    weight: 0
+    region: first
+    label: hidden
+    settings:
+      style: ''
+      image_style: ''
+      thumbnail_style: ''
+      responsive_image_style: product_teaser
+      media_switch: content
+      ratio: ''
+      grid: null
+      grid_medium: null
+      grid_small: null
+      sizes: ''
+      breakpoints:
+        xs:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        sm:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        md:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        lg:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        xl:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+      current_view_mode: teaser
+      background: false
+      caption:
+        title: '0'
+        alt: '0'
+      grid_header: ''
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      view_mode: ''
+      cache: 0
+      optionset: default
+      skin: ''
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+    third_party_settings:
+      ds:
+        ds_limit: '1'
+  field_product_property_one:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: '1'
+  field_product_property_two:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: '1'
+hidden:
+  dropsolid_social_widgets: true
+  field_allow_case_added: true
+  field_attend: true
+  field_case_video: true
+  field_challenges: true
+  field_client_name: true
+  field_client_permission: true
+  field_community_contributions: true
+  field_country_text: true
+  field_date_when_website_went_liv: true
+  field_email: true
+  field_extra: true
+  field_field_agree: true
+  field_invoice_address: true
+  field_invoide_postal: true
+  field_logo_client: true
+  field_mail_invoice: true
+  field_meta_tags: true
+  field_name_: true
+  field_node_title_replacement: true
+  field_nominee: true
+  field_organisation: true
+  field_paragraphs: true
+  field_phone_number: true
+  field_product_teaser: true
+  field_project_de: true
+  field_project_link: true
+  field_project_name: true
+  field_runnerup: true
+  field_show_breadcrumb: true
+  field_sign_up_newsletter: true
+  field_submitted_by: true
+  field_vat_registration_id: true
+  field_why: true
+  field_winner: true
+  field_winneroftheyear: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

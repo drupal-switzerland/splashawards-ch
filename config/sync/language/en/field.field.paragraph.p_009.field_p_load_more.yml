@@ -1,0 +1,5 @@
+label: 'Load more'
+description: 'Check this if you would like to display a ''load more'' button under first 6 images. Otherwise all gallery images will be visible by default.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

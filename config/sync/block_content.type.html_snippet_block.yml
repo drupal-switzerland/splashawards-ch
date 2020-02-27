@@ -1,0 +1,8 @@
+uuid: 2afd2ace-ef85-4cb1-b1cc-c1903d740aeb
+langcode: en
+status: true
+dependencies: {  }
+id: html_snippet_block
+label: 'Html Snippet Block'
+revision: 0
+description: ''

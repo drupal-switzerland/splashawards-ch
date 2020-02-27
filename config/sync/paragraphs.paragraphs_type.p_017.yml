@@ -1,0 +1,11 @@
+uuid: faf83b6d-2926-4198-98d8-655b02777efa
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dPAvknb81OJUCiRSgY3fPWX_nkNI0EaxAJ7fXIrPP3c
+id: p_017
+label: 'P017 Menu Overview'
+icon_uuid: null
+description: 'Display links to menu items from a selected menu or the menu that the page is a part of'
+behavior_plugins: {  }

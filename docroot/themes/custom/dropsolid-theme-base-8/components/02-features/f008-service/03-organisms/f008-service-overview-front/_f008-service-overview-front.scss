@@ -1,0 +1,60 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Service frontpage overview
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+body .view--display-service-overview-front {
+
+  .view__content {
+    //
+  }
+
+  .node--type-service {
+    //
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  body .view--display-service-overview-front {
+
+    // ** make a grid
+
+    .view__content {
+
+      //
+    }
+
+    .node--type-service {
+      //
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  body .view--display-service-overview-front {
+
+    .node--type-service {
+      //
+    }
+  }
+
+}

@@ -1,0 +1,5 @@
+label: 'Thumbnail navigation'
+options:
+  settings:
+    prevArrow: '<a data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button"><i class="icon icon--prev"></i><span class="text">Previous</span></a>'
+    nextArrow: '<a data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button"><i class="icon icon--next"></i><span class="text">Next</span></a>'

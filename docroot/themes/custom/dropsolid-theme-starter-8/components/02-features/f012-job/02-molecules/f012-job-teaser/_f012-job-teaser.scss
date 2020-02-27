@@ -1,0 +1,69 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog teasers
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.job--teaser {
+
+  // ** title
+
+  h2,
+  h3,
+  h4 {
+    @extend .h3;
+  }
+
+  // ** read more
+
+  .field--name-node-link {
+    //
+  }
+
+  .field--name-ds-time-ago {
+    //
+  }
+
+}
+
+// ** Group facet filters & job attributes
+//      see 'f012-job-attributes' Sass files for the styling
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** the normal teaser
+
+  .job--teaser {
+
+    .field--name-node-link {
+      //
+    }
+
+    .field--name-ds-time-ago {
+      //
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .job--teaser {
+    //
+  }
+
+}

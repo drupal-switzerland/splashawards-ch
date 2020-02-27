@@ -1,0 +1,84 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * office page form: present in Panel footer or bottom
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.page-variant--office {
+
+  // ** webform container
+
+  .field--name-field-office-show-contact-form {
+    padding: rem($gap-vert-top-xs) 0 rem($gap-vert-bottom-xs) 0;
+    transition: all $duration $easing;
+
+    // background-color
+    @include full-bg ($color-office-form-bg, 'before');
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  .page-variant--office {
+
+    .field--name-field-office-show-contact-form {
+      padding: rem($gap-vert-top-sm) 0 rem($gap-vert-bottom-sm) 0;
+    }
+
+    .webform-submission-office-contact-form {
+      //
+
+    }
+
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  .page-variant--office {
+
+    .field--name-field-office-show-contact-form {
+      padding: rem($gap-vert-top-md) 0 rem($gap-vert-bottom-md) 0;
+    }
+
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // *
+  // =============================================================================
+
+  .page-variant--office {
+
+    .field--name-field-office-show-contact-form {
+      padding: rem($gap-vert-top-lg-2) 0 rem($gap-vert-bottom-lg-2) 0;
+    }
+
+  }
+
+}

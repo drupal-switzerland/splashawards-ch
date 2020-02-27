@@ -1,0 +1,25 @@
+uuid: b4a43417-0413-465b-bc02-5bbb387bb947
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_breadcrumb
+    - node.type.product
+_core:
+  default_config_hash: kmEmekH97wpy6J-S7l03SYKdx0izdYeXPUMQD5mBqNk
+id: node.product.field_show_breadcrumb
+field_name: field_show_breadcrumb
+entity_type: node
+bundle: product
+label: 'Show breadcrumb'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

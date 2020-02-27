@@ -1,0 +1,31 @@
+uuid: 748d3278-116e-4fc2-8629-285930f0d94b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_property_two
+    - node.type.product
+    - taxonomy.vocabulary.product_property_two
+_core:
+  default_config_hash: _YKGSFsG223z2hvZYQ-Zi8hjpa8oFDNvYEWD8HOdFoM
+id: node.product.field_product_property_two
+field_name: field_product_property_two
+entity_type: node
+bundle: product
+label: 'Property Two'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      product_property_two: product_property_two
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

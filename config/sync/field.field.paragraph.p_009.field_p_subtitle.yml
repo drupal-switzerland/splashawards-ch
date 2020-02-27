@@ -1,0 +1,21 @@
+uuid: eb003a68-dbdd-449a-a553-a4a66b612838
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_subtitle
+    - paragraphs.paragraphs_type.p_009
+_core:
+  default_config_hash: z0Z0FSb--i2qvaP87PkhIZDGVH35rbaf6H19BWeBRYg
+id: paragraph.p_009.field_p_subtitle
+field_name: field_p_subtitle
+entity_type: paragraph
+bundle: p_009
+label: Subtitle
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

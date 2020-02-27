@@ -1,0 +1,27 @@
+uuid: 04327843-99ce-4dc7-81e5-4321cd9f3bf0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_video
+    - paragraphs.paragraphs_type.p_006
+  module:
+    - video_embed_field
+_core:
+  default_config_hash: CivPmWc2LUNJPuBtyrd6He8BHpVt1r0fMoxEX5p9e0s
+id: paragraph.p_006.field_p_video
+field_name: field_p_video
+entity_type: paragraph
+bundle: p_006
+label: Video
+description: 'Add your YouTube or Vimeo video share url here.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    vimeo: vimeo
+    youtube: youtube
+    youtube_playlist: '0'
+field_type: video_embed_field

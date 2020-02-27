@@ -1,0 +1,22 @@
+uuid: 514816d0-1627-4a10-9925-983b8b864a7a
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dropsolid_flex
+_core:
+  default_config_hash: '-kvzS3M-PTdLx3TNv4DNV62jvh3ubwNkceddb0D-QOw'
+id: dropsolid_flex_messages
+theme: dropsolid_flex
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

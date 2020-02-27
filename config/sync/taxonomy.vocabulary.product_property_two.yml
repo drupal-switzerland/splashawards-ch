@@ -1,0 +1,10 @@
+uuid: b54b0267-6053-43c5-a715-be785121ec44
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 0dxew05l0vZWK-w6AzWrpJfc1t-OQaQ-uI1ZHrsDiEM
+name: 'Product property two'
+vid: product_property_two
+description: ''
+weight: 0

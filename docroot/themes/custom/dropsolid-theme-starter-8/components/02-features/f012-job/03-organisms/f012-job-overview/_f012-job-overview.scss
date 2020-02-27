@@ -1,0 +1,108 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * jobs main overview
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+// ** Jobs Complex
+//    we get a column for the filters
+
+.job__overview--advanced {
+
+  // -- overview sidebar column
+  .layout__sidebar--paragraph--overview--default--left {
+    //
+  }
+
+  // -- overview content column
+  .layout__content--paragraph--overview--default--right {
+    //
+  }
+}
+
+// ** The block with the view itself
+
+.view--display-job-overview-block {
+
+  // ** job count
+
+  .view__header {
+    //
+  }
+
+  // ** grid
+
+  .view__content {
+    //
+  }
+
+  .job--teaser {
+    overflow: hidden; // fix for margins not collapsing with view__header
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** Jobs Complex
+  //    we get a column for the filters
+
+  .job__overview--advanced {
+
+    // -- overview sidebar column
+    .layout__sidebar--paragraph--overview--default--left {
+      //
+    }
+
+    // -- overview content column
+    .layout__content--paragraph--overview--default--right {
+      //
+    }
+  }
+
+  // ** The block with the view itself
+
+  .view--display-job-overview-block {
+
+    // ** make a grid
+
+    .view__content {
+      //
+    }
+
+    // normal overview is in 2 cols
+    .job--teaser {
+      //
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  //
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large screen
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  //
+
+}

@@ -1,0 +1,20 @@
+#block-dropsolid-flex-branding {
+  padding: rem(20) 0;
+  a {
+    display: block;
+    max-width: rem(180);
+  }
+  @include bp-sm {
+    a {
+      max-width: rem(200);
+    }
+  }
+  img {
+    width: 100%;
+  }
+  @include bp-lg {
+    a {
+      max-width: rem(265);
+    }
+  }
+}

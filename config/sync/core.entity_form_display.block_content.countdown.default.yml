@@ -1,0 +1,105 @@
+uuid: 52c11bbb-48e1-4a6b-bf1f-6a35a28dd42a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.countdown
+    - field.field.block_content.countdown.field_days
+    - field.field.block_content.countdown.field_end_date
+    - field.field.block_content.countdown.field_hours
+    - field.field.block_content.countdown.field_minutes
+    - field.field.block_content.countdown.field_subtitle
+    - field.field.block_content.countdown.field_timezone
+    - field.field.block_content.countdown.field_title
+  module:
+    - datetime
+    - field_group
+third_party_settings:
+  field_group:
+    group_numbers:
+      children:
+        - field_days
+        - field_hours
+        - field_minutes
+      parent_name: ''
+      weight: 7
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Numbers
+      region: content
+id: block_content.countdown.default
+targetEntityType: block_content
+bundle: countdown
+mode: default
+content:
+  field_days:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_end_date:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_hours:
+    type: number
+    weight: 9
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_minutes:
+    type: number
+    weight: 10
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_subtitle:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_timezone:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

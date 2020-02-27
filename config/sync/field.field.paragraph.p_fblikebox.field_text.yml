@@ -1,0 +1,23 @@
+uuid: 60988d75-ae02-4b58-b0e4-6639c48b1b10
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.p_fblikebox
+  module:
+    - text
+_core:
+  default_config_hash: ZJ1KWBYBTs09kVGHl2IQxsFtk_P7C9FdfJ1nF8YSraM
+id: paragraph.p_fblikebox.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: p_fblikebox
+label: Text
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

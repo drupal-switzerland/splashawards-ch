@@ -1,0 +1,28 @@
+uuid: 0cece1f8-dd0d-4b43-a526-20f960888ac3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_media_links
+    - field.storage.block_content.field_linkedin
+  module:
+    - link
+id: block_content.social_media_links.field_linkedin
+field_name: field_linkedin
+entity_type: block_content
+bundle: social_media_links
+label: linkedin
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'https://www.linkedin.com/'
+    title: In
+    options: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

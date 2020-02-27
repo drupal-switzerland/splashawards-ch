@@ -1,0 +1,140 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Product detail full: has its own view-mode of the news CT, with a DS template
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.product--full {
+
+  // -- header reset when nested in content
+  .paragraph--view-mode-product-title-only {
+    padding: 0;
+    background: transparent;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+
+  // ** Buttons
+
+  .node__actions--product-full {
+    margin-top: rem($gap-vert);
+  }
+
+  // PDF download
+
+  .field--name-field-product-sheet {
+
+    .file {
+      padding-left: 0; // don't need space for icon
+    }
+
+    .icon {
+      display: none; // don't need icon
+    }
+
+    a {
+      @include button-primary;
+    }
+  }
+}
+
+.layout__cols--node--product--full {
+
+  // ** create space between header & content and doormat/related products & content
+  padding: rem($gap-vert-top-xs) 0 rem($gap-vert-bottom-xs) 0;
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  .product--full {
+    //
+  }
+
+  // ** picture
+
+  .layout__sidebar--node--product--full--left {
+    @include flex-col(6);
+  }
+
+  // ** product info
+
+  .layout__content--node--product--full--right {
+    @include flex-col(6);
+    padding-left: rem($grid-gap-hor); // extra space next to picture
+  }
+
+
+  .layout__cols--node--product--full {
+
+    // ** create space between header & content and doormat/related products & content
+    padding: rem($gap-vert-top-sm) 0 rem($gap-vert-bottom-sm) 0;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  .product--full {
+    //
+  }
+
+  // ** product info
+
+  .layout__content--node--product--full--right {
+    padding-left: rem($grid-gap-hor * 2); // extra space next to picture
+  }
+
+  .layout__cols--node--product--full {
+
+    // ** create space between header & content and doormat/related products & content
+    padding: rem($gap-vert-top-md) 0 rem($gap-vert-bottom-md) 0;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // *
+  // =============================================================================
+
+  .product--full {
+    //
+  }
+
+  // ** product info
+
+  .layout__content--node--product--full--right {
+    padding-left: rem($grid-gap-hor * 3); // extra space next to picture
+  }
+
+  .layout__cols--node--product--full {
+
+    // ** create space between header & content and doormat/related products & content
+    padding: rem($gap-vert-top-lg) 0 rem($gap-vert-bottom-lg) 0;
+  }
+
+}

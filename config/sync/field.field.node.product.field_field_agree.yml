@@ -1,0 +1,23 @@
+uuid: 6b145bbb-3e9b-4893-89ad-428d9e773aca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_field_agree
+    - node.type.product
+id: node.product.field_field_agree
+field_name: field_field_agree
+entity_type: node
+bundle: product
+label: 'I agree to the terms of submission'
+description: 'By checking the box and clicking the button below, I agree and consent to the <a href="/eligibility-and-guidelines" target="_blank">terms and conditions</a>, and the <a href="/privacy-policy" target="_blank">privacy policy</a>, including the <a href="/cookie-policy" target="_blank">cookie policy</a>.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Agree
+  off_label: 'Off'
+field_type: boolean

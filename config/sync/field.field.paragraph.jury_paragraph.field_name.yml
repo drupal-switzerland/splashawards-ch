@@ -1,0 +1,21 @@
+uuid: 5ea8204c-b7a9-4e59-b821-0afab1d60f18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_name
+    - paragraphs.paragraphs_type.jury_paragraph
+  module:
+    - text
+id: paragraph.jury_paragraph.field_name
+field_name: field_name
+entity_type: paragraph
+bundle: jury_paragraph
+label: Name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

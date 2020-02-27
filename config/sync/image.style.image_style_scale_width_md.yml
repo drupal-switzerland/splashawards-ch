@@ -1,0 +1,17 @@
+uuid: 3f7ce38e-aa72-46a6-a9f3-38f17504b3d5
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ejSP5cXR2vtOttjCUg4tY1R20JDdBCGdSuvC0YJBfo0
+name: image_style_scale_width_md
+label: 'Scale width md [1024]'
+effects:
+  1fd5e194-356e-4523-be6d-ad0a21e6ef1d:
+    uuid: 1fd5e194-356e-4523-be6d-ad0a21e6ef1d
+    id: image_scale
+    weight: 2
+    data:
+      width: 1024
+      height: null
+      upscale: false

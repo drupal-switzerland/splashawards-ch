@@ -1,0 +1,11 @@
+uuid: 871d1c7b-490e-4cdc-93d6-4af74079f4ab
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5mleR426QtdVZPMLd9q0R0qEMIKs1kpcKMlg0VY6hTo
+id: overview
+label: 'P013 Overview'
+icon_uuid: null
+description: 'Outputs the selected overview'
+behavior_plugins: {  }

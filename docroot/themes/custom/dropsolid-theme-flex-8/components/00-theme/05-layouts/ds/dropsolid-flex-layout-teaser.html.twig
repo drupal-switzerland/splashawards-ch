@@ -1,0 +1,128 @@
+{#
+/**
+ * @file
+ * Template for a dropsolid 2 column layout.
+ *
+ * Available variables:
+ * - visual
+ * - content top
+ * - content left
+ * - content right
+ */
+#}
+
+{# default: visual on top, content underneath #}
+{% set columns = false %}
+{% set visual = 'top' %}
+{% set modifierClass = 'no-columns' %}
+{% set classContent = 'bottom' %}
+{% set classVisual = 'top' %}
+
+{# If left visual #}
+{% if (content.visual_left is not empty) %}
+  {% set columns = true %}
+  {% set visual = 'left' %}
+  {% set modifierClass = 'columns' %}
+  {% set classContent = 'right' %}
+  {% set classVisual = 'left' %}
+
+{% elseif (content.visual_right is not empty) %}
+  {% set columns = true %}
+  {% set visual = 'right' %}
+  {% set modifierClass = 'columns' %}
+  {% set classContent = 'left' %}
+  {% set classVisual = 'right' %}
+{% endif %}
+
+{% if (content.visual_bottom is not empty) %}
+  {% set columns = false %}
+  {% set visual = 'bottom' %}
+  {% set modifierClass = 'no-columns' %}
+  {% set classContent = 'top' %}
+  {% set classVisual = 'bottom' %}
+{% endif %}
+
+
+{# classes for the template wrapper #}
+
+{% set stickyClass =  false %}
+{% set promotedClass =  false %}
+
+{% if content['#node'] is defined %}
+  {% if content['#node'].get('promote') is defined and content['#node'].get('promote').value == 1 %}
+    {% set promotedClass =  true %}
+  {% endif %}
+  {% if content['#node'].get('sticky') is defined and content['#node'].get('sticky').value == 1 %}
+    {% set stickyClass =  true %}
+  {% endif %}
+{% endif %}
+
+{%
+  set classes = [
+    'teaser',
+    'teaser--' ~ modifierClass,
+    'clearfix',
+    'entity-type--' ~ content['#entity_type'],
+    'bundle--' ~ content['#bundle'],
+    'view-mode--' ~ content['#view_mode'],
+
+    stickyClass ? 'is-sticky',
+    promotedClass ? 'is-promoted',
+    stickyClass ? content['#entity_type'] ~ '--type-' ~ content['#bundle']|replace('_', '-') ~ '--sticky',
+    promotedClass ? content['#entity_type'] ~ '--type-' ~ content['#bundle']|replace('_', '-') ~ '--promoted',
+
+    content['#entity_type'],
+    content['#entity_type'] ~ '--type-' ~ content['#bundle']|replace('_', '-'),
+    content['#entity_type'] ~ '--view-mode-' ~ content['#view_mode']|replace('_', '-'),
+  ]
+%}
+
+<div{{ attributes.addClass(classes|join(' ')) }}>
+
+  {% if title_suffix and title_suffix.contextual_links %}
+    {{ title_suffix.contextual_links }}
+  {% endif %}
+
+  {% if content.visual is not empty and visual == 'top' %}
+    <div class="teaser__region teaser__visual teaser__visual--{{classVisual}}">
+      {{ content.visual }}
+    </div>
+  {% endif %}
+
+  {% if columns %}
+  <div class="teaser__cols teaser__cols--{{modifierClass}} teaser__cols--main teaser__cols">
+  {% endif %}
+
+    {% if visual == 'left' %}
+      <div class="teaser__region teaser__visual teaser__visual--{{classVisual}}">
+        {% if content.visual_left is not empty %}
+        {{ content.visual_left }}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if visual == 'right' %}
+      {% if content.visual_right is not empty %}
+        <div class="teaser__region teaser__visual teaser__visual--{{classVisual}}">
+          {{ content.visual_right }}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <div class="teaser__region teaser__content teaser__content--{{modifierClass}} teaser__content--{{modifierClass}}">
+      {% if content.content is not empty %}
+      {{ content.content }}
+      {% endif %}
+    </div>
+
+  {% if columns %}
+  </div>
+  {% endif %}
+
+  {% if content.visual_bottom is not empty and visual == 'bottom' %}
+    <div class="teaser__region teaser__visual teaser__visual--{{classVisual}}">
+      {{ content.visual_bottom }}
+    </div>
+  {% endif %}
+
+</div>

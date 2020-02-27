@@ -1,0 +1,33 @@
+uuid: 310d4eb8-01e0-4be5-b6da-3940843e5613
+langcode: de
+status: true
+dependencies:
+  module:
+    - ctools
+    - system
+  theme:
+    - dropsolid_flex
+_core:
+  default_config_hash: fbaLSBasKMEuho60RuJoOWRDhPxvgjRnrB7iNcMjuO0
+id: dropsolid_flex_breadcrumbs
+theme: dropsolid_flex
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      blog: blog
+      product: product
+      page: page
+      news: news
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'

@@ -1,0 +1,11 @@
+uuid: b4ca2f21-7608-4f4f-a678-887139f11a1a
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 7UzScEcer_OMy1qR5KQjSBkoIN4xBMi0P6UbGMhCWNI
+id: p_016
+label: 'P016 Focus Header'
+icon_uuid: null
+description: 'More complex alternative for Simple Header'
+behavior_plugins: {  }

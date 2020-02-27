@@ -1,0 +1,22 @@
+uuid: 45aac77e-7ff4-4f39-a56d-50e3f72ce408
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_winneroftheyear
+field_name: field_winneroftheyear
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

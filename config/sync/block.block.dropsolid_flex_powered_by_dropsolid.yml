@@ -1,0 +1,20 @@
+uuid: 9eab9f36-2f04-4cae-954c-76271f4df3f0
+langcode: en
+status: true
+dependencies:
+  module:
+    - dropsolid_blocks
+  theme:
+    - dropsolid_flex
+id: dropsolid_flex_powered_by_dropsolid
+theme: dropsolid_flex
+region: footer
+weight: -9
+provider: null
+plugin: powered_by_dropsolid
+settings:
+  id: powered_by_dropsolid
+  label: 'Powered by Dropsolid'
+  provider: dropsolid_blocks
+  label_display: '0'
+visibility: {  }

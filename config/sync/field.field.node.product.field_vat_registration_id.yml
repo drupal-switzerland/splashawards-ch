@@ -1,0 +1,19 @@
+uuid: 63b76caf-b611-4dd4-bae3-4469839e310d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vat_registration_id
+    - node.type.product
+id: node.product.field_vat_registration_id
+field_name: field_vat_registration_id
+entity_type: node
+bundle: product
+label: 'VAT registration ID'
+description: "Please provide a VAT ID with a valid country code (e.g. DE234987234).\r\nIf you do not know your VAT ID please leave this field blank."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

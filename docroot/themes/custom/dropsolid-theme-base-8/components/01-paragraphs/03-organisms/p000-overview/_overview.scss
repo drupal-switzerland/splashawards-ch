@@ -1,0 +1,27 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Overviews
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * paragraph containg view on a page, eg. blog view
+// =============================================================================
+
+.paragraph--type-overview {
+
+  // -- View itself
+  .field--type-overview-field {
+    //
+  }
+
+  // -- 'more' link
+
+  .more-link--overview {
+    margin-top: rem($p-gap-vert-sm);
+    text-align: right;
+  }
+
+}
+

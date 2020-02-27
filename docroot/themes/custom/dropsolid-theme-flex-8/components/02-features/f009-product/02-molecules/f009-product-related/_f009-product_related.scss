@@ -1,0 +1,124 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Product related
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Related items
+// =============================================================================
+
+.product--related {
+  h2,
+  h3,
+  h4 {
+    @extend .h4;
+
+    a {
+      &,
+      &:visited {
+        color: $color-heading;
+      }
+
+      &:hover,
+      &:active {
+        color: $color-link;
+      }
+    }
+  }
+
+  .field--name-node-link {
+    margin-top: rem($gap-vert-sm);
+    a {
+      @include link-more;
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: phone wide
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-wide-only {
+
+  .product--related {
+
+    // ** make a grid
+    .layout__cols {
+      @include flex-grid(12, 15);
+    }
+
+    .layout__sidebar--sidebar-primary--left {
+      @include flex-col(6, 12, 15);
+    }
+
+    .layout__content--sidebar-primary--right {
+      @include flex-col(6, 12, 15);
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .product--related {
+
+    // ** make a grid
+
+    // ** make a grid
+    .layout__cols {
+      @include flex-grid(12, 15);
+    }
+
+    .layout__sidebar--sidebar-primary--left {
+      @include flex-col(6, 12, 15);
+    }
+
+    .layout__content--sidebar-primary--right {
+      @include flex-col(6, 12, 15);
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+  .product--related {
+
+    .layout__sidebar--sidebar-primary--left {
+      @include flex-col(6, 12, 15);
+    }
+
+    .layout__content--sidebar-primary--right {
+      @include flex-col(6, 12, 15);
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+  .product--related {
+
+    .layout__sidebar--sidebar-primary--left {
+      @include flex-col(6, 12, 15);
+    }
+
+    .layout__content--sidebar-primary--right {
+      @include flex-col(6, 12, 15);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+uuid: 41c50fb4-ce5d-4e2b-af38-c01cf078fb4b
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: psY761WGuyC73lGYqh1H3Ncjl7M51fpXefgVac4Eju4
+name: image_style_scale_width_xs
+label: 'Scale width xs [320]'
+effects:
+  38c6b9ae-ef85-4c9f-9f68-f178cf523c87:
+    uuid: 38c6b9ae-ef85-4c9f-9f68-f178cf523c87
+    id: image_scale
+    weight: 2
+    data:
+      width: 320
+      height: null
+      upscale: false

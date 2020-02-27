@@ -1,0 +1,24 @@
+uuid: 193f3306-486e-454b-8684-f0bf27ee7082
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - rocketship_core
+_core:
+  default_config_hash: uoIbrWSUJCWisRMMhK9p-w4mvYn86zn0K9BB4krN08g
+id: paragraph.field_replacement_title
+field_name: field_replacement_title
+entity_type: paragraph
+type: paragraph_title_replacement
+settings:
+  max_length: '255'
+  is_ascii: false
+  case_sensitive: false
+module: rocketship_core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

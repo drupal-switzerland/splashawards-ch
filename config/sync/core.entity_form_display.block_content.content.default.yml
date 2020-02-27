@@ -1,0 +1,49 @@
+uuid: 7823b8b2-7116-4ff8-90e9-aaca2c8653a1
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.content
+    - field.field.block_content.content.field_paragraphs
+  module:
+    - paragraphs_asymmetric_translation_widgets
+_core:
+  default_config_hash: nRylxAulgHpcbl8TEOD5p6-WH7ZBxWl_S_Kv-_WlAWE
+id: block_content.content.default
+targetEntityType: block_content
+bundle: content
+mode: default
+content:
+  field_paragraphs:
+    type: paragraphs_classic_asymmetric
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: select
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

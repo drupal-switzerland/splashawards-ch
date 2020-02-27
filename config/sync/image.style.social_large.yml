@@ -1,0 +1,21 @@
+uuid: 2a3c63a1-ab95-44a3-bbdc-49069144dc7e
+langcode: de
+status: true
+dependencies:
+  module:
+    - image_effects
+_core:
+  default_config_hash: Vb4-kqRI38DonerDJI6WK5_ipT49wUoQTVdcipA6vo8
+name: social_large
+label: 'Social Large'
+effects:
+  90fbf8d4-f99b-4196-9350-9e056fa3591c:
+    uuid: 90fbf8d4-f99b-4196-9350-9e056fa3591c
+    id: image_effects_scale_and_smart_crop
+    weight: 2
+    data:
+      width: '1200'
+      height: '630'
+      upscale: false
+      simulate: false
+      algorithm: entropy_slice

@@ -1,0 +1,25 @@
+uuid: 495efd01-985a-4e28-b284-9e421456b7a7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_button
+    - paragraphs.paragraphs_type.p_008
+  module:
+    - link
+_core:
+  default_config_hash: ZvXmKSOlMW0llya5VE628ajxrIGlRMPXa5xN_P9V2_o
+id: paragraph.p_008.field_p_button
+field_name: field_p_button
+entity_type: paragraph
+bundle: p_008
+label: Button
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

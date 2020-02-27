@@ -1,0 +1,30 @@
+uuid: f63e828b-99ce-41dc-8a79-038c8f5729dc
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_fblikebox
+    - paragraphs.paragraphs_type.p_fblikebox
+  module:
+    - block_field
+_core:
+  default_config_hash: xCmh8yshHJ0hjqWBOoe5Pnwf-EcxUySfY3Ax2zkj6pg
+id: paragraph.p_fblikebox.field_p_fblikebox
+field_name: field_p_fblikebox
+entity_type: paragraph
+bundle: p_fblikebox
+label: 'Facebook like box'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    plugin_id: fb_likebox_block
+    settings: {  }
+default_value_callback: ''
+settings:
+  plugin_ids:
+    fb_likebox_block: fb_likebox_block
+  categories: {  }
+  filter: plugin_ids
+field_type: block_field

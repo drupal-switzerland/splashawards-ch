@@ -1,0 +1,20 @@
+uuid: 75d47df6-598d-4162-bc7a-d891c1d395c1
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: vUsDrtIKPD11bC9n2lGd8rv1NJhBBjz4U6WO4XyWQEM
+id: paragraph.field_show_breadcrumb
+field_name: field_show_breadcrumb
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,11 @@
+uuid: a3002b22-e76e-45e8-a4b4-1b7b6f0d6faf
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: foeYFujCqymGEG4SNd1q6yAlMMx6zPe_3iuW15Slrg8
+id: taxonomy_vocabulary_product_property_one
+action: page_redirect
+allow_override: 1
+redirect: '/nominees?f[0]=country:[term:tid]'
+redirect_code: 301

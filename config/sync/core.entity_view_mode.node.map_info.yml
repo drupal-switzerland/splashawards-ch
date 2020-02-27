@@ -1,0 +1,12 @@
+uuid: f1747058-ba97-4820-826c-3fa710af457b
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: nF09Oucg-5YzeZZHVJqU3IPXE76_OcYFIWTtPmrtPps
+id: node.map_info
+label: 'Map Info'
+targetEntityType: node
+cache: true

@@ -1,0 +1,116 @@
+uuid: 45315ed9-b9aa-4182-a8dd-adc561312dae
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.news.field_canonical_image
+    - field.field.node.news.field_description
+    - field.field.node.news.field_meta_tags
+    - field.field.node.news.field_news_tags
+    - field.field.node.news.field_node_title_replacement
+    - field.field.node.news.field_paragraphs
+    - field.field.node.news.field_show_breadcrumb
+    - node.type.news
+  module:
+    - ds
+    - entity_reference_revisions
+    - field_group
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: rocketship_layout_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - field_paragraphs
+      bottom:
+        - node_post_date
+        - dropsolid_social_widgets
+        - group_filters
+        - field_news_tags
+    fields:
+      node_post_date:
+        plugin_id: node_post_date
+        weight: 2
+        label: above
+        formatter: ds_post_date_10_april_2019
+  field_group:
+    group_news_meta:
+      children:
+        - node_post_date
+        - dropsolid_social_widgets
+        - group_filters
+      parent_name: ''
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: 'node__meta node__meta--full note__meta--news note__meta--news-full'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Meta
+      region: hidden
+    group_filters:
+      children:
+        - field_news_tags
+      parent_name: group_news_meta
+      weight: 5
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: 'node__filters node__filters--full node__filters--news node__filters--news-full'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Filters
+      region: hidden
+_core:
+  default_config_hash: lT90E9OWzy70MpwqWQPQyjDyjLEJHJLGRM_bCOlfWgk
+id: node.news.full
+targetEntityType: node
+bundle: news
+mode: full
+content:
+  dropsolid_social_widgets:
+    weight: 4
+    region: bottom
+    settings: {  }
+    third_party_settings: {  }
+  field_news_tags:
+    type: entity_reference_label
+    weight: 6
+    region: bottom
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_paragraphs:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_canonical_image: true
+  field_description: true
+  field_meta_tags: true
+  field_node_title_replacement: true
+  field_show_breadcrumb: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

@@ -1,0 +1,110 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Product: info fields
+// *
+// * Categories, properties and attributes
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__info--product-full {
+
+  margin-top: rem($gap-vert);
+  margin-bottom: rem($gap-vert);
+
+  // ** Properties & categories: Facet filters
+
+  .field--type-entity-reference {
+
+    // label
+    h3,
+    h4 {
+      font-family: $font-base;
+      @include font-size($font-size-base, $line-height-base);
+      font-weight: $font-weight-bold;
+      text-transform: none;
+      margin: 0;
+      color: $color-base;
+
+      @include text-nobreak;
+
+      &:after {
+        content: ':';
+        margin-left: rem(-4);
+      }
+    }
+
+    // value
+    a {
+      //
+    }
+  }
+
+  // ** Product attributes
+
+  .field--name-field-product-attributes {
+
+    .field__items {
+      //
+    }
+  }
+
+  .field__item--name-field-product-attributes {
+    //
+  }
+
+  // label
+
+  .label-value-item-label {
+    display: block;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0;
+
+    @include text-nobreak;
+  }
+
+  // value
+
+  .label-value-item-value {
+    display: inline;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+@include bp-sm {
+
+  .node__info--product-full {
+
+    .field--type-entity-reference {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+
+      // label
+      h3,
+      h4 {
+        padding-right: rem(20);
+        width: 33%; // force a min-width on table cell
+      }
+    }
+
+    // ** Product attributes
+
+    .label-value-item {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    // label
+
+    .label-value-item-label {
+      display: inline-block;
+      padding-right: rem(20);
+      min-width: 33%; // force a min-width on table cell
+    }
+
+  }
+}

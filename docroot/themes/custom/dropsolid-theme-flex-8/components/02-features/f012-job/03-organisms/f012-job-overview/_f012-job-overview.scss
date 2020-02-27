@@ -1,0 +1,155 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * jobs main overview
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.view--display-job-overview-block {
+
+  // ** count
+
+  .view__header {
+    font-weight: $font-weight-bold;
+    margin-bottom: rem($gap-vert);
+    //color: $color-spot-1;
+  }
+
+  // ** grid
+
+  .view__content {
+    margin-top: rem(-$grid-gap-hor);
+  }
+
+  .job--teaser {
+    margin-top: rem($grid-gap-hor);
+    overflow: hidden; // fix margins not collapsing
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** the block with the view itself
+
+  .view--display-job-overview-block {
+
+    .view__header {
+      //
+    }
+
+    // ** make a grid
+
+    .view__content {
+      @include flex-grid();
+    }
+
+    // normal overview is in 2 cols
+    .job--teaser {
+      @include flex-col(6);
+    }
+  }
+
+  // ** jobs COMPLEX
+  //    we get a column for the filters
+  //    so the structure of the overview changes a bit
+
+  .job__overview--advanced {
+
+    // -- overview sidebar column
+    .layout__sidebar--paragraph--overview--default--left {
+      //
+    }
+
+    // -- overview content column
+    .layout__content--paragraph--overview--default--right {
+      //
+    }
+
+    // -- Less space for the teasers
+    //    so set in 1 column
+    .job--teaser {
+      @include flex-col(12);
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .view--display-job-overview-block {
+    // ** 3 columns
+    .job--teaser {
+      @include flex-col(4);
+    }
+  }
+
+  // ** jobs COMPLEX
+  //    we get a column for the filters
+  //    so the structure of the overview changes a bit
+
+  .job__overview--advanced {
+
+    // -- overview sidebar column
+    .layout__sidebar--paragraph--overview--default--left {
+      padding-right: rem(20);
+      @include flex-col(4);
+    }
+
+    // -- overview content column
+    .layout__content--paragraph--overview--default--right {
+      @include flex-col(8);
+    }
+
+    .job--teaser {
+      @include flex-col(12);
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large screen
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  .view--display-job-overview-block {
+
+    .view__header {
+      //
+    }
+  }
+
+  // ** jobs COMPLEX
+  //    we get a column for the filters
+  //    so the structure of the overview changes a bit
+
+  .job__overview--advanced {
+
+    // -- overview sidebar column
+    .layout__sidebar--paragraph--overview--default--left {
+      padding-right: 0;
+      @include flex-col(3);
+    }
+
+    // -- overview content column
+    .layout__content--paragraph--overview--default--right {
+      @include flex-col(8);
+      @include flex-col-push(1);
+    }
+  }
+
+}

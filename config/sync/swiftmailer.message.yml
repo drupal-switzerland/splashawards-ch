@@ -1,0 +1,8 @@
+format: text/html
+filter_format: plain_text
+respect_format: false
+convert_mode: true
+character_set: UTF-8
+_core:
+  default_config_hash: 3aBLygY4K9FHNcWMaus0jEg0AhNx57DiW9CsfXsAjDA
+langcode: de

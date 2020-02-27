@@ -1,0 +1,8 @@
+uuid: 16fb2d28-a3b2-423f-b18c-7f8fab5d8d2e
+langcode: de
+status: true
+dependencies: {  }
+name: Award-Jahr
+vid: award_jahr
+description: ''
+weight: 0

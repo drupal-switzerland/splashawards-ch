@@ -1,0 +1,60 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * 2 column layout
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: wide phone
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-wide-only {
+  //
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // columns wrapper
+  .teaser__cols {
+    @include flex-grid(12, 10);
+  }
+
+  // content as column
+  .teaser__content--left,
+  .teaser__content--right {
+    @include flex-col(6, 12, 10);
+  }
+
+  // sidebar as column
+  .teaser__visual--left,
+  .teaser__visual--right {
+    @include flex-col(6, 12, 10);
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  //
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  //
+
+}

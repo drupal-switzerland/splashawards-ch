@@ -1,0 +1,21 @@
+uuid: de6c9445-65ef-49b9-af56-10662b1e2a70
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_teaser
+    - paragraphs.paragraphs_type.p_016
+_core:
+  default_config_hash: _tKxcXkNra3Tg51FuBkoZ5_cdNb8aPEMBrGiUKO7D9M
+id: paragraph.p_016.field_p_teaser
+field_name: field_p_teaser
+entity_type: paragraph
+bundle: p_016
+label: Teaser
+description: 'Display a short descriptive text'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

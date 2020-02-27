@@ -1,0 +1,86 @@
+name: Dropsolid Flex
+type: theme
+description: 'This is the Dropsolid Drupal 8 Flex theme.'
+version: 8.x-3.0.0-alpha6
+core: 8.x
+base theme: dropsolid_base
+
+package: Dropsolid Theme
+requirements:
+  - responsive_image
+  - components
+  - unified_twig_ext
+  - styleguide
+  - dropsolid_styleguide
+  - search
+
+regions:
+  tabs: 'Tabs'
+  header_top: 'Header top'
+  header_top_nav: Top navigation (eg. social links)
+  header: 'Primary header'
+  nav_primary: Primary navigation (main menu & CTA)
+  nav_secondary: Secondary navigation (eg. corporate menu)
+  breadcrumb: 'Breadcrumb'
+  highlighted: 'Highlighted' # use for messages and such
+  sidebar_first: 'Left sidebar'
+  content: 'Content'
+  sidebar_second: 'Right sidebar'
+  doormat: 'Doormat col 01' # menus and blocks for the bottom of the page
+  doormat_02: 'Doormat col 02' # menus and blocks for the bottom of the page
+  doormat_03: 'Doormat col 03' # menus and blocks for the bottom of the page
+  doormat_04: 'Doormat col 04' # menus and blocks for the bottom of the page
+  footer: 'Footer' # for copyright stuff, replaces 'Baseline' region
+  hidden: 'Hidden (blocks you do not want to be visible)'
+
+# Remove styles we don't want, eg from certain modules
+# stylesheets-remove:
+#   - modules/contrib/betterlogin/css/betterlogin.css
+
+# CKEditor stylesheet loads in wysiwyg to give content editors a better experience
+ckeditor_stylesheets:
+  - css/style.editor.css
+
+# our css and js files on all pages & components
+libraries:
+  - dropsolid_flex/global
+  - dropsolid_flex/rocketship_paragraphs
+  - dropsolid_flex/component_forms
+  - dropsolid_flex/component_tables
+  - dropsolid_flex/component_menu
+  - dropsolid_flex/component_search
+  - dropsolid_flex/component_countdown
+
+
+
+#libraries-extend:
+#  user/drupal.user:
+#    - base/user
+#  core/drupal.dropbutton:
+#    - base/dropbutton
+#  core/drupal.dialog:
+#    - base/dialog
+
+# MUST install `components` module via Composer + enable it (drush en components -y)
+component-libraries:
+  base:
+    paths:
+      - components/00-theme/00-base
+  atoms:
+    paths:
+      - components/00-theme/01-atoms
+  molecules:
+    paths:
+      - components/00-theme/02-molecules
+  organisms:
+    paths:
+      - components/00-theme/03-organisms
+  pages:
+    paths:
+      - components/00-theme/04-pages
+  layouts:
+    paths:
+      - components/00-theme/05-layouts
+  p-organisms:
+    paths:
+      - components/01-paragraphs/03-organisms

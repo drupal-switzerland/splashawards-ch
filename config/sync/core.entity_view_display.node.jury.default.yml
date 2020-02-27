@@ -1,0 +1,53 @@
+uuid: cda3ffb5-4ab4-4787-85b3-420ae9b4a04b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.jury.field_company
+    - field.field.node.jury.field_image
+    - field.field.node.jury.field_name
+    - node.type.jury
+  module:
+    - rocketship_core
+    - text
+    - user
+id: node.jury.default
+targetEntityType: node
+bundle: jury
+mode: default
+content:
+  dropsolid_social_widgets:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_company:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: imageDescriptionTitle_default_formatter
+    region: content
+  field_name:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

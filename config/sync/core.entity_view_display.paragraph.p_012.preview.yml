@@ -1,0 +1,22 @@
+uuid: 8461cec6-8739-410d-a206-29af3b32eb2c
+langcode: de
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.p_012.field_p_012_children
+    - field.field.paragraph.p_012.field_p_012_view_mode
+    - field.field.paragraph.p_012.field_p_button
+    - paragraphs.paragraphs_type.p_012
+_core:
+  default_config_hash: 0_C7ptqF9nc7S3oBE-qLZqS1oxQ8fx7Iie5C2XOMImg
+id: paragraph.p_012.preview
+targetEntityType: paragraph
+bundle: p_012
+mode: preview
+content: {  }
+hidden:
+  field_p_012_children: true
+  field_p_012_view_mode: true
+  field_p_button: true
+  search_api_excerpt: true

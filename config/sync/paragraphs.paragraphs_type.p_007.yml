@@ -1,0 +1,11 @@
+uuid: 7fbd4280-6632-4fa9-85f4-58141bc50b03
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: VpiosIJ7MWUIdFl30D7H1LLfIiCjwrJZQCHOyjORVy0
+id: p_007
+label: 'P007 USP'
+icon_uuid: 7d7bf182-025e-4bed-844d-32fe23eb42f6
+description: 'Add a USP block'
+behavior_plugins: {  }

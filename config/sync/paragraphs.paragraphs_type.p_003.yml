@@ -1,0 +1,11 @@
+uuid: 13ba3184-2837-43cf-881f-3d5ebce519a5
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: h_FyV3lVjm82J3jQYkONmpwNV-fI2V6iDoh_WP5WGKQ
+id: p_003
+label: 'P003 Text Main'
+icon_uuid: null
+description: 'Add a block of text'
+behavior_plugins: {  }

@@ -1,0 +1,2 @@
+label: 'Background color'
+description: 'This color will be used as the background for this item and as an overlay if combined with text. If a background image is also selected, this color will be used as an overlay for that image.'

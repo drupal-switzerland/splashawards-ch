@@ -1,0 +1,23 @@
+uuid: e118584b-cf14-43f2-b05c-5c945d04914c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_overview
+    - paragraphs.paragraphs_type.overview
+  module:
+    - overview_field
+_core:
+  default_config_hash: NrqYGB6QjMpEYm0NJPOKsVLSBErb5UEPjz67ZCZWL-s
+id: paragraph.overview.field_overview
+field_name: field_overview
+entity_type: paragraph
+bundle: overview
+label: Overview
+description: 'Select an overview from the dropdown to show as part of this page''s content'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: overview_field

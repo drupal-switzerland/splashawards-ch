@@ -1,0 +1,151 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog teasers
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+// *
+// =============================================================================
+
+.news--teaser {
+
+  // ** visual
+
+  .field--image {
+    //
+  }
+
+  // ** title
+
+  h2,
+  h3,
+  h4 {
+    //
+  }
+
+  // ** date/author
+
+  .node__meta {
+    //
+  }
+
+  .field--name-node-post-date {
+    //
+  }
+
+  .field--name-node-author {
+    //
+  }
+
+  // ** group stuff
+  .node__actions--news-teaser {
+    //
+  }
+
+  // ** read more
+
+  .field--name-node-link {
+    //
+  }
+}
+
+// ** Filters inherit default styling because of this wrapper
+
+.node__filters--news-teaser {
+  //
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: wide phone only
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-wide-only {
+
+  // normal overview is visual + content in 2 cols
+
+  .news--teaser {
+
+    // ** make a grid
+    .layout__cols {
+      //
+    }
+
+    .layout__sidebar {
+      //
+    }
+
+    .layout__content {
+      //
+    }
+
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .news--teaser {
+
+    // ** make a grid
+    .layout__cols {
+      @include flex-grid();
+    }
+
+    .layout__sidebar {
+      @include flex-col(4);
+    }
+
+    .layout__content {
+      @include flex-col(8);
+    }
+
+    // first 3 teasers have their visual and content in 1 col
+
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      .layout__sidebar {
+        @include flex-col(12);
+      }
+
+      .layout__content {
+        @include flex-col(12);
+      }
+
+      .field--name-node-post-date {
+        @include hide;
+      }
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .news--teaser {
+
+    // ** group stuff
+
+    .node__actions--news-teaser {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .field--name-node-link {
+      flex-grow: 1; //push filters to the right
+    }
+
+  }
+
+}

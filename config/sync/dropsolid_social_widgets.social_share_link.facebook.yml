@@ -1,0 +1,12 @@
+uuid: e27ac345-f979-4cfa-bdc8-d56851c278fc
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 2nfU4-Fr8XR2JECVqanMlIRxYwMc4SPBhRwVInKSfTg
+id: facebook
+label: Facebook
+sharer_url: 'https://www.facebook.com/sharer/sharer.php?u=[current-page:url:absolute]'
+onclick: ''
+weight: -9
+target: null

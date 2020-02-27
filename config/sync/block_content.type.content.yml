@@ -1,0 +1,10 @@
+uuid: 14d1e8cb-b0d4-4e96-9c1f-622be832de1a
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Vsxr6-n0xh0PBd70PLG7w5CCRaB1DHgm363nsbXaLos
+id: content
+label: Content
+revision: 0
+description: ''

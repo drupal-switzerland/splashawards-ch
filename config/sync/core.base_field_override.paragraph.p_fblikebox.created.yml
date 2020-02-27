@@ -1,0 +1,20 @@
+uuid: 0ee0ee81-f26c-4862-a691-71556d8b03cc
+langcode: de
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.p_fblikebox
+_core:
+  default_config_hash: JRcBoPLnyBh_tWAt5Qfmsq6P4rwwXIIKhd03RvFhjgU
+id: paragraph.p_fblikebox.created
+field_name: created
+entity_type: paragraph
+bundle: p_fblikebox
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

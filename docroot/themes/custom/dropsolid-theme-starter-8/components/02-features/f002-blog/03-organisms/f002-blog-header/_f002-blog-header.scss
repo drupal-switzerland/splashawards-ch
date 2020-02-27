@@ -1,0 +1,154 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog header
+// *
+// * Header is a node, with its own view-mode
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Variables
+// =============================================================================
+
+$color-blog-header-bg: $color-black;
+
+
+// * Styling
+// =============================================================================
+
+.layout__content--node--blog--header {
+  position: relative;
+  margin: 0;
+  padding: rem($gap-vert-top-xs) 0 rem($gap-vert-bottom-xs) 0;
+  transition: all $duration $easing;
+
+  // some kind of bg by default
+  @include full-bg ($color-blog-header-bg, 'after');
+
+  // color changes for the content
+
+  &,
+  h1,
+  h2,
+  h3,
+  a,
+  a:visited,
+  a:hover,
+  a:active,
+  .field {
+    color: $color-white;
+  }
+
+  // ** background image: make it stretch (like 'cover')
+
+  .field--image {
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    transform: translateX(-50%);
+    opacity: .5; // because text needs to be readable & bg-color can shine through
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: auto;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      max-width: none;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  // ** the blog tags
+
+  .field--name-field-blog-tags {
+    //
+  }
+}
+
+// ** wrapper of that main content, in order to center using flexbox later on
+
+.node__top--blog-header {
+  //
+
+  h1,
+  h2 {
+    //
+  }
+
+  // -- the stuff that goes under the title
+
+  .field {
+    //
+  }
+
+  .field--name-field-show-post-date {
+    //
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // * Blog header
+  // =============================================================================
+
+  .layout__content--node--blog--header {
+    padding: rem($gap-vert-top-sm) 0 rem($gap-vert-bottom-sm) 0;
+
+    .field--name-field-blog-tags {
+      //
+    }
+  }
+
+  .node__top--blog-header {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+  padding: rem($gap-vert-top-md) 0 rem($gap-vert-bottom-md) 0;
+
+  // * Blog header
+  // =============================================================================
+
+  .layout__content--node--blog--header {
+    padding: rem(40) 0;
+    // height: rem(370);
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // * Blog header
+  // =============================================================================
+
+  .layout__content--node--blog--header {
+    padding: rem($gap-vert-top-md) 0 rem($gap-vert-bottom-md) 0;
+    // height: rem(470);
+  }
+
+}

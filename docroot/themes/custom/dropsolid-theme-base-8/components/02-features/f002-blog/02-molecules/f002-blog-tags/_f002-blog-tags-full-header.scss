@@ -1,0 +1,42 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog tags: in the node header
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Node detail
+// =============================================================================
+
+// ** in its own row under the header
+
+.layout__content--node--blog--header .field--name-field-blog-tags {
+
+  .field__item {
+
+    &:before,
+    &:after {
+      //
+    }
+
+    a {
+      //
+    }
+  }
+
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .layout__content--node--blog--header .field--name-field-blog-tags {
+    //
+  }
+
+}

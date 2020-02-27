@@ -1,0 +1,24 @@
+uuid: 33de8a8c-5593-4e79-a4d1-f5bfff6ddd6f
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - rocketship_core
+_core:
+  default_config_hash: th4igyK_NFzAHZFO3lnIyGyUUHHaTMvGFth6xWRRL94
+id: node.field_node_title_replacement
+field_name: field_node_title_replacement
+entity_type: node
+type: paragraph_title_replacement
+settings:
+  max_length: '255'
+  is_ascii: false
+  case_sensitive: false
+module: rocketship_core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: true
+custom_storage: false

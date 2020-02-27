@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Guidance mode 1'
+    -
+      label: 'Guidance mode 2'
+    -
+      label: 'Guidance mode 3'
+    -
+      label: 'Guidance mode 4'

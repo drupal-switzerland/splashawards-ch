@@ -1,0 +1,19 @@
+uuid: 1ab988e8-7c50-45aa-b06a-1d911009a2bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_name
+    - node.type.product
+id: node.product.field_project_name
+field_name: field_project_name
+entity_type: node
+bundle: product
+label: 'Case title'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+
+{%
+  set classes = [
+    'form-item__' ~ attributes.type
+  ]
+%}
+
+{% set value = attributes.value %}
+
+{% if attributes.type == 'submit' %}
+
+  {% set button_bem_block = button_bem_block|default('button') %}
+  {% set button_bem_element = button_bem_block|default(false) %}
+  {% if button_bem_modifiers is not defined %}
+    {% set button_bem_modifiers = [] %}
+  {% endif %}
+
+  <button
+    {{ bem(button_bem_block, button_bem_element, button_bem_modifiers) }}
+  >
+    {{ value }}
+  </button>
+{% else %}
+  <input{{ attributes.addClass(classes) }} />{{ children }}
+{% endif %}

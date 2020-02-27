@@ -1,0 +1,136 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * event header: has its own view-mode of the CT, with a DS template
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Styling
+// =============================================================================
+
+// ** header main content (contains the img, title, location, …)
+
+.layout__content--node--event--header {
+  position: relative;
+  padding: rem($gap-vert-top-xs) 0 rem($gap-vert-bottom-xs) 0;
+  transition: all $duration $easing;
+
+  // background-color
+  @include full-bg ($color-event-header-bg, 'before');
+
+  // the content
+  &,
+  h1,
+  h2,
+  h3,
+  a,
+  a:visited,
+  a:hover,
+  a:active,
+  .field {
+    //
+  }
+
+  // -- background image: make it stretch (like 'cover')
+
+  .field--image {
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    transform: translateX(-50%);
+    opacity: .5;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: auto;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto; // hack to force 100% of container
+      height: auto;
+      max-width: none;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
+
+// ** wrapper of that main content, in order to center using flexbox later on
+
+.node__top--event-header {
+  //
+
+  h1,
+  h2 {
+    //
+  }
+
+  // -- the stuff that goes under the title, usually just the location
+  //    (add a wrapper is more than 1 field)
+
+  .field--name-field-event-place {
+    //
+  }
+}
+
+// ** header bottom = separate bar (for date, price, etc…)
+
+.layout__bottom--node--event--header {
+  //
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  .layout__content--node--event--header {
+    padding: rem($gap-vert-top-sm) 0 rem($gap-vert-bottom-sm) 0;
+  }
+
+  .node__top--event-header {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  .layout__content--node--event--header {
+    padding: rem($gap-vert-top-md) 0 rem($gap-vert-bottom-md) 0;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // *
+  // =============================================================================
+
+  .layout__content--node--event--header {
+    padding: rem($gap-vert-top-lg-2) 0 rem($gap-vert-bottom-lg-2) 0;
+  }
+
+}

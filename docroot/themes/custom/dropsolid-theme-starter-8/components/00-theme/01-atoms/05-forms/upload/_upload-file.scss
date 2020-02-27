@@ -1,0 +1,87 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Form: Upload file
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+// ** wrapper for upload file field + button
+.webform-document-file {
+
+  .button {
+    margin-top: rem(10);
+  }
+}
+
+// ** wrapper around the field
+.file-upload-wrapper {
+  //display: block;
+  //padding: rem(9) rem(10);
+  //outline: none;
+  //color: $color-form;
+  //border: 1px solid $color-form-border;
+  //background: $color-white;
+  //border-radius: 0;
+  //transition: all $duration $easing;
+  //appearance: none; // remove Safari mobile styling (box-shadow & corners)
+}
+
+// ** the field itself
+input[type='file'] {
+  //
+}
+
+// * Field with upload button
+// =============================================================================
+
+.form-managed-file {
+
+  button {
+    margin-top: rem(10);
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** wrapper for upload file field + button
+  .webform-document-file {
+    display: flex;
+    flex-wrap: wrap;
+
+    // goes full-width below the input field
+    .description {
+      flex: 1 1 auto;
+    }
+
+    .button {
+      margin-left: rem(10);
+      margin-top: 0;
+    }
+  }
+
+  // ** wrapper around the field
+  .file-upload-wrapper {
+    flex-grow: 1; // fill space minus the button
+    width: auto;
+  }
+
+  // ** Field with upload button
+
+  .form-managed-file {
+    display: flex;
+
+    button {
+      margin-top: 0;
+      margin-left: rem(10);
+    }
+  }
+}

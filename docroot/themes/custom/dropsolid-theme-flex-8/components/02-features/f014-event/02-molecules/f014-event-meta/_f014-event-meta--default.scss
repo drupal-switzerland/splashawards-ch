@@ -1,0 +1,29 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * event meta
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__meta--event {
+
+  .event-daterange-wrapper {
+
+    // make separators for date and time if multiple
+    .time,
+    .date {
+
+      &:last-child {
+        &:before {
+          content: '- ';
+        }
+      }
+
+      &:first-child {
+        &:before {
+          content: '';
+        }
+      }
+    }
+  }
+
+}

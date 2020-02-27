@@ -1,0 +1,46 @@
+uuid: 6e15d0a6-1b0c-481a-a04a-bae61cd1816d
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.header
+    - field.field.node.page.field_canonical_image
+    - field.field.node.page.field_description
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_paragraphs
+    - node.type.page
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: rocketship_layout_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - field_header_paragraph
+_core:
+  default_config_hash: 3GPi3dtUGXHKYvsHz14QTCg53xYifh9tXXOg3WTOvRw
+id: node.page.header
+targetEntityType: node
+bundle: page
+mode: header
+content:
+  dropsolid_social_widgets:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_canonical_image: true
+  field_description: true
+  field_meta_tags: true
+  field_paragraphs: true
+  header: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

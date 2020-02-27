@@ -1,0 +1,118 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * News header: has its own view-mode of the news CT, with a DS template
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+.news--header {
+  position: relative;
+  margin: 0;
+  padding: rem($gap-vert-top-xs) 0 0 0;
+  transition: all $duration $easing;
+
+  h1,
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.layout__header--node--news--header {
+  position: relative;
+  z-index: 1;
+}
+
+// ** picture + info
+
+.layout__cols--node--news--header {
+  padding-top: rem($gap-vert-top-xs); // same spacing as paragraphs
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  .news--header {
+    padding: rem($gap-vert-top-sm) 0 0 0;
+  }
+
+  // ** picture + info
+
+  .layout__cols--node--news--header {
+    padding-top: rem($gap-vert-top-sm); // same spacing as paragraphs
+  }
+
+  // ** picture
+
+  .layout__content--node--news--header--left {
+    @include flex-col(8);
+  }
+
+  // ** meta info
+
+  .layout__sidebar--node--news--header--right {
+    @include flex-col(4);
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  .news--header {
+    padding: rem($gap-vert-top-md) 0 0 0;
+  }
+
+  // ** picture + info
+
+  .layout__cols--node--news--header {
+    padding-top: rem($gap-vert-top-md); // same spacing as paragraphs
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // *
+  // =============================================================================
+
+  .news--header {
+    //
+  }
+
+  // ** picture + info
+
+  .layout__cols--node--news--header {
+    //
+  }
+
+  // ** picture
+
+  .layout__content--node--news--header--left {
+    @include flex-col(9);
+  }
+
+  // ** meta info
+
+  .layout__sidebar--node--news--header--right {
+    @include flex-col(3);
+  }
+
+}

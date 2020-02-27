@@ -1,0 +1,12 @@
+theme: default
+defaults:
+  sender: swiftmailer
+  formatter: swiftmailer
+modules:
+  swiftmailer:
+    none:
+      formatter: swiftmailer
+      sender: swiftmailer
+_core:
+  default_config_hash: qcgJtIAawYdNb2tft6EQQRJWeXEWMQRhRF-aAE6YIa4
+langcode: de

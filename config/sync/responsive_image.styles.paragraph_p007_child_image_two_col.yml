@@ -1,0 +1,20 @@
+uuid: 80ced14a-d74a-4ff3-8d2d-ef6594ca6a43
+langcode: de
+status: true
+dependencies:
+  config:
+    - image.style.image_style_p007_two_col
+  module:
+    - rocketship_core
+_core:
+  default_config_hash: FcW6dZcZ7smb-mYpX-7riEnrIGTBORHKpeoxw5zOn8g
+id: paragraph_p007_child_image_two_col
+label: 'Paragraph p007 child (2 col)'
+image_style_mappings:
+  -
+    breakpoint_id: rocketship_core.all
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_p007_two_col
+breakpoint_group: rocketship_core
+fallback_image_style: image_style_p007_two_col

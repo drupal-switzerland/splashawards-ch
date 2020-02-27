@@ -1,0 +1,23 @@
+uuid: 52c947e8-fdff-45fe-90a5-a60580aa0875
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link
+    - node.type.brand
+  module:
+    - link
+id: node.brand.field_link
+field_name: field_link
+entity_type: node
+bundle: brand
+label: Link
+description: 'This link will make your logo clickable.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

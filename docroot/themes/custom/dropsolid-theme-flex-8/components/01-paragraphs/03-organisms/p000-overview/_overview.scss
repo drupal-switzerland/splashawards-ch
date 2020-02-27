@@ -1,0 +1,49 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Overviews
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * paragraph containg view on a page, eg. blog view
+// =============================================================================
+
+.paragraph--type-overview {
+
+  // -- View itself
+  .field--type-overview-field {
+    //
+  }
+
+  // -- 'more' link
+  .more-link--overview {
+    margin-top: rem($p-gap-vert-sm);
+    text-align: left;
+
+    a {
+      @include button-primary();
+    }
+  }
+  //
+  //.field--name-field-product-images {
+  //
+  //  transition: 1s ease;
+  //
+  //  &:hover {
+  //    transform: scale(0.8);
+  //    transition: 1s ease;
+  //  }
+  //
+  //}
+
+  &.overview--gold_overview,
+  &.overview--silver_overview,
+  &.overview--bronze_overview {
+    text-align: center;
+  }
+  .view--brands-overview {
+    margin-top: rem(30);
+  }
+
+}

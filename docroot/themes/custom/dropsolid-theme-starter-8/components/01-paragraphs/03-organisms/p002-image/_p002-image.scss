@@ -1,0 +1,71 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs: Image
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.paragraph--type-p-002 {
+  position: relative;
+
+  a {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-indent: -9999px;
+
+    &,
+    &:visited,
+    &:hover,
+    &:active {
+      text-decoration: none;
+      border: 0 none;
+    }
+  }
+
+  img {
+    display: block;
+  }
+
+  // ** makes the image stretch to the side of the document window
+
+  &.p--layout--image_stretched {
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+    img {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50vw);
+      width: 100vw;
+      max-width: none;
+    }
+  }
+}
+
+// ** resetting some defaults
+
+@if ($structuralOnly == false) {
+
+  //
+
+} @else {
+  .node .paragraph--type-p-002 .field--type-image {
+    float: none;
+    margin: 0;
+  }
+
+  .paragraph--type-p-002 .field--type-image {
+    img {
+      display: block;
+      margin: 0;
+    }
+  }
+}

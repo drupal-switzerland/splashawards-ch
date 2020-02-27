@@ -1,0 +1,483 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs
+// *
+// * General styling for paragraphs (whitespaces, general fields, ...)
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * individual paragraphs
+// =============================================================================
+
+.paragraph {
+
+  position: relative;
+
+  // -- Buttons
+
+  .field--buttons {
+    margin-top: rem($gap-vert);
+    text-align: left;
+
+    .button {
+      margin: rem(10) rem(10) 0 0;
+
+      // 2nd button + all buttons after that
+      &:nth-child(n+2) {
+        @include button-secondary;
+      }
+
+      // -- more Examples:
+      //
+      //// 2nd button
+      //&:nth-child(2) {
+      //  @include button-secondary();
+      //}
+      //
+      //// 3rd button and all buttons after that
+      //&:nth-child(n+3) {
+      //
+      //}
+
+    }
+
+  }
+
+  // -- background color & images
+
+  &.has-bg,
+  &.has-bg-image {
+    //
+  }
+
+  // -- background image: make it stretch (like 'cover')
+
+  .field--name-field-p-bg-image {
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    transform: translateX(-50%);
+    opacity: .5;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: auto;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      max-width: none;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  // needs better class name, but this is one that is inside p016
+  .info-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
+
+  // ***************************************************************************
+  // Add your paragraph specific backgrounds here.
+  // See example below.
+  // ***************************************************************************
+
+  // ** full paragraph backgrounds
+
+  &.bg--white {
+    @include full-bg ($color-white, 'before');
+  }
+
+  &.bg--grey {
+    @include full-bg ($color-gray-light-1, 'before');
+  }
+
+  &.bg--spot_01 {
+    @include full-bg ($color-spot-1, 'before');
+  }
+
+  &.bg--spot_02 {
+    @include full-bg ($color-spot-2, 'before');
+  }
+
+  &.bg--spot_03 {
+    @include full-bg ($color-spot-3, 'before');
+  }
+
+  &.bg--spot_01,
+  &.bg--spot_02,
+  &.bg--spot_03 {
+    color: $color-white;
+
+    h2,
+    h3,
+    h4 {
+      color: $color-white;
+
+      a,
+      a:visited,
+      a:hover,
+      a:active {
+        color: $color-white;
+      }
+    }
+
+    a,
+    a:visited,
+    a:hover,
+    a:active {
+      color: $color-white;
+    }
+
+    // other types of links
+    .field--name-field-blog-tags,
+    .field--name-node-title,
+    .field--name-node-link,
+    .field--name-field-p-link {
+      color: $color-white;
+
+      a {
+        &,
+        &:visited,
+        &:hover,
+        &:active {
+          color: $color-white;
+        }
+      }
+    }
+
+    // titles & subtitles
+    .field--name-field-p-title,
+    .field--name-field-p-subtitle {
+
+      h2,
+      h3,
+      h4 {
+        color: $color-white;
+
+        a,
+        a:visited,
+        a:hover,
+        a:active {
+          color: $color-white;
+        }
+      }
+    }
+
+    .button {
+      @include button-negative;
+
+      // 2nd button + all buttons after that
+      &:nth-child(n+2) {
+        @include button-negative-secondary;
+      }
+
+      // -- more Examples:
+      //
+      //// 2nd button
+      //&:nth-child(2) {
+      //  @include button-secondary();
+      //}
+      //
+      //// 3rd button and all buttons after that
+      //&:nth-child(n+3) {
+      //
+      //}
+
+    }
+  }
+
+  // ***************************************************************************
+  // Add your paragraph specific backgrounds here for the content
+  // See example below.
+  // ***************************************************************************
+
+  // ** background for content of paragraph (eg. Testimonial)
+
+  &.has-content-bg > .p-content {
+
+    color: $color-base; // override stuff set by the general bg-color class
+
+    a {
+      &,
+      &:visited,
+      &:hover,
+      &:active {
+        color: $color-link;
+      }
+    }
+
+    .field--name-field-blog-tags,
+    .field--name-node-title,
+    .field--name-node-link,
+    .field--name-field-p-link {
+      color: $color-base;
+
+      a {
+        &,
+        &:visited,
+        &:hover,
+        &:active {
+          color: $color-link;
+        }
+      }
+    }
+
+    // if background of the content
+    // need spacing
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: rem(30);
+    padding-right: rem(30);
+    padding-bottom: rem(40);
+  }
+
+  &.content-bg--white > .p-content {
+    background-color: $color-white;
+  }
+
+  &.content-bg--grey > .p-content {
+    background-color: $color-gray-light-1;
+  }
+
+  &.content-bg--spot_01 > .p-content {
+    background-color: $color-spot-1;
+  }
+
+  &.content-bg--spot_02 > .p-content {
+    background-color: $color-spot-2;
+  }
+
+  &.content-bg--spot_03 > .p-content {
+    background-color: $color-spot-3;
+  }
+
+  &.content-bg--spot_01,
+  &.content-bg--spot_02,
+  &.content-bg--spot_03 {
+
+    & > .p-content {
+      color: $color-white;
+
+      // quote mark
+      .text-long:before {
+        color: $color-white;
+
+        a {
+          &,
+          &:visited,
+          &:hover,
+          &:active {
+            color: $color-white;
+          }
+        }
+      }
+
+      .field--name-field-blog-tags,
+      .field--name-node-title,
+      .field--name-node-link,
+      .field--name-field-p-link {
+        color: $color-white;
+
+        a {
+          &,
+          &:visited,
+          &:hover,
+          &:active {
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+// ** recurring elements
+
+.field--name-field-p-title {
+  h2,
+  h3 {
+    margin-bottom: rem($p-gap-vert-sm);
+  }
+}
+
+.field--name-field-p-subtitle {
+  h3,
+  h4 {
+    margin-bottom: rem($p-gap-vert-sm);
+  }
+}
+
+.field--name-field-p-teaser {
+  font-weight: $font-weight-bold;
+  margin-bottom: rem($p-gap-vert);
+}
+
+
+// * Grouped paragraphs
+// =============================================================================
+
+.group--paragraphs {
+  //
+
+}
+
+// -- spacing and alignment for paragraphs as part of a group
+
+.group--paragraphs__item {
+  @include clearfix;
+
+  $selfSelector: '.group--paragraphs__item';
+
+  // padding to make space around the paragraph
+  .paragraph {
+    padding: rem($p-gap-vert-top-xs) 0 rem($p-gap-vert-bottom-xs) 0;
+  }
+
+  &.has-matching-bg + #{$selfSelector}.has-matching-bg {
+    .paragraph {
+      //padding-top: 0; // no double spacing when same bg
+    }
+  }
+}
+
+// ** Page content paragraphs:
+//
+// ** last paragraph (BEFORE DOORMAT) + without a bg needs no space
+
+.layout__content--node--page--full {
+
+  .group--paragraphs__item {
+
+    .paragraph--type-p-007-child > *:not(.field--name-image-url-field) {
+      padding: 0 rem(20);
+      &:last-child {
+        padding-bottom: rem(20);
+      }
+    }
+
+    &:last-child {
+      .paragraph {
+        //padding-bottom: rem($p-gap-vert-bottom-xs);
+      }
+    }
+  }
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // -- grouped paragraphs: get more margin
+
+  .group--paragraphs__item {
+
+    $selfSelector: '.group--paragraphs__item';
+
+    // padding to make space around the paragraph
+    .paragraph {
+      padding: rem($p-gap-vert-top-sm) 0 rem($p-gap-vert-bottom-sm) 0;
+    }
+  }
+
+  // ** Page content paragraphs:
+  //
+  // ** last paragraph (BEFORE DOORMAT) + without a bg needs no space
+
+  .layout__content--node--page--full {
+
+    .group--paragraphs__item {
+
+      &:last-child {
+        .paragraph {
+          //padding-bottom: rem($p-gap-vert-bottom-sm);
+        }
+      }
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // -- grouped paragraphs: get more margin
+
+  .group--paragraphs__item {
+
+    $selfSelector: '.group--paragraphs__item';
+
+    // padding to make space around the paragraph
+    .paragraph {
+      padding: rem($p-gap-vert-top-md) 0 rem($p-gap-vert-bottom-md) 0;
+    }
+
+  }
+
+  // ** Page content paragraphs:
+  //
+  // ** last paragraph (BEFORE DOORMAT) + without a bg needs no space
+
+  .layout__content--node--page--full {
+
+    .group--paragraphs__item {
+
+      &:last-child {
+        .paragraph {
+          //padding-bottom: rem($p-gap-vert-bottom-md);
+        }
+      }
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  .group--paragraphs__item {
+
+    $selfSelector: '.group--paragraphs__item';
+
+    // padding to make space around the paragraph
+    .paragraph {
+      padding: rem($p-gap-vert-top-lg-2) 0 rem($p-gap-vert-bottom-lg-2) 0;
+    }
+
+  }
+
+  // ** Page content paragraphs:
+  //
+  // ** last paragraph (BEFORE DOORMAT) + without a bg needs no space
+
+  .layout__content--node--page--full {
+
+    .group--paragraphs__item {
+
+      &:last-child {
+        .paragraph {
+          //padding-bottom: rem($p-gap-vert-bottom-lg-2);
+        }
+
+      }
+    }
+  }
+
+}

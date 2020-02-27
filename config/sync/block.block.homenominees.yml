@@ -1,0 +1,25 @@
+uuid: ff653672-9e94-4507-bc3d-b4d3800e2f2c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:simple_cta_block:9cf5df48-ea72-4564-976e-a61c08e17e74'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: homenominees
+theme: dropsolid_flex
+region: hidden
+weight: -3
+provider: null
+plugin: 'block_content:9cf5df48-ea72-4564-976e-a61c08e17e74'
+settings:
+  id: 'block_content:9cf5df48-ea72-4564-976e-a61c08e17e74'
+  label: 'Home: Nominees'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

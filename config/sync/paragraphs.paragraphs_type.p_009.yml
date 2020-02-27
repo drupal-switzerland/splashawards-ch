@@ -1,0 +1,11 @@
+uuid: 9f9fc308-8eaf-4290-8160-c8dce5ecda69
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 0wNaNEUSz18CpcXpaAN_NZ-Dvi8Mim4ncJQAX7WN9-0
+id: p_009
+label: 'P009 Photo gallery'
+icon_uuid: null
+description: 'A grid of visuals'
+behavior_plugins: {  }

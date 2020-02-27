@@ -1,0 +1,163 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs: USP
+// *
+// * The indivicual items are styled in the Molecules
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * USP
+// =============================================================================
+
+.paragraph--type-p-007 {
+
+  text-align: center;
+
+  // ** usp items
+
+  .field--name-field-p-007-children {
+
+    .field__items {
+      margin-top: rem(-$p-gap-vert);
+      overflow: hidden; // fix for non-collapsing margins
+
+      & > .field__item {
+        margin-top: rem($p-gap-vert);
+      }
+    }
+  }
+
+  // ** centered button
+
+  .field--name-field-p-button {
+    text-align: center;
+
+    a {
+      margin-left: rem(5);
+      margin-right: rem(5);
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: wide phone only
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-wide-only {
+
+  .paragraph--type-p-007 {
+    //
+  }
+
+  // ** in 2 column layout
+
+  .p-007__children--view-mode--2-column,
+  .p-007__children--view-mode--two-column {
+
+    > .field__items {
+      @include flex-grid(12, $usp-gap);
+    }
+
+    .field__item--name-field-p-007-children {
+      @include flex-col(6, 12, $usp-gap);
+    }
+  }
+
+  // ** in 3 column layout
+
+  .p-007__children--view-mode--3-column,
+  .p-007__children--view-mode--three-column {
+
+    > .field__items {
+      @include flex-grid(12, $usp-gap);
+    }
+
+    .field__item--name-field-p-007-children {
+      @include flex-col(6, 12, $usp-gap);
+    }
+  }
+
+  // ** in 4 column layout
+
+  .p-007__children--view-mode--4-column,
+  .p-007__children--view-mode--four-column {
+
+    > .field__items {
+      @include flex-grid(12, $usp-gap);
+    }
+
+    .field__item--name-field-p-007-children {
+      @include flex-col(6, 12, $usp-gap);
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .paragraph--type-p-007 {
+    //
+  }
+
+  // ** in 2 column layout
+
+  .p-007__children--view-mode--2-column,
+  .p-007__children--view-mode--two-column {
+
+    text-align: left;
+
+    > .field__items {
+      @include flex-grid(12, $usp-gap);
+    }
+
+    .field__item--name-field-p-007-children {
+      @include flex-col(6, 12, $usp-gap);
+    }
+  }
+
+  // ** in 3 column layout
+
+  .p-007__children--view-mode--3-column,
+  .p-007__children--view-mode--three-column {
+
+    > .field__items {
+      @include flex-grid(12, $usp-gap);
+    }
+
+    .field__item--name-field-p-007-children {
+      @include flex-col(4, 12, $usp-gap);
+    }
+  }
+
+  // ** in 4 column layout
+
+  .p-007__children--view-mode--4-column,
+  .p-007__children--view-mode--four-column {
+
+    > .field__items {
+      @include flex-grid(12, $usp-gap);
+    }
+
+    .field__item--name-field-p-007-children {
+      @include flex-col(3, 12, $usp-gap);
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  //
+
+}

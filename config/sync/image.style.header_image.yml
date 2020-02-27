@@ -1,0 +1,17 @@
+uuid: 51234d6a-69b0-4585-8bec-28aa6ccd035d
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: MURFqrD-XJYvqgSMaKkUrSOkYdjEXtjGdhWqKoSYZoU
+name: header_image
+label: 'Header image (1920x600)'
+effects:
+  2edeeaa8-7c80-4250-b397-2e9757bb245a:
+    uuid: 2edeeaa8-7c80-4250-b397-2e9757bb245a
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 600
+      anchor: center-center

@@ -1,0 +1,7 @@
+name: 'Product Property One'
+url_alias: property_one
+widget:
+  config:
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'

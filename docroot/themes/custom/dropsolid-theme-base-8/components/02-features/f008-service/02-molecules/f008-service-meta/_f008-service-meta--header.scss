@@ -1,0 +1,72 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * service meta on full page: part of the header
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__meta--service-header {
+  position: relative;
+  padding: rem($gap-vert-top-xs) 0 rem($gap-vert-bottom-xs) 0;
+  transition: all $duration $easing;
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node__meta--service-header {
+
+    //
+
+    h3 {
+      //
+    }
+
+    a {
+      //
+    }
+
+    // ** breadcrumb
+
+    .breadcrumb__item {
+
+      //
+    }
+
+    .breadcrumb__link {
+
+      //
+    }
+
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .node__meta--service-header {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  .node__meta--service-header {
+    //
+  }
+
+}

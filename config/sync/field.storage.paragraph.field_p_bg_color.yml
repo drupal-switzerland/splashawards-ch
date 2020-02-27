@@ -1,0 +1,23 @@
+uuid: 47b6104a-c440-4cd5-979f-4c35cf6d8922
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: DKlsV_2CsnEKa_78UZnK6rZVd8nESp65Ky1U0nH2lc4
+id: paragraph.field_p_bg_color
+field_name: field_p_bg_color
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values: {  }
+  allowed_values_function: rocketship_paragraphs_background_colors
+module: options
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

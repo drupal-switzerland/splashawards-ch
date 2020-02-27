@@ -1,0 +1,2 @@
+label: 'Content background color'
+description: 'This color will be used as the background for the content (eg. the text). If a background image is also selected, it will be partially covered by the content color.'

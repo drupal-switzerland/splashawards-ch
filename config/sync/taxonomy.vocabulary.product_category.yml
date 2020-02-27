@@ -1,0 +1,10 @@
+uuid: 83852c83-b266-4ef7-a2b7-5c50fff1c7c1
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: LceBGdFod-lSeUMBgnOXtNYKUVdS-cvrs37Y1bmEhw4
+name: 'Nominee Category'
+vid: product_category
+description: ''
+weight: 0

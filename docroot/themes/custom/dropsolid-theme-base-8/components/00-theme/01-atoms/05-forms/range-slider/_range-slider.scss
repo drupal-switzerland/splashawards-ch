@@ -1,0 +1,26 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Forms: range slider
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+input[type='range'] {
+  appearance: none;
+  width: 100%;
+  border-radius: rem(5);
+  height: rem(5);
+  border: 1px solid darken($color-off-white, 5%);
+  background-color: darken($color-off-white, 5%);
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: $color-white;
+    border: 1px solid $color-form-border;
+    @include square(rem(15));
+    border-radius: rem(3);
+    cursor: pointer;
+  }
+  &:focus,
+  &:focus:hover {
+    outline: 0;
+  }
+}

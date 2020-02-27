@@ -1,0 +1,129 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * news related
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+// * Related items
+// =============================================================================
+
+.news--related {
+  h2,
+  h3,
+  h4 {
+    @extend .h4;
+
+    a {
+      &,
+      &:visited {
+        color: $color-heading;
+      }
+
+      &:hover,
+      &:active {
+        color: $color-link;
+      }
+    }
+  }
+
+  .node__meta {
+    @extend .small;
+    font-weight: $font-weight-bold;
+  }
+
+  .field--name-node-link a {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-indent: -9999px;
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-wide-only {
+
+  .news--related {
+
+    // ** make a grid
+
+    .layout__cols {
+      @include flex-grid(12, 15);
+    }
+
+    .layout__sidebar--sidebar-primary--left {
+      @include flex-col(6, 12, 15);
+    }
+
+    .layout__content--sidebar-primary--right {
+      @include flex-col(6, 12, 15);
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .news--related {
+
+    // ** make a grid
+
+    .layout__cols {
+      @include flex-grid(12, 15);
+    }
+
+    .layout__sidebar--sidebar-primary--left {
+      @include flex-col(4, 12, 15);
+    }
+
+    .layout__content--sidebar-primary--right {
+      @include flex-col(8, 12, 15);
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .layout__sidebar--sidebar-primary--left {
+    @include flex-col(4, 12, 15);
+  }
+
+  .layout__content--sidebar-primary--right {
+    @include flex-col(8, 12, 15);
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  .layout__sidebar--sidebar-primary--left {
+    @include flex-col(4, 12, 15);
+  }
+
+  .layout__content--sidebar-primary--right {
+    @include flex-col(8, 12, 15);
+  }
+
+}

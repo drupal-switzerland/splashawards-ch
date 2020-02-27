@@ -1,0 +1,116 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * News header: has its own view-mode of the news CT, with a DS template
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+.news--header {
+  position: relative;
+  padding: rem($gap-vert-top-xs) 0 0 0;
+
+  h1,
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.layout__header--node--news--header {
+  position: relative;
+  z-index: 1;
+}
+
+// ** picture + info
+
+.layout__cols--node--news--header {
+  padding-top: rem($gap-vert-top-xs); // same spacing as paragraphs
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  .news--header {
+    padding: rem($gap-vert-top-sm) 0 0 0;
+  }
+
+  // ** picture + info
+
+  .layout__cols--node--news--header {
+    padding-top: rem($gap-vert-top-sm); // same spacing as paragraphs
+  }
+
+  // ** picture
+
+  .layout__content--node--news--header--left {
+    //
+  }
+
+  // ** meta info
+
+  .layout__sidebar--node--news--header--right {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  .news--header {
+    padding: rem($gap-vert-top-md) 0 0 0;
+  }
+
+  // ** picture + info
+
+  .layout__cols--node--news--header {
+    padding-top: rem($gap-vert-top-md); // same spacing as paragraphs
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // *
+  // =============================================================================
+
+  .news--header {
+    padding: rem($gap-vert-top-lg) 0 0 0;
+  }
+
+  // ** picture + info
+
+  .layout__cols--node--news--header {
+    padding-top: rem($gap-vert-top-lg); // same spacing as paragraphs
+  }
+
+  // ** picture
+
+  .layout__content--node--news--header--left {
+    //
+  }
+
+  // ** meta info
+
+  .layout__sidebar--node--news--header--right {
+    //
+  }
+
+}

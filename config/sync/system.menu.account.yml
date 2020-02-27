@@ -1,0 +1,15 @@
+uuid: c1b3ca60-5e34-4b51-89ab-a875aec393f0
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_clickthrough
+third_party_settings:
+  menu_clickthrough:
+    clickthrough_enabled: 0
+_core:
+  default_config_hash: M_Bh81osDyUQ4wV0GgU_NdBNqkzM87sLxjaCdFj9mnw
+id: account
+label: 'User account menu'
+description: 'Links related to the active user account'
+locked: true

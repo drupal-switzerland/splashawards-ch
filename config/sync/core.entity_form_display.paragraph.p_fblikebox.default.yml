@@ -1,0 +1,47 @@
+uuid: 11511bf6-d983-43e1-8388-0716ef4f28e4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_fblikebox.field_p_fblikebox
+    - field.field.paragraph.p_fblikebox.field_text
+    - field.field.paragraph.p_fblikebox.field_title
+    - paragraphs.paragraphs_type.p_fblikebox
+  module:
+    - block_field
+    - text
+_core:
+  default_config_hash: EXi_wVD78KhCDCL7_yGoBHx411yDL9-5lwGBC7q86h4
+id: paragraph.p_fblikebox.default
+targetEntityType: paragraph
+bundle: p_fblikebox
+mode: default
+content:
+  field_p_fblikebox:
+    weight: 2
+    settings:
+      plugin_id: ''
+      settings: {  }
+    third_party_settings: {  }
+    type: block_field_default
+    region: content
+  field_text:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

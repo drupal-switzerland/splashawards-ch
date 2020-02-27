@@ -1,0 +1,236 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Product detail full: has its own view-mode of the news CT, with a DS template
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.product--full {
+
+  div {
+    margin-bottom: rem(20);
+  }
+
+  // -- header reset when nested in content
+  .paragraph--view-mode-product-title-only {
+    padding: 0;
+    background: transparent;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+
+  .field--name-field-product-category {
+    margin-bottom: rem(40);
+    font-weight: 600;
+    @include font-size($h4-size, $h4-line);
+  }
+
+  // ** Buttons
+
+  .node__actions--product-full {
+    margin-top: rem($gap-vert);
+  }
+
+  // PDF download
+
+  .field--name-field-product-sheet {
+
+    .file {
+      padding-left: 0; // don't need space for icon
+    }
+
+    .icon {
+      display: none; // don't need icon
+    }
+
+    a {
+      @include button-primary;
+    }
+  }
+
+  // ** Certificate labels (these are checkbox fields)
+
+  .group--certificates {
+
+    position: relative;
+    min-height: rem(100);
+
+    .field--name-field-winner {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      left: -10px;
+      top: -15px;
+      width: rem(150);
+      height: rem(120);
+      overflow: hidden;
+      @include sprite('winner-dark-blue');
+
+      &:before {
+        //
+      }
+
+
+      // if has winner and nominee checked,
+      // hide the 'nominee' cert
+      & + .field--name-field-nominee {
+        display: none;
+      }
+    }
+
+    .field--name-field-nominee {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      left: -15px;
+      top: -15px;
+      width: rem(150);
+      height: rem(120);
+      overflow: hidden;
+      @include sprite('nominee-bright-blue');
+
+      &:before {
+        //
+      }
+    }
+
+    .field--name-field-runnerup {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      left: -10px;
+      top: -15px;
+      width: rem(150);
+      height: rem(120);
+      overflow: hidden;
+      @include sprite('runnerup-peach');
+
+      &:before {
+        //
+      }
+    }
+
+    .field--name-field-winneroftheyear {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      left: -10px;
+      top: -15px;
+      width: rem(150);
+      height: rem(120);
+      overflow: hidden;
+      @include sprite('winneroftheyear-bright-blue');
+
+      &:before {
+        //
+      }
+    }
+  }
+}
+
+.layout__cols--node--product--full {
+
+  // ** create space between header & content and doormat/related products & content
+  padding: rem($gap-vert-top-xs) 0 rem($gap-vert-bottom-xs) 0;
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  .product--full {
+    //
+
+    .field--name-field-project-link {
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+  }
+
+  // ** picture
+
+  .layout__sidebar--node--product--full--left {
+    @include flex-col(6);
+  }
+
+  // ** product info
+
+  .layout__content--node--product--full--right {
+    @include flex-col(6);
+    padding-left: rem($grid-gap-hor); // extra space next to picture
+  }
+
+
+  .layout__cols--node--product--full {
+
+    // ** create space between header & content and doormat/related products & content
+    padding: rem($gap-vert-top-sm) 0 rem($gap-vert-bottom-sm) 0;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  .product--full {
+    //
+  }
+
+  // ** product info
+
+  .layout__content--node--product--full--right {
+    padding-left: rem($grid-gap-hor * 2); // extra space next to picture
+  }
+
+  .layout__cols--node--product--full {
+
+    // ** create space between header & content and doormat/related products & content
+    padding: rem($gap-vert-top-md) 0 rem($gap-vert-bottom-md) 0;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // *
+  // =============================================================================
+
+  .product--full {
+    //
+  }
+
+  // ** product info
+
+  .layout__content--node--product--full--right {
+    padding-left: rem($grid-gap-hor * 3); // extra space next to picture
+  }
+
+  .layout__cols--node--product--full {
+
+    // ** create space between header & content and doormat/related products & content
+    padding: rem($gap-vert-top-lg) 0 rem($gap-vert-bottom-lg) 0;
+  }
+
+}

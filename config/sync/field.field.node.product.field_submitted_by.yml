@@ -1,0 +1,38 @@
+uuid: 038504c3-1bd6-46bd-a209-187034a2a370
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_submitted_by
+    - node.type.product
+  module:
+    - image
+id: node.product.field_submitted_by
+field_name: field_submitted_by
+entity_type: node
+bundle: product
+label: 'Organisation logo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: 'case/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: '2 MB'
+  max_resolution: 300x200
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: 5653f55d-67ce-4bf7-bb82-506eae25ce0f
+    alt: alt
+    title: ''
+    width: 1794
+    height: 901
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

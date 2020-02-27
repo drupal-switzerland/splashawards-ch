@@ -1,0 +1,7 @@
+name: 'Splash paragraph views'
+type: module
+description: 'Adds additional views to paragraph'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - views

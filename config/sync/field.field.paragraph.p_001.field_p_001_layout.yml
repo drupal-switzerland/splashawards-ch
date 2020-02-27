@@ -1,0 +1,25 @@
+uuid: 926fca34-366c-4d11-abee-38ee6c481cd0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_001_layout
+    - paragraphs.paragraphs_type.p_001
+  module:
+    - options
+_core:
+  default_config_hash: 7khnhbB4CTtBIP1f_odYk-uxWJIJKd9RYkAhP9v3-5c
+id: paragraph.p_001.field_p_001_layout
+field_name: field_p_001_layout
+entity_type: paragraph
+bundle: p_001
+label: 'View mode'
+description: 'Places the image to the left or the right of the text'
+required: true
+translatable: false
+default_value:
+  -
+    value: image_left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

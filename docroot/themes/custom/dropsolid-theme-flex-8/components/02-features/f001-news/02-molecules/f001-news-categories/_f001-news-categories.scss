@@ -1,0 +1,86 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * News filters
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * general styling: inline links
+// =============================================================================
+
+// -- issue: we wil possibly have multiple lists of filters
+//    and that has to look like 1 consistent list
+//    so be careful with comma-separated items
+
+.node__filters--news {
+
+  display: flex; // make it go in 1 row
+  flex-wrap: wrap;
+
+  h3 {
+    margin-right: rem(10);
+  }
+
+  .field {
+    display: flex; // make it go in 1 row
+    flex-wrap: wrap;
+
+    // ** make inline list by default, comma-separated
+
+    .field__items {
+      display: flex;
+      flex-wrap: wrap;
+      margin: rem(-5) rem(-2) 0 rem(-2);
+    }
+
+    .field__item {
+      display: flex;
+      margin: rem(5) rem(2) 0 rem(2);
+
+      &:after {
+        margin-right: rem(4);
+        content: ',';
+      }
+
+    }
+
+    .field__item:before,
+    .field__item:after,
+    a {
+      @include font-size($font-size-base, $line-height-base);
+    }
+
+    a {
+      @include link-underline((color: $color-link, color-hover: $color-link-hover));
+    }
+
+    // last item of last list
+    // does not need a separator
+
+    &:last-child {
+      .field__item:last-child {
+        &:after {
+          content: '';
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+// @include bp-sm {
+
+//   [class*='field--name-field-news-filter'] {
+
+//     & > * {
+//       margin-left: 0;
+//     }
+//   }
+
+// }

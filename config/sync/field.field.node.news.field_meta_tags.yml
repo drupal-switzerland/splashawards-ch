@@ -1,0 +1,25 @@
+uuid: 36e735f7-a018-4557-be51-7df8b13dc236
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_tags
+    - node.type.news
+  module:
+    - metatag
+_core:
+  default_config_hash: ePQ5QNLjhOfJOgQ6HChh2UOpxTAE7catKZRjs1MQ3Sc
+id: node.news.field_meta_tags
+field_name: field_meta_tags
+entity_type: node
+bundle: news
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'a:1:{s:25:"schema_web_site_publisher";s:201:"a:4:{s:5:"@type";s:12:"Organization";s:4:"name";s:11:"[site:name]";s:3:"url";s:10:"[site:url]";s:4:"logo";a:2:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:39:"[site:url][current-theme:path]/logo.png";}}";}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

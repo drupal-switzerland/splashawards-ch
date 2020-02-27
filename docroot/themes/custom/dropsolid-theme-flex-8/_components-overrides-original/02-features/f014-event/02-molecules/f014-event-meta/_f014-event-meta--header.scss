@@ -1,0 +1,151 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * event meta on full page: part of the header
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__meta--event-header {
+  position: relative;
+  padding: rem($gap-vert-top-xs) 0 rem($gap-vert-bottom-xs) 0;
+  color: $color-white;
+  transition: all $duration $easing;
+
+  // background-color
+  @include full-bg ($color-spot-1, 'before');
+
+  // ** price
+
+  .field--name-field-event-price {
+    @include font-size($h3-size, $h3-line);
+    font-weight: $font-weight-bold;
+    margin-bottom: rem(10);
+    @include text-nobreak;
+  }
+
+  // ** date
+
+  .event-daterange-wrapper {
+    @include font-size($h4-size, $h4-line);
+    font-weight: $font-weight-bold;
+  }
+
+  // ** Subscribe (if Advanced module)
+
+  .field--name-scroll-to-field {
+    margin-top: rem(10);
+
+    a {
+      @include button-negative;
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node__meta--event-header {
+
+    top: 0; // needed for fixed animation
+
+    // -- Center and inline the text with flexbox and space-between
+
+    display: flex;
+
+    .field--name-field-events {
+      flex-grow: 1; // push subscribe button to the end
+
+      // make sure whole div is filled
+      > .entity-type--event {
+        width: 100%;
+      }
+    }
+
+    .layout__top {
+      display: flex;
+      // flex-wrap: wrap;
+      align-items: flex-end; // align the text vertically on its baseline
+      justify-content: space-between; // align text to the edges
+
+      // use the clearfix element to force date to center
+      // you can display:none the pseudo if you don't need that
+      &:after {
+        display: block;
+        content: '';
+      }
+    }
+
+    // ** price
+
+    .field--name-field-event-price {
+      margin-bottom: 0;
+      margin-right: rem(25);
+      @include text-nobreak;
+    }
+
+    // ** date
+
+    .event-daterange-wrapper {
+
+      div {
+        display: inline;
+      }
+    }
+
+    // ** Subscribe (if Advanced module)
+
+    .field--name-scroll-to-field {
+      margin-top: 0; // reset
+    }
+
+  }
+
+  // ** sticky bar
+
+  .node__meta--event-header.js-sticky {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    @include z-index(header);
+    transition: top $duration $easing;
+    padding-left: rem($container-padding);
+    padding-right: rem($container-padding);
+
+    // compensate for space made by fixed toolbar
+    // TO DO: in case of fixed header, need to add space then as well
+    .toolbar-fixed.toolbar-horizontal & {
+      top: rem(79);
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .node__meta--event-header {
+
+    // ** price:
+
+    .field--name-field-event-price {
+      @include font-size($h1-size, $h1-line);
+    }
+
+    // ** date:
+
+    .event-daterange-wrapper {
+      @include font-size($h3-size, $h3-line);
+    }
+
+  }
+
+}
+

@@ -1,0 +1,64 @@
+
+// * Clipping  (geometric shape)
+// =============================================================================
+
+// ** using Clippy to draw and preview:
+//    http://bennettfeely.com/clippy/
+
+img {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+
+// * Masking with a shape
+// =============================================================================
+
+// ** using an SVG
+//   make a shape in Illustrator and export to SVG
+//   what is transparent, depends on the mask-type you choose (see code below)
+//   make sure 'viewBox' is present in the SVG code (if not, you need to export the SVG as 'responsive')
+
+img {
+  mask-image: url('mask.svg');
+  mask-repeat: no-repeat;
+  mask-position: top left;
+  mask-type: luminance; /* white = transparent, grays = semi-transparent, black = opaque */
+  mask-type: alpha; /* transparent areas of the image let image through, otherwise not */
+  //mask-size: 200px; // this is optional: use if you want the mask to have a fixed size
+  //mask-size: cover; // this is optional: use if you want the mask to stretch along the biggest dimension
+}
+
+// ** alternatively,
+//    you could use just an element of the SVG as a mask, by wrapping it in a <mask> tag
+//    by adding an ID, you can call it in CSS
+//    <mask id="my-svg-mask">
+//
+//    Note: out-of-the-box, the colors to use are white and black
+//       white/grey, is what will be visible/partially visible
+
+img {
+  mask-image: url('shape.svg#my-svg-mask');
+}
+
+// * Gradient mask
+// =============================================================================
+
+// ** using gradients in mask-image (possibly deprecated)
+
+img {
+  mask-image: linear-gradient(to bottom, transparent 25%, black 75%);
+}
+
+// * Support
+// =============================================================================
+
+// No support in IE
+// Check caniuse.com for more info
+
+
+// * Sources
+// =============================================================================
+
+// https://css-tricks.com/clipping-masking-css/
+// https://getflywheel.com/layout/css-svg-clipping-and-masking-techniques/
+// https://alligator.io/css/masking-with-mask-image/

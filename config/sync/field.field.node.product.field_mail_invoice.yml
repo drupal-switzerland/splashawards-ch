@@ -1,0 +1,19 @@
+uuid: 5a512bbc-a3b7-4375-82a1-9ac338ddc6bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mail_invoice
+    - node.type.product
+id: node.product.field_mail_invoice
+field_name: field_mail_invoice
+entity_type: node
+bundle: product
+label: 'E-mail address for invoice'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

@@ -1,0 +1,35 @@
+uuid: 53c05bf3-b66b-423a-bc60-2a2be032bf4e
+langcode: de
+status: true
+dependencies:
+  enforced:
+    module:
+      - rocketship_page
+      - rocketship_paragraphs
+      - rocketship_core
+_core:
+  default_config_hash: 4vdYeifzveagBsTZGds_hFPXupkl9bLVKU2HRHobCmo
+id: rc_simple_header
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: rocketship_content
+label: null
+source:
+  plugin: csv
+  path: /assets/csv/simple_header.csv
+  header_row_count: 1
+  keys:
+    - id
+process:
+  field_replacement_title/value: field_replacement_title_value
+  field_replacement_title/replace: field_replacement_title_replace
+  field_replacement_title/wrapper: field_replacement_title_wrapper
+  field_show_breadcrumb: field_show_breadcrumb
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: simple_header
+migration_dependencies:
+  required: {  }
+  optional: {  }

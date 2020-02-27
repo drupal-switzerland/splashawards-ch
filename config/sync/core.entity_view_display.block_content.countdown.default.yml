@@ -1,0 +1,175 @@
+uuid: 786e8dd6-54d1-4467-852c-7be8ed87b39f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.countdown
+    - field.field.block_content.countdown.field_days
+    - field.field.block_content.countdown.field_end_date
+    - field.field.block_content.countdown.field_hours
+    - field.field.block_content.countdown.field_minutes
+    - field.field.block_content.countdown.field_subtitle
+    - field.field.block_content.countdown.field_timezone
+    - field.field.block_content.countdown.field_title
+  module:
+    - datetime
+    - field_group
+    - rocketship_core
+third_party_settings:
+  field_group:
+    group_time:
+      children:
+        - field_days
+        - field_hours
+        - field_minutes
+      parent_name: group_content
+      weight: 2
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: countdown__timer
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Timer
+      region: content
+    group_message:
+      children:
+        - body
+      parent_name: group_content
+      weight: 3
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: countdown__message
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: message
+      region: content
+    group_header:
+      children:
+        - field_title
+        - field_subtitle
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: countdown__header
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Header
+      region: content
+    group_content:
+      children:
+        - group_time
+        - group_message
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: countdown__content
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: content
+      region: content
+    group_hidden:
+      children:
+        - field_end_date
+        - field_timezone
+      parent_name: ''
+      weight: 2
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: countdown__hidden
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Hidden
+      region: content
+id: block_content.countdown.default
+targetEntityType: block_content
+bundle: countdown
+mode: default
+content:
+  field_days:
+    weight: 3
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_end_date:
+    weight: 3
+    label: hidden
+    settings:
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_plain
+    region: content
+  field_hours:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_minutes:
+    weight: 5
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_subtitle:
+    weight: 2
+    label: hidden
+    settings:
+      header: h3
+    third_party_settings: {  }
+    type: header_text_field_formatter
+    region: content
+  field_timezone:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title:
+    weight: 1
+    label: hidden
+    settings:
+      header: h2
+    third_party_settings: {  }
+    type: header_text_field_formatter
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,116 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Office teasers
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.office--teaser {
+
+  // ** visual
+
+  .field--image {
+    margin-bottom: rem($gap-vert);
+  }
+
+  // ** title
+
+  h2,
+  h3,
+  h4 {
+    @extend .h3;
+    margin-bottom: rem($gap-vert);
+  }
+
+  .node__actions {
+    margin-top: rem($gap-vert);
+  }
+
+  // ** read more
+
+  .field--name-node-link {
+    margin-top: rem($gap-vert);
+
+    a {
+      @include link-more;
+
+      &:after {
+        display: none; // remove possible icon
+      }
+    }
+  }
+
+  .field--name-field-office-address {
+    @include office-contact();
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** the normal teaser
+
+  .office--teaser {
+
+
+    .layout__sidebar {
+      @include flex-col(6);
+    }
+
+    // all nested div wrappers the same flex settings
+    // in order to make content fill the height
+    &,
+    .layout__content {
+      @include flex-col(6);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    // stretch and push content down
+    .node__actions {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: flex-end;
+      justify-items: flex-end;
+    }
+
+    .field--name-node-link {
+      margin-top: 0;
+
+      a {
+        @include button-primary;
+        @include text-nobreak;
+      }
+    }
+
+    .field--name-ds-time-ago {
+      margin-top: rem(10);
+      font-style: italic;
+      @include text-nobreak;
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .office--teaser {
+    //
+  }
+
+}

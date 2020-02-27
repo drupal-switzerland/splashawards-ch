@@ -1,0 +1,21 @@
+uuid: a7d19394-5d01-45ab-8445-fd66bfb5c9bc
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_teaser
+    - node.type.product
+_core:
+  default_config_hash: 8EtNqlihy2MeM0L6pgWuzqUVpsT4o1YMBNGjOlQAga4
+id: node.product.field_product_teaser
+field_name: field_product_teaser
+entity_type: node
+bundle: product
+label: Summary
+description: 'Please enter a brief description of your project. Try to constrain it to 160 characters'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,25 @@
+uuid: 052caf85-d66d-4dee-a004-4ed136579990
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dropsolid_base
+_core:
+  default_config_hash: dB82dtFL3lmzPXle_-le9aNOLbF9XlSg8zprw8qsKd0
+id: dropsolid_base_branding
+theme: dropsolid_base
+region: header
+weight: -10
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

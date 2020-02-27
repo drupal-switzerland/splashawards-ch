@@ -1,0 +1,91 @@
+uuid: b2445f3f-f139-4ed5-930b-31efa3f32d76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.header
+    - node.type.page
+    - paragraphs.paragraphs_type.simple_header
+  module:
+    - entity_reference_revisions
+id: node.page.header
+field_name: header
+entity_type: node
+bundle: page
+label: Header
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      simple_header: simple_header
+    target_bundles_drag_drop:
+      jury_paragraph:
+        weight: 22
+        enabled: false
+      overview:
+        weight: 23
+        enabled: false
+      p_001:
+        weight: 24
+        enabled: false
+      p_002:
+        weight: 25
+        enabled: false
+      p_003:
+        weight: 26
+        enabled: false
+      p_004:
+        weight: 27
+        enabled: false
+      p_005:
+        weight: 28
+        enabled: false
+      p_006:
+        weight: 29
+        enabled: false
+      p_007:
+        weight: 30
+        enabled: false
+      p_007_child:
+        weight: 31
+        enabled: false
+      p_008:
+        weight: 32
+        enabled: false
+      p_009:
+        weight: 33
+        enabled: false
+      p_010:
+        weight: 34
+        enabled: false
+      p_010_child:
+        weight: 35
+        enabled: false
+      p_011:
+        weight: 36
+        enabled: false
+      p_012:
+        weight: 37
+        enabled: false
+      p_012_child:
+        weight: 38
+        enabled: false
+      p_016:
+        weight: 39
+        enabled: false
+      p_017:
+        weight: 40
+        enabled: false
+      p_fblikebox:
+        weight: 41
+        enabled: false
+      simple_header:
+        enabled: true
+        weight: 42
+field_type: entity_reference_revisions

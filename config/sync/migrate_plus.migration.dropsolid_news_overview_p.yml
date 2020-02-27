@@ -1,0 +1,30 @@
+uuid: 37c6471a-7493-4d06-9673-5b505e1477dc
+langcode: de
+status: true
+dependencies:
+  enforced:
+    module:
+      - dropsolid_news_basic
+_core:
+  default_config_hash: Npsd_KN1X4RkYAj5jgcsHrvcJ7Ko4xb1NoZPveqy43k
+id: dropsolid_news_overview_p
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: dropsolid_news_overview
+label: null
+source:
+  plugin: csv
+  path: /assets/csv/dropsolid_news_overview_p.csv
+  header_row_count: 1
+  keys:
+    - id
+process:
+  field_overview: field_overview
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: overview
+migration_dependencies:
+  required: {  }
+  optional: {  }

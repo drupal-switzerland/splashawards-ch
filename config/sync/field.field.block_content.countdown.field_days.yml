@@ -1,0 +1,25 @@
+uuid: 14fa5c94-ee57-42d3-92d0-ed381e89e631
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.countdown
+    - field.storage.block_content.field_days
+id: block_content.countdown.field_days
+field_name: field_days
+entity_type: block_content
+bundle: countdown
+label: Days
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

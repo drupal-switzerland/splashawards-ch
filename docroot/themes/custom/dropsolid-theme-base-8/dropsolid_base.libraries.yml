@@ -1,0 +1,21 @@
+# global:
+#   version: 1
+#   js:
+#     js/libs/modernizr.custom.js: {} # replace Modernizr from core because doesn't display when logged out
+
+# replace jQuery from core because we want the newer version
+jquery-custom:
+  version: "3.3.1"
+  license:
+    name: MIT
+    url: https://github.com/jquery/jquery/blob/3.3.1/LICENSE.txt
+    gpl-compatible: true
+  js:
+    js/libs/jquery.min.js: { minified: true, weight: -20 }
+
+# replace Modernizr from core because doesn't display when logged out
+modernizr-custom:
+  version: "3.6.0"
+  header: true
+  js:
+    js/libs/modernizr.custom.js: { minified: true }

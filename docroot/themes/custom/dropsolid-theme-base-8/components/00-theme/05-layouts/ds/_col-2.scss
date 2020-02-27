@@ -1,0 +1,103 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * 2 column layout
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+// .layout--2col {
+// }
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // columns wrapper
+  .layout__cols {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
+    margin-left: rem(-$gap-hor / 2);
+    margin-right: rem(-$gap-hor / 2);
+  }
+
+  // content as column
+  .layout__content--sidebar-secondary--left,
+  .layout__content--sidebar-primary--right {
+    position: relative;
+    margin-left: rem($gap-hor / 2);
+    margin-right: rem($gap-hor / 2);
+    min-height: 1px;
+    width: calc(50% - #{rem($gap-hor)});
+    flex: 0 0 calc(50% - #{rem($gap-hor)});
+    flex-basis: calc(50% - #{rem($gap-hor)});
+  }
+
+  // sidebar as column
+  .layout__sidebar--sidebar-primary--left,
+  .layout__sidebar--sidebar-secondary--right {
+    position: relative;
+    margin-left: rem($gap-hor / 2);
+    margin-right: rem($gap-hor / 2);
+    min-height: 1px;
+    width: calc(50% - #{rem($gap-hor)});
+    flex: 0 0 calc(50% - #{rem($gap-hor)});
+    flex-basis: calc(50% - #{rem($gap-hor)});
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // content as column
+  .layout__content--sidebar-secondary--left,
+  .layout__content--sidebar-primary--right {
+    width: calc((100% / 12 * 8) - #{rem($gap-hor)});
+    flex: 0 0 calc((100% / 12 * 8) - #{rem($gap-hor)});
+    flex-basis: calc((100% / 12 * 8) - #{rem($gap-hor)});
+  }
+
+  // sidebar as column
+  .layout__sidebar--sidebar-primary--left,
+  .layout__sidebar--sidebar-secondary--right {
+    width: calc((100% / 12 * 4) - #{rem($gap-hor)});
+    flex: 0 0 calc((100% / 12 * 4) - #{rem($gap-hor)});
+    flex-basis: calc((100% / 12 * 4) - #{rem($gap-hor)});
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // content as column
+  .layout__content--sidebar-secondary--left,
+  .layout__content--sidebar-primary--right {
+    width: calc((100% / 12 * 9) - #{rem($gap-hor)});
+    flex: 0 0 calc((100% / 12 * 9) - #{rem($gap-hor)});
+    flex-basis: calc((100% / 12 * 9) - #{rem($gap-hor)});
+  }
+
+  // sidebar as column
+  .layout__sidebar--sidebar-primary--left,
+  .layout__sidebar--sidebar-secondary--right {
+    width: calc((100% / 12 * 3) - #{rem($gap-hor)});
+    flex: 0 0 calc((100% / 12 * 3) - #{rem($gap-hor)});
+    flex-basis: calc((100% / 12 * 3) - #{rem($gap-hor)});
+  }
+
+}

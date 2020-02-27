@@ -1,0 +1,50 @@
+uuid: d73af90f-52fe-4f5c-bbcf-55dfc61ff8cf
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_006.field_p_subtitle
+    - field.field.paragraph.p_006.field_p_video
+    - field.field.paragraph.p_006.field_title
+    - field.field.paragraph.p_006.field_video_layout
+    - paragraphs.paragraphs_type.p_006
+  module:
+    - rocketship_core
+    - video_embed_field
+_core:
+  default_config_hash: 6A2OWW-RbRj5gDIVnTqP0mGp8qWxaScTBPvFRMnq4Ug
+id: paragraph.p_006.default
+targetEntityType: paragraph
+bundle: p_006
+mode: default
+content:
+  field_p_subtitle:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_p_video:
+    type: video_embed_field_video
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: false
+    third_party_settings: {  }
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      header: h2
+    third_party_settings: {  }
+    type: header_text_field_formatter
+    region: content
+hidden:
+  field_video_layout: true
+  search_api_excerpt: true

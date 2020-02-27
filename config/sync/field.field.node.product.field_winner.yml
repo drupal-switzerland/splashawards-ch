@@ -1,0 +1,23 @@
+uuid: c17d0cd1-0353-46ea-a2b5-af1e89ab819b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_winner
+    - node.type.product
+id: node.product.field_winner
+field_name: field_winner
+entity_type: node
+bundle: product
+label: Winner
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Winner
+  off_label: 'Off'
+field_type: boolean

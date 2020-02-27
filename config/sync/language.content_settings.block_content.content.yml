@@ -1,0 +1,18 @@
+uuid: 4c5369ef-ad9c-4485-9cae-adfca498a9a4
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.content
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+_core:
+  default_config_hash: ZE-RRgj1-t_FZy2gjKfls4IIh3M-AIUrLrqgKa1_orI
+id: block_content.content
+target_entity_type_id: block_content
+target_bundle: content
+default_langcode: current_interface
+language_alterable: false

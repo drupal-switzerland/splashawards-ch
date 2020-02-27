@@ -1,15 +1,59 @@
 {
-  "name": "dropsolid/standard",
-  "description": "Drupal is an open source content management platform powering millions of websites and applications.",
+  "name": "dropsolid/rocketship",
+  "description": "Dropsolid Rocketship is a distribution that enables small to mid-market business to profit from an optimal start when getting your feet wet in Drupal.",
   "type": "project",
   "license": "GPL-2.0+",
+  "_readme": [
+    "This is the Dropsolid drupal 8 skeleton composer.json. The composer file is configured to handle patches and drupal core updates.",
+    "ALL VERSIONS THAT ARE LOCKED ARE LOCKED FOR A REASON. PAY ATTENTION WHEN YOU WANT TO UPDATE THEM. ALWAYS CHECK THE README!",
+    "!IMPORTANT!: captcha modules are set to dev version, so be careful when updating. We'll try and get these stable asap."
+  ],
   "require": {
     "composer/installers": "~1.0.21",
-    "cweagans/composer-patches": "~1.0",
+    "cweagans/composer-patches": "^1.6.5",
+    "drush/drush": "~8.1",
     "drupal-composer/drupal-scaffold": "~2.2",
-    "drupal/core": "~8.7",
-    "drush/drush": "~8.1"
+    "drupal/core": "~8.7.0",
+    "drupal/dropsolid_rocketship_profile": "^1.0",
+    "drupal/claro": "1.0.0-alpha5",
+    "zaporylie/composer-drupal-optimizations": "^1.0",
+    "drupal-pattern-lab/unified-twig-extensions": "~0.1.0",
+    "harvesthq/chosen": "~1.8",
+    "kenwheeler/slick": "1.8.1",
+    "vardot/blazy": "~1.8",
+    "jackmoore/colorbox": "^1.0",
+    "imakewebthings/waypoints": "~4.0.1",
+    "dropsolid-drupal8/dropsolid_social_widgets": "^2.0",
+    "dropsolid-drupal8/dropsolid_cookie_policy": "3.0.0-alpha1",
+    "dropsolid-drupal8/page_manager_hreflang": "3.0.0-alpha1",
+    "dropsolid-drupal8/redirect_handler": "3.0.0-alpha1",
+    "dropsolid-drupal8/dropsolid_styleguide": "3.0.0-alpha1",
+    "dropsolid-drupal8/dropsolid_blocks": "3.0.0-alpha1",
+    "dropsolid-drupal8/dropsolid_blog": "3.0.0-alpha3",
+    "dropsolid-drupal8/dropsolid_news": "3.0.0-alpha3",
+    "dropsolid-drupal8/dropsolid_product": "3.0.0-alpha3",
+    "dropsolid-drupal8/dropsolid_event": "3.0.0-alpha3",
+    "dropsolid-drupal8/dropsolid_office": "1.0.0-alpha2",
+    "dropsolid-drupal8/dropsolid_job": "1.0.0-alpha3",
+    "dropsolid-drupal8/dropsolid_service": "3.0.0-alpha1",
+    "dropsolid-drupal8/dropsolid-theme-base-8": "3.0.0-alpha6",
+    "dropsolid-drupal8/dropsolid-theme-flex-8": "3.0.0-alpha6",
+    "dropsolid-drupal8/dropsolid-theme-starter-8": "3.0.0-alpha6",
+    "drupal/purge": "^3.0@beta",
+    "drupal/dropsolid_purge": "^1.0@beta"
   },
+  "authors": [
+    {
+      "name": "Mattias Michaux",
+      "homepage": "https://www.drupal.org/u/mollux",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Nick Vanpraet",
+      "homepage": "https://www.drupal.org/u/grayle",
+      "role": "Maintainer"
+    }
+  ],
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
@@ -30,9 +74,26 @@
     },
     "enable-patching": true,
     "patches": {
+      "drupal/blazy": {
+        "responsive image performance": "https://www.drupal.org/files/issues/2018-03-09/responsive-image-performance-2951529-2.patch"
+      },
+      "drupal/captcha": {
+        "patch to bring captcha module up to dev#1d21e6864ced543312d8d819a170c3553281b485": "etc/patches/captcha-dev1d21e6864ced543312d8d819a170c3553281b485.patch",
+        "don't set $_SESSION unless needed - https://www.drupal.org/project/captcha/issues/2996495": "https://www.drupal.org/files/issues/2018-08-31/captcha.no-needless-sessions-2.patch"
+      },
+      "drupal/claro": {
+        "Add a font-size toggle -- https://www.drupal.org/project/claro/issues/3067208": "https://www.drupal.org/files/issues/2019-10-08/alpha5.size-switcher-7.patch",
+        "Dropbutton list resizes table cells -- https://www.drupal.org/project/claro/issues/3067262": "https://www.drupal.org/files/issues/2019-10-08/alpha5.dropbutton-sizing-11.patch"
+      },
       "drupal/core": {
         "Allow dropping the database when restarting the installer": "etc/patches/drop_tables_on_site_reinstall.patch"
-      }
+      },
+      "drupal/ds": {
+        "https://www.drupal.org/files/issues/2019-11-26/3096815-revert-early-deprecation.patch": "https://www.drupal.org/files/issues/2019-11-26/3096815-revert-early-deprecation.patch"
+      },
+      "drupal/metatag": {
+        "Classname lowercase to uppercase": "https://www.drupal.org/files/issues/2019-12-24/class-alternateHandheld-not-found-3102937-2.patch"
+      }      
     },
     "installer-paths": {
       "docroot/core": [
@@ -80,17 +141,66 @@
     "post-package-install": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
     "post-package-update": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
     "post-install-cmd": [
-      "cd vendor && find . -name \".git\" -type d -prune -exec rm -r \"{}\" \\; && cd .."
+      "cd vendor && find . -name \".git\" -type d -prune -exec rm -r \"{}\" \\; && cd ..",
+      "cd docroot/themes/custom/dropsolid-theme-starter-8 && bash scripts/preinstall.sh && cd ../../../../",
+      "cd docroot/themes/custom/dropsolid-theme-flex-8 && bash scripts/preinstall.sh && cd ../../../../"
     ],
     "post-update-cmd": [
       "@drupal-scaffold",
-      "cd vendor && find . -name \".git\" -type d -prune -exec rm -r \"{}\" \\; && cd .."
+      "cd vendor && find . -name \".git\" -type d -prune -exec rm -r \"{}\" \\; && cd ..",
+      "cd docroot/themes/custom/dropsolid-theme-starter-8 && bash scripts/preinstall.sh && cd ../../../../",
+      "cd docroot/themes/custom/dropsolid-theme-flex-8 && bash scripts/preinstall.sh && cd ../../../../"
     ]
   },
-  "require-dev": {
-    "webflo/drupal-core-require-dev": "^8.6.0"
-  },
   "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "harvesthq/chosen",
+        "version": "1.8.2",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/harvesthq/chosen/releases/download/v1.8.2/chosen_v1.8.2.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "kenwheeler/slick",
+        "version": "1.8.1",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/kenwheeler/slick/archive/v1.8.1.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "jackmoore/colorbox",
+        "version": "1.6.4",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/jackmoore/colorbox/archive/1.x.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "imakewebthings/waypoints",
+        "version": "4.0.1",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/imakewebthings/waypoints/archive/master.zip",
+          "type": "zip"
+        }
+      }
+    },
     {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
@@ -99,5 +209,10 @@
       "type": "composer",
       "url": "https://packagist.dropsolid.com"
     }
-  ]
+  ],
+  "require-dev": {
+    "drupal/entity_browser": "^1.5",
+    "webflo/drupal-core-require-dev": "^8.7.0",
+    "behat/mink-selenium2-driver": "dev-master as 1.3.x-dev"
+  }
 }

@@ -1,0 +1,39 @@
+label: 'Product overview'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      title: 'Product overview'
+      empty:
+        area:
+          content:
+            value: '<h2>No product articles found</h2><p>Come back soon for some great content!</p>'
+  product_overview_block:
+    display_title: 'Main overview'
+  product_overview_front:
+    display_title: 'Frontpage overview'
+    display_options:
+      title: 'Product overview frontpage'
+      use_more_text: more
+      empty:
+        area:
+          content:
+            value: '<h2>No product articles found</h2><p>Come back soon for some great content!</p>'

@@ -1,0 +1,22 @@
+uuid: 426ac73c-93fb-498b-bf47-1fa2a3a55c5e
+langcode: de
+status: true
+dependencies:
+  theme:
+    - dropsolid_flex
+_core:
+  default_config_hash: c5W3NQN0cBLYamuy2lHBQEjAzQCBtRA9DfojpwYRBcA
+id: dropsolid_flex_local_tasks
+theme: dropsolid_flex
+region: tabs
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

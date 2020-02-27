@@ -1,0 +1,78 @@
+name: Dropsolid Base
+type: theme
+description: 'This is the Dropsolid Drupal 8 base theme.'
+package: Dropsolid Base Theme
+version: 8.x-3.0.0-alpha6
+core: 8.x
+base theme: classy
+
+stylesheets-remove:
+  - core/assets/vendor/normalize-css/normalize.css
+  - core/themes/classy/css/components/progress.css
+  - core/themes/classy/css/components/dialog.css
+  - core/themes/classy/css/components/node.css
+  - core/themes/classy/css/components/messages.css
+  - core/themes/classy/css/components/user.css
+  - core/assets/vendor/jquery.ui/themes/base/core.css
+  - core/assets/vendor/jquery.ui/themes/base/button.css
+  - core/assets/vendor/jquery.ui/themes/base/resizable.css
+  - core/assets/vendor/jquery.ui/themes/base/dialog.css
+  - core/themes/stable/css/system/components/hidden.module.css
+  - core/themes/stable/css/system/components/clearfix.module.css
+  - core/themes/stable/css/system/components/tree-child.module.css
+  - core/themes/stable/css/system/components/item-list.module.css
+  - core/themes/stable/css/system/components/container-inline.module.css
+  - core/themes/stable/css/system/components/fieldgroup.module.css
+  - core/themes/stable/css/system/components/resize.module.css
+  - core/themes/stable/css/system/components/reset-appearance.module.css
+  - core/themes/stable/css/system/components/position-container.module.css
+  - core/themes/stable/css/system/components/js.module.css
+  - core/themes/stable/css/system/components/align.module.css
+  - core/themes/stable/css/system/components/details.module.css
+  - core/themes/stable/css/system/components/nowrap.module.css
+  - core/themes/stable/css/system/components/progress.module.css
+  - core/themes/stable/css/system/components/sticky-header.module.css
+  - core/themes/stable/css/system/components/tabledrag.module.css
+  - core/themes/stable/css/system/components/tablesort.module.css
+
+# regions:
+#   tabs: 'Tabs'
+#   header_top: 'Header top'
+#   header: 'Header region'
+#   nav_primary: Navigation # eg. for main menu
+#   breadcrumb: 'Breadcrumb'
+#   highlighted: 'Highlighted' # use for messages and such
+#   sidebar_first: 'Left sidebar'
+#   content: 'Content'
+#   sidebar_second: 'Right sidebar'
+#   doormat: 'Doormat' # menus and blocks for the bottom of the page
+#   footer: 'Footer' # for copyright stuff, replaces 'Baseline' region
+
+#libraries:
+#  - dropsolid_base/global
+
+libraries-override:
+  classy/base: false # does this even work ???
+  core/jquery: dropsolid_base/jquery-custom
+  core/modernizr: dropsolid_base/modernizr-custom
+
+# MUST install `components` module via Composer + enable it (drush en components -y)
+# component-libraries:
+#   base:
+#     paths:
+#       - components/00-theme/00-base
+#   atoms:
+#     paths:
+#       - components/00-theme/01-atoms
+#   molecules:
+#     paths:
+#       - components/00-theme/02-molecules
+#   organisms:
+#     paths:
+#       - components/00-theme/03-organisms
+#   templates:
+#     paths:
+#       - components/00-theme/04-templates
+#   pages:
+#     paths:
+#       - components/00-theme/05-pages

@@ -1,0 +1,25 @@
+uuid: cc902866-da3e-419a-86d4-99fa5a8880c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.countdown
+    - field.storage.block_content.field_minutes
+id: block_content.countdown.field_minutes
+field_name: field_minutes
+entity_type: block_content
+bundle: countdown
+label: Minutes
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

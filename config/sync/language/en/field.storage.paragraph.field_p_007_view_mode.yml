@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: '2 columns'
+    -
+      label: '3 columns'
+    -
+      label: '4 columns'

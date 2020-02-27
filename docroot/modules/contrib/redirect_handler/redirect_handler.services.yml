@@ -1,0 +1,4 @@
+services:
+  redirect_handler.manager:
+    class: Drupal\redirect_handler\RedirectHandler
+    arguments: ['@database', '@logger.factory']

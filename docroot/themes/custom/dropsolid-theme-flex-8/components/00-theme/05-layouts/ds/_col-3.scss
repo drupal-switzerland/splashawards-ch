@@ -1,0 +1,74 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * 3 column layout
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+// .layout--3col {
+// }
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // 3 columns wrapper
+
+  // content as column, with 2 sidebars
+  .layout__content--sidebars--center {
+    position: relative;
+    margin-left: rem($gap-hor / 2);
+    margin-right: rem($gap-hor / 2);
+    min-height: 1px;
+    width: calc(50% - #{rem($gap-hor)});
+    flex: 0 0 calc(50% - #{rem($gap-hor)});
+    flex-basis: calc(50% - #{rem($gap-hor)});
+  }
+
+  // the 2 sidebars
+  .layout__sidebar--sidebars--left,
+  .layout__sidebar--sidebars--right {
+    position: relative;
+    margin-left: rem($gap-hor / 2);
+    margin-right: rem($gap-hor / 2);
+    min-height: 1px;
+    width: calc((100% / 12 * 3) - #{rem($gap-hor)});
+    flex: 0 0 calc((100% / 12 * 3) - #{rem($gap-hor)});
+    flex-basis: calc((100% / 12 * 3) - #{rem($gap-hor)});
+  }
+
+  // to make sure second sidebar is on the right
+  .layout__sidebar--sidebars--right {
+    order: 2;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // content as column, with 2 sidebars
+  //.layout__content--sidebars--center {
+  //  width: calc((100% / 12 * 6) - #{rem($gap-hor)});
+  //  flex: 0 0 calc((100% / 12 * 6) - #{rem($gap-hor)});
+  //  flex-basis: calc((100% / 12 * 6) - #{rem($gap-hor)});
+  //}
+
+  // for 2 sidebars
+  .layout__sidebar--sidebars--left,
+  .layout__sidebar--sidebars--right {
+    width: calc((100% / 12 * 3) - #{rem($gap-hor)});
+    flex: 0 0 calc((100% / 12 * 3) - #{rem($gap-hor)});
+    flex-basis: calc((100% / 12 * 3) - #{rem($gap-hor)});
+  }
+
+}

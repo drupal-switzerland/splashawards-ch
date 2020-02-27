@@ -1,0 +1,11 @@
+uuid: 70dd0ed2-e192-4079-a6ad-4f6c675695e6
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: fa760glY1Oz_wKEUsp4arHw5hQgiiS0JVJi6t9BiARc
+id: p_fblikebox
+label: 'P Facebook like box'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

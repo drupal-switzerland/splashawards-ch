@@ -1,0 +1,168 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * office detail full: has its own view-mode of the news CT, with a DS template
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// ** sidebar
+.layout__sidebar--node--office--office-promoted--left {
+  padding-bottom: rem($gap-vert-bottom-xs);
+}
+
+// ** main content
+.layout__content--node--office--office-promoted,
+.layout__content--node--office--office-promoted--right {
+  // padding-bottom: rem($gap-vert-bottom-xs);
+}
+
+// ** groups
+.node__header__info--office--office-promoted,
+.node__header__contact--office--office-promoted {
+  margin-bottom: rem($gap-vert);
+}
+
+// -- address
+.node__header__info--office--office-promoted {
+  //
+}
+
+// -- office hours
+.node__header__hours--office--office-promoted {
+  //
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // *
+  // =============================================================================
+
+  // ** sidebar
+
+  .layout__sidebar--node--office--office-promoted--left {
+    @include flex-col(4);
+    // padding-bottom: rem($gap-vert-bottom-sm); // space like paragraphs
+    padding-bottom: 0;
+  }
+
+  // ** main content
+
+  .layout__content--node--office--office-promoted,
+  .layout__content--node--office--office-promoted--right {
+    @include flex-col(8);
+    padding-left: rem($grid-gap-hor); // extra space next to picture
+    // padding-bottom: rem($gap-vert-bottom-sm); // space like paragraphs
+    padding-bottom: 0;
+
+    // columns for nested groups
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start; // don't stretch heights
+  }
+
+  // ** groups
+
+  // -- text
+
+  .node__header__info--office--office-promoted {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  // -- address
+
+  .node__header__contact--office--office-promoted {
+    flex: 0 0 50%;
+    width: 50%;
+    padding-right: rem($grid-gap-hor / 2);
+    margin-bottom: 0;
+  }
+
+  // -- office hours
+
+  .node__header__hours--office--office-promoted {
+    flex: 0 0 50%;
+    width: 50%;
+    padding-left: rem($grid-gap-hor / 2);
+    margin-bottom: 0;
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // *
+  // =============================================================================
+
+  // ** sidebar
+
+  .layout__sidebar--node--office--office-promoted--left {
+    @include flex-col(4);
+    // padding-bottom: rem($gap-vert-bottom-md); // space like paragraphs
+  }
+
+  // ** main content
+
+  .layout__content--node--office--office-promoted,
+  .layout__content--node--office--office-promoted--right {
+    @include flex-col(8);
+    padding-left: rem($grid-gap-hor * 2); // extra space next to picture
+    // padding-bottom: rem($gap-vert-bottom-md); // space like paragraphs
+  }
+
+  // ** groups
+
+  // -- text
+
+  .node__header__info--office--office-promoted {
+    margin-bottom: rem($gap-vert-lg);
+  }
+
+  // -- address
+
+  .node__header__contact--office--office-promoted {
+    //
+  }
+
+  // -- office hours
+
+  .node__header__hours--office--office-promoted {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  // *
+  // =============================================================================
+
+  // ** sidebar
+
+  .layout__sidebar--node--office--office-promoted--left {
+    // padding-bottom: rem($gap-vert-bottom-lg); // space like paragraphs
+  }
+
+  // ** main content
+
+  .layout__content--node--office--office-promoted,
+  .layout__content--node--office--office-promoted--right {
+    padding-left: rem($grid-gap-hor * 3); // extra space next to picture
+    // padding-bottom: rem($gap-vert-bottom-lg); // space like paragraphs
+  }
+
+}

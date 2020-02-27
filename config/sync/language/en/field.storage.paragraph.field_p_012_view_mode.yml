@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: '2 - Big'
+    -
+      label: '4 - Mixed'
+    -
+      label: '5 - Mixed'
+    -
+      label: 'Default - Small'
+    -
+      label: 'Default - Large'

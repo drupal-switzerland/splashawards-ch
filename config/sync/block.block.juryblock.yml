@@ -1,0 +1,31 @@
+uuid: 23337a13-2129-47ae-b9e0-560be72a922f
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:content:21c64f60-b724-4f65-8a10-dedb7d325ff2'
+  module:
+    - block_content
+    - system
+  theme:
+    - dropsolid_flex
+id: juryblock
+theme: dropsolid_flex
+region: hidden
+weight: -9
+provider: null
+plugin: 'block_content:21c64f60-b724-4f65-8a10-dedb7d325ff2'
+settings:
+  id: 'block_content:21c64f60-b724-4f65-8a10-dedb7d325ff2'
+  label: juryblock
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /jury
+    negate: false
+    context_mapping: {  }

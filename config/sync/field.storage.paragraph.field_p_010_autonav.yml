@@ -1,0 +1,20 @@
+uuid: 061b11fd-6747-4ebf-9bee-395dac545103
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: Dw-d2zId5oHT9MNiZsTfuKydXmawmcUo-R34txTXfWM
+id: paragraph.field_p_010_autonav
+field_name: field_p_010_autonav
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

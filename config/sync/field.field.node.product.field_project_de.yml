@@ -1,0 +1,19 @@
+uuid: 6757e4aa-a20d-4bc9-a079-37601d3679d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_de
+    - node.type.product
+id: node.product.field_project_de
+field_name: field_project_de
+entity_type: node
+bundle: product
+label: 'Case description'
+description: 'A more detailed and in-depth explanation of your project.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

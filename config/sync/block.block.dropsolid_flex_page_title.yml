@@ -1,0 +1,32 @@
+uuid: a3193cfa-a492-48a2-b6f7-490688aeaf9e
+langcode: de
+status: true
+dependencies:
+  module:
+    - ctools
+  theme:
+    - dropsolid_flex
+_core:
+  default_config_hash: NN8bjMS8NYLs60XjoIE72dDttKd3zAe7kCKPHmnbmZE
+id: dropsolid_flex_page_title
+theme: dropsolid_flex
+region: content
+weight: -10
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      blog: blog
+      product: product
+      page: page
+      news: news
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'

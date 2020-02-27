@@ -1,0 +1,131 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Panels
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * layout
+// =============================================================================
+
+.panel-layout__top,
+.panel-layout__header,
+.panel-layout__visual,
+.panel-layout__bottom,
+.panel-layout__footer {
+  clear: both;
+  @include clearfix;
+}
+
+.panel-layout__content {
+  @include clearfix;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** 2 columns
+
+  .panel-layout__cols {
+    @include flex-grid;
+  }
+
+  // content as column
+  .panel-layout__content--left,
+  .panel-layout__content--right {
+    @include flex-col(6);
+  }
+
+  // sidebar as column
+  .panel-layout__sidebar--left,
+  .panel-layout__sidebar--right {
+    @include flex-col(6);
+  }
+
+
+  // **  3 columns
+
+  .panel-layout__cols--sidebars {
+
+    // content as column, with 2 sidebars
+    .panel-layout__content--center {
+      @include flex-col(6);
+    }
+
+    // the 2 sidebars
+    .panel-layout__sidebar--left,
+    .panel-layout__sidebar--right {
+      @include flex-col(6);
+    }
+
+    // to make sure second sidebar is on the right
+    .panel-layout__sidebar--right {
+      order: 2;
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  // ** 2 columns
+
+  // content as column
+  .panel-layout__content--left,
+  .panel-layout__content--right {
+    @include flex-col(8);
+  }
+
+  // sidebar as column
+  .panel-layout__sidebar--left,
+  .panel-layout__sidebar--right {
+    @include flex-col(4);
+  }
+
+  // ** 3 columns
+
+  .panel-layout__cols--sidebars {
+
+    // content as column
+    .panel-layout__content--left,
+    .panel-layout__content--right {
+      @include flex-col(4);
+    }
+
+    // sidebar as column
+    .panel-layout__sidebar--left,
+    .panel-layout__sidebar--right {
+      @include flex-col(4);
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+  // ** 2 columns
+
+  // content as column
+  .panel-layout__content--left,
+  .panel-layout__content--right {
+    @include flex-col(9);
+  }
+
+  // sidebar as column
+  .panel-layout__sidebar--left,
+  .panel-layout__sidebar--right {
+    @include flex-col(3);
+  }
+}

@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Image left'
+    -
+      label: 'Image right'

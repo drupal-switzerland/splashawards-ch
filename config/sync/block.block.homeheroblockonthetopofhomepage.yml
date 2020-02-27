@@ -1,0 +1,25 @@
+uuid: 4652bf96-a17f-46e7-8bd5-6819e67c6b74
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:hero_block:1291c62b-191d-4611-b9fc-17da67af8f83'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: homeheroblockonthetopofhomepage
+theme: dropsolid_flex
+region: hidden
+weight: -4
+provider: null
+plugin: 'block_content:1291c62b-191d-4611-b9fc-17da67af8f83'
+settings:
+  id: 'block_content:1291c62b-191d-4611-b9fc-17da67af8f83'
+  label: 'Home: Hero block on the top of homepage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

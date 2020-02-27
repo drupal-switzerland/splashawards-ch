@@ -1,0 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * General Variables
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// ** Icons
+// =============================================================================
+
+// if we use our own icons instead of FontAwesome
+// See the README in the theme's 'icons' folder for more info on how to do this
+$custom-icons: false !default;
+
+// Use the custom icons as a font or sprite
+$iconsType: 'sprite' !default; // sprite or font
+
+// Only use the most basic styling,
+// So if skip typography and certain mixins (eg. buttons, fontawesome, …)
+// Useful when trying to generate structural CSS, eg. for use in the Paragraphs module
+// TO DO: actually implement this everywhere (not just in the paragraphs styling)
+$structuralOnly: false !default;

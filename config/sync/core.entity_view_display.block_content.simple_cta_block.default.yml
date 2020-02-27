@@ -1,0 +1,38 @@
+uuid: 2b8bcc41-0f48-4004-a9cd-6bd8e67a32dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_cta_block
+    - field.field.block_content.simple_cta_block.field_button
+    - field.field.block_content.simple_cta_block.field_title
+  module:
+    - link
+    - rocketship_core
+id: block_content.simple_cta_block.default
+targetEntityType: block_content
+bundle: simple_cta_block
+mode: default
+content:
+  field_button:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      header: h2
+    third_party_settings: {  }
+    type: header_text_field_formatter
+    region: content
+hidden:
+  langcode: true

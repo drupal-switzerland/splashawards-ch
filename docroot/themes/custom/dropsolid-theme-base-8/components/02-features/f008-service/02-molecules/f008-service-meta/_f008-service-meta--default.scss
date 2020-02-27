@@ -1,0 +1,51 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Service meta
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__meta--service {
+
+  // ** lists of links
+
+  .field__items {
+    display: flex;
+    padding: 0;
+    margin: rem(-10) rem(-5) 0 rem(-5);
+
+    .field__item {
+      display: inline-block;
+      margin: rem(10) rem(5) 0 rem(5);
+    }
+
+    a {
+      display: inline-block;
+      @include text-nobreak;
+    }
+
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node__meta--service {
+
+    // -- inline the text with flexbox
+
+    display: flex;
+    flex-wrap: wrap;
+    // align-items: flex-end;
+
+    // -- Example:
+    //    if you want equal space between the 2 or more fields:
+    // justify-content: space-between;
+
+  }
+
+}
+

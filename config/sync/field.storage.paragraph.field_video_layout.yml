@@ -1,0 +1,29 @@
+uuid: 9c35bffa-7028-4c91-b6ea-75bfc81c0e9f
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: _9FctJ8huwXLq36DObid6dZ2Z6K4jh_xKMxpei8xe98
+id: paragraph.field_video_layout
+field_name: field_video_layout
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: video_normal
+      label: 'normal video'
+    -
+      value: video_stretched
+      label: 'stretched video'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

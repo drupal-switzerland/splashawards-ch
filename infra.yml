@@ -1,0 +1,10 @@
+mkdir:
+  - private/files
+rsync:
+  - docroot
+  - vendor
+  - config
+  - bash
+rsync_exclude:
+  - sites/*/files
+  - settings.php

@@ -1,0 +1,8 @@
+uuid: ce2a4a25-4877-49be-9454-69ac00760522
+langcode: de
+status: true
+dependencies: {  }
+id: 10_april_2019
+label: '10. April 2019'
+locked: false
+pattern: 'j. F Y'

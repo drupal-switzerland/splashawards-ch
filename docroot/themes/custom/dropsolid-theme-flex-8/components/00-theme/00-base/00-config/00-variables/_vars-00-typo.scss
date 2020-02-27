@@ -1,0 +1,56 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Variables: typography
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// ** Fonts
+// =============================================================================
+
+// if fonts take too long to load,
+// and the user sees unstyled text
+// we can set a preloader
+$font-preloader: false;
+
+// make sure this font matches with the font set in html.twig!!!
+$font-base: 'Barlow', 'Arial', sans-serif !default;
+$font-heading: 'Barlow Semi Condensed', 'Arial' !default;
+$font-size-base: 18 !default;
+$font-size-sm: 14 !default;
+$font-size-xs: 12 !default;
+$line-height-base: 32 !default;
+$line-height-sm: 24 !default;
+$line-height-xs: 18 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+
+// base html font size, used for calculating px to rem
+// if you want px and rem to be the same value,
+// set this to 10 instead
+$rem-base: 16;
+
+
+// * Headings
+// =============================================================================
+// -- Set your h1, h2, ... size (don't use px!) and color
+
+$h1-size: 80;
+$h1-line: 96;
+$h1-color: $color-heading;
+
+$h2-size: 48;
+$h2-line: 64;
+$h2-color: $color-heading;
+
+$h3-size: 32;
+$h3-line: 40;
+$h3-color: $color-heading;
+
+$h4-size: 24;
+$h4-line: 32;
+$h4-color: $color-heading;
+
+p {
+  font-weight: $font-weight-normal;
+}

@@ -1,0 +1,38 @@
+uuid: be4513fe-6d45-42bd-babf-8ae01d7a6d90
+langcode: de
+status: true
+dependencies:
+  config:
+    - image.style.image_style_scale_width_lg
+    - image.style.image_style_scale_width_md
+    - image.style.image_style_scale_width_sm
+    - image.style.image_style_scale_width_xs_wide
+  module:
+    - rocketship_core
+_core:
+  default_config_hash: ZvM63uu0gERH_USyNametLXPC1vUmv_FWGDZ_xvebpk
+id: paragraph_p002_image_full
+label: 'Paragraph p002 (image full width)'
+image_style_mappings:
+  -
+    breakpoint_id: rocketship_core.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_scale_width_lg
+  -
+    breakpoint_id: rocketship_core.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_scale_width_md
+  -
+    breakpoint_id: rocketship_core.xs-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_scale_width_sm
+  -
+    breakpoint_id: rocketship_core.all
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_scale_width_xs_wide
+breakpoint_group: rocketship_core
+fallback_image_style: image_style_scale_width_lg

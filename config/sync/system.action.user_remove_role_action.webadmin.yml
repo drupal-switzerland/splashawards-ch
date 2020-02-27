@@ -1,0 +1,14 @@
+uuid: e14fc60a-f2d4-4f32-8734-ea65bed3ba32
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.webadmin
+  module:
+    - user
+id: user_remove_role_action.webadmin
+label: 'Remove the Website administrator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: webadmin

@@ -1,0 +1,4 @@
+settings:
+  plugins:
+    stylescombo:
+      styles: "a.button|button primary\r\na.button.button--secondary|button secondary\r\ntable.is-reformatted|Table: responsive headings\r\ntable.no-margin|Table: no margin\r\np.intro|Intro text\r\np.no-margin|Paragraph: no margin\r\nspan.highlight|Highlight"

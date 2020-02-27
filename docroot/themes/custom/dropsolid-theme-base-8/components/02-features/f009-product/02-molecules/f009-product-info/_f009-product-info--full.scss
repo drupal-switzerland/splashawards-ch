@@ -1,0 +1,43 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Product: info fields
+// *
+// * Categories, properties and attributes
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__info--product-full {
+
+  margin-top: rem($gap-vert);
+  margin-bottom: rem($gap-vert);
+
+  // ** Properties & categories: Facet filters
+
+  .field--type-entity-reference {
+
+    // label
+    h3,
+    h4 {
+      min-width: 33%;
+    }
+
+    // value
+    a {
+      //
+    }
+  }
+
+  // ** Product attributes
+
+  // label
+
+  .label-value-item-label {
+    min-width: 33%; // force a min-width on table cell
+  }
+
+  // value
+  .label-value-item-value {
+    //
+  }
+
+}

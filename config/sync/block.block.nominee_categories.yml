@@ -1,0 +1,31 @@
+uuid: 336dfe40-3daf-4448-96de-12732f5843e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.product_categories
+  module:
+    - ctools
+    - facets
+  theme:
+    - dropsolid_flex
+id: nominee_categories
+theme: dropsolid_flex
+region: hidden
+weight: -7
+provider: null
+plugin: 'facet_block:product_categories'
+settings:
+  id: 'facet_block:product_categories'
+  label: 'Nominee Categories'
+  provider: facets
+  label_display: '0'
+  block_id: nominee_categories
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      product: product
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

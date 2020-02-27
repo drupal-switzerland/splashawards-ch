@@ -1,0 +1,23 @@
+uuid: 3e706785-a48b-4a3a-96d2-2c1d98ced994
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.html_snippet_block
+    - field.field.block_content.html_snippet_block.body
+  module:
+    - text
+id: block_content.html_snippet_block.default
+targetEntityType: block_content
+bundle: html_snippet_block
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

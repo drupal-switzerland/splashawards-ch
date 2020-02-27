@@ -1,0 +1,6 @@
+roleassign_roles:
+  webadmin: webadmin
+  administrator: '0'
+_core:
+  default_config_hash: FxuQ-xPVPvnogQBY0MJq8rQbkwZjRbNpjGtZ1D4IlhY
+langcode: de

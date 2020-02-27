@@ -1,0 +1,25 @@
+uuid: 345f02df-e37e-4362-b033-e4e7be508660
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:simple_cta_block:8f3f51f6-f097-4396-8fdf-1d02ab9c97be'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: hometickets
+theme: dropsolid_flex
+region: hidden
+weight: -2
+provider: null
+plugin: 'block_content:8f3f51f6-f097-4396-8fdf-1d02ab9c97be'
+settings:
+  id: 'block_content:8f3f51f6-f097-4396-8fdf-1d02ab9c97be'
+  label: 'Home: Tickets'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

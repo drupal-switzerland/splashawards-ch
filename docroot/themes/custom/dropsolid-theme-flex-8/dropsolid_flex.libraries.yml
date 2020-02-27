@@ -1,0 +1,174 @@
+# Normalize library is included by classy but we replace it with our own in parent theme
+# Modernizr is included but only when logged in, so we add our own in parent theme
+# etc...
+global:
+  css:
+    theme:
+      css/style.css: {}
+      css/style.print.css: {}
+  js:
+    js/min/scripts.min.js: {}
+  dependencies:
+  - core/jquery
+  - core/drupal
+  - core/drupalSettings
+  - core/jquery.once
+  - core/modernizr
+
+# Component libraries
+component_status:
+  js:
+    js/min/status.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+component_sticky_header:
+  js:
+    js/min/site-header-sticky.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+component_search:
+  js:
+    js/min/search-block.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+component_menu:
+  js:
+    js/min/menu--mobile.min.js: {}
+    js/min/menu--dropdown.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+component_language:
+  js:
+    js/min/links--language.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+component_forms:
+  js:
+    js/min/forms.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+component_tables:
+  js:
+    js/min/tables.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+component_countdown:
+  js:
+    js/libs/moment.js: {}
+    js/libs/moment-timezone-with-data-10-year-range.js: {}
+    js/min/countdown.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+# Admin overrides
+admin_overrides:
+  css:
+    base:
+      css/style.admin.css: {}
+
+# paragraphs
+rocketship_paragraphs:
+  css:
+    theme:
+      css/style.paragraphs.css: {}
+      css/style.paragraphs.print.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+# features
+feature_blog:
+  css:
+    theme:
+      css/style.blog.css: {}
+      css/style.blog.print.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+feature_news:
+  css:
+    theme:
+      css/style.news.css: {}
+      css/style.news.print.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+feature_office:
+  css:
+    theme:
+      css/style.office.css: {}
+      css/style.office.print.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+feature_service:
+  css:
+    theme:
+      css/style.service.css: {}
+      css/style.service.print.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+feature_product:
+  css:
+    theme:
+      css/style.product.css: {}
+      css/style.product.print.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+feature_job:
+  css:
+    theme:
+      css/style.job.css: {}
+      css/style.job.print.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+
+feature_event:
+  css:
+    theme:
+      css/style.event.css: {}
+      css/style.event.print.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once

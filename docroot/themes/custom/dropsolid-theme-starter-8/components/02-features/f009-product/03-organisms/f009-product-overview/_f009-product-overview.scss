@@ -1,0 +1,108 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Products main overview
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+// ** Products Complex
+//    we get a column for the filters
+
+.product__overview--advanced {
+
+  // -- overview sidebar column
+  .layout__sidebar--paragraph--overview--default--left {
+    //
+  }
+
+  // -- overview content column
+  .layout__content--paragraph--overview--default--right {
+    //
+  }
+}
+
+// ** The block with the view itself
+
+.view--display-product-overview-block {
+
+  // ** product count
+
+  .view__header {
+    //
+  }
+
+  // ** grid
+
+  .view__content {
+    //
+  }
+
+  .product--teaser {
+    overflow: hidden; // fix for margins not collapsing with view__header
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** Products Complex
+  //    we get a column for the filters
+
+  .product__overview--advanced {
+
+    // -- overview sidebar column
+    .layout__sidebar--paragraph--overview--default--left {
+      //
+    }
+
+    // -- overview content column
+    .layout__content--paragraph--overview--default--right {
+      //
+    }
+  }
+
+  // ** The block with the view itself
+
+  .view--display-product-overview-block {
+
+    // ** make a grid
+
+    .view__content {
+      //
+    }
+
+    // normal overview is in 2 cols
+    .product--teaser {
+      //
+    }
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  //
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large screen
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  //
+
+}

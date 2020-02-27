@@ -1,0 +1,39 @@
+################################################################################
+# Panels
+################################################################################
+
+# !WARNING! make sure your machine name is the same as the template file name
+#           otherwise theme suggestions break and Drupal might not find your template
+#
+dropsolid_theme_panel_homepage:
+  label: Starter frontpage
+  category: Dropsolid Starter layouts - Panels
+  type: page
+  template: components/00-theme/05-layouts/panels/dropsolid-theme-panel-homepage
+  regions:
+    header:
+      label: Header
+    top:
+      label: Top
+    visual:
+      label: Visual
+    usp:
+      label: USP
+    about:
+      label: About
+    companies:
+      label: Companies
+    blog:
+      label: Blog
+    events:
+      label: Events
+    first:
+      label: Sidebar Left
+    content:
+      label: Content
+    second:
+      label: Sidebar Right
+    bottom:
+      label: Bottom
+    footer:
+      label: Footer

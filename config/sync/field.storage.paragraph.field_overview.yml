@@ -1,0 +1,21 @@
+uuid: 5f4b35b3-e6d5-4e87-8408-ee5c9145413f
+langcode: de
+status: true
+dependencies:
+  module:
+    - overview_field
+    - paragraphs
+_core:
+  default_config_hash: 3coPdX2e7XpGHbe_LMtoE6442AuxE6mkjOxVcfRbJFg
+id: paragraph.field_overview
+field_name: field_overview
+entity_type: paragraph
+type: overview_field
+settings: {  }
+module: overview_field
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

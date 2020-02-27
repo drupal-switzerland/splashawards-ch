@@ -1,0 +1,271 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Mixins: Typography
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Overview
+// =============================================================================
+
+// ** font-face
+// ** font-size
+// ** font-awesome
+// ** hide-text
+// ** hide-icontext
+// ** text-nobreak
+// ** ellipsis
+// ** word-break
+// ** m-p-reset
+
+
+// * Mixins
+// =============================================================================
+
+// ** enable font-smoothing can be helpful on older screens,
+//    for fonts that do not have subpixel rendering
+//    or it could not? Who the hell knows…
+
+@mixin font-smoothing($value: off) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+
+// ** use font-face to generate all the different url's for the various font files
+// -- USAGE: @include font-face(FontAwesome, '../fonts/fontAwesome/fontawesome-light', 300);
+
+/* stylelint-disable */
+@mixin font-face(
+  $font-family,
+  $file-path,
+  $font-weight: normal
+) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    src: _font-source-declaration(
+        $font-family,
+        $file-path
+    );
+    @content;
+  }
+}
+/* stylelint-enable */
+
+
+// ** Font-size mixin: easily set font-size and line-height of an element
+// -- NOTE: default font-size is 13, default line-height is 18
+// -- USAGE: @include font-size(15, 18) (don't use px!) -> sets font-size to 15 and line-height to a ratio of 18/15 = 1.1385
+
+@mixin font-size($size:13, $line: $size * (18/13) ) {
+  font-size: rem($size);
+  line-height: rem($line);
+}
+
+
+// *
+// * Font-awesome mixin: add a font-awesome icon before or after an element
+//
+// * NOTE: before is default, margin is default 0.
+//
+// * Settings via an object, containing:
+// * $position:before,
+// * $left,
+// * $top,
+// * $type:'regular',
+// * $icon: eg. a fontawesome variable,
+// * $color,
+// * $size,
+// * $align:middle,
+// * $margin...
+//
+// * USAGE:
+// * $hamburgerIcon: (icon: $fa-var-hamburger, color: $color-white, size: 21px);
+// * @include font-awesome($hamburgerIcon);
+
+@mixin font-awesome($settings) {
+
+  // set variables
+  $element: map-get($settings, element);
+  $position: map-get($settings, position);
+  $left: map-get($settings, left);
+  $right: map-get($settings, right);
+  $top: map-get($settings, top);
+  $bottom: map-get($settings, bottom);
+
+  @if ($element == 'after' or $element == ':after' or $element == '::after') {
+    &:after {
+      @if($position != null) {
+        position: $position;
+      }
+      @if($left != null) {
+        left: $left;
+      }
+      @else if($left == null and $right != null) {
+        right: $right;
+      }
+      @if($top != null) {
+        top: $top;
+      }
+      @else if($top == null and $bottom != null) {
+        bottom: $bottom;
+      }
+      @include font-awesome-pseudo($settings);
+    }
+  } @else {
+    &:before {
+      @if($position != null) {
+        position: $position;
+      }
+      @if($left != null) {
+        left: $left;
+      }
+      @else if($left == null and $right != null) {
+        right: $right;
+      }
+      @if($top != null) {
+        top: $top;
+      }
+      @else if($top == null and $bottom != null) {
+        bottom: $bottom;
+      }
+      @include font-awesome-pseudo($settings);
+    }
+  }
+}
+
+@mixin font-awesome-pseudo($settings) {
+
+  // set variables
+  $type: map-get($settings, type);
+  $icon: map-get($settings, icon);
+  $color: map-get($settings, color);
+  $size: map-get($settings, size);
+  $align: map-get($settings, align);
+  $margin: map-get($settings, margin);
+
+  // fontawesome defaults:
+  //
+  // $fa-font-size-base:           16px !default;
+  // $fa-css-prefix:               fa !default;
+  // $fa-border-color:             #eee !default;
+  // $fa-inverse:                  #fff !default;
+  // $fa-li-width:                 2em !default;
+
+  content: unquote('\'#{ $icon }\'');
+  color: $color;
+  $newMargin: if(length($margin) == 0, 0px, $margin);
+  margin: $newMargin;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-rendering: auto;
+  @if ($align == null) {
+    // vertical-align: -.125em;
+    vertical-align: middle;
+  } @else {
+    vertical-align: $align;
+  }
+
+  // set default size
+  @if ($size == 16px or $size == 16 or $size == null) {
+    $size: $fa-font-size-base;
+  }
+
+  font-size: rem($size);
+
+  // set font style/weight
+  @if ($type == 'brand') {
+    font-family: 'Font Awesome 5 Brands';
+  } @elseif ($type == 'regular') {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 400;
+  } @elseif ($type == 'light') {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 300;
+  } @else {
+    // solid
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 900;
+  }
+}
+
+// ** Hide an element's content
+
+@mixin hide-text {
+  text-indent: 110%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// ** hide text of an element with a font-awesome icon without hiding icon itself
+
+@mixin hide-icontext() {
+  text-indent: 110%;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:before {
+    text-indent: -110%; // compensate for text-indent
+  }
+}
+
+// ** Don't break up text
+
+@mixin text-nobreak {
+  white-space: nowrap;
+  -ms-word-break: keep-all;
+  word-break: keep-all;
+}
+
+// ** end text if no space
+
+@mixin ellipsis($width: 100%) {
+  display: inline-block;
+  max-width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+// ** Break long strings (eg. emailaddresses)
+
+@mixin word-break($hyphen:false) {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  @if ($hyphen) {
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+}
+
+// ** remove all padding and margin on element
+
+@mixin m-p-reset {
+  margin: 0;
+  padding: 0;
+}

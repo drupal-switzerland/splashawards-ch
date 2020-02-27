@@ -1,0 +1,23 @@
+uuid: bb2c05a8-bcc9-4f1e-9772-55bd73b75019
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_nominee
+    - node.type.product
+id: node.product.field_nominee
+field_name: field_nominee
+entity_type: node
+bundle: product
+label: Nominee
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Nominee
+  off_label: 'No'
+field_type: boolean

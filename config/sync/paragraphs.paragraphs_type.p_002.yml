@@ -1,0 +1,11 @@
+uuid: 998531c4-8f54-4bdb-8341-6b897763d06d
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: wqlfTs4tYEccmMNB0tv6kTA44Gro5yLhKH67oKdBA_8
+id: p_002
+label: 'P002 Image'
+icon_uuid: null
+description: 'Add a large image'
+behavior_plugins: {  }

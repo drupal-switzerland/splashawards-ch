@@ -1,0 +1,25 @@
+uuid: 13c9cefa-7f66-4c42-a5e0-b279ae0f97c9
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:content:c76a2eb1-477c-42fc-9386-f434f30173d9'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: othereditions
+theme: dropsolid_flex
+region: hidden
+weight: -8
+provider: null
+plugin: 'block_content:c76a2eb1-477c-42fc-9386-f434f30173d9'
+settings:
+  id: 'block_content:c76a2eb1-477c-42fc-9386-f434f30173d9'
+  label: 'Other editions'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

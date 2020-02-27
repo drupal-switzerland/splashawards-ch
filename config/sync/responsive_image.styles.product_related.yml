@@ -1,0 +1,20 @@
+uuid: e281acc3-941f-47c1-9afd-a8c0e47aeaf4
+langcode: de
+status: true
+dependencies:
+  config:
+    - image.style.image_style_3_2_landscape_xs
+  module:
+    - rocketship_core
+_core:
+  default_config_hash: HpgxamytSueR9tiZh3Dr3ynFqOW08AZwgiJfxM437vY
+id: product_related
+label: 'Product Related'
+image_style_mappings:
+  -
+    breakpoint_id: rocketship_core.all
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_3_2_landscape_xs
+breakpoint_group: rocketship_core
+fallback_image_style: image_style_3_2_landscape_xs

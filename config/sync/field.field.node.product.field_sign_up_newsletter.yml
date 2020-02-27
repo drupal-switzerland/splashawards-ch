@@ -1,0 +1,23 @@
+uuid: 05880488-7c17-480f-a98b-3569c4d074a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sign_up_newsletter
+    - node.type.product
+id: node.product.field_sign_up_newsletter
+field_name: field_sign_up_newsletter
+entity_type: node
+bundle: product
+label: 'Yes, sign me up for the Splash Awards newsletter'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

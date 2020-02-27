@@ -1,0 +1,12 @@
+uuid: 11ea9cad-417d-4d7a-bc0b-676e877d6188
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ChulRTTaJdtG936ZWSZU3i98Gp4z4yy-89qRlaMqcLU
+id: dropsolid_cookie_policy
+label: 'Dropsolid Cookie Policy'
+description: 'Contains Cookie Policy page'
+source_type: ''
+module: null
+shared_configuration: null

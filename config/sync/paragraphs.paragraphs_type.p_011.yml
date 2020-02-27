@@ -1,0 +1,11 @@
+uuid: 9b16920e-1fdf-45fa-a95e-9bbb540c7353
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 7qTGHCnS-MBpiP8mL44UzziNUxYC-ESWSogU_Oe-egU
+id: p_011
+label: 'P011 Form'
+icon_uuid: null
+description: 'embed a webform'
+behavior_plugins: {  }

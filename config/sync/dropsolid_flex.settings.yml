@@ -1,0 +1,11 @@
+header_fixed: false
+language_dropdown: true
+form_optional: true
+_core:
+  default_config_hash: pg5DCVOky2u0WjO4NEvxepK_W8_ShKwR7uwiA_ZJ0_Y
+logo:
+  use_default: false
+  path: 'public://Splash-Awards-DE-AT-Logo_0.png'
+favicon:
+  use_default: true
+langcode: de

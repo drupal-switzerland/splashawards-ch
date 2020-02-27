@@ -1,0 +1,32 @@
+uuid: 80c5104b-cc27-42a7-89a3-b44f17dcdb45
+langcode: de
+status: true
+dependencies:
+  config:
+    - image.style.image_style_3_2_landscape_md
+    - image.style.image_style_3_2_landscape_sm
+    - image.style.image_style_3_2_landscape_xs_wide
+  module:
+    - rocketship_core
+_core:
+  default_config_hash: a31xEmOEz3oK_hHxcRLuU-yBELY-3azBUQ_YYBINBNo
+id: blog_teaser
+label: 'Blog Teaser'
+image_style_mappings:
+  -
+    breakpoint_id: rocketship_core.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_3_2_landscape_md
+  -
+    breakpoint_id: rocketship_core.xs-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_3_2_landscape_sm
+  -
+    breakpoint_id: rocketship_core.all
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_3_2_landscape_xs_wide
+breakpoint_group: rocketship_core
+fallback_image_style: image_style_3_2_landscape_md

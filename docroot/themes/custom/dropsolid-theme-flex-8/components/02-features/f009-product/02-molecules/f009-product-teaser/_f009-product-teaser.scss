@@ -1,0 +1,244 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog teasers
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.product--teaser {
+  // background-color: $color-product-teaser-bg;
+
+  // ** visual
+
+  .layout__sidebar {
+    margin-bottom: rem($gap-vert-sm);
+  }
+
+  .field__item--type-image {
+    margin-bottom: rem($gap-vert-sm);
+  }
+
+  // ** Certificate labels (these are checkbox fields)
+
+  .group--certificates {
+    position: relative;
+
+    .field--name-field-winner {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      left: -10px;
+      top: -15px;
+      width: rem(150);
+      height: rem(120);
+      overflow: hidden;
+      @include sprite('winner-dark-blue');
+
+      &:before {
+        //
+      }
+
+      // if has winner and nominee checked,
+      // hide the 'nominee' cert
+      & + .field--name-field-nominee {
+        display: none;
+      }
+    }
+
+    .field--name-field-nominee {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      left: -15px;
+      top: -15px;
+      width: rem(150);
+      height: rem(120);
+      overflow: hidden;
+      @include sprite('nominee-bright-blue');
+
+      &:before {
+        //
+      }
+    }
+
+    .field--name-field-runnerup {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      left: -10px;
+      top: -15px;
+      width: rem(150);
+      height: rem(120);
+      overflow: hidden;
+      @include sprite('runnerup-peach');
+
+      &:before {
+        //
+      }
+    }
+
+    .field--name-field-winneroftheyear {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      left: -10px;
+      top: -15px;
+      width: rem(150);
+      height: rem(120);
+      overflow: hidden;
+      @include sprite('winneroftheyear-bright-blue');
+
+      &:before {
+        //
+      }
+    }
+  }
+
+
+  // ** content
+
+  .layout__content {
+    //width: 80%;
+    //height: 100%;
+    //background-color: white;
+    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    //margin-bottom: 25px;
+    //padding: rem(10) rem(20);
+    //border: 2px solid $color-spot-1;
+    //border-radius: rem(5);
+
+    // padding: 0 rem($padding-product-teaser) rem($padding-product-teaser) rem($padding-product-teaser);
+  }
+
+  .layout__content--node--product--teaser {
+    margin-bottom: rem(20);
+  }
+
+  // ** title
+
+  h2,
+  h3,
+  h4 {
+    @extend .h3;
+  }
+
+  // ** read more
+
+  .field--name-node-link {
+    margin-top: rem($gap-vert-sm);
+    a {
+      @include link-more;
+    }
+  }
+
+}
+
+// ** Group facet filters & product attributes
+//      see 'f009-product-attributes' Sass files for the styling
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-wide-only {
+
+  // normal overview is visual + content in 2 cols
+
+  .product--teaser {
+
+    .field__item--type-image {
+      margin-bottom: rem($gap-vert-sm);
+    }
+
+    display: flex; // makes the content height stretch
+    flex-direction: column;
+
+    .layout__content {
+      // needed to manipulate content with flex
+      display: flex;
+      flex-direction: column;
+    }
+
+    // push the actions to the end
+    .node__actions {
+      display: flex;
+      flex-grow: 1;
+      align-items: flex-end;
+    }
+
+    // * * * * * * * * * * * * * * * * * * * *
+    // ** Example of img left + content right
+
+    // .layout__sidebar {
+    //   @include flex-col(6);
+    // }
+
+    // .layout__content {
+    //   @include flex-col(6);
+    //   padding: rem($padding-product-teaser) rem($padding-product-teaser) rem($padding-product-teaser) rem(abs($padding-product-teaser - $grid-gap-hor));
+    // }
+    // * * * * * * * * * * * * * * * * * * * *
+
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** the normal teaser
+
+  .product--teaser {
+
+    display: flex; // makes the content height stretch
+    flex-direction: column;
+
+    .layout__content {
+      // needed to manipulate content with flex
+      display: flex;
+      flex-direction: column;
+    }
+
+    // push the actions to the end
+    .node__actions {
+      display: flex;
+      flex-grow: 1;
+      align-items: flex-end;
+    }
+
+    // * * * * * * * * * * * * * * * * * * * *
+    // ** Example of img left + content right
+
+    // .layout__sidebar {
+    //   @include flex-col(6);
+    // }
+
+    // .layout__content {
+    //   @include flex-col(6);
+    //   padding: rem($padding-product-teaser) rem($padding-product-teaser) rem($padding-product-teaser) rem(abs($padding-product-teaser - $grid-gap-hor));
+    // }
+    // * * * * * * * * * * * * * * * * * * * *
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .product--teaser {
+    //
+  }
+
+}

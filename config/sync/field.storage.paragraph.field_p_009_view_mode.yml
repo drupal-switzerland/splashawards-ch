@@ -1,0 +1,29 @@
+uuid: adf4dfe9-63c6-42a8-b009-9cc6550568bb
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: _6ZpUA1M2oCqko_iqI_se4QZ5hWpkhuX3CzClx32gVI
+id: paragraph.field_p_009_view_mode
+field_name: field_p_009_view_mode
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: p_009_grid
+      label: Grid
+    -
+      value: p_009_masonry
+      label: Masonry
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

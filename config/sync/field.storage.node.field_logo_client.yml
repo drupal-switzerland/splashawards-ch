@@ -1,0 +1,34 @@
+uuid: 43e5ce1d-28d5-4be4-a189-5cdc0a2786fc
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - file
+    - image
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_logo_client
+field_name: field_logo_client
+entity_type: node
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

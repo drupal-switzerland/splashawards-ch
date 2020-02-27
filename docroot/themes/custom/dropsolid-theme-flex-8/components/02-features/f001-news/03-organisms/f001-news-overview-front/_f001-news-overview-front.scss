@@ -1,0 +1,35 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog frontpage overview
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+.overview--news_overview_front {
+  .field--name-field-p-title {
+    text-align: center;
+  }
+}
+
+@include bp-sm {
+
+  body .view--display-news-overview-front {
+
+    // ** make a grid
+
+    .view__content {
+      @include flex-grid();
+    }
+    .news--front-teaser,
+    .news--teaser {
+      @include flex-col(4);
+    }
+  }
+
+}
+

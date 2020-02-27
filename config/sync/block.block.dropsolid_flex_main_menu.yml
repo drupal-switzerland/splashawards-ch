@@ -1,0 +1,27 @@
+uuid: f35ab91b-2405-4811-b118-6a83fe713090
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - dropsolid_flex
+_core:
+  default_config_hash: hzHUXfUQxmDRf6iYFbT0yB6G-H31Pch1rXa4z4TDhsU
+id: dropsolid_flex_main_menu
+theme: dropsolid_flex
+region: nav_primary
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

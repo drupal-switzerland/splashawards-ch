@@ -1,0 +1,31 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Product: info fields
+// *
+// * Categories, properties and attributes
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+.node__info--product-related {
+  //
+
+  // ** Properties & categories: Facet filters
+
+  .field--type-entity-reference {
+    //
+
+    h3,
+    h4 {
+      //
+    }
+  }
+
+  // ** Product attributes
+
+  .field__item--name-field-product-attributes,
+  .label-value-item-label {
+    //
+  }
+
+}

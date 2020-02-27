@@ -1,0 +1,54 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Page header node
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+// -- If you are looking for the header paragraphs, go to:
+//    components/01-paragraphs/03-organisms
+
+
+// * Header is a node, with its own view-mode
+// =============================================================================
+
+.node--view-mode-header {
+  position: relative;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node--view-mode-header {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .node--view-mode-header {
+    //
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+
+  .node--view-mode-header {
+    //
+  }
+
+}

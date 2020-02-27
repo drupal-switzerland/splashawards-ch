@@ -1,0 +1,19 @@
+uuid: def83154-ff48-4c46-92ee-009e5c56a68b
+langcode: de
+status: true
+dependencies:
+  module:
+    - focal_point
+_core:
+  default_config_hash: mKjsHuBDXsjUKtPfFm0cV7ExNeg0uto9kSp086comhc
+name: image_style_1_2_landscape_xs_wide
+label: '1:2 landscape xs wide [480×240]'
+effects:
+  bf83e392-30a1-4de0-a875-404c446b5bbe:
+    uuid: bf83e392-30a1-4de0-a875-404c446b5bbe
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 240
+      crop_type: focal_point

@@ -1,0 +1,11 @@
+uuid: 889a4352-ce88-4e61-9c1c-186bed65ecac
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 61QTQWx1SDOZAtHbpXpnDC0uN4u7cglJ62t-AaskZmc
+id: taxonomy_vocabulary_blog_tags
+action: page_redirect
+allow_override: 0
+redirect: '/blog?f[0]=tags:[term:tid]'
+redirect_code: 301

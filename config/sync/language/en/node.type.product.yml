@@ -1,0 +1,5 @@
+third_party_settings:
+  node_title_help_text:
+    title_help: "This field is used as the title for this page in your browser tab, in overviews and for SEO and sharing purposes. It is also shown on the detail page for this page.\r\nYou can change what is used for SEO and sharing purposes in the metatag tab on the right hand side of this form. You can also change what is shown on the detail page by setting a different title below."
+name: 'Product item'
+description: 'Use <em>product items</em> for your product articles'

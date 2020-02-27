@@ -1,0 +1,146 @@
+{#
+/**
+ * @file
+ * Panels: custom template for 1 col
+ *
+ * Regions:
+ * - top: top region
+ * - sidebar: sidebar region
+ * - main: main content region
+ * - bottom: bottom region
+ * - …
+ */
+#}
+
+{# no sidebars by default #}
+{% set sidebars = false %}
+{% set modifierClass = 'no-sidebars' %}
+{% set classMain = 'full' %}
+{% set classAsideLeft = '' %}
+{% set classAsideRight = '' %}
+
+{# If left and right sidebar content #}
+{% if (content.first is not empty) and (content.second is not empty) %}
+  {% set sidebars = true %}
+  {% set modifierClass = 'sidebars' %}
+  {% set classMain = 'center' %}
+  {% set classAsideLeft = 'left' %}
+  {% set classAsideRight = 'right' %}
+
+  {# If left but no right sidebar content #}
+{% elseif content.first is not empty %}
+  {% set sidebars = true %}
+  {% set modifierClass = 'sidebar-primary' %}
+  {% set classMain = 'right' %}
+  {% set classAsideLeft = 'left' %}
+
+  {# If right but no left sidebar content #}
+{% elseif content.second is not empty %}
+  {% set sidebars = true %}
+  {% set modifierClass = 'sidebar-secondary' %}
+  {% set classMain = 'left' %}
+  {% set classAsideRight = 'right' %}
+{% endif %}
+
+{% if classes is not defined %}
+  {% set classes = [] %}
+{% endif %}
+{%
+  set classes = classes|merge([
+  'panel-layout',
+  'panel-layout--' ~ modifierClass,
+  'clearfix',
+  content['#page_variant'] ? 'page-variant--' ~ content['#page_variant'].getOriginalId|split('-')|last,
+  settings['layout']['extra_classes'] ? settings['layout']['extra_classes'],
+])
+%}
+
+<div{{ attributes.addClass(classes|join(' ')) }}>
+
+  {% block panelsTop %}
+    {% if content.top is not empty %}
+      <div class="panel-layout__row panel-layout__top">
+        {{ content.top }}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+  {% block panelsHeader %}
+    {% if content.header is not empty %}
+      <div class="panel-layout__row panel-layout__header">
+        {{ content.header }}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+  {% block panelsVisual %}
+    {% if content.visual is not empty %}
+      <div class="panel-layout__row panel-layout__visual">
+        {{ content.visual }}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+  {% block panelsAbout %}
+    {% if content.about is not empty or content.usp is not empty %}
+      <div class="panel-layout__row panel-layout__usp-about panel-layout__usp-about">
+        {{ content.usp }}
+        {{ content.about }}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+  {% block panelsCompanies %}
+    {% if content.companies is not empty %}
+      <div class="panel-layout__row panel-layout__companies panel-layout__companies">
+        {{ content.companies }}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+  {% block panelsBlog %}
+    {% if content.blog is not empty or content.events is not empty %}
+      <div class="panel-layout__row panel-layout__blog-events panel-layout__blog-events">
+        {{ content.blog }}
+        {{ content.events }}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+  {% if (content.content is not empty) or (content.first is not empty) or (content.second is not empty) %}
+
+    {% if sidebars != false %}
+      <div class="panel-layout__cols panel-layout__cols--main panel-layout__cols--{{modifierClass}}">
+    {% endif %}
+
+    {% block panelsSidebarFirst %}
+      {% if content.first is not empty %}
+        <aside class="panel-layout__row panel-layout__sidebar panel-layout__sidebar--{{modifierClass}} panel-layout__sidebar--{{classAsideLeft}}">
+          {{ content.first }}
+        </aside>
+      {% endif %}
+    {% endblock %}
+
+    {% block panelsContent %}
+      {% if content.content is not empty %}
+        <div class="panel-layout__row panel-layout__content panel-layout__content--{{modifierClass}} panel-layout__content--{{classMain}}">
+          {{ content.content }}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+    {% block panelsSidebarSecond %}
+      {% if content.second is not empty %}
+        <aside class="panel-layout__row panel-layout__sidebar panel-layout__sidebar--{{modifierClass}} panel-layout__sidebar--{{classAsideRight}}">
+          {{ content.second }}
+        </aside>
+      {% endif %}
+    {% endblock %}
+
+    {% if sidebars != false %}
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+</div>

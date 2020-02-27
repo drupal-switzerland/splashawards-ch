@@ -1,0 +1,12 @@
+uuid: da2d502e-a24d-4ed8-a95a-9dc8f6565068
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: MJEW7Bd70VIwhMIWt0FQjaApEQdEcMH_xdpQSerga7I
+id: paragraph.p_009_grid
+label: 'Grid (P009)'
+targetEntityType: paragraph
+cache: true

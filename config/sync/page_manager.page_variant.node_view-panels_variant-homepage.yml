@@ -1,0 +1,102 @@
+uuid: a65dc9b6-22f9-4e9e-8642-787330c7ca72
+langcode: de
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+  content:
+    - 'block_content:content:63376e5a-bdcd-4458-b0aa-0ab38a8f62a3'
+    - 'block_content:hero_block:1291c62b-191d-4611-b9fc-17da67af8f83'
+    - 'block_content:simple_cta_block:8f3f51f6-f097-4396-8fdf-1d02ab9c97be'
+    - 'block_content:simple_cta_block:9cf5df48-ea72-4564-976e-a61c08e17e74'
+  module:
+    - block_content
+    - ctools
+    - panels
+    - system
+_core:
+  default_config_hash: yNkM8BKx3KOH-_vLNDdBeQl97cr4mCE3t4mqxwBQktg
+id: node_view-panels_variant-homepage
+label: Homepage
+variant: panels_variant
+variant_settings:
+  blocks:
+    727562de-516c-4b87-8f1d-6c2132348ac7:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: -1
+      uuid: 727562de-516c-4b87-8f1d-6c2132348ac7
+      context_mapping:
+        entity: node
+    4773cba9-ba42-4458-8441-2fa8e478a90a:
+      id: 'block_content:1291c62b-191d-4611-b9fc-17da67af8f83'
+      label: 'Home: Hero block on the top of homepage'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: visual
+      weight: 0
+      uuid: 4773cba9-ba42-4458-8441-2fa8e478a90a
+      context_mapping: {  }
+    98fa79f5-5d81-482b-a410-689d0c36eaaf:
+      id: 'block_content:9cf5df48-ea72-4564-976e-a61c08e17e74'
+      label: 'Home: Nominees'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: header
+      weight: 0
+      uuid: 98fa79f5-5d81-482b-a410-689d0c36eaaf
+      context_mapping: {  }
+    8a061a33-9cf8-4f4c-b75c-d04d090547ab:
+      id: 'block_content:8f3f51f6-f097-4396-8fdf-1d02ab9c97be'
+      label: 'Home: Tickets'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: header
+      weight: 0
+      uuid: 8a061a33-9cf8-4f4c-b75c-d04d090547ab
+      context_mapping: {  }
+    6e7d157a-61fc-4692-81cf-2e06b762cb78:
+      id: 'block_content:63376e5a-bdcd-4458-b0aa-0ab38a8f62a3'
+      label: 'Gold sponsors'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: content
+      weight: 0
+      uuid: 6e7d157a-61fc-4692-81cf-2e06b762cb78
+      context_mapping: {  }
+  id: panels_variant
+  uuid: a4422386-c611-4018-b61c-545540af0c2e
+  label: null
+  weight: 0
+  layout: rocketship_panel_front
+  layout_settings: {  }
+  page_title: '[node:title]'
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-homepage
+  builder: standard
+page: node_view
+weight: -100
+selection_criteria:
+  -
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
+selection_logic: and
+static_context: {  }

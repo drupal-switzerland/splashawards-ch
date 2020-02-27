@@ -1,0 +1,12 @@
+uuid: f52f398c-e1ac-41ba-9126-dd829f8e2d98
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: gvGHAW-pFe5GV4IcdvvBYphXHkx5szFf8nLqz8bCsg4
+id: paragraph.four_column
+label: four-column
+targetEntityType: paragraph
+cache: true

@@ -1,0 +1,29 @@
+uuid: 1b01e70a-04e3-4045-8dde-a50204425ca8
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: SlqNgjexiLWWUZokQoPqI2PJO4WxkWNIx5nc5Zcq03A
+id: paragraph.field_p_001_layout
+field_name: field_p_001_layout
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: image_left
+      label: 'Image left'
+    -
+      value: image_right
+      label: 'Image right'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

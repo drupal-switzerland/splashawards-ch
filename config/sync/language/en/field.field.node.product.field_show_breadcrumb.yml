@@ -1,0 +1,4 @@
+label: 'Show breadcrumb'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

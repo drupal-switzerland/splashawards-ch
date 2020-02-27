@@ -1,0 +1,22 @@
+uuid: 665c2090-97fc-4414-be6f-9dffc0c2bdb6
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dropsolid_base
+_core:
+  default_config_hash: Tno4lf0I0awjDXP0QFTXwH2eDfmlFx2REn3PK--Yjj8
+id: dropsolid_base_breadcrumbs
+theme: dropsolid_base
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

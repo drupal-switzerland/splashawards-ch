@@ -1,0 +1,20 @@
+uuid: 11cf93b9-7a85-402b-8ae2-a6704af0042b
+langcode: de
+status: true
+dependencies:
+  theme:
+    - dropsolid_flex
+_core:
+  default_config_hash: _cYE2MO6ljW4nDdtLIq3CfianCtgypwr1M64cxFiRiM
+id: dropsolid_flex_local_actions
+theme: dropsolid_flex
+region: tabs
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

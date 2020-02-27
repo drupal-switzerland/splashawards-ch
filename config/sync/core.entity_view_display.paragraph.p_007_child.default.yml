@@ -1,0 +1,106 @@
+uuid: de00f33d-90c5-4332-98dc-848749fc0d6d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_007_child.field_p_button
+    - field.field.paragraph.p_007_child.field_p_image
+    - field.field.paragraph.p_007_child.field_p_link
+    - field.field.paragraph.p_007_child.field_p_text
+    - field.field.paragraph.p_007_child.field_p_title
+    - paragraphs.paragraphs_type.p_007_child
+  module:
+    - ds
+    - link
+    - responsive_image
+    - rocketship_core
+    - smart_trim
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - image_url_field
+        - field_p_title
+        - field_p_text
+        - field_p_button
+        - field_p_image
+    fields:
+      image_url_field:
+        plugin_id: image_url_field
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          image_style: image_style_3_2_landscape_sm
+_core:
+  default_config_hash: FFGk2M23s6mPeX0zzMFsFVEHO-AHApBCH2R6hF5M4U8
+id: paragraph.p_007_child.default
+targetEntityType: paragraph
+bundle: p_007_child
+mode: default
+content:
+  field_p_button:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: ds_content
+  field_p_image:
+    type: responsive_image
+    weight: 4
+    region: ds_content
+    label: above
+    settings:
+      responsive_image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_p_text:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 300
+      trim_type: chars
+      trim_suffix: ''
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      trim_options:
+        text: true
+        trim_zero: false
+      wrap_output: false
+      more_link: false
+      summary_handler: full
+    third_party_settings: {  }
+    type: smart_trim
+    region: ds_content
+  field_p_title:
+    weight: 1
+    label: hidden
+    settings:
+      header: h3
+    third_party_settings: {  }
+    type: header_text_field_formatter
+    region: ds_content
+hidden:
+  field_p_link: true
+  search_api_excerpt: true

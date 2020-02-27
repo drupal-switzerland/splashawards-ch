@@ -1,0 +1,11 @@
+uuid: d8f46736-f889-42c6-b606-b0d4a294c953
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: JJioRplWqU8RBYwVhvSsAYkcssT6llPvAwQvgD41LTM
+id: p_010
+label: 'P010 Logo Bar'
+icon_uuid: null
+description: 'A row of logos'
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: 61e97b76-0bfa-4263-80ef-0540b581e809
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_client_permission
+    - node.type.product
+id: node.product.field_client_permission
+field_name: field_client_permission
+entity_type: node
+bundle: product
+label: 'Yes, I have permission from my client to submit this case.'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

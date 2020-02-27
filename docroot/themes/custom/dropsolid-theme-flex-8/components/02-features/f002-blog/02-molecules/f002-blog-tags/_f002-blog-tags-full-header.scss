@@ -1,0 +1,44 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog tags: in the node header
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Node detail
+// =============================================================================
+
+// ** in its own row under the header
+
+.layout__content--node--blog--header .field--name-field-blog-tags {
+
+  .field__item {
+    font-weight: $font-weight-bold;
+
+    &:before,
+    &:after,
+    a {
+      @include font-size($font-size-base, $line-height-base);
+    }
+
+    a {
+      @include link-underline((color: $color-white, color-hover: $color-white));
+    }
+  }
+
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .layout__content--node--blog--header .field--name-field-blog-tags {
+    //
+  }
+
+}

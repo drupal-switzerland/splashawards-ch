@@ -33,3 +33,15 @@
 # Ignore gitlab access token commits
 auth.json
 .idea
+
+# Launchpad .gitignore begin DO NOT REMOVE OR EDIT THIS LINE
+/.docker-data
+/.docker-sync
+/.env
+/docker-compose.yml
+/docker-compose.override.yml
+/docker-sync.yml
+/docroot/sites/default/*.local.php
+/docroot/sites/default/*.aliases.drushrc.php
+*.unison.tmp
+# Launchpad .gitignore end DO NOT REMOVE OR EDIT THIS LINE

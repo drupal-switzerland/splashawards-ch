@@ -1,0 +1,21 @@
+uuid: 2a9d0f31-a580-4e81-99c6-3e2b2b3d8d9e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.page
+_core:
+  default_config_hash: 6iGz6ihFxGH1Bmt4vMHL_rltQEosJ5Z3Ir5ByEdJn-k
+id: node.page.field_description
+field_name: field_description
+entity_type: node
+bundle: page
+label: 'Page description'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

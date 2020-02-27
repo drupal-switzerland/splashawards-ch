@@ -1,0 +1,31 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Search block (eg in header)
+// *
+// * Load all the styling + the structural CSS
+// * for the search block in the right order and breakpoints
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: only on mobile phone
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-only {
+
+  // mobile version of search block
+  @include search-block-xs-only;
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet and wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  @include search-block-sm;
+
+}

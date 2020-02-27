@@ -1,0 +1,33 @@
+uuid: 586c4cbe-2d7c-4cf5-8be3-ca31f92c65a4
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.product_title_only
+    - field.field.paragraph.simple_header.field_p_bg_color
+    - field.field.paragraph.simple_header.field_p_bg_image
+    - field.field.paragraph.simple_header.field_replacement_title
+    - field.field.paragraph.simple_header.field_show_breadcrumb
+    - paragraphs.paragraphs_type.simple_header
+  module:
+    - rocketship_core
+_core:
+  default_config_hash: d9HyWhom3yiAvyZJFJcIt4Ig1tYa-fdwhiudFkVHKCw
+id: paragraph.simple_header.product_title_only
+targetEntityType: paragraph
+bundle: simple_header
+mode: product_title_only
+content:
+  field_replacement_title:
+    weight: 0
+    label: hidden
+    settings:
+      wrapper_override: h2
+    third_party_settings: {  }
+    type: title_replacement_formatter
+    region: content
+hidden:
+  field_p_bg_color: true
+  field_p_bg_image: true
+  field_show_breadcrumb: true
+  search_api_excerpt: true

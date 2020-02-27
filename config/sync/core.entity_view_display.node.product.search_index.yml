@@ -1,0 +1,134 @@
+uuid: 8e5e468a-90a4-45d4-8932-c87899189f3f
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.product.field_challenges
+    - field.field.node.product.field_community_contributions
+    - field.field.node.product.field_email
+    - field.field.node.product.field_extra
+    - field.field.node.product.field_field_agree
+    - field.field.node.product.field_logo_client
+    - field.field.node.product.field_mail_invoice
+    - field.field.node.product.field_name_
+    - field.field.node.product.field_node_title_replacement
+    - field.field.node.product.field_nominee
+    - field.field.node.product.field_organisation
+    - field.field.node.product.field_paragraphs
+    - field.field.node.product.field_phone_number
+    - field.field.node.product.field_product_category
+    - field.field.node.product.field_product_images
+    - field.field.node.product.field_product_property_one
+    - field.field.node.product.field_product_property_two
+    - field.field.node.product.field_product_teaser
+    - field.field.node.product.field_project_de
+    - field.field.node.product.field_project_link
+    - field.field.node.product.field_show_breadcrumb
+    - field.field.node.product.field_submitted_by
+    - field.field.node.product.field_winner
+    - node.type.product
+  module:
+    - ds
+    - entity_reference_revisions
+    - rocketship_core
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - node_title
+        - field_node_title_replacement
+        - field_product_sheet
+        - field_product_teaser
+        - field_product_description
+        - field_product_attributes
+        - field_paragraphs
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          wrapper: h1
+          class: ''
+          link: false
+_core:
+  default_config_hash: JhnOzzkDnl6WZ53M8xSY21TVbmwVCjxw5Rysf7H9w-I
+id: node.product.search_index
+targetEntityType: node
+bundle: product
+mode: search_index
+content:
+  field_node_title_replacement:
+    type: title_replacement_formatter
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      wrapper_override: nothing
+    third_party_settings: {  }
+  field_paragraphs:
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_product_teaser:
+    type: basic_string
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  dropsolid_social_widgets: true
+  field_allow_case_added: true
+  field_attend: true
+  field_case_video: true
+  field_challenges: true
+  field_client_name: true
+  field_client_permission: true
+  field_community_contributions: true
+  field_country_text: true
+  field_date_when_website_went_liv: true
+  field_email: true
+  field_extra: true
+  field_field_agree: true
+  field_invoice_address: true
+  field_invoide_postal: true
+  field_logo_client: true
+  field_mail_invoice: true
+  field_meta_tags: true
+  field_name_: true
+  field_nominee: true
+  field_organisation: true
+  field_phone_number: true
+  field_product_category: true
+  field_product_images: true
+  field_product_property_one: true
+  field_product_property_two: true
+  field_project_de: true
+  field_project_link: true
+  field_project_name: true
+  field_runnerup: true
+  field_show_breadcrumb: true
+  field_sign_up_newsletter: true
+  field_submitted_by: true
+  field_vat_registration_id: true
+  field_why: true
+  field_winner: true
+  field_winneroftheyear: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

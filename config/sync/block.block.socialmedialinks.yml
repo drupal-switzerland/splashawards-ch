@@ -1,0 +1,25 @@
+uuid: f8299b95-be20-4f47-b2c2-bc204005d608
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:social_media_links:54f950d0-a0cb-4b02-b925-70e4c393f263'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: socialmedialinks
+theme: dropsolid_flex
+region: doormat
+weight: -8
+provider: null
+plugin: 'block_content:54f950d0-a0cb-4b02-b925-70e4c393f263'
+settings:
+  id: 'block_content:54f950d0-a0cb-4b02-b925-70e4c393f263'
+  label: 'Social Media Links'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

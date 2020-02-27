@@ -1,0 +1,30 @@
+uuid: 6a80b2e4-3cd3-46dc-bf65-deb676df205d
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+    - rocketship_core
+id: node.field_image
+field_name: field_image
+entity_type: node
+type: imagedescriptiontitle
+settings:
+  uri_scheme: private
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: rocketship_core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,11 @@
+uuid: ad9cd8da-da7b-433b-b341-0d497d3fa144
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.award_jahr
+id: taxonomy_vocabulary_award_jahr
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301

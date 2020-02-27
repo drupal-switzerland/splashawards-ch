@@ -1,0 +1,37 @@
+uuid: a7c8b7d6-d073-4bf0-b417-3c2eeb3384e9
+langcode: de
+status: true
+dependencies:
+  config:
+    - image.style.image_style_1_2_landscape_md
+    - image.style.image_style_1_2_landscape_sm
+    - image.style.image_style_1_2_landscape_xs_wide
+  module:
+    - rocketship_core
+_core:
+  default_config_hash: JeQWqaNzvshq2oFnGkerLhgEnVs7FGr82r_BJxz6lh0
+id: news_detail
+label: 'News detail'
+image_style_mappings:
+  -
+    breakpoint_id: rocketship_core.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_1_2_landscape_md
+  -
+    breakpoint_id: rocketship_core.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_1_2_landscape_sm
+  -
+    breakpoint_id: rocketship_core.xs-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_1_2_landscape_sm
+  -
+    breakpoint_id: rocketship_core.all
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: image_style_1_2_landscape_xs_wide
+breakpoint_group: rocketship_core
+fallback_image_style: image_style_1_2_landscape_xs_wide

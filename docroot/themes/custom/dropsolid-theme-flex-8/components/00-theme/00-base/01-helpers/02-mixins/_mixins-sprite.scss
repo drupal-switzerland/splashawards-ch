@@ -1,0 +1,42 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Sprite mixins
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// ** Use a sprite image on a pseudo-element
+// -- src: https://www.liquidlight.co.uk/blog/article/creating-svg-sprites-using-gulp-and-sass/
+//
+// -- Example
+//
+// .nav-sitemap {
+//   @include sprite(test);
+// }
+
+/* stylelint-disable */
+%sprite {
+  display: inline-block;
+  background-image: url(map-get($sprite, svgPath));
+  background-size: rem(map-get($sprite, width)) rem(map-get($sprite, height));
+}
+
+@mixin sprite($icon, $position:before) {
+  &:#{$position} {
+    content: '';
+    @extend %sprite;
+    $iconMap: icon-attr($icon);
+    // $percentage: ($resize / map-get($iconMap, width)); // eg 16 / 24
+    width: rem(map-get($iconMap, width) + 1);
+    height: rem(map-get($iconMap, height) + 1);
+    background-position: rem(map-get($iconMap, x)) rem(map-get($iconMap, y));
+
+    // @if($resize != null) {
+    //   width: rem(ceil($resize));
+    //   height: rem(ceil((map-get($iconMap, height) * $percentage)) + 1);
+    //   background-position: rem(ceil(map-get($iconMap, x) * $percentage)) rem(ceil(map-get($iconMap, y) * $percentage));
+    //   background-size: rem(ceil(map-get($sprite, width) * $percentage)) rem(ceil(map-get($sprite, height) * $percentage));
+    // }
+  }
+}
+/* stylelint-enable */

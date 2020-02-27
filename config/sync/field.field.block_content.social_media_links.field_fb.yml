@@ -1,0 +1,28 @@
+uuid: 655fff0e-c668-485a-bb69-fc5fe20856f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_media_links
+    - field.storage.block_content.field_fb
+  module:
+    - link
+id: block_content.social_media_links.field_fb
+field_name: field_fb
+entity_type: block_content
+bundle: social_media_links
+label: FB
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'https://facebook.com'
+    title: FB
+    options: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

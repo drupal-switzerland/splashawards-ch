@@ -1,0 +1,28 @@
+label: 'Related blogs'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      title: 'Related blog items'
+      header:
+        area:
+          content:
+            value: '<h2>Related blog items</h2>'
+      arguments:
+        nid:
+          exception:
+            title: All
+        field_blog_tags:
+          exception:
+            title: All
+  related_blog_items:
+    display_title: Block
+    display_options:
+      block_description: 'Related blog items'

@@ -1,0 +1,159 @@
+<?php
+/**
+ * @file
+ * Functions to support theming in the Dropsolid Base theme.
+ */
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Template\Attribute;
+
+// for theme settings
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Theme\ThemeSettings;
+use Drupal\system\Form\ThemeSettingsForm;
+use Drupal\Core\Form;
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter for blocks.
+ */
+function dropsolid_flex_suggestions_block_alter(&$suggestions, $variables) {
+
+  // Load theme suggestions for blocks from parent theme.
+  foreach ($suggestions as &$suggestion) {
+    $suggestion = str_replace('dropsolid_flex_', 'dropsolid_base_', $suggestion);
+  }
+}
+
+/**
+ * Adds an option to the background color field.
+ *
+ * @param array $options
+ *   Contains all the options for background color fied.
+ * @param $paragraphType
+ *   Contains the paragraph type this field is used in.
+ */
+function dropsolid_flex_dropsolid_profile_paragraphs_bg_color_options_list(array &$options, $paragraphType) {
+
+  $options = [];
+
+  // for simple header, the transparent option (_none) will replace the 'grey' setting
+  //
+  // this is because we need the simple header & focus header to always have a default background-color
+  // (so: not transparent or '_none')
+  // If you do: simply remove the condition and add 'grey' to the $options array like you would with the spot colors
+  // And if you need the default to be another color instead of 'grey',
+  //  simply style it to be another color in style.admin.scss
+  //  and replace the option with your color here, so it is available in other paragraphs
+
+  if ($paragraphType !== 'simple_header' and $paragraphType !== 'p_016') {
+    $options['grey'] = t('Grey');
+  }
+
+  $options['spot_01'] = t('Spot color 1');
+
+}
+
+function dropsolid_flex_dropsolid_event_bg_color_options_list(array &$options, $paragraphType) {
+  dropsolid_flex_dropsolid_profile_paragraphs_bg_color_options_list($options, $paragraphType);
+}
+
+/**
+ * Add extra theme settings
+ *
+ * https://www.drupal.org/docs/8/theming-drupal-8/creating-advanced-theme-settings
+ * https://drupal.stackexchange.com/questions/191983/how-do-i-add-custom-theme-settings
+ * https://drupal.stackexchange.com/questions/220400/how-to-make-custom-fieldset-collapsed-by-default-in-drupal-8#220402
+ */
+function dropsolid_flex_form_system_theme_settings_alter(&$form, Drupal\Core\Form\FormStateInterface $form_state, $form_id = NULL) {
+
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['theme_settings'] = array(
+    '#type' => 'details',
+    '#title' => t('Theme settings'),
+    '#open' => TRUE,
+  );
+
+  $form['theme_settings']['header_fixed'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Fixed header'),
+    '#default_value' =>  theme_get_setting('header_fixed'),
+    '#description'   => t('This setting will make your site header sticky and relies on Sass as well as JS in your theme component\'s organisms/site-header folder'),
+  );
+
+  $form['theme_settings']['language_dropdown'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Language dropdown'),
+    '#default_value' => theme_get_setting('language_dropdown'),
+    '#description'   => t('This setting will turn your language menu into a dropdown. Relies on Sass and JS in your theme component\'s molcules/links/links--language folder'),
+  );
+
+  // $form['theme_settings']['form_optional'] = array(
+  //   '#type' => 'checkbox',
+  //   '#title' => t('Mark optional form elements (instead of required ones)'),
+  //   '#default_value' => theme_get_setting('form_optional'),
+  //   '#description'   => t('This setting will add an extra element and text to the label of your optional (non-required) form elements'),
+  // );
+
+}
+
+/**
+ * Implements hook_theme_preprocess_page
+ *
+ *  @param $variables
+ */
+function dropsolid_flex_preprocess_page(&$variables) {
+
+  // make custom theme settings available in the javascript
+
+  $variables['header_fixed'] = theme_get_setting('header_fixed');
+  $variables['language_dropdown'] = theme_get_setting('language_dropdown');
+  // $variables['form_optional'] = theme_get_setting('form_optional');
+
+  $variables['#attached']['drupalSettings']['theme_settings']['header_fixed'] = $variables['header_fixed'];
+  $variables['#attached']['drupalSettings']['theme_settings']['language_dropdown'] = $variables['language_dropdown'];
+  // $variables['#attached']['drupalSettings']['theme_settings']['form_optional'] = $variables['form_optional'];
+
+  // load certain libraries only if certain modules are enabled
+  // - need this for features styling, custom paragraphs, …
+
+  if ($variables['header_fixed'] == 1) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/component_sticky_header';
+  }
+
+  $moduleHandler = \Drupal::service('module_handler');
+
+  if ($moduleHandler->moduleExists('dropsolid_profile_paragraphs')) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/profile_paragraphs';
+  }
+
+  if ($moduleHandler->moduleExists('dropsolid_blog_core')) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/feature_blog';
+  }
+
+  if ($moduleHandler->moduleExists('dropsolid_news') || $moduleHandler->moduleExists('dropsolid_news_core')) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/feature_news';
+  }
+
+  if ($moduleHandler->moduleExists('dropsolid_office_core')) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/feature_office';
+  }
+
+  if ($moduleHandler->moduleExists('dropsolid_service_core') || $moduleHandler->moduleExists('dropsolid_services_core')) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/feature_service';
+  }
+
+  if ($moduleHandler->moduleExists('dropsolid_product_core')) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/feature_product';
+  }
+
+  if ($moduleHandler->moduleExists('dropsolid_job_core')) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/feature_job';
+  }
+
+  if ($moduleHandler->moduleExists('dropsolid_event_core')) {
+    $variables['#attached']['library'][] = 'dropsolid_flex/feature_event';
+  }
+}

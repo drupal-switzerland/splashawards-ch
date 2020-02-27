@@ -1,0 +1,21 @@
+uuid: 771687b2-a0f0-4c11-ad05-1e76625b2333
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.countdown
+    - field.storage.block_content.field_timezone
+id: block_content.countdown.field_timezone
+field_name: field_timezone
+entity_type: block_content
+bundle: countdown
+label: Timezone
+description: "Timezone for the end date.\r\nUse timezones as described by momentjs: https://github.com/moment/moment-timezone/blob/develop/data/packed/latest.json"
+required: true
+translatable: false
+default_value:
+  -
+    value: Europe/Amsterdam
+default_value_callback: ''
+settings: {  }
+field_type: string

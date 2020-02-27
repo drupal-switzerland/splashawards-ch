@@ -1,0 +1,97 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Page meta info
+// *
+// * row that collects info on the node: author, date, social links, …
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.node__meta--full {
+  margin-top: rem($gap-vert-bottom-xs);
+  margin-bottom: rem($gap-vert-bottom-xs);
+
+  & > * {
+    margin-bottom: rem(5);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // ** placing of social share
+
+  .field--name-field-social-media-share {
+    h3 {
+      @extend .h4;
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node__meta--full {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-top: rem($gap-vert-bottom-sm);
+    margin-bottom: rem($gap-vert-bottom-sm);
+
+    & > * {
+      margin-right: rem(35);
+      margin-bottom: 0;
+
+      // &:first-child {
+      //   margin-left: 0;
+      // }
+    }
+
+    // ** placing of social share
+
+    .field--name-field-social-media-share {
+      display: flex;
+
+      h3 {
+        margin-right: rem(10);
+        margin-bottom: 0;
+        padding-top: 1px; // align with other text
+      }
+    }
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+  .node__meta--full {
+    margin-top: rem($gap-vert-bottom-md);
+    margin-bottom: rem($gap-vert-bottom-md);
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: large
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-lg {
+  .node__meta--full {
+    margin-top: rem($gap-vert-bottom-lg);
+    margin-bottom: rem($gap-vert-bottom-lg);
+  }
+}

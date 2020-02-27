@@ -1,0 +1,7 @@
+# theme_settings:
+#   header_fixed: FALSE
+#   language_dropdown: TRUE
+
+header_fixed: FALSE
+language_dropdown: TRUE
+form_optional: TRUE

@@ -1,0 +1,11 @@
+uuid: 2b27cb55-38eb-4cc8-ace5-3cc9f357d58b
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: pvob_sH4G5vpnhMPx8Si7rRBlWh4T9IZQGgJOEANWak
+id: p_006
+label: 'P006 Video'
+icon_uuid: null
+description: 'Embed a video'
+behavior_plugins: {  }

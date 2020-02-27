@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Contains splash_paragraph_views.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function splash_paragraph_views_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the splash_paragraph_views module.
+    case 'help.page.splash_paragraph_views':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Adds additional views to paragraph') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_overview_field_options_alter().
+ *
+ * Add an option to the overview field.
+ */
+function splash_paragraph_views_overview_field_options_alter(&$options) {
+  $options['gold_overview'] = t('Show a list of Gold sponsors on the site');
+  $options['silver_overview'] = t('Show a list of Silver sponsors on the site');
+  $options['bronze_overview'] = t('Show a list of Bronze sponsors on the site');
+}
+
+/**
+ * Implements hook_overview_field_output_alter().
+ */
+function splash_paragraph_views_overview_field_output_alter($key, &$output) {
+  if ($key == 'gold_overview') {
+    $output = overview_field_load_view('brands_overview', 'gold_sponsors_block');
+  }
+  if ($key == 'silver_overview') {
+    $output = overview_field_load_view('brands_overview', 'silver_sponsors_block');
+  }
+  if ($key == 'bronze_overview') {
+    $output = overview_field_load_view('brands_overview', 'bronze_sponsors_block');
+  }
+}

@@ -1,0 +1,26 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Search block: desktop screens
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+// -- this is included via breakpoints inside organisms/site-nav/site-nav.scss
+
+@mixin search-block-sm {
+
+  .block--region-header_top.block--search {
+
+    h2 {
+      @include hide;
+    }
+
+    // -- inline form
+
+    form {
+      display: flex;
+      max-width: rem(250);
+    }
+  }
+
+}

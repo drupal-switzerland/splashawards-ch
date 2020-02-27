@@ -1,0 +1,24 @@
+# Schema for the configuration files of the Starter theme.
+dropsolid_starter.settings:
+  type: theme_settings
+  label: 'Starter theme settings'
+  mapping:
+    header_fixed:
+      type: boolean
+      label: 'Fixed header'
+    language_dropdown:
+      type: boolean
+      label: 'Language dropdown'
+    form_optional:
+      type: boolean
+      label: 'Mark optional form elements (instead of required ones)'
+    # theme_settings:
+    #   type: mapping
+    #   label: 'Theme settings'
+    #   mapping:
+    #     header_fixed:
+    #       type: boolean
+    #       label: 'Fixed header'
+    #     language_dropdown:
+    #       type: boolean
+    #       label: 'Language dropdown'

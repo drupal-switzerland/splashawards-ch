@@ -1,0 +1,25 @@
+uuid: d29ac5c9-d7ca-47b1-8d5d-9f9a092a326c
+langcode: de
+status: false
+dependencies:
+  config:
+    - facets.facet.tags
+  module:
+    - facets
+  theme:
+    - seven
+_core:
+  default_config_hash: 00Aj_KIPAJNQGZFAPz00XmYkR01BaIJePPLObxs-QkI
+id: tags
+theme: seven
+region: header
+weight: 0
+provider: null
+plugin: 'facet_block:tags'
+settings:
+  id: 'facet_block:tags'
+  label: Tags
+  provider: facets
+  label_display: '0'
+  block_id: tags
+visibility: {  }

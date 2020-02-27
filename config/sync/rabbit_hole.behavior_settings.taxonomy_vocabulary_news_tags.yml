@@ -1,0 +1,11 @@
+uuid: 1210f722-ac10-4378-8170-ab80de78d8e0
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: X0K7veI1asb2hWHwvBaVNvwCik9iXcXAip953niV3og
+id: taxonomy_vocabulary_news_tags
+action: page_redirect
+allow_override: 0
+redirect: '/news?f[0]=tags:[term:tid]'
+redirect_code: 301

@@ -1,0 +1,12 @@
+uuid: 4d577a5c-70f5-485d-bf24-894e53e33faa
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: XXGF1rHDXWCHLAS5frYKq7viUxVmdHf8q6cAqkB4QAU
+id: node.header
+label: Header
+targetEntityType: node
+cache: true

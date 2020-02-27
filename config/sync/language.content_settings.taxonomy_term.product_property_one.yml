@@ -1,0 +1,18 @@
+uuid: d88df2d7-a8bc-4052-8164-1f8a5f848cce
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.product_property_one
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+_core:
+  default_config_hash: CJU-nbKk_dyzDq69yyDbyeqCfR3hm7Bvs4qGD8cLgEk
+id: taxonomy_term.product_property_one
+target_entity_type_id: taxonomy_term
+target_bundle: product_property_one
+default_langcode: current_interface
+language_alterable: false

@@ -1,0 +1,31 @@
+uuid: aadcd671-256e-4ae7-8c9a-cb3a1772bfc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.property_one
+  module:
+    - ctools
+    - facets
+  theme:
+    - dropsolid_flex
+id: productpropertyone
+theme: dropsolid_flex
+region: hidden
+weight: -10
+provider: null
+plugin: 'facet_block:property_one'
+settings:
+  id: 'facet_block:property_one'
+  label: 'Nominee Country'
+  provider: facets
+  label_display: '0'
+  block_id: productpropertyone
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      product: product
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

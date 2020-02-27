@@ -1,0 +1,93 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * job meta on full page: part of the header
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.node__meta--job-header {
+
+  h3 {
+    //
+  }
+
+  a {
+    //
+  }
+
+  // ** included fields
+
+  .field--name-field-job-property-one,
+  .field--name-field-job-category {
+    //
+  }
+
+  // ** lists of links
+
+  .field__items {
+    //
+
+  }
+
+  // ** location
+
+  .field--name-field-job-property-one {
+    //
+  }
+
+  // ** business area
+
+  .field--name-field-job-category {
+    //
+  }
+
+  // ** Apply (if Advanced module)
+
+  .field--name-scroll-to-field {
+    //
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  .node__meta--job-header {
+
+    //
+
+    // ** location
+
+    .field--name-field-job-property-one {
+      //
+    }
+
+    .field--name-field-job-category {
+      //
+    }
+
+    // ** Apply (if Advanced module)
+
+    .field--name-scroll-to-field {
+      //
+    }
+
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .node__meta--job-header {
+
+    //
+  }
+
+}

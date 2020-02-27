@@ -1,0 +1,27 @@
+uuid: 7f10d477-dd06-48bb-9c42-3168bf58ed71
+langcode: de
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: public
+_core:
+  default_config_hash: 9X1vrQFcvTOpegNGg4o83w9W5Km_Q8ExdxiQxDUwF2U
+id: paragraph.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

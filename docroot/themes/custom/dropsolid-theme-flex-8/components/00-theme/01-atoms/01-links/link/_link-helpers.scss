@@ -1,0 +1,179 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Links: helpers
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Mixins
+// =============================================================================
+
+// ** underlined link: using pseudo element so we can animate it
+//
+// -- Usage normal: starts with an underline and disappears on hover
+//      @include link-underline((color: red, color-hover: blue));
+// -- Usage inversed: an underline only appears when hovered
+//    @include link-underline(inverse: true);
+
+@mixin link-underline($settings) {
+
+  $element: map-get($settings, element);
+  $color: map-get($settings, color);
+  $color-hover: map-get($settings, color-hover);
+  $color-active: map-get($settings, color-active);
+  $inverse: map-get($settings, inverse);
+
+  @if ($element == null) {
+    $element: after;
+  }
+  @if ($color == null) {
+    $color: $color-base;
+  }
+  @if ($color-hover == null) {
+    $color-hover: $color;
+  }
+  @if ($color-active == null) {
+    $color-active: $color-hover;
+  }
+  @if ($inverse == null) {
+    $inverse: false;
+  }
+
+  display: inline-block;
+  position: relative;
+
+  &,
+  &:visited {
+    color: $color;
+  }
+
+  &:#{$element} {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 2px;
+    height: 1px;
+    transition: all $duration $easing;
+    @if ($inverse == true) {
+      opacity: 0;
+      width: 90%;
+      background-color: $color-hover;
+    } @else {
+      opacity: 1;
+      width: 100%;
+      background-color: $color;
+    }
+
+    // no styling needed for empty links (eg. anchors)
+    &:not([href]) {
+      &:after {
+        pointer-events: none;
+        display: none;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &:hover {
+
+    color: $color-hover;
+
+    &:after {
+      @if ($inverse == true) {
+        opacity: 1;
+        width: 100%;
+      } @else {
+        opacity: 0;
+        width: 90%;
+        background-color: $color-hover;
+      }
+    }
+  }
+
+  &:active {
+
+    color: $color-active;
+
+    &:after {
+      @if ($inverse == true) {
+        opacity: 1;
+        width: 100%;
+      } @else {
+        opacity: 0;
+        width: 90%;
+        background-color: $color-active;
+      }
+    }
+  }
+}
+
+// ** More Link
+// -- Used on teasers
+@mixin link-more {
+  display: inline-block;
+  text-decoration: none;
+  @include font-awesome((icon: $fa-var-angle-right, size: 14, type: 'light', element: 'after', margin: 0 0 0 rem(5)));
+  @include text-nobreak;
+
+  // remove in case styled by another element
+  &:before {
+    display: none;
+  }
+
+  &:after {
+    transition: none; // prevent lagging on transition from link tag itself
+  }
+}
+
+// ** More Link Big
+// -- Used with Views on homepage
+@mixin link-more-big {
+
+  @include font-size(22, 50);
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+
+  @include font-awesome((icon: $fa-var-long-arrow-right, size: 21, type: 'regular', element: 'after', margin: 0 0 0 rem(15)));
+  @include text-nobreak;
+
+  // remove in case styled by another element
+  &:before {
+    display: none;
+  }
+
+  &:after {
+    position: relative;
+    top: rem(-2);
+    transition: none;
+  }
+
+  &,
+  &:visited {
+    color: $color-spot-1;
+  }
+
+  &:hover,
+  &:active {
+    color: $color-spot-2;
+  }
+}
+
+// ** Back Link
+// --
+@mixin link-back {
+  display: inline-block;
+  text-decoration: none;
+  @include font-awesome((icon: $fa-var-angle-left, size: 14, type: 'light', element: 'before', margin: 0 rem(5) 0 0));
+  @include text-nobreak;
+
+  &:before {
+    transition: none; // prevent lagging on transition from link tag itself
+  }
+
+  &:after {
+    display: none;
+  }
+
+}

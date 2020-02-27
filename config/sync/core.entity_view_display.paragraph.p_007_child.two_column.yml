@@ -1,0 +1,108 @@
+uuid: bdcd7795-3dab-4782-beda-f5432775bcd8
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.two_column
+    - field.field.paragraph.p_007_child.field_p_button
+    - field.field.paragraph.p_007_child.field_p_image
+    - field.field.paragraph.p_007_child.field_p_link
+    - field.field.paragraph.p_007_child.field_p_text
+    - field.field.paragraph.p_007_child.field_p_title
+    - paragraphs.paragraphs_type.p_007_child
+  module:
+    - ds
+    - field_group
+    - link
+    - rocketship_core
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - image_url_field
+        - group_right
+        - field_p_title
+        - field_p_text
+        - field_p_button
+    fields:
+      image_url_field:
+        plugin_id: image_url_field
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          image_style: image_style_3_2_landscape_sm
+          responsive_image_style: paragraph_p007_child_image_two_col
+  field_group:
+    group_right:
+      children:
+        - field_p_title
+        - field_p_text
+        - field_p_button
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: group-right
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Right
+      region: hidden
+_core:
+  default_config_hash: MpEZ-u3pBbitQ5KQ5yMCAhyl9pN0Wonus4mdUMdbFos
+id: paragraph.p_007_child.two_column
+targetEntityType: paragraph
+bundle: p_007_child
+mode: two_column
+content:
+  field_p_button:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: ds_content
+  field_p_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: ds_content
+  field_p_title:
+    weight: 2
+    label: hidden
+    settings:
+      header: h3
+    third_party_settings: {  }
+    type: header_text_field_formatter
+    region: ds_content
+hidden:
+  field_p_image: true
+  field_p_link: true
+  search_api_excerpt: true

@@ -1,0 +1,30 @@
+uuid: c714f5d0-dc0d-4ab8-944a-3fabe004f235
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - user
+id: user.field_avatar_
+field_name: field_avatar_
+entity_type: user
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: 7f0c663a-4644-48cd-91ac-eff76c7448d6
+    alt: alt
+    title: 'This is the default avatar'
+    width: 300
+    height: 300
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

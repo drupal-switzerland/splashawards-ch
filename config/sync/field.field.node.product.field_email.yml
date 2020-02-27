@@ -1,0 +1,19 @@
+uuid: 84f3412b-c58f-438e-a9d8-fe0530631c90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.product
+id: node.product.field_email
+field_name: field_email
+entity_type: node
+bundle: product
+label: 'Contact person''s email address '
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

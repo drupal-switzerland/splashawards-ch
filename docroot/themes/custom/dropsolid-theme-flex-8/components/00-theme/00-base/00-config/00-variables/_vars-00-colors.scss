@@ -1,0 +1,110 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Variables: basic colors
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// ** Base
+// =============================================================================
+
+$color-white:                #FFFFFF !default;
+
+$color-off-white:            #F3F3F3 !default;
+
+$color-gray-light-1:         #E5E5E5 !default;
+$color-gray-light-2:         #D1D1D1 !default;
+$color-gray-light-3:         #A2A2A2 !default;
+$color-gray:                 #707070 !default;
+$color-gray-dark:            #545454 !default;
+$color-gray-dark-2:          #212121 !default;
+
+$color-black:                #000000 !default;
+
+$color-spot-1:               #31D57C !default;
+$color-spot-2:               #3232FF !default;
+$color-spot-3:               #120B47 !default;
+$color-spot-4:               #F97777 !default;
+
+
+// ** Main
+// =============================================================================
+
+$color-base:                $color-spot-3 !default;
+$color-base-bg:             $color-white !default;
+
+$color-heading:             $color-spot-2 !default;
+
+$color-link:                $color-spot-1 !default;
+$color-link-hover :         $color-spot-1 !default;
+$color-link-active:         $color-spot-1 !default;
+
+$color-text-link:           $color-spot-1 !default;
+$color-text-link-hover :    $color-spot-1 !default;
+$color-text-link-active:    $color-spot-1 !default;
+
+$color-button:              $color-white !default;
+$color-button-bg:           $color-spot-1 !default;
+$color-button-hover:        $color-white !default;
+$color-button-hover-bg:     darken($color-spot-1, 15%) !default;
+
+$color-border:              $color-gray-light-2 !default;
+
+// * Regions
+// =============================================================================
+
+$color-header-top-bg:       $color-off-white;
+$color-navigation-bg:       $color-spot-1;
+$color-mobile-nav:          $color-base;
+$color-mobile-nav-bg:       $color-base-bg;
+$color-mobile-nav-open:     $color-spot-1;
+$color-mobile-nav-open-bg:  $color-white;
+$color-doormat:             $color-gray-light-1;
+$color-doormat-bg:          #120B47;
+$color-footer:              $color-white;
+$color-footer-bg:           #060032;
+
+
+// * Subdivisions
+// =============================================================================
+
+// $color-meta-bg:       $color-gray-light-1;
+
+
+// ** Tabs
+// =============================================================================
+
+$color-tabs-background:   $color-black;
+$color-tabs-text:         $color-white;
+$color-tabs-hover:        $color-spot-1;
+
+
+// * Alerts
+// =============================================================================
+$color-error:             #E74C3C;
+$color-error-dark:        #C0392B;
+$color-status:            #3FC380;
+$color-status-dark:       #00B16A;
+$color-warning:           #EB9532;
+$color-warning-dark:      #F2784B;
+$color-neutral:           #0074BD;
+
+
+// ** Forms
+// =============================================================================
+
+$color-placeholder:          $color-gray-light-2;
+
+$color-form:                 $color-base;
+// $color-form-bg:              $color-border;
+$color-form-border:          $color-border;
+
+$color-form-active:          $color-spot-1 !default;
+// $color-form-active-bg:       $color-white;
+$color-form-active-border:   lighten($color-spot-1, 10);
+
+$color-form-disabled:        $color-gray-light-1;
+$color-form-disabled-bg:     $color-white;
+$color-form-disabled-border: $color-gray-light-1;
+// $color-form-error-bg:        lighten($color-error, 10);
+$color-form-error-border:    $color-error;

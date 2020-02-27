@@ -1,0 +1,11 @@
+uuid: fef48505-a8d2-47a8-b12c-21eea3c046f0
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-7O-UgR47KzVJAv4EJXL6sgxyL0nO70kQorQid6A1Ic'
+id: simple_header
+label: 'P015 Simple Header'
+icon_uuid: null
+description: 'This allows you to replace the title on the detail page of this node, as well as manage the visibility of breadcrumbs.'
+behavior_plugins: {  }

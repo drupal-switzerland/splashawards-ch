@@ -1,0 +1,25 @@
+uuid: 38e0a3d1-fc6c-4240-b31a-c00a24ee0003
+langcode: de
+status: true
+dependencies:
+  content:
+    - 'block_content:html_snippet_block:b9a8c7d4-c9d1-4eec-90b9-8df3824522ff'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: spacingblocktoplacefootermenu
+theme: dropsolid_flex
+region: footer
+weight: -11
+provider: null
+plugin: 'block_content:b9a8c7d4-c9d1-4eec-90b9-8df3824522ff'
+settings:
+  id: 'block_content:b9a8c7d4-c9d1-4eec-90b9-8df3824522ff'
+  label: 'Spacing block to place footer menu '
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

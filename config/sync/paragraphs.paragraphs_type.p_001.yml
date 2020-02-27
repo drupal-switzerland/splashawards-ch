@@ -1,0 +1,11 @@
+uuid: 0556c59c-91f8-4576-a31d-38b1811a307b
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: CVgsXRtdwfgaa2L7WPwalc6opbmAEfS3bvGwCzbXqzk
+id: p_001
+label: 'P001 Story'
+icon_uuid: null
+description: 'Add a block of text paired with a visual (or video)'
+behavior_plugins: {  }

@@ -1,0 +1,581 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs colors only
+// *
+// * we use this as a template for the paragraphs colorpicker
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// ** our active theme's Sass
+//    which is symlinked on npm install in active theme
+
+@import '../00-theme/00-base/00-config/**/*.scss';
+@import '../00-theme/00-base/01-helpers/**/*.scss';
+
+// we need our theme's atoms helpers
+@import '../00-theme/01-atoms/01-links/link/_link-helpers.scss';
+
+// no Dropsolid-specific stuff
+$structuralOnly: true;
+
+
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * The individual paragraphs
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.paragraph {
+
+  // ***************************************************************************
+  // Add your paragraph specific backgrounds here.
+  // See example below.
+  // ***************************************************************************
+
+  // ** paragraph backgrounds
+
+  &.bg--replace_variant_name {
+    @include full-bg (replace_background_color, 'before', false);
+
+
+    // -- Buttons
+
+    .field--buttons {
+
+      .button {
+
+        @if ($structuralOnly == false) {
+
+          // -- make the other buttons look different
+
+          &:nth-child(n+2) {
+            @include button-secondary;
+          }
+
+          // -- more Examples:
+          //
+          //// 2nd button
+          //&:nth-child(2) {
+          //  @include button-secondary();
+          //}
+          //
+          //// 3rd button and all buttons after that
+          //&:nth-child(n+3) {
+          //
+          //}
+        }
+
+      }
+
+    }
+
+    // ** color changes because of the backgrounds
+
+    color: replace_foreground_color;
+
+    a:not(.button) {
+      &,
+      &:visited {
+        color: replace_link_color;
+      }
+
+      &:hover,
+      &:active {
+        color: replace_hover_color;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: replace_foreground_color;
+
+      a:not(.button) {
+        &,
+        &:visited {
+          color: replace_link_color;
+        }
+
+        &:hover,
+        &:active {
+          color: replace_hover_color;
+        }
+      }
+    }
+
+    // breadcrumb
+
+    .breadcrumb {
+      color: replace_foreground_color;
+    }
+
+    .breadcrumb__item {
+      &:before {
+        color: replace_foreground_color;
+      }
+    }
+
+    .breadcrumb__element {
+      color: replace_foreground_color;
+    }
+
+    .breadcrumb__link {
+      @include link-underline((color: replace_link_color));
+    }
+
+    // other types of links
+    .field--name-field-blog-tags,
+    .field--name-node-title,
+    .field--name-node-link,
+    .field--name-field-p-link {
+      color: replace_foreground_color;
+
+      a:not(.button) {
+        &,
+        &:visited {
+          color: replace_link_color;
+        }
+
+        &:hover,
+        &:active {
+          color: replace_hover_color;
+        }
+      }
+    }
+
+    // titles & subtitles
+    .field--name-field-p-title,
+    .field--name-field-p-subtitle {
+
+      h2,
+      h3,
+      h4 {
+        color: replace_foreground_color;
+
+        a:not(.button) {
+          &,
+          &:visited {
+            color: replace_link_color;
+          }
+
+          &:hover,
+          &:active {
+            color: replace_hover_color;
+          }
+        }
+      }
+    }
+
+    // Quote (eg. in testimonial)
+    .field--type-text-long,
+    .text-long {
+      // -- add quote icon
+
+      &:before {
+        color: replace_foreground_color;
+      }
+
+    }
+
+    .button {
+
+      @if ($structuralOnly == false) {
+
+        @include button-negative;
+
+        // -- make the other buttons look different
+
+        &:nth-child(n+2) {
+          @include button-negative-secondary;
+        }
+
+        // -- more Examples:
+        //
+        //// 2nd button
+        //&:nth-child(2) {
+        //  @include button-secondary();
+        //}
+        //
+        //// 3rd button and all buttons after that
+        //&:nth-child(n+3) {
+        //
+        //}
+      }
+
+    }
+  }
+
+
+  // ***************************************************************************
+  // Add your paragraph specific backgrounds here for the content
+  // See example below.
+  // ***************************************************************************
+
+  // ** colors for content of paragraph (eg. Testimonial)
+
+  //&.bg--replace_variant_name {
+  //
+  //  .field--type-text-long,
+  //  .text-long {
+  //    // -- add quote icon
+  //
+  //    &:before {
+  //      color: replace_foreground_color;
+  //    }
+  //
+  //  }
+  //}
+
+  &.content-bg--replace_variant_name {
+
+    & > .p-content {
+      color: replace_foreground_color; // override stuff set by the general bg-color class
+      background-color: replace_background_color;
+
+      a:not(.button) {
+        &,
+        &:visited {
+          color: replace_link_color;
+        }
+
+        &:hover,
+        &:active {
+          color: replace_hover_color;
+        }
+      }
+
+      // fields
+      .field--name-field-blog-tags,
+      .field--name-node-title,
+      .field--name-node-link,
+      .field--name-field-p-link,
+      .field--type-text-long,
+      .text-long {
+        color: replace_foreground_color;
+
+        a:not(.button) {
+          &,
+          &:visited {
+            color: replace_link_color;
+          }
+
+          &:hover,
+          &:active {
+            color: replace_hover_color;
+          }
+        }
+      }
+
+      // quote mark
+      .field--type-text-long:before,
+      .text-long:before {
+        color: replace_foreground_color;
+      }
+
+    }
+  }
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs: FAQ
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.paragraph--type-p-004.bg--replace_variant_name .field__item--type-tabbed-item {
+
+  border-top-color: replace_foreground_color;
+
+  // ** question title
+
+  .tab-item__title {
+
+    // color
+    color: replace_foreground_color;
+
+    a,
+    a:visited {
+      color: replace_foreground_color;
+    }
+
+    @if ($structuralOnly == false) {
+
+      // -- Icon
+
+      &:before {
+        color: replace_foreground_color;
+      }
+
+    } @else {
+
+      &:before {
+        border-top: 5px solid replace_foreground_color;
+      }
+    }
+
+  }
+
+  // ** states
+
+  &:hover,
+  &.js-open {
+
+    .tab-item__title {
+
+      // color
+      color: replace_link_color;
+
+      a,
+      a:visited {
+        color: replace_link_color;
+      }
+
+      a:hover,
+      a:active {
+        color: replace_hover_color;
+      }
+
+      //@if ($structuralOnly == false) {
+      //
+      //  color: $color-spot-1;
+      //
+      //  &:hover {
+      //    color: $color-spot-1;
+      //  }
+      //}
+
+    }
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs: photo focus
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.paragraph--type-p-009.bg--replace_variant_name {
+
+  .field--name-field-p-images-unlimited {
+
+    .field__item {
+
+      &:after {
+        color: replace_link_color;
+        background: $color-white;
+      }
+    }
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs: p010 logobar
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// * Slick slider
+// =============================================================================
+
+.paragraph--type-p-010.bg--replace_variant_name {
+
+
+  // ** navigation
+
+  .slick-arrow {
+    background: #E5E5E5;
+    opacity: .75;
+
+    &.slick-prev,
+    &.slick-next {
+      background: #FFFFFF;
+    }
+
+    &.slick-prev {
+
+      @if ($structuralOnly == false) {
+
+        color: replace_background_color;
+
+      } @else {
+
+        &:before {
+          border-right: 7px solid replace_foreground_color;
+        }
+      }
+    }
+
+    &.slick-next {
+
+      @if ($structuralOnly == false) {
+
+        color: replace_foreground_color;
+
+      } @else {
+
+        &:before {
+          border-left: 7px solid replace_foreground_color;
+        }
+      }
+    }
+
+    &:hover {
+
+      opacity: 1;
+
+      @if ($structuralOnly == false) {
+
+        &.slick-prev,
+        &.slick-next {
+          background: replace_link_color;
+        }
+
+        &:before {
+          color: $color-white;
+        }
+
+      } @else {
+
+        background: rgba(#FFFFFF, 1);
+
+      }
+    }
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs: guidance box
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+.paragraph--type-p-012-child.bg--replace_variant_name {
+  border: 1px solid replace_foreground_color; // border only if no image
+
+  // ** on hover
+
+  &:hover {
+    border-color: $color-spot-2;
+  }
+}
+
+// * Guidance modes
+// =============================================================================
+
+// Mode 1: Only title visible
+// on hover: all fields are visible and overlay whatever bg-image is set
+.group--paragraphs__item .p-012__child--view-mode--title {
+
+  // ***************************************************************************
+  // Add your site specific backgrounds here.
+  // See example below.
+  // ***************************************************************************
+
+  &.bg--replace_variant_name .p-012-child--text {
+    background: replace_background_color;
+    opacity: .75;
+  }
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Focus header
+// *
+// * This is the Paragraph: 'focus header'
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.paragraph--type-p-016.bg--replace_variant_name {
+
+  @include full-bg (replace_background_color, 'before', false);
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Paragraphs: menu overview item
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+// ** Our items ALWAYS have the same bg color
+//    so we need to make sure the text color can not be overwritten by the default paragraph colors
+//    when a background is set on the whole paragraph
+
+.group--paragraphs__item .paragraph--type-p-017.bg--replace_variant_name {
+
+  $menuBg: #E5E5E5;
+  $menuColor: #303030;
+  $menuLinkColor: #303030;
+  $menuHoverColor: #303030;
+
+  & a:not(button),
+  & .field-p-menu-overview__item__title a:not(.button) {
+
+    &,
+    &:visited {
+      color: $menuLinkColor;
+    }
+
+    &:hover,
+    &:active {
+      color: $menuHoverColor;
+    }
+  }
+
+  // ** item
+
+  .field-p-menu-overview__item {
+    color: $menuColor;
+    background-color: $menuBg;
+  }
+
+  // -- title
+  .field-p-menu-overview__item__title {
+    color: $menuColor;
+
+    a:not(.button) {
+      &,
+      &:visited {
+        color: $menuLinkColor;
+      }
+
+      &:hover,
+      &:active {
+        color: $menuHoverColor;
+      }
+    }
+  }
+
+  // -- content
+
+  .field-p-menu-overview__item__content {
+    color: $menuColor;
+  }
+}

@@ -1,0 +1,67 @@
+uuid: ef6b91ae-cf4a-438d-9173-382a896f573e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.p_002.field_p_002_layout_image
+    - field.field.paragraph.p_002.field_p_image
+    - field.field.paragraph.p_002.field_p_link
+    - field.field.paragraph.p_002.field_p_subtitle
+    - field.field.paragraph.p_002.field_p_title
+    - image.style.preview
+    - paragraphs.paragraphs_type.p_002
+  module:
+    - focal_point
+    - rocketship_core
+_core:
+  default_config_hash: To8SG9gAOLJ8iDLSsL-3HBztYIIPzOih25PUfXLIWY4
+id: paragraph.p_002.default
+targetEntityType: paragraph
+bundle: p_002
+mode: default
+content:
+  field_p_002_layout_image:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_p_image:
+    weight: 2
+    settings:
+      preview_image_style: preview
+      progress_indicator: throbber
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+    type: image_focal_point
+    region: content
+  field_p_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_target_widget
+    region: content
+  field_p_subtitle:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

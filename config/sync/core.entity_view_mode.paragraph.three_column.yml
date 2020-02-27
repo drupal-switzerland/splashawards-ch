@@ -1,0 +1,12 @@
+uuid: 17c46ca8-66ca-4ed1-9e14-4f0e5e1bfb0c
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: DLGNhp_g3jszAydddDZvyDbJpMmqx0jL5HIT9acy_k4
+id: paragraph.three_column
+label: three-column
+targetEntityType: paragraph
+cache: true

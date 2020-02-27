@@ -1,0 +1,23 @@
+{
+  "name": "dropsolid-drupal8/dropsolid-theme-base-8",
+  "description": "This is the Dropsolid Drupal 8 base theme.",
+  "type": "drupal-custom-theme",
+  "homepage": "https://gitlab.com/dropsolid-drupal8/dropsolid-theme-base-8",
+  "authors": [
+    {
+      "name": "Rembrand Le Compte",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Jelle Hoekman",
+      "role": "Front-end developer"
+    },
+    {
+      "name": "Ruben Dello",
+      "role": "Front-end developer"
+    }
+  ],
+  "support": {
+    "docs": "https://gitlab.com/dropsolid-drupal8/dropsolid-theme-base-8"
+  }
+}

@@ -1,0 +1,155 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Blog teasers
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+
+// *
+// =============================================================================
+
+.product--teaser {
+  // background-color: $color-product-teaser-bg;
+
+  // ** visual
+
+  .layout__sidebar {
+    margin-bottom: rem($gap-vert-sm);
+  }
+
+  .field__item--type-image {
+    margin-bottom: rem($gap-vert-sm);
+  }
+
+
+  // ** content
+
+  .layout__content {
+    // padding: 0 rem($padding-product-teaser) rem($padding-product-teaser) rem($padding-product-teaser);
+  }
+
+  // ** title
+
+  h2,
+  h3,
+  h4 {
+    @extend .h3;
+  }
+
+  // ** read more
+
+  .field--name-node-link {
+    margin-top: rem($gap-vert-sm);
+    a {
+      @include link-more;
+    }
+  }
+
+}
+
+// ** Group facet filters & product attributes
+//      see 'f009-product-attributes' Sass files for the styling
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-wide-only {
+
+  // normal overview is visual + content in 2 cols
+
+  .product--teaser {
+
+    .field__item--type-image {
+      margin-bottom: rem($gap-vert-sm);
+    }
+
+    display: flex; // makes the content height stretch
+    flex-direction: column;
+
+    .layout__content {
+      // needed to manipulate content with flex
+      display: flex;
+      flex-direction: column;
+    }
+
+    // push the actions to the end
+    .node__actions {
+      display: flex;
+      flex-grow: 1;
+      align-items: flex-end;
+    }
+
+    // * * * * * * * * * * * * * * * * * * * *
+    // ** Example of img left + content right
+
+    // .layout__sidebar {
+    //   @include flex-col(6);
+    // }
+
+    // .layout__content {
+    //   @include flex-col(6);
+    //   padding: rem($padding-product-teaser) rem($padding-product-teaser) rem($padding-product-teaser) rem(abs($padding-product-teaser - $grid-gap-hor));
+    // }
+    // * * * * * * * * * * * * * * * * * * * *
+
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  // ** the normal teaser
+
+  .product--teaser {
+
+    display: flex; // makes the content height stretch
+    flex-direction: column;
+
+    .layout__content {
+      // needed to manipulate content with flex
+      display: flex;
+      flex-direction: column;
+    }
+
+    // push the actions to the end
+    .node__actions {
+      display: flex;
+      flex-grow: 1;
+      align-items: flex-end;
+    }
+
+    // * * * * * * * * * * * * * * * * * * * *
+    // ** Example of img left + content right
+
+    // .layout__sidebar {
+    //   @include flex-col(6);
+    // }
+
+    // .layout__content {
+    //   @include flex-col(6);
+    //   padding: rem($padding-product-teaser) rem($padding-product-teaser) rem($padding-product-teaser) rem(abs($padding-product-teaser - $grid-gap-hor));
+    // }
+    // * * * * * * * * * * * * * * * * * * * *
+  }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: desktop
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-md {
+
+  .product--teaser {
+    //
+  }
+
+}

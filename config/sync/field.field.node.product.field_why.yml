@@ -1,0 +1,19 @@
+uuid: 36d5f122-57ab-4ff0-a054-a12f6caaf538
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_why
+    - node.type.product
+id: node.product.field_why
+field_name: field_why
+entity_type: node
+bundle: product
+label: 'Why should this case win the splash awards?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

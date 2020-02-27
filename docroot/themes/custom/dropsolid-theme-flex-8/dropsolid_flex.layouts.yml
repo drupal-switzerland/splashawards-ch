@@ -1,0 +1,37 @@
+################################################################################
+# Panels
+################################################################################
+
+# !WARNING! make sure your machine name is the same as the template file name
+#           otherwise theme suggestions break and Drupal might not find your template
+#
+dropsolid_theme_panel_homepage:
+  label: Flex frontpage
+  category: Dropsolid Flex layouts - Panels
+  type: page
+  template: components/00-theme/05-layouts/panels/dropsolid-theme-panel-homepage
+  regions:
+    top:
+      label: Top
+    header:
+      label: Header
+    visual:
+      label: Visual
+    usp:
+      label: USP
+    products:
+      label: Products
+    cta:
+      label: CTA
+    blog:
+      label: Blog
+    first:
+      label: Sidebar Left
+    content:
+      label: Content
+    second:
+      label: Sidebar Right
+    bottom:
+      label: Bottom
+    footer:
+      label: Footer

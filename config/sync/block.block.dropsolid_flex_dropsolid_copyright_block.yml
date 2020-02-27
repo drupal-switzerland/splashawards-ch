@@ -1,0 +1,31 @@
+uuid: 8fcc64b2-0449-4c3b-99f3-d37e6e930de2
+langcode: en
+status: true
+dependencies:
+  module:
+    - dropsolid_blocks
+    - language
+  theme:
+    - dropsolid_flex
+id: dropsolid_flex_dropsolid_copyright_block
+theme: dropsolid_flex
+region: footer
+weight: -12
+provider: null
+plugin: dropsolid_copyright_block
+settings:
+  id: dropsolid_copyright_block
+  label: Copyright
+  provider: dropsolid_blocks
+  label_display: '0'
+  terms_of_use: '17'
+  privacy_policy: '2'
+  company: 'Splash Awards'
+visibility:
+  language:
+    id: language
+    langcodes:
+      de: de
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'

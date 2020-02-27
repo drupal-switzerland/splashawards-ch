@@ -1,0 +1,477 @@
+uuid: 8ef142e1-bf4c-447a-be5d-feb89898a4d8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.product.field_allow_case_added
+    - field.field.node.product.field_attend
+    - field.field.node.product.field_award_jahr
+    - field.field.node.product.field_case_video
+    - field.field.node.product.field_challenges
+    - field.field.node.product.field_client_name
+    - field.field.node.product.field_client_permission
+    - field.field.node.product.field_community_contributions
+    - field.field.node.product.field_country_text
+    - field.field.node.product.field_date_when_website_went_liv
+    - field.field.node.product.field_email
+    - field.field.node.product.field_extra
+    - field.field.node.product.field_field_agree
+    - field.field.node.product.field_hosting
+    - field.field.node.product.field_invoice_address
+    - field.field.node.product.field_invoide_postal
+    - field.field.node.product.field_logo_client
+    - field.field.node.product.field_mail_invoice
+    - field.field.node.product.field_meta_tags
+    - field.field.node.product.field_name_
+    - field.field.node.product.field_node_title_replacement
+    - field.field.node.product.field_nominee
+    - field.field.node.product.field_organisation
+    - field.field.node.product.field_paragraphs
+    - field.field.node.product.field_phone_number
+    - field.field.node.product.field_product_category
+    - field.field.node.product.field_product_images
+    - field.field.node.product.field_product_property_one
+    - field.field.node.product.field_product_property_two
+    - field.field.node.product.field_product_teaser
+    - field.field.node.product.field_project_de
+    - field.field.node.product.field_project_link
+    - field.field.node.product.field_project_name
+    - field.field.node.product.field_runnerup
+    - field.field.node.product.field_show_breadcrumb
+    - field.field.node.product.field_sign_up_newsletter
+    - field.field.node.product.field_submitted_by
+    - field.field.node.product.field_vat_registration_id
+    - field.field.node.product.field_why
+    - field.field.node.product.field_winner
+    - field.field.node.product.field_winneroftheyear
+    - image.style.preview
+    - image.style.thumbnail
+    - node.type.product
+  module:
+    - datetime
+    - field_group
+    - focal_point
+    - image
+    - link
+    - path
+    - scheduler
+    - telephone
+    - video_embed_field
+third_party_settings:
+  field_group:
+    group_header:
+      children:
+        - field_organisation
+        - field_submitted_by
+        - field_name_
+        - field_email
+        - field_phone_number
+        - field_mail_invoice
+        - field_invoice_address
+        - field_vat_registration_id
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        label: 'Über das einreichende Unternehmen'
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Über das einreichende Unternehmen'
+      region: content
+    group_about_the_case:
+      children:
+        - title
+        - field_project_link
+        - field_product_teaser
+        - field_date_when_website_went_liv
+        - field_client_name
+        - field_logo_client
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        label: 'Projekt einreichen'
+        description: "<h5>Nehmen Sie sich vor dem Einreichen Zeit, um sich mit den '<a href=\"/node/41\">Kategorien</a>' und '<a href=\"/node/17\">Bedingungen</a>' vertraut zu machen. Haben Sie Fragen oder benötigen Sie Unterstützung? Wir sind hier, um Ihnen zu helfen! Senden Sie Ihre Fragen per E-Mail an <a href=\"mailto:info@splashawards.de\">info@splashawards.de</a>. <br />\r\nDas Einreichen Ihres Projekts bei den Splash Awards kostet eine Gebühr pro eingereichtem Projekt während der regulären Einreichungsfrist (bis 6. März 2020). Wenn ein Projekt in mehreren Kategorien eingereicht wird, wird für jede Kategorie separat berechnet.</h5>\r\n<br/>\r\n<h5>Gebühren</h5>\r\n<ul>\r\n<li><h5>Normal: 250,00 EUR</h5></li>\r\n<li><h5>Ermäßigt (Freelancer oder kleine Agentur bis 3 Personen): 50 EUR</h5></li>\r\n</ul>\r\n\r\n"
+        required_fields: true
+        id: ''
+        classes: project-form-wrapper
+      label: 'Projekt einreichen'
+      region: content
+    group_categories:
+      children:
+        - field_product_category
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        label: Kategorien
+        description: '<h5>Jedes Unternehmen kann maximal drei Projekte für die Splash Awards einreichen. Wenn ein Projekt in drei verschiedenen Kategorien eingereicht wird, zählt dies ebenfalls als drei Projekte.</h5><br/>'
+        required_fields: true
+        id: ''
+        classes: project-form-wrapper
+      label: Kategorien
+      region: content
+    group_project_details:
+      children:
+        - field_project_de
+        - field_extra
+        - field_challenges
+        - field_community_contributions
+        - field_why
+        - field_hosting
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        label: Projektdetails
+        description: ''
+        required_fields: true
+        id: ''
+        classes: project-form-wrapper
+      label: Projektdetails
+      region: content
+    group_media:
+      children:
+        - field_product_images
+        - field_case_video
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        label: Dateien
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Dateien
+      region: content
+    group_legal:
+      children:
+        - field_field_agree
+        - field_client_permission
+      parent_name: ''
+      weight: 5
+      format_type: fieldset
+      format_settings:
+        label: Rechtliches
+        description: ''
+        required_fields: true
+        id: ''
+        classes: project-form-wrapper
+      label: Rechtliches
+      region: content
+    group_promotional:
+      children:
+        - field_allow_case_added
+      parent_name: ''
+      weight: 6
+      format_type: fieldset
+      format_settings:
+        label: Drupal-Promotion
+        description: ''
+        required_fields: true
+        id: ''
+        classes: project-form-wrapper
+      label: Drupal-Promotion
+      region: content
+_core:
+  default_config_hash: JYvNFIrDIH3MZSbQhWdZp61vnFkCrV4JjfWOZGZ_BcA
+id: node.product.default
+targetEntityType: node
+bundle: product
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_allow_case_added:
+    weight: 40
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_case_video:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: video_embed_field_textfield
+    region: content
+  field_challenges:
+    weight: 45
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_client_name:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+    type: string_textfield
+    region: content
+  field_client_permission:
+    weight: 39
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_community_contributions:
+    weight: 46
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_date_when_website_went_liv:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_email:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_extra:
+    weight: 44
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_field_agree:
+    weight: 38
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_hosting:
+    weight: 48
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_invoice_address:
+    weight: 34
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_logo_client:
+    weight: 7
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_mail_invoice:
+    weight: 33
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_name_:
+    weight: 30
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_organisation:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_phone_number:
+    weight: 32
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  field_product_category:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_product_images:
+    type: image_focal_point
+    weight: 13
+    region: content
+    settings:
+      preview_image_style: preview
+      preview_link: true
+      offsets: '50,50'
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_product_teaser:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_project_de:
+    weight: 43
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_project_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: 'Project page'
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_submitted_by:
+    weight: 29
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_vat_registration_id:
+    weight: 37
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_why:
+    weight: 47
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  path:
+    type: path
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 9
+    region: content
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 10
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  alias_keeper: true
+  field_attend: true
+  field_award_jahr: true
+  field_country_text: true
+  field_invoide_postal: true
+  field_meta_tags: true
+  field_node_title_replacement: true
+  field_nominee: true
+  field_paragraphs: true
+  field_product_property_one: true
+  field_product_property_two: true
+  field_project_name: true
+  field_runnerup: true
+  field_show_breadcrumb: true
+  field_sign_up_newsletter: true
+  field_winner: true
+  field_winneroftheyear: true
+  langcode: true
+  node_keeper: true

@@ -1,0 +1,25 @@
+uuid: 29aefb33-e8b7-4727-ae09-f28ef0b863f5
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:content:9474228c-73a2-4bc8-8983-da520860fc0d'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: silversponsors
+theme: dropsolid_flex
+region: hidden
+weight: -5
+provider: null
+plugin: 'block_content:9474228c-73a2-4bc8-8983-da520860fc0d'
+settings:
+  id: 'block_content:9474228c-73a2-4bc8-8983-da520860fc0d'
+  label: 'Silver Sponsors'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

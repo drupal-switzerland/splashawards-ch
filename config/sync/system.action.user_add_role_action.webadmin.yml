@@ -1,0 +1,14 @@
+uuid: 3ead6912-2934-47b0-bce3-7b2b06c8bc4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.webadmin
+  module:
+    - user
+id: user_add_role_action.webadmin
+label: 'Add the Website administrator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: webadmin

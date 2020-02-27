@@ -1,0 +1,12 @@
+uuid: 41b030bc-a759-4bf0-838a-77b12910d2bb
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: gYZrV6sPk5hEUfPC8WZ8X2X-iQeiCWejgZcRVmQrRy4
+id: print
+label: Print
+sharer_url: 'javascript:window.print()'
+onclick: ''
+weight: -7
+target: null

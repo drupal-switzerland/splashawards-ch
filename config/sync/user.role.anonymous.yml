@@ -1,0 +1,41 @@
+uuid: c07a258f-6160-4e3d-b28d-9d53aad940b6
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 3TGu7iuh0zR_UBo62DwcOfCEf3fqbaAuPhzndUvOP2A
+id: anonymous
+label: 'Anonymous user'
+weight: -10
+is_admin: false
+permissions:
+  - 'access content'
+  - 'create product content'
+  - 'search content'
+  - 'view paragraph content jury_paragraph'
+  - 'view paragraph content overview'
+  - 'view paragraph content p_001'
+  - 'view paragraph content p_002'
+  - 'view paragraph content p_003'
+  - 'view paragraph content p_004'
+  - 'view paragraph content p_005'
+  - 'view paragraph content p_006'
+  - 'view paragraph content p_007'
+  - 'view paragraph content p_007_child'
+  - 'view paragraph content p_008'
+  - 'view paragraph content p_009'
+  - 'view paragraph content p_010'
+  - 'view paragraph content p_010_child'
+  - 'view paragraph content p_011'
+  - 'view paragraph content p_012'
+  - 'view paragraph content p_012_child'
+  - 'view paragraph content p_016'
+  - 'view paragraph content p_017'
+  - 'view paragraph content p_fblikebox'
+  - 'view paragraph content simple_header'
+  - 'view terms in blog_tags'
+  - 'view terms in news_tags'
+  - 'view terms in product_category'
+  - 'view terms in product_property_one'
+  - 'view terms in product_property_two'
+  - 'view terms in sponsor_categories'

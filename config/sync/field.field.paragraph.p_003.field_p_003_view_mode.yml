@@ -1,0 +1,25 @@
+uuid: 0ba7620e-677e-412c-b8a7-3b1feb4191f1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_003_view_mode
+    - paragraphs.paragraphs_type.p_003
+  module:
+    - options
+_core:
+  default_config_hash: BWmckuRVwyYqA7RslRLM0WYU1peHtgEQxADzgFWDFj8
+id: paragraph.p_003.field_p_003_view_mode
+field_name: field_p_003_view_mode
+entity_type: paragraph
+bundle: p_003
+label: 'View mode'
+description: 'By default, the text is aligned to the left. The second option lets you center the text.'
+required: true
+translatable: false
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

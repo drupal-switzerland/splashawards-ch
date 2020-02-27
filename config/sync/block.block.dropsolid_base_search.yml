@@ -1,0 +1,22 @@
+uuid: 28e26df3-0da0-48e7-af9a-c2f2a2e05a59
+langcode: de
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - dropsolid_base
+_core:
+  default_config_hash: tX6pxeqlHIzI6JeN4AhvU06ip952QSqXEkQG7O5nous
+id: dropsolid_base_search
+theme: dropsolid_base
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

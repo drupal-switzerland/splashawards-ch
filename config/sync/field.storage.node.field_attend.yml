@@ -1,0 +1,18 @@
+uuid: 69e18d83-afeb-4d26-8207-9cff618ba1f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_attend
+field_name: field_attend
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

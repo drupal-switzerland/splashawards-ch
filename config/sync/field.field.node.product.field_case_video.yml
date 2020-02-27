@@ -1,0 +1,25 @@
+uuid: 8745567d-b907-4a19-9cb8-1c49bc972be2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_case_video
+    - node.type.product
+  module:
+    - video_embed_field
+id: node.product.field_case_video
+field_name: field_case_video
+entity_type: node
+bundle: product
+label: 'Case video'
+description: 'Add a public link to a video that is published on Youtube or Vimeo'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    youtube: youtube
+    vimeo: vimeo
+    youtube_playlist: '0'
+field_type: video_embed_field

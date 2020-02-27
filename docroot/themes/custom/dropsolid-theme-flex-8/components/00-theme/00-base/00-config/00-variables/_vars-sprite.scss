@@ -1,0 +1,13 @@
+/* stylelint-disable */
+$iconSprite: (
+      sprite: (width: 936px, height: 756px, svgPath: '../images/generated/sprite.svg'),
+    nominee-bright-blue: (width: 146px, height: 116px, backgroundX: 0px, backgroundY: 0px),
+    nominee-green: (width: 146px, height: 116px, backgroundX: -156px, backgroundY: -126px),
+    runnerup-peach: (width: 146px, height: 116px, backgroundX: -312px, backgroundY: -252px),
+    winner-bright-blue: (width: 146px, height: 116px, backgroundX: -468px, backgroundY: -378px),
+    winner-dark-blue: (width: 146px, height: 116px, backgroundX: -624px, backgroundY: -504px),
+    winneroftheyear-bright-blue: (width: 146px, height: 116px, backgroundX: -780px, backgroundY: -630px),
+);
+/* stylelint-enable */
+
+$sprite: map-get($iconSprite, sprite) !default;

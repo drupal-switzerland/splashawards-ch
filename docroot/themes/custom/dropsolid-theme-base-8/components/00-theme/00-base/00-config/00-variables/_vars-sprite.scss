@@ -1,0 +1,8 @@
+/* stylelint-disable */
+$icons: (
+  sprite: (width: 110px, height: 110px, svgPath: '../images/sprite.svg'),
+  test: (width: 100px, height: 100px, backgroundX: 0px, backgroundY: 0px),
+);
+/* stylelint-enable */
+
+$sprite: map-get($icons, sprite) !default;

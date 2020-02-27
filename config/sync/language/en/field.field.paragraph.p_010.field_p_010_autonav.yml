@@ -1,0 +1,5 @@
+label: Autonavigate
+description: 'Checking this will cause references to start navigating to the right a number of seconds after the page loads. References will then keep navigating automatically.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

@@ -1,0 +1,123 @@
+////////////////////////////////////////////////////////////////////////////////
+// *
+// * Service teasers
+// *
+// *
+////////////////////////////////////////////////////////////////////////////////
+
+// *
+// =============================================================================
+
+.service--teaser {
+
+  // ** visual
+
+  .field--image {
+    margin-bottom: rem($gap-vert-sm);
+  }
+
+  // ** title
+
+  h2,
+  h3,
+  h4 {
+    @extend .h3;
+  }
+
+  // ** date/author
+
+  .node__meta {
+    display: flex;
+    margin-top: rem(-5);
+    margin-bottom: rem($gap-vert-sm);
+  }
+
+  .field--name-node-author {
+    margin-left: rem(10);
+  }
+
+  // ** read more
+
+  .field--name-node-link {
+    margin-top: rem($gap-vert-sm);
+
+    a {
+      @include link-more;
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: wide phone & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-xs-wide {
+
+  .service--teaser {
+
+    // make 2 cols
+
+    display: flex;
+
+    .layout__header,
+    .layout__content {
+      width: calc(50% - #{rem($gap-service-teaser / 2)});
+      flex: 1 0 calc(50% - #{rem($gap-service-teaser / 2)});
+    }
+
+    .layout__header {
+      padding-right: #{rem($gap-service-teaser / 2)};
+    }
+
+    .layout__content {
+      padding-left: #{rem($gap-service-teaser / 2)};
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    // -- reset margin on image
+
+    .field--image {
+      margin-bottom: 0;
+    }
+
+    // -- Style 'read more' as a button
+
+    .field--name-node-link {
+
+      a {
+        @include button-primary('sm');
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+  }
+
+  // -- stretch and push actions down
+
+  .node__actions--service-teaser {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end; // align to bottom
+    justify-items: flex-end; // align to bottom
+    //align-items: flex-end; // align to the right
+  }
+
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * Breakpoint: tablet & wider
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@include bp-sm {
+
+  //
+
+}
