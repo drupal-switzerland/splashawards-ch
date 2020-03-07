@@ -8,7 +8,7 @@ id: node.product.title
 field_name: title
 entity_type: node
 bundle: product
-label: Projekt-Titel
+label: 'Case title'
 description: ''
 required: true
 translatable: true

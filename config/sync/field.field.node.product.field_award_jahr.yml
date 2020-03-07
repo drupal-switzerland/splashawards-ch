@@ -10,7 +10,7 @@ id: node.product.field_award_jahr
 field_name: field_award_jahr
 entity_type: node
 bundle: product
-label: Award-Jahr
+label: 'Award year'
 description: ''
 required: true
 translatable: false

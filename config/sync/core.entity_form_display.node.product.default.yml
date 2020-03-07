@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.product.field_allow_case_added
     - field.field.node.product.field_attend
     - field.field.node.product.field_award_jahr
+    - field.field.node.product.field_case_summary
     - field.field.node.product.field_case_video
     - field.field.node.product.field_challenges
     - field.field.node.product.field_client_name
@@ -32,7 +33,6 @@ dependencies:
     - field.field.node.product.field_product_images
     - field.field.node.product.field_product_property_one
     - field.field.node.product.field_product_property_two
-    - field.field.node.product.field_product_teaser
     - field.field.node.product.field_project_de
     - field.field.node.product.field_project_link
     - field.field.node.product.field_project_name
@@ -73,17 +73,18 @@ third_party_settings:
       weight: 4
       format_type: fieldset
       format_settings:
-        label: 'Über das einreichende Unternehmen'
+        label: 'About the submitting company'
         description: ''
         required_fields: true
         id: ''
         classes: ''
-      label: 'Über das einreichende Unternehmen'
+      label: 'About the submitting company'
       region: content
     group_about_the_case:
       children:
         - title
         - field_project_link
+        - field_case_summary
         - field_product_teaser
         - field_date_when_website_went_liv
         - field_client_name
@@ -92,12 +93,12 @@ third_party_settings:
       weight: 0
       format_type: fieldset
       format_settings:
-        label: 'Projekt einreichen'
-        description: "<h5>Nehmen Sie sich vor dem Einreichen Zeit, um sich mit den '<a href=\"/node/41\">Kategorien</a>' und '<a href=\"/node/17\">Bedingungen</a>' vertraut zu machen. Haben Sie Fragen oder benötigen Sie Unterstützung? Wir sind hier, um Ihnen zu helfen! Senden Sie Ihre Fragen per E-Mail an <a href=\"mailto:info@splashawards.de\">info@splashawards.de</a>. <br />\r\nDas Einreichen Ihres Projekts bei den Splash Awards kostet eine Gebühr pro eingereichtem Projekt während der regulären Einreichungsfrist (bis 6. März 2020). Wenn ein Projekt in mehreren Kategorien eingereicht wird, wird für jede Kategorie separat berechnet.</h5>\r\n<br/>\r\n<h5>Gebühren</h5>\r\n<ul>\r\n<li><h5>Normal: 250,00 EUR</h5></li>\r\n<li><h5>Ermäßigt (Freelancer oder kleine Agentur bis 3 Personen): 50 EUR</h5></li>\r\n</ul>\r\n\r\n"
+        label: 'Submit case'
+        description: "<h5>Before submitting, take some time to familiarize yourself with the '<a href=\"/categories-criteria\">categories & criteria</a>' and '<a href=\"/submission-process\">eligibility & guidelines</a>'. Do you have questions or need support? We are here to help you! Send your questions via <a href=\"/contact\">contact</a>. <br />\r\nSubmitting your project to the Splash Awards <b>costs a fee per submitted project</b>. If a project is submitted in more than one category, a separate fee will be charged for each category.</h5>\r\n<br/>"
         required_fields: true
         id: ''
         classes: project-form-wrapper
-      label: 'Projekt einreichen'
+      label: 'Submit case'
       region: content
     group_categories:
       children:
@@ -106,12 +107,12 @@ third_party_settings:
       weight: 1
       format_type: fieldset
       format_settings:
-        label: Kategorien
-        description: '<h5>Jedes Unternehmen kann maximal drei Projekte für die Splash Awards einreichen. Wenn ein Projekt in drei verschiedenen Kategorien eingereicht wird, zählt dies ebenfalls als drei Projekte.</h5><br/>'
+        label: Categories
+        description: '<h5>Each company can submit a maximum of three projects for the Splash Awards. If a project is submitted in three different categories, this also counts as three projects.</h5><br/>'
         required_fields: true
         id: ''
         classes: project-form-wrapper
-      label: Kategorien
+      label: Categories
       region: content
     group_project_details:
       children:
@@ -125,12 +126,12 @@ third_party_settings:
       weight: 2
       format_type: fieldset
       format_settings:
-        label: Projektdetails
+        label: 'Project details'
         description: ''
         required_fields: true
         id: ''
         classes: project-form-wrapper
-      label: Projektdetails
+      label: 'Project details'
       region: content
     group_media:
       children:
@@ -140,12 +141,12 @@ third_party_settings:
       weight: 3
       format_type: fieldset
       format_settings:
-        label: Dateien
+        label: Files
         description: ''
         required_fields: true
         id: ''
         classes: ''
-      label: Dateien
+      label: Files
       region: content
     group_legal:
       children:
@@ -155,12 +156,12 @@ third_party_settings:
       weight: 5
       format_type: fieldset
       format_settings:
-        label: Rechtliches
+        label: 'Legal information'
         description: ''
         required_fields: true
         id: ''
         classes: project-form-wrapper
-      label: Rechtliches
+      label: 'Legal information'
       region: content
     group_promotional:
       children:
@@ -169,12 +170,12 @@ third_party_settings:
       weight: 6
       format_type: fieldset
       format_settings:
-        label: Drupal-Promotion
+        label: 'Drupal promotion'
         description: ''
         required_fields: true
         id: ''
         classes: project-form-wrapper
-      label: Drupal-Promotion
+      label: 'Drupal promotion'
       region: content
 _core:
   default_config_hash: JYvNFIrDIH3MZSbQhWdZp61vnFkCrV4JjfWOZGZ_BcA
@@ -196,6 +197,14 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_case_summary:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
   field_case_video:
     weight: 14
     settings: {  }
@@ -211,7 +220,7 @@ content:
     type: string_textarea
     region: content
   field_client_name:
-    weight: 6
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -237,7 +246,7 @@ content:
     type: string_textarea
     region: content
   field_date_when_website_went_liv:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -282,7 +291,7 @@ content:
     type: string_textarea
     region: content
   field_logo_client:
-    weight: 7
+    weight: 8
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -335,14 +344,6 @@ content:
       preview_link: true
       offsets: '50,50'
       progress_indicator: throbber
-    third_party_settings: {  }
-  field_product_teaser:
-    type: string_textarea
-    weight: 4
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
     third_party_settings: {  }
   field_project_de:
     weight: 43

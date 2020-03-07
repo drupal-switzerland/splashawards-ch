@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.product.field_allow_case_added
     - field.field.node.product.field_attend
     - field.field.node.product.field_award_jahr
+    - field.field.node.product.field_case_summary
     - field.field.node.product.field_case_video
     - field.field.node.product.field_challenges
     - field.field.node.product.field_client_name
@@ -17,6 +18,7 @@ dependencies:
     - field.field.node.product.field_email
     - field.field.node.product.field_extra
     - field.field.node.product.field_field_agree
+    - field.field.node.product.field_hosting
     - field.field.node.product.field_invoice_address
     - field.field.node.product.field_invoide_postal
     - field.field.node.product.field_logo_client
@@ -32,7 +34,6 @@ dependencies:
     - field.field.node.product.field_product_images
     - field.field.node.product.field_product_property_one
     - field.field.node.product.field_product_property_two
-    - field.field.node.product.field_product_teaser
     - field.field.node.product.field_project_de
     - field.field.node.product.field_project_link
     - field.field.node.product.field_project_name
@@ -70,13 +71,14 @@ third_party_settings:
         - group_info
         - field_product_category
         - group_certificates
-        - field_product_images
         - field_product_teaser
+        - field_product_images
         - field_winner
+        - field_case_summary
         - field_project_de
-        - field_extra
         - field_nominee
         - field_runnerup
+        - field_extra
         - field_challenges
         - field_winneroftheyear
         - field_community_contributions
@@ -111,7 +113,7 @@ third_party_settings:
     group_actions:
       children: {  }
       parent_name: ''
-      weight: 12
+      weight: 13
       format_type: html_element
       format_settings:
         id: ''
@@ -152,9 +154,26 @@ targetEntityType: node
 bundle: product
 mode: full
 content:
+  field_case_summary:
+    type: smart_trim
+    weight: 6
+    region: content
+    label: above
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: full
+      trim_options: {  }
+    third_party_settings: {  }
   field_case_video:
     type: video_embed_field_video
-    weight: 11
+    weight: 12
     region: content
     label: above
     settings:
@@ -165,21 +184,21 @@ content:
     third_party_settings: {  }
   field_challenges:
     type: basic_string
-    weight: 8
+    weight: 9
     region: content
     label: above
     settings: {  }
     third_party_settings: {  }
   field_community_contributions:
     type: basic_string
-    weight: 9
+    weight: 10
     region: content
     label: above
     settings: {  }
     third_party_settings: {  }
   field_extra:
     type: basic_string
-    weight: 7
+    weight: 8
     region: content
     label: above
     settings: {  }
@@ -258,7 +277,7 @@ content:
       format_custom_false: ''
     third_party_settings: {  }
   field_paragraphs:
-    weight: 13
+    weight: 14
     label: hidden
     settings:
       view_mode: default
@@ -352,26 +371,9 @@ content:
     third_party_settings:
       ds:
         ds_limit: ''
-  field_product_teaser:
-    type: smart_trim
-    weight: 5
-    region: content
-    label: above
-    settings:
-      trim_length: 600
-      trim_type: chars
-      trim_suffix: ''
-      wrap_output: false
-      wrap_class: trimmed
-      more_link: false
-      more_class: more-link
-      more_text: More
-      summary_handler: full
-      trim_options: {  }
-    third_party_settings: {  }
   field_project_de:
     type: basic_string
-    weight: 6
+    weight: 7
     region: content
     label: above
     settings: {  }
@@ -473,7 +475,7 @@ content:
     third_party_settings: {  }
   field_why:
     type: basic_string
-    weight: 10
+    weight: 11
     region: content
     label: above
     settings: {  }
@@ -509,6 +511,7 @@ hidden:
   field_date_when_website_went_liv: true
   field_email: true
   field_field_agree: true
+  field_hosting: true
   field_invoice_address: true
   field_invoide_postal: true
   field_mail_invoice: true

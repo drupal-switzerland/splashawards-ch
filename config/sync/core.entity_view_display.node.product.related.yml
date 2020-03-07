@@ -4,13 +4,26 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.related
+    - field.field.node.product.field_allow_case_added
+    - field.field.node.product.field_attend
+    - field.field.node.product.field_award_jahr
+    - field.field.node.product.field_case_summary
+    - field.field.node.product.field_case_video
     - field.field.node.product.field_challenges
+    - field.field.node.product.field_client_name
+    - field.field.node.product.field_client_permission
     - field.field.node.product.field_community_contributions
+    - field.field.node.product.field_country_text
+    - field.field.node.product.field_date_when_website_went_liv
     - field.field.node.product.field_email
     - field.field.node.product.field_extra
     - field.field.node.product.field_field_agree
+    - field.field.node.product.field_hosting
+    - field.field.node.product.field_invoice_address
+    - field.field.node.product.field_invoide_postal
     - field.field.node.product.field_logo_client
     - field.field.node.product.field_mail_invoice
+    - field.field.node.product.field_meta_tags
     - field.field.node.product.field_name_
     - field.field.node.product.field_node_title_replacement
     - field.field.node.product.field_nominee
@@ -21,12 +34,17 @@ dependencies:
     - field.field.node.product.field_product_images
     - field.field.node.product.field_product_property_one
     - field.field.node.product.field_product_property_two
-    - field.field.node.product.field_product_teaser
     - field.field.node.product.field_project_de
     - field.field.node.product.field_project_link
+    - field.field.node.product.field_project_name
+    - field.field.node.product.field_runnerup
     - field.field.node.product.field_show_breadcrumb
+    - field.field.node.product.field_sign_up_newsletter
     - field.field.node.product.field_submitted_by
+    - field.field.node.product.field_vat_registration_id
+    - field.field.node.product.field_why
     - field.field.node.product.field_winner
+    - field.field.node.product.field_winneroftheyear
     - node.type.product
   module:
     - blazy
@@ -209,6 +227,8 @@ hidden:
   dropsolid_social_widgets: true
   field_allow_case_added: true
   field_attend: true
+  field_award_jahr: true
+  field_case_summary: true
   field_case_video: true
   field_challenges: true
   field_client_name: true
@@ -219,6 +239,7 @@ hidden:
   field_email: true
   field_extra: true
   field_field_agree: true
+  field_hosting: true
   field_invoice_address: true
   field_invoide_postal: true
   field_logo_client: true
@@ -230,7 +251,6 @@ hidden:
   field_organisation: true
   field_paragraphs: true
   field_phone_number: true
-  field_product_teaser: true
   field_project_de: true
   field_project_link: true
   field_project_name: true

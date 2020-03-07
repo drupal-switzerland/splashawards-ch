@@ -11,9 +11,9 @@ id: node.product.field_date_when_website_went_liv
 field_name: field_date_when_website_went_liv
 entity_type: node
 bundle: product
-label: 'Date when website went live'
-description: 'Indicate when (approximately) the website went live. Projects older than the previous calendar year (so from before 01-01-2018) are not eligible.'
-required: false
+label: 'Go-live Date'
+description: 'Indicate when (approximately) the website went live. Projects older than the previous calendar year (so from before 01-01-2019) are not eligible.'
+required: true
 translatable: false
 default_value:
   -

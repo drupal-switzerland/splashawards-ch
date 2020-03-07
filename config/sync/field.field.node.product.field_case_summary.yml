@@ -1,20 +1,18 @@
-uuid: a7d19394-5d01-45ab-8445-fd66bfb5c9bc
-langcode: de
+uuid: 5b95a591-f229-42b7-9450-4c80958a28d4
+langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_product_teaser
+    - field.storage.node.field_case_summary
     - node.type.product
-_core:
-  default_config_hash: 8EtNqlihy2MeM0L6pgWuzqUVpsT4o1YMBNGjOlQAga4
-id: node.product.field_product_teaser
-field_name: field_product_teaser
+id: node.product.field_case_summary
+field_name: field_case_summary
 entity_type: node
 bundle: product
-label: Summary
+label: 'Case summary'
 description: 'Please enter a brief description of your project. Try to constrain it to 160 characters'
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

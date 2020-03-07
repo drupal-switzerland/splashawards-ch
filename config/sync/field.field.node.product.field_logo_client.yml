@@ -11,9 +11,9 @@ id: node.product.field_logo_client
 field_name: field_logo_client
 entity_type: node
 bundle: product
-label: 'Logo client'
+label: 'Client logo'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
