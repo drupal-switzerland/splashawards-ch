@@ -53,8 +53,19 @@
        */
       $settings['install_profile'] = 'standard';
 
-
-
+      $config['dropsolid_purge.config'] = [
+        'site_name' => "splashawardsswiss",
+        'site_environment' => "live",
+        'site_group' => "DropsolidSolutions",
+        'loadbalancers' => [
+          'varnish' => [
+            'ip' => '127.0.0.1',
+            'protocol' => 'http',
+            'port' => '88'
+          ],
+        ]
+      ];
+      
 
       // BEGIN reverse proxy setting added by Dropsolid infrastructure, DO NOT EDIT
       // Tell Drupal that we are behind a reverse proxy server
