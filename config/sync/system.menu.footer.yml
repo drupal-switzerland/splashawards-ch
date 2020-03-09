@@ -1,7 +1,15 @@
 uuid: 5d790249-5ed4-4e91-aa6f-920269388060
-langcode: de
+langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - menu_clickthrough
+    - menu_trail_by_path
+third_party_settings:
+  menu_trail_by_path:
+    trail_source: ''
+  menu_clickthrough:
+    clickthrough_enabled: 0
 _core:
   default_config_hash: 7yrlW5z9zdg2eBucB2GPqXKSMQfH9lSRSO4DbWF7AFc
 id: footer

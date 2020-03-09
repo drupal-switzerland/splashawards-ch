@@ -57,7 +57,7 @@ third_party_settings:
         label: hidden
         formatter: default
         settings:
-          'link text': 'Artikel lesen'
+          'link text': 'Read more'
           'link class': ''
           wrapper: ''
           class: ''

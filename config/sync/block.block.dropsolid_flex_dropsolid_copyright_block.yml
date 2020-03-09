@@ -17,7 +17,7 @@ settings:
   label: Copyright
   provider: dropsolid_blocks
   label_display: '0'
-  terms_of_use: '17'
-  privacy_policy: '2'
+  terms_of_use: null
+  privacy_policy: '18'
   company: 'Splash Awards'
 visibility: {  }
