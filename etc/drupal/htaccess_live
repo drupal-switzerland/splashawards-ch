@@ -66,8 +66,8 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
   RewriteRule ^ - [E=protossl:s]
 
   # Uncomment the next two lines to redirect to HTTPS.
-  # RewriteCond %{ENV:HTTPS} !on
-  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteCond %{ENV:HTTPS} !on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # Make sure Authorization HTTP header is available to PHP
   # even when running as CGI or FastCGI.
