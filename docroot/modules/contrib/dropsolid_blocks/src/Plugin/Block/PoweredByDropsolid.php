@@ -27,10 +27,7 @@ class PoweredByDropsolid extends BlockBase {
       'languages',
     ];
 
-    $build['powered_by_dropsolid']['#markup'] = $this->t('Powered by @dropsolid', [
-      '@dropsolid' => new FormattableMarkup(Link::fromTextAndUrl('Dropsolid', Url::fromUri('https://dropsolid.com', ['attributes' => ['target' => '_blank']]))
-        ->toString(), []),
-    ]);
+    $build['powered_by_dropsolid']['#markup'] = $this->t('Powered by Dropsolid');
 
     return $build;
   }
