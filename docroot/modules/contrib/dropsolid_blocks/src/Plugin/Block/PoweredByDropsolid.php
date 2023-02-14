@@ -24,7 +24,7 @@ class PoweredByDropsolid extends BlockBase {
     $build = [];
 
     $build['#cache']['contexts'] = [
-      'languages',
+      'languages'
     ];
 
     $build['powered_by_dropsolid']['#markup'] = $this->t('Powered by Dropsolid');
