@@ -44,7 +44,7 @@ variant_settings:
   layout: rocketship_panel_detail
   layout_settings:
     layout:
-      extra_classes: product__overview--advanced
+      extra_classes: 'product__overview--advanced page-variant--product_overview'
   page_title: '[node:title]'
   storage_type: page_manager
   storage_id: node_view-panels_variant-product_overview

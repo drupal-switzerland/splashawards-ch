@@ -10,7 +10,6 @@ weight: -10
 is_admin: false
 permissions:
   - 'access content'
-  - 'create product content'
   - 'search content'
   - 'view paragraph content jury_paragraph'
   - 'view paragraph content overview'

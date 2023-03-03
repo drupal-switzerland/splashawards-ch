@@ -40,7 +40,7 @@ content:
     type: link
     region: content
   field_twitter:
-    weight: 2
+    weight: -1
     label: hidden
     settings:
       trim_length: 80
@@ -54,3 +54,4 @@ content:
 hidden:
   field_ig: true
   langcode: true
+  search_api_excerpt: true

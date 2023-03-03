@@ -85,7 +85,6 @@ third_party_settings:
         - title
         - field_project_link
         - field_case_summary
-        - field_product_teaser
         - field_date_when_website_went_liv
         - field_client_name
         - field_logo_client
@@ -314,6 +313,13 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_nominee:
+    type: boolean_checkbox
+    weight: -5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_organisation:
     weight: 28
     settings:
@@ -361,6 +367,13 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
+  field_runnerup:
+    type: boolean_checkbox
+    weight: -4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_submitted_by:
     weight: 29
     settings:
@@ -385,6 +398,20 @@ content:
     third_party_settings: {  }
     type: string_textarea
     region: content
+  field_winner:
+    type: boolean_checkbox
+    weight: -3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_winneroftheyear:
+    type: boolean_checkbox
+    weight: -2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   path:
     type: path
     weight: 12
@@ -464,15 +491,11 @@ hidden:
   field_invoide_postal: true
   field_meta_tags: true
   field_node_title_replacement: true
-  field_nominee: true
   field_paragraphs: true
   field_product_property_one: true
   field_product_property_two: true
   field_project_name: true
-  field_runnerup: true
   field_show_breadcrumb: true
   field_sign_up_newsletter: true
-  field_winner: true
-  field_winneroftheyear: true
   langcode: true
   node_keeper: true

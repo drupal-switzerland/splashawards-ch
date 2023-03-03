@@ -64,15 +64,14 @@ third_party_settings:
     regions:
       content:
         - node_title
-        - field_organisation
         - field_winner
+        - field_organisation
         - group_certificates
         - field_winneroftheyear
-        - field_product_teaser
-        - field_runnerup
         - field_case_summary
-        - field_nominee
+        - field_runnerup
         - group_info
+        - field_nominee
         - node_link
         - field_product_images
         - group_actions
@@ -92,7 +91,7 @@ third_party_settings:
         label: hidden
         formatter: default
         settings:
-          'link text': 'Mehr lesen'
+          'link text': 'Read more'
           'link class': btn-continue-reading
           wrapper: ''
           class: ''
@@ -164,9 +163,9 @@ content:
     region: content
     label: hidden
     settings:
-      trim_length: 200
+      trim_length: 150
       trim_type: chars
-      trim_suffix: ''
+      trim_suffix: ' (...)'
       wrap_class: trimmed
       more_text: More
       more_class: more-link

@@ -7,6 +7,7 @@ dependencies:
   module:
     - ctools
     - facets
+    - system
   theme:
     - dropsolid_flex
 id: nominee_categories
@@ -29,3 +30,8 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: /test/test
+    negate: false
+    context_mapping: {  }

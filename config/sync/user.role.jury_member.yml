@@ -1,0 +1,12 @@
+uuid: cca0054e-ac15-4525-9962-ecda07643860
+langcode: en
+status: true
+dependencies: {  }
+id: jury_member
+label: 'Jury member'
+weight: -9
+is_admin: null
+permissions:
+  - 'administer nodes'
+  - 'view any unpublished brand content'
+  - 'view any unpublished product content'

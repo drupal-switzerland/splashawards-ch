@@ -1,0 +1,25 @@
+uuid: 76bd81a1-f1fb-4df9-b6db-3ead56061991
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:content:9474228c-73a2-4bc8-8983-da520860fc0d'
+  module:
+    - block_content
+  theme:
+    - dropsolid_flex
+id: silversponsors_2
+theme: dropsolid_flex
+region: doormat_02
+weight: -13
+provider: null
+plugin: 'block_content:9474228c-73a2-4bc8-8983-da520860fc0d'
+settings:
+  id: 'block_content:9474228c-73a2-4bc8-8983-da520860fc0d'
+  label: 'Our Sponsors'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

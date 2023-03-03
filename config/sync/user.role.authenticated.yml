@@ -6,7 +6,7 @@ _core:
   default_config_hash: _7tnXj5WjpDNs2gESbYWZyqz3_wt9oBhuFUmvTvQTpk
 id: authenticated
 label: 'Authenticated user'
-weight: -9
+weight: -7
 is_admin: false
 permissions:
   - 'access content'

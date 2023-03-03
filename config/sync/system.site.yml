@@ -1,10 +1,10 @@
 uuid: e83c5006-0b72-4129-8e20-d04259aa6460
-name: 'Splash Awards Switzerland 2020'
+name: 'Splash Awards Switzerland 2023'
 mail: info@drupalevents.ch
 slogan: 'The best Drupal projects and contributions from the Swiss Drupal community.'
 page:
   403: /node/6
-  404: /node/5
+  404: ''
   front: /node/140
 admin_compact_mode: false
 weight_select_max: 100

@@ -48,8 +48,6 @@ dependencies:
   module:
     - blazy
     - ds
-    - image
-    - metatag
     - rocketship_core
     - smart_trim
     - user
@@ -63,10 +61,9 @@ third_party_settings:
       settings: {  }
     regions:
       content:
+        - field_nominee
         - field_project_name
         - field_project_link
-        - field_product_category
-        - field_submitted_by
         - field_product_images
         - field_project_de
         - field_extra
@@ -79,21 +76,6 @@ targetEntityType: node
 bundle: product
 mode: default
 content:
-  field_award_jahr:
-    weight: 12
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_case_summary:
-    weight: 14
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
   field_challenges:
     type: smart_trim
     weight: 7
@@ -145,30 +127,13 @@ content:
       summary_handler: full
       trim_options: {  }
     third_party_settings: {  }
-  field_hosting:
-    weight: 13
+  field_nominee:
+    type: author_render
+    weight: 0
+    region: content
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
-    region: content
-  field_meta_tags:
-    weight: 9
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: metatag_empty_formatter
-    region: content
-  field_product_category:
-    type: entity_reference_label
-    weight: 2
-    region: content
-    label: above
-    settings:
-      link: false
-    third_party_settings:
-      ds:
-        ds_limit: ''
   field_product_images:
     type: blazy
     weight: 4
@@ -264,39 +229,12 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_runnerup:
-    weight: 11
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
-  field_submitted_by:
-    weight: 3
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
-    region: content
-  field_winneroftheyear:
-    weight: 10
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
 hidden:
   dropsolid_social_widgets: true
   field_allow_case_added: true
   field_attend: true
+  field_award_jahr: true
+  field_case_summary: true
   field_case_video: true
   field_client_name: true
   field_client_permission: true
@@ -304,23 +242,28 @@ hidden:
   field_date_when_website_went_liv: true
   field_email: true
   field_field_agree: true
+  field_hosting: true
   field_invoice_address: true
   field_invoide_postal: true
   field_logo_client: true
   field_mail_invoice: true
+  field_meta_tags: true
   field_name_: true
   field_node_title_replacement: true
-  field_nominee: true
   field_organisation: true
   field_paragraphs: true
   field_phone_number: true
+  field_product_category: true
   field_product_property_one: true
   field_product_property_two: true
+  field_runnerup: true
   field_show_breadcrumb: true
   field_sign_up_newsletter: true
+  field_submitted_by: true
   field_vat_registration_id: true
   field_why: true
   field_winner: true
+  field_winneroftheyear: true
   langcode: true
   links: true
   search_api_excerpt: true

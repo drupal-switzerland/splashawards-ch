@@ -67,21 +67,19 @@ third_party_settings:
     regions:
       content:
         - field_node_title_replacement
-        - field_submitted_by
         - group_info
-        - field_product_category
         - group_certificates
-        - field_product_teaser
         - field_product_images
-        - field_winner
         - field_case_summary
-        - field_project_de
+        - field_winner
         - field_nominee
+        - field_project_de
         - field_runnerup
         - field_extra
         - field_challenges
         - field_winneroftheyear
         - field_community_contributions
+        - field_hosting
         - field_why
         - field_case_video
         - group_actions
@@ -113,7 +111,7 @@ third_party_settings:
     group_actions:
       children: {  }
       parent_name: ''
-      weight: 13
+      weight: 14
       format_type: html_element
       format_settings:
         id: ''
@@ -173,7 +171,7 @@ content:
     third_party_settings: {  }
   field_case_video:
     type: video_embed_field_video
-    weight: 12
+    weight: 13
     region: content
     label: above
     settings:
@@ -202,6 +200,23 @@ content:
     region: content
     label: above
     settings: {  }
+    third_party_settings: {  }
+  field_hosting:
+    type: smart_trim
+    weight: 11
+    region: content
+    label: above
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: full
+      trim_options: {  }
     third_party_settings: {  }
   field_logo_client:
     type: blazy
@@ -285,16 +300,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: bottom
-  field_product_category:
-    type: entity_reference_label
-    weight: 3
-    region: content
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      ds:
-        ds_limit: ''
   field_product_images:
     type: slick_infinite_image
     weight: 5
@@ -418,64 +423,9 @@ content:
       format_custom_true: 'Runner Up'
       format_custom_false: ''
     third_party_settings: {  }
-  field_submitted_by:
-    type: blazy
-    weight: 1
-    region: content
-    label: hidden
-    settings:
-      image_style: ''
-      thumbnail_style: ''
-      responsive_image_style: paragraph_p010_child_logo
-      media_switch: ''
-      box_style: ''
-      box_caption: ''
-      box_caption_custom: ''
-      ratio: ''
-      sizes: ''
-      breakpoints:
-        xs:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        sm:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        md:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        lg:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        xl:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-      current_view_mode: full
-      background: false
-      caption:
-        title: '0'
-        alt: '0'
-      iframe_lazy: true
-      icon: ''
-      layout: ''
-      view_mode: ''
-      cache: 0
-      optionset: default
-      skin: ''
-      style: ''
-      box_media_style: ''
-      grid: 0
-      grid_header: ''
-      grid_medium: 0
-      grid_small: 0
-    third_party_settings: {  }
   field_why:
     type: basic_string
-    weight: 11
+    weight: 12
     region: content
     label: above
     settings: {  }
@@ -511,7 +461,6 @@ hidden:
   field_date_when_website_went_liv: true
   field_email: true
   field_field_agree: true
-  field_hosting: true
   field_invoice_address: true
   field_invoide_postal: true
   field_mail_invoice: true
@@ -519,10 +468,12 @@ hidden:
   field_name_: true
   field_organisation: true
   field_phone_number: true
+  field_product_category: true
   field_product_property_one: true
   field_product_property_two: true
   field_show_breadcrumb: true
   field_sign_up_newsletter: true
+  field_submitted_by: true
   field_vat_registration_id: true
   langcode: true
   links: true
