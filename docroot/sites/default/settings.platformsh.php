@@ -13,6 +13,7 @@ if (!$platformsh->isAvailable()) {
 }
 
 // You can check for any particular value being available (recommended):
+var_dump($platformsh);
 if (isset($config->relationships['database'][0])) {
   $database = $config->relationships['database'][0];
 
