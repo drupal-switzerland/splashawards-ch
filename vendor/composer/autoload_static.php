@@ -115,6 +115,7 @@ class ComposerStaticInitDrupal8
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
+            'Platformsh\\ConfigReader\\' => 24,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -404,6 +405,10 @@ class ComposerStaticInitDrupal8
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
+        'Platformsh\\ConfigReader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/platformsh/config-reader/src',
         ),
         'PhpParser\\' => 
         array (

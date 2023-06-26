@@ -23,7 +23,8 @@
     "jackmoore/colorbox": "^1.0",
     "imakewebthings/waypoints": "~4.0.1",
     "drupal/purge": "^3.0@beta",
-    "drupal/dropsolid_purge": "^1.0@beta"
+    "drupal/dropsolid_purge": "^1.0@beta",
+    "platformsh/config-reader": "^1.0"
   },
   "authors": [
     {

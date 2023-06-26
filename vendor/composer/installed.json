@@ -355,7 +355,8 @@
             "goutte",
             "headless",
             "testing"
-        ]
+        ],
+        "abandoned": "behat/mink-browserkit-driver"
     },
     {
         "name": "behat/mink-selenium2-driver",
@@ -2166,7 +2167,8 @@
         "license": [
             "GPL-2.0-or-later"
         ],
-        "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core"
+        "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core",
+        "abandoned": "drupal/core-composer-scaffold"
     },
     {
         "name": "drupal-pattern-lab/unified-twig-extensions",
@@ -3248,8 +3250,14 @@
         "version_normalized": "8.3.7.0",
         "source": {
             "type": "git",
-            "url": "https://git.drupalcode.org/project/coder.git",
+            "url": "https://github.com/pfrenssen/coder.git",
             "reference": "c11c2957653bdbfd68adc851692d094b43d39221"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pfrenssen/coder/zipball/c11c2957653bdbfd68adc851692d094b43d39221",
+            "reference": "c11c2957653bdbfd68adc851692d094b43d39221",
+            "shasum": ""
         },
         "require": {
             "ext-mbstring": "*",
@@ -10836,12 +10844,12 @@
         "version_normalized": "0.9.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/njh/easyrdf.git",
+            "url": "https://github.com/easyrdf/easyrdf.git",
             "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/njh/easyrdf/zipball/acd09dfe0555fbcfa254291e433c45fdd4652566",
+            "url": "https://api.github.com/repos/easyrdf/easyrdf/zipball/acd09dfe0555fbcfa254291e433c45fdd4652566",
             "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566",
             "shasum": ""
         },
@@ -11089,7 +11097,8 @@
         "homepage": "https://github.com/FriendsOfPHP/Goutte",
         "keywords": [
             "scraper"
-        ]
+        ],
+        "abandoned": "symfony/browser-kit"
     },
     {
         "name": "guzzlehttp/guzzle",
@@ -11508,7 +11517,8 @@
                 "name": "Jakub Onderka",
                 "email": "jakub.onderka@gmail.com"
             }
-        ]
+        ],
+        "abandoned": "php-parallel-lint/php-console-color"
     },
     {
         "name": "jakub-onderka/php-console-highlighter",
@@ -11556,7 +11566,8 @@
                 "homepage": "http://www.acci.cz/"
             }
         ],
-        "description": "Highlight PHP code in terminal"
+        "description": "Highlight PHP code in terminal",
+        "abandoned": "php-parallel-lint/php-console-highlighter"
     },
     {
         "name": "jcalderonzumba/gastonjs",
@@ -11811,7 +11822,8 @@
         "keywords": [
             "exif",
             "image"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "maennchen/zipstream-php",
@@ -13071,7 +13083,8 @@
         "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
         "keywords": [
             "tokenizer"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "phpunit/phpunit",
@@ -13220,6 +13233,50 @@
             "xunit"
         ],
         "abandoned": true
+    },
+    {
+        "name": "platformsh/config-reader",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/platformsh/config-reader-php.git",
+            "reference": "a29e75c3045b8f234e3f889568c5242fb844eb74"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/platformsh/config-reader-php/zipball/a29e75c3045b8f234e3f889568c5242fb844eb74",
+            "reference": "a29e75c3045b8f234e3f889568c5242fb844eb74",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8"
+        },
+        "time": "2018-12-18T21:15:26+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Platformsh\\ConfigReader\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Patrick Dawkins"
+            },
+            {
+                "name": "Ori Pekelman",
+                "email": "ori+github@pekelman.com"
+            }
+        ],
+        "description": "Small helper to access Platform.sh environment variables"
     },
     {
         "name": "psr/container",
@@ -14337,7 +14394,8 @@
             "email",
             "mail",
             "mailer"
-        ]
+        ],
+        "abandoned": "symfony/mailer"
     },
     {
         "name": "symfony-cmf/routing",
@@ -14515,7 +14573,8 @@
             }
         ],
         "description": "Symfony ClassLoader Component",
-        "homepage": "https://symfony.com"
+        "homepage": "https://symfony.com",
+        "abandoned": true
     },
     {
         "name": "symfony/config",
@@ -14768,7 +14827,8 @@
             }
         ],
         "description": "Symfony Debug Component",
-        "homepage": "https://symfony.com"
+        "homepage": "https://symfony.com",
+        "abandoned": "symfony/error-handler"
     },
     {
         "name": "symfony/dependency-injection",
@@ -16513,12 +16573,12 @@
         "version_normalized": "1.6.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/webmozart/assert.git",
+            "url": "https://github.com/webmozarts/assert.git",
             "reference": "573381c0a64f155a0d9a23f4b0c797194805b925"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webmozart/assert/zipball/573381c0a64f155a0d9a23f4b0c797194805b925",
+            "url": "https://api.github.com/repos/webmozarts/assert/zipball/573381c0a64f155a0d9a23f4b0c797194805b925",
             "reference": "573381c0a64f155a0d9a23f4b0c797194805b925",
             "shasum": ""
         },
@@ -16603,7 +16663,8 @@
                 "email": "bschussek@gmail.com"
             }
         ],
-        "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths."
+        "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+        "abandoned": "symfony/filesystem"
     },
     {
         "name": "willdurand/geocoder",

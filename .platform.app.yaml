@@ -53,7 +53,7 @@ disk: 2048
 
 # Configuration of the build of this application.
 build:
-  flavor: composer
+  flavor: none # no build steps, DropSolid code fully committed to repo as built
 
 # The relationships of the application with services or other applications.
 #
@@ -75,7 +75,7 @@ hooks:
       #   - `cache-rebuild`
       #   - `updatedb`
       #   - and if config files are present, `config-import`
-      cd web
+      cd docroot
       bash $PLATFORM_APP_DIR/drush/platformsh_deploy_drupal.sh
 
 web:
