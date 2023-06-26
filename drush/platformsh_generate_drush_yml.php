@@ -4,6 +4,8 @@
  * A script that creates the .drush/drush.yml file.
  */
 
+use Platformsh\ConfigReader\Config;
+
 // This file should only be executed as a PHP-CLI script.
 if (PHP_SAPI !== 'cli') {
   exit;
@@ -17,13 +19,13 @@ require_once(__DIR__ . '/../vendor/autoload.php');
  * @return string|NULL
  */
 function _platformsh_drush_site_url() {
-  $platformsh = new \Platformsh\ConfigReader\Config();
+  $platformsh = new Config();
 
-  if (!$platformsh->inRuntime()) {
-    return;
+  if (!$platformsh->isAvailable()) {
+    return NULL;
   }
 
-  $routes = $platformsh->getUpstreamRoutes($platformsh->applicationName);
+  $routes = $platformsh->routes;
 
   // Sort URLs, with the primary route first, then by HTTPS before HTTP, then by length.
   usort($routes, function (array $a, array $b) {
@@ -67,6 +69,7 @@ options:
 
 EOF
 );
+
 if (!$success) {
   echo "Failed to write file: $filename\n";
   exit(1);
@@ -78,4 +81,3 @@ if (!chmod($filename, 0600)) {
 }
 
 echo "Created Drush configuration file: $filename\n";
-

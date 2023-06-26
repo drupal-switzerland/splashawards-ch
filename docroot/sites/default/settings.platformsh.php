@@ -4,7 +4,6 @@
  * Platform.sh settings.
  */
 
-use Drupal\Core\Installer\InstallerKernel;
 use Platformsh\ConfigReader\Config;
 
 $platformsh = new Config();
