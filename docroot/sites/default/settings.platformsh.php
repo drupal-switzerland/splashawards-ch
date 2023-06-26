@@ -43,10 +43,10 @@ if (isset($platformsh->branch)) {
 
 // Configure private and temporary file paths.
 if (!isset($settings['file_private_path'])) {
-  $settings['file_private_path'] = $platformsh->appDir . '/private';
+  $settings['file_private_path'] = $platformsh->app_dir . '/private';
 }
 if (!isset($settings['file_temp_path'])) {
-  $settings['file_temp_path'] = $platformsh->appDir . '/tmp';
+  $settings['file_temp_path'] = $platformsh->app_dir . '/tmp';
 }
 
 // Configure the default PhpStorage and Twig template cache directories.
