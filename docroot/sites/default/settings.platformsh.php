@@ -59,10 +59,10 @@ if (!isset($settings['php_storage']['twig'])) {
 
 // Set the project-specific entropy value, used for generating one-time
 // keys and such.
-$settings['hash_salt'] = empty($settings['hash_salt']) ? $platformsh->projectEntropy : $settings['hash_salt'];
+$settings['hash_salt'] = empty($settings['hash_salt']) ? '5cacb8072d7c243bb4bcfc977d2d91c9' : $settings['hash_salt'];
 
 // Set the deployment identifier, which is used by some Drupal cache systems.
-$settings['deployment_identifier'] = $settings['deployment_identifier'] ?? $platformsh->treeId;
+$settings['deployment_identifier'] = $settings['deployment_identifier'] ?? $platformsh->tree_id;
 
 // The 'trusted_hosts_pattern' setting allows an admin to restrict the Host header values
 // that are considered trusted.  If an attacker sends a request with a custom-crafted Host
