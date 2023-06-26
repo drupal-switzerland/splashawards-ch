@@ -14,7 +14,6 @@
     "drush/drush": "~8.1",
     "drupal-composer/drupal-scaffold": "~2.2",
     "drupal/core": "~8.7.0",
-    "drupal/dropsolid_rocketship_profile": "^1.0",
     "drupal/claro": "1.0.0-alpha5",
     "zaporylie/composer-drupal-optimizations": "^1.0",
     "drupal-pattern-lab/unified-twig-extensions": "~0.1.0",
@@ -23,22 +22,6 @@
     "vardot/blazy": "~1.8",
     "jackmoore/colorbox": "^1.0",
     "imakewebthings/waypoints": "~4.0.1",
-    "dropsolid-drupal8/dropsolid_social_widgets": "^2.0",
-    "dropsolid-drupal8/dropsolid_cookie_policy": "3.0.0-alpha1",
-    "dropsolid-drupal8/page_manager_hreflang": "3.0.0-alpha1",
-    "dropsolid-drupal8/redirect_handler": "3.0.0-alpha1",
-    "dropsolid-drupal8/dropsolid_styleguide": "3.0.0-alpha1",
-    "dropsolid-drupal8/dropsolid_blocks": "3.0.0-alpha1",
-    "dropsolid-drupal8/dropsolid_blog": "3.0.0-alpha3",
-    "dropsolid-drupal8/dropsolid_news": "3.0.0-alpha3",
-    "dropsolid-drupal8/dropsolid_product": "3.0.0-alpha3",
-    "dropsolid-drupal8/dropsolid_event": "3.0.0-alpha3",
-    "dropsolid-drupal8/dropsolid_office": "1.0.0-alpha2",
-    "dropsolid-drupal8/dropsolid_job": "1.0.0-alpha3",
-    "dropsolid-drupal8/dropsolid_service": "3.0.0-alpha1",
-    "dropsolid-drupal8/dropsolid-theme-base-8": "3.0.0-alpha6",
-    "dropsolid-drupal8/dropsolid-theme-flex-8": "3.0.0-alpha6",
-    "dropsolid-drupal8/dropsolid-theme-starter-8": "3.0.0-alpha6",
     "drupal/purge": "^3.0@beta",
     "drupal/dropsolid_purge": "^1.0@beta"
   },
@@ -204,10 +187,6 @@
     {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
-    },
-    {
-      "type": "composer",
-      "url": "https://packagist.dropsolid.com"
     }
   ],
   "require-dev": {
