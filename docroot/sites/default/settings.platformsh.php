@@ -13,9 +13,8 @@ if (!$platformsh->isAvailable()) {
 }
 
 // You can check for any particular value being available (recommended):
-var_dump($platformsh);
-if (isset($config->relationships['database'][0])) {
-  $database = $config->relationships['database'][0];
+if (isset($platformsh->relationships['database'][0])) {
+  $database = $platformsh->relationships['database'][0];
 
   // Now $database is an array representing a database service.
   $databases['default']['default'] = [
@@ -60,7 +59,7 @@ if (!isset($settings['php_storage']['twig'])) {
 
 // Set the project-specific entropy value, used for generating one-time
 // keys and such.
-$settings['hash_salt'] = empty($settings['hash_salt']) ? '5cacb8072d7c243bb4bcfc977d2d91c9' : $settings['hash_salt'];
+$settings['hash_salt'] = empty($settings['hash_salt']) ? $platformsh->project_entropy : $settings['hash_salt'];
 
 // Set the deployment identifier, which is used by some Drupal cache systems.
 $settings['deployment_identifier'] = $settings['deployment_identifier'] ?? $platformsh->tree_id;
