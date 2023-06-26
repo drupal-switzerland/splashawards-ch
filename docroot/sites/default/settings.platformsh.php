@@ -5,20 +5,27 @@
  */
 
 use Drupal\Core\Installer\InstallerKernel;
+use Platformsh\ConfigReader\Config;
 
-$platformsh = new \Platformsh\ConfigReader\Config();
+$platformsh = new Config();
 
-// Configure the database.
-if ($platformsh->hasRelationship('database')) {
-  $creds = $platformsh->credentials('database');
+if (!$platformsh->isAvailable()) {
+  return NULL;
+}
+
+// You can check for any particular value being available (recommended):
+if (isset($config->relationships['database'][0])) {
+  $database = $config->relationships['database'][0];
+
+  // Now $database is an array representing a database service.
   $databases['default']['default'] = [
-    'driver' => $creds['scheme'],
-    'database' => $creds['path'],
-    'username' => $creds['username'],
-    'password' => $creds['password'],
-    'host' => $creds['host'],
-    'port' => $creds['port'],
-    'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])]
+    'driver' => $database['scheme'],
+    'database' => $database['path'],
+    'username' => $database['username'],
+    'password' => $database['password'],
+    'host' => $database['host'],
+    'port' => $database['port'],
+    'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($database['query']['compression'])]
   ];
 }
 
@@ -27,7 +34,7 @@ if ($platformsh->hasRelationship('database')) {
 // on development but not production.
 if (isset($platformsh->branch)) {
   // Production type environment.
-  if ($platformsh->branch == 'master' || $platformsh->onDedicated()) {
+  if ($platformsh->branch == 'master' || (isset($database) && $database['query']['is_master'])) {
     $config['system.logging']['error_level'] = 'hide';
   } // Development type environment.
   else {
@@ -35,84 +42,28 @@ if (isset($platformsh->branch)) {
   }
 }
 
-// Enable Redis caching.
-if ($platformsh->hasRelationship('redis') && !InstallerKernel::installationAttempted() && extension_loaded('redis') && class_exists('Drupal\redis\ClientFactory')) {
-  $redis = $platformsh->credentials('redis');
-
-  // Set Redis as the default backend for any cache bin not otherwise specified.
-  $settings['cache']['default'] = 'cache.backend.redis';
-  $settings['redis.connection']['host'] = $redis['host'];
-  $settings['redis.connection']['port'] = $redis['port'];
-
-  // Apply changes to the container configuration to better leverage Redis.
-  // This includes using Redis for the lock and flood control systems, as well
-  // as the cache tag checksum. Alternatively, copy the contents of that file
-  // to your project-specific services.yml file, modify as appropriate, and
-  // remove this line.
-  $settings['container_yamls'][] = 'modules/contrib/redis/example.services.yml';
-
-  // Allow the services to work before the Redis module itself is enabled.
-  $settings['container_yamls'][] = 'modules/contrib/redis/redis.services.yml';
-
-  // Manually add the classloader path, this is required for the container cache bin definition below
-  // and allows to use it without the redis module being enabled.
-  $class_loader->addPsr4('Drupal\\redis\\', 'modules/contrib/redis/src');
-
-  // Use redis for container cache.
-  // The container cache is used to load the container definition itself, and
-  // thus any configuration stored in the container itself is not available
-  // yet. These lines force the container cache to use Redis rather than the
-  // default SQL cache.
-  $settings['bootstrap_container_definition'] = [
-    'parameters' => [],
-    'services' => [
-      'redis.factory' => [
-        'class' => 'Drupal\redis\ClientFactory',
-      ],
-      'cache.backend.redis' => [
-        'class' => 'Drupal\redis\Cache\CacheBackendFactory',
-        'arguments' => ['@redis.factory', '@cache_tags_provider.container', '@serialization.phpserialize'],
-      ],
-      'cache.container' => [
-        'class' => '\Drupal\redis\Cache\PhpRedis',
-        'factory' => ['@cache.backend.redis', 'get'],
-        'arguments' => ['container'],
-      ],
-      'cache_tags_provider.container' => [
-        'class' => 'Drupal\redis\Cache\RedisCacheTagsChecksum',
-        'arguments' => ['@redis.factory'],
-      ],
-      'serialization.phpserialize' => [
-        'class' => 'Drupal\Component\Serialization\PhpSerialize',
-      ],
-    ],
-  ];
+// Configure private and temporary file paths.
+if (!isset($settings['file_private_path'])) {
+  $settings['file_private_path'] = $platformsh->appDir . '/private';
+}
+if (!isset($settings['file_temp_path'])) {
+  $settings['file_temp_path'] = $platformsh->appDir . '/tmp';
 }
 
-if ($platformsh->inRuntime()) {
-  // Configure private and temporary file paths.
-  if (!isset($settings['file_private_path'])) {
-    $settings['file_private_path'] = $platformsh->appDir . '/private';
-  }
-  if (!isset($settings['file_temp_path'])) {
-    $settings['file_temp_path'] = $platformsh->appDir . '/tmp';
-  }
-
-  // Configure the default PhpStorage and Twig template cache directories.
-  if (!isset($settings['php_storage']['default'])) {
-    $settings['php_storage']['default']['directory'] = $settings['file_private_path'];
-  }
-  if (!isset($settings['php_storage']['twig'])) {
-    $settings['php_storage']['twig']['directory'] = $settings['file_private_path'];
-  }
-
-  // Set the project-specific entropy value, used for generating one-time
-  // keys and such.
-  $settings['hash_salt'] = empty($settings['hash_salt']) ? $platformsh->projectEntropy : $settings['hash_salt'];
-
-  // Set the deployment identifier, which is used by some Drupal cache systems.
-  $settings['deployment_identifier'] = $settings['deployment_identifier'] ?? $platformsh->treeId;
+// Configure the default PhpStorage and Twig template cache directories.
+if (!isset($settings['php_storage']['default'])) {
+  $settings['php_storage']['default']['directory'] = $settings['file_private_path'];
 }
+if (!isset($settings['php_storage']['twig'])) {
+  $settings['php_storage']['twig']['directory'] = $settings['file_private_path'];
+}
+
+// Set the project-specific entropy value, used for generating one-time
+// keys and such.
+$settings['hash_salt'] = empty($settings['hash_salt']) ? $platformsh->projectEntropy : $settings['hash_salt'];
+
+// Set the deployment identifier, which is used by some Drupal cache systems.
+$settings['deployment_identifier'] = $settings['deployment_identifier'] ?? $platformsh->treeId;
 
 // The 'trusted_hosts_pattern' setting allows an admin to restrict the Host header values
 // that are considered trusted.  If an attacker sends a request with a custom-crafted Host
@@ -124,7 +75,9 @@ $settings['trusted_host_patterns'] = ['.*'];
 
 // Import variables prefixed with 'd8settings:' into $settings
 // and 'd8config:' into $config.
-foreach ($platformsh->variables() as $name => $value) {
+$variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
+
+foreach ($variables as $name => $value) {
   $parts = explode(':', $name);
   list($prefix, $key) = array_pad($parts, 3, null);
   switch ($prefix) {
