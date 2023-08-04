@@ -26,7 +26,7 @@ function dropsolid_blocks_place_default_blocks($theme) {
   \Rocketship::placeBlock('powered_by_dropsolid', [
     'region' => 'footer',
     'theme' => $theme,
-    'label' => 'Powered by Dropsolid',
+    'label' => 'Powered by platform.sh',
     'label_display' => 0,
   ]);
 

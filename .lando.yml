@@ -1,10 +1,10 @@
-name: dropsolid-splashawards-swiss
+name: splashawards-swiss
 recipe: drupal8
 config:
   webroot: docroot
 proxy:
   appserver:
-    - dropsolid-splashawards-swiss.lndo.site
+    - splashawards-swiss.lndo.site
 services:
   appserver:
     build_internal:

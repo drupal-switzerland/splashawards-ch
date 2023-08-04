@@ -14,7 +14,7 @@ provider: null
 plugin: powered_by_dropsolid
 settings:
   id: powered_by_dropsolid
-  label: 'Powered by Dropsolid'
+  label: 'Powered by platform.sh'
   provider: dropsolid_blocks
   label_display: '0'
 visibility: {  }

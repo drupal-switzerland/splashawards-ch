@@ -12,7 +12,7 @@ use Drupal\Core\Url;
  *
  * @Block(
  *  id = "powered_by_dropsolid",
- *  admin_label = @Translation("Powered by Dropsolid"),
+ *  admin_label = @Translation("Powered by platform.sh"),
  * )
  */
 class PoweredByDropsolid extends BlockBase {
@@ -27,7 +27,7 @@ class PoweredByDropsolid extends BlockBase {
       'languages'
     ];
 
-    $build['powered_by_dropsolid']['#markup'] = $this->t('Powered by Dropsolid');
+    $build['powered_by_dropsolid']['#markup'] = $this->t('Powered by platform.sh');
 
     return $build;
   }
