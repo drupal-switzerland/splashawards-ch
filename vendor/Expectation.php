@@ -1,0 +1,1 @@
+<?php&#10&#10namespace Pest;&#10&#10/**&#10&#10 */&#10final class Expectation {}&#10
