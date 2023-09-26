@@ -14,6 +14,8 @@
 function dropsolid_product_basic_overview_field_options_alter(array &$options) {
   $options['product_overview'] = t('Show a list of product articles on your website');
   $options['product_overview_front'] = t('Show the last three promoted product articles');
+  $options['block_winners_2019'] = t('Show list of 2019 winners');
+  $options['block_winners_2020'] = t('Show list of 2020 winners');
 }
 
 /**
@@ -30,6 +32,12 @@ function dropsolid_product_basic_overview_field_output_alter($key, array &$outpu
   }
   if ($key == 'product_overview_front') {
     $output = overview_field_load_view('product_overview', 'product_overview_front');
+  }
+  if ($key == 'block_winners_2019') {
+    $output = overview_field_load_view('product_overview', 'block_winners_2019');
+  }
+  if ($key == 'block_winners_2020') {
+    $output = overview_field_load_view('product_overview', 'block_winners_2020');
   }
 }
 
