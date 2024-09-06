@@ -30,9 +30,15 @@
 
   .menu {
     @include list-reset;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 
     li {
       @include list-reset;
+      padding: 0 1rem;
     }
   }
 
