@@ -17,9 +17,11 @@
   .block-region-visual {
     .block--type-hero-block {
       position: relative;
+
       .field--name-field-subtitle {
         @include font-size(20);
       }
+
       .field--name-field-background-image {
         position: absolute;
         left: calc(-1 * (100vw - 100%) / 2);
@@ -39,15 +41,19 @@
           z-index: -1;
         }
       }
+
       .group_content {
         padding: rem(100) rem($gap-hor) rem(110);
+
         &,
         & h1 {
           color: white;
         }
+
         @include bp-sm {
           padding: rem(130) rem($gap-hor) rem(180);
         }
+
         @include bp-md {
           padding: rem(150) rem($gap-hor) rem(220);
         }
@@ -59,6 +65,7 @@
     h2 {
       color: $color-white;
     }
+
     color: $color-white;
 
     .paragraph--type-p-001 {
@@ -75,6 +82,7 @@
       padding: rem(60) rem($gap-hor);
       text-align: center;
       position: relative;
+
       &:after {
         position: absolute;
         z-index: -1;
@@ -85,14 +93,25 @@
         display: block;
         width: 100vw;
       }
+
+      a.button {
+        background-color: $color-white;
+        color: $color-spot-3;
+
+        &:hover {
+          background-color: $color-off-white;
+        }
+      }
     }
 
     .block--type-simple-cta-block:first-child:after {
       background-color: $color-spot-3;
     }
+
     .block--type-simple-cta-block:nth-child(2):after {
       background-color: $color-spot-2;
     }
+
     .field--name-field-button {
       margin-top: rem(20);
     }
@@ -100,23 +119,28 @@
     @include bp-sm {
       display: flex;
       flex-wrap: wrap;
+
       .block--type-simple-cta-block {
         padding: rem(100) rem($gap-hor * 2) rem(90);
         width: 50%;
+
         &:after {
           left: calc(-1 * (100vw - 100%) / 2);
           width: 50vw;
         }
+
         &:first-child:after {
           right: 0;
           left: auto;
         }
+
         &:nth-child(2):after {
           left: 0;
         }
       }
     }
   }
+
   //.panel-layout__header:before {
   //  content: '';
   //  position: absolute;
@@ -136,6 +160,7 @@
   //  border-bottom: 5px solid $color-spot-1;
   //}
 }
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // * different height for when an admin is logged in (when the tabs are visible)
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -152,6 +177,7 @@
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 @include bp-xs-only {
+
   //body.has-tabs {
   //  .panel-layout--front {
   //    .paragraph--type-p-003 {
@@ -210,6 +236,7 @@
     .block-region-visual {
       .block--type-hero-block {
         .group_content {
+
           &,
           & h1 {
             @include font-size(45, (45 * 1.2));
