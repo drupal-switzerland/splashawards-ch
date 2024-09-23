@@ -14,7 +14,7 @@
   left: 0;
   right: 0;
   padding: rem(15) 0;
-  background: $color-spot-3;
+  background: $color-spot-1;
   color: $color-white;
   transition: all $duration $easing;
   @include z-index(cookie);
@@ -41,7 +41,7 @@
   margin-top: rem(20);
 
   a {
-    @include button-primary();
+    @include button-negative();
   }
 }
 
