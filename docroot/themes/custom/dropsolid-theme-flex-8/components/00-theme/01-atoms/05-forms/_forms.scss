@@ -4,14 +4,13 @@
 // *
 ////////////////////////////////////////////////////////////////////////////////
 
-
 // * Floating labels
 // =============================================================================
 
 // ** make floating labels for specific forms:
 
-form[class *= 'webform-submission'],
-form[class *= 'contact'],
+form[class*="webform-submission"],
+form[class*="contact"],
 .styleguide form {
   @include floating-labels-group;
 }
@@ -27,16 +26,53 @@ form[class *= 'contact'],
 
   .field-group-fieldset {
     border-color: $color-spot-1;
+    padding: 0 2rem;
     > legend.h2 {
       background-color: $color-spot-1;
       text-transform: uppercase;
       color: white;
       border-radius: rem(30);
       padding: rem(10) rem(50);
+      font-size: 2rem;
+      line-height: 2rem;
     }
     legend.h2 {
       text-align: center;
     }
+
+    .form-item {
+      margin-bottom: 0.8rem;
+    }
+
+    .form-item__description {
+      color: $color-spot-2;
+      margin-top: 0.2rem;
+    }
+
+    .description {
+      color: $color-spot-2;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-item__description ul > li:before {
+      color: $color-spot-2;
+    }
+
+    #edit-field-date-when-website-went-liv-0-value
+      .form-item--field-date-when-website-went-liv-0-value-date
+      label[for="edit-field-date-when-website-went-liv-0-value-date"] {
+      position: unset !important;
+      height: unset !important;
+      width: unset !important;
+    }
+
+    #edit-field-date-when-website-went-liv-0-value
+      .form-item--field-date-when-website-went-liv-0-value-date
+      label[for="edit-field-date-when-website-went-liv-0-value-date"]:before {
+      content: "Go-live";
+    }
+
     .field--name-field-product-category {
       legend.h2 {
         font-size: rem(16);
@@ -69,5 +105,4 @@ form[class *= 'contact'],
       margin-bottom: rem(45);
     }
   }
-
 }

@@ -7,6 +7,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .node__info--product-full {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 
   .field--name-field-submitted-by {
     img {
@@ -63,7 +68,7 @@
     //text-transform: uppercase;
   }
 
-  .field--name-field-project-link a {
+  .field--name-field-project-link a, .field--name-field-case-url a {
     @include button-secondary();
   }
 
@@ -105,7 +110,7 @@
     .field__item {
       //
     }
-    
+
     // value
     a {
       //
