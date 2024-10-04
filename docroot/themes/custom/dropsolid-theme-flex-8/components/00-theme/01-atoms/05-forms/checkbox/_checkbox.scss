@@ -117,7 +117,13 @@ input[type='checkbox'] {
   input[type='checkbox'],
   input[type='radio'] {
     position: absolute;
-    left: 0;
-    top: rem(5);
+    left: 0.125rem;
+    top: rem(8);
+    cursor: pointer;
+  }
+
+  input[type='checkbox']+label,
+  input[type='radio']+label {
+    cursor: pointer;
   }
 }
