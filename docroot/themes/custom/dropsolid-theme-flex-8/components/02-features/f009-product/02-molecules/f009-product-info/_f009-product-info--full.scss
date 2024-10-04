@@ -7,6 +7,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .node__info--product-full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 
   .field--name-field-submitted-by {
     img {
@@ -14,7 +19,6 @@
       max-height: rem(180);
     }
     .media--image {
-
       //img {
       //  transition: 1s ease;
       //
@@ -63,7 +67,8 @@
     //text-transform: uppercase;
   }
 
-  .field--name-field-project-link a {
+  .field--name-field-project-link a,
+  .field--name-field-case-url a {
     @include button-secondary();
   }
 
@@ -82,11 +87,9 @@
   // ** Properties & categories: Facet filters
 
   .field--type-entity-reference {
-
     // label
     h3,
     h4 {
-
       //@include text-nobreak;
 
       //&:after {
@@ -101,11 +104,10 @@
       justify-content: flex-start;
     }
 
-
     .field__item {
       //
     }
-    
+
     // value
     a {
       //
@@ -115,7 +117,6 @@
   // ** Product attributes
 
   .field--name-field-product-attributes {
-
     .field__items {
       //
     }
@@ -140,18 +141,18 @@
   .label-value-item-value {
     display: inline;
   }
-
 }
-
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // * Breakpoint: tablet & wider
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 @include bp-sm {
-
   .node__info--product-full {
-
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 
     .field--name-field-submitted-by {
       flex: 1 0 auto;
@@ -159,7 +160,6 @@
     }
 
     .field--type-entity-reference {
-
       flex: 1 0 auto;
       width: 50%;
 
@@ -189,6 +189,5 @@
       padding-right: rem(20);
       min-width: 33%; // force a min-width on table cell
     }
-
   }
 }

@@ -7,7 +7,7 @@
 .product--full {
 
   div {
-    margin-bottom: rem(20);
+    margin-bottom: rem(10);
   }
 
   // -- header reset when nested in content
@@ -149,7 +149,7 @@
   .product--full {
     //
 
-    .field--name-field-project-link {
+    .field--name-field-project-link, .field--name-field-case-url {
       flex-grow: 1;
       display: flex;
       align-items: flex-start;
