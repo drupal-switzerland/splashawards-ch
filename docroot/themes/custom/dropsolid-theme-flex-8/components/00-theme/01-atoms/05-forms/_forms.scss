@@ -96,6 +96,10 @@ form[class*="contact"],
     &:first-of-type {
       margin-bottom: rem(70);
     }
+
+    a {
+      text-decoration: underline;
+    }
   }
   button.form-submit {
     margin-top: rem(5);
