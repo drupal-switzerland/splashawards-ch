@@ -73,18 +73,22 @@ form[class*="contact"],
       content: "Go-live";
     }
 
-    .field--name-field-product-category {
+    .field--name-field-product-category,
+    .field--name-field-agency-size,
+    .field--name-field-drupal-stack {
       legend.h2 {
-        font-size: rem(16);
-        text-align: left;
-        padding: 0;
+        font-size: rem(20);
+        text-align: center;
+        padding: 0 0.5rem;
         margin-bottom: 0;
+        color: $color-spot-3;
       }
       fieldset {
-        border: none;
-        padding-left: 0;
-        .form__group--checkboxes {
+        padding-left: 0.5rem;
+        .form__group--checkboxes,
+        .form__group--radios {
           padding-left: rem(10);
+          margin-bottom: 0.25rem;
         }
       }
     }
@@ -99,6 +103,9 @@ form[class*="contact"],
 
     a {
       text-decoration: underline;
+      &:hover, &:focus {
+        color: $color-spot-2;
+      }
     }
   }
   button.form-submit {
