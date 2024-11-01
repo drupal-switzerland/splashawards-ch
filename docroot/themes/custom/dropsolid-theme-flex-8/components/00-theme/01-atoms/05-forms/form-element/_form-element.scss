@@ -61,7 +61,7 @@ form .description,
   display: block;
   color: rgba($color-gray, .6);
   margin-top: rem($gap-vert-sm);
-  @include font-size(11, 15);
+  @include font-size(16, 20);
 
   ul {
     @include list((
