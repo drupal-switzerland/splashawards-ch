@@ -141,7 +141,15 @@
   .label-value-item-value {
     display: inline;
   }
+
 }
+
+// Video button shows blue bg inheriting from button primary.
+button.video-embed-field-lazy-play {
+    background: url("/modules/contrib/video_embed_field/css/icons/play.svg") no-repeat !important;
+}
+
+
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // * Breakpoint: tablet & wider
