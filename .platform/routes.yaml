@@ -15,12 +15,3 @@
 "https://www.splashawards.ch/":
   type: redirect
   to: "https://splashawards.ch/"
-
-"https://splashawards.li/":
-  type: redirect
-  to: "https://splashawards.ch/"
-
-"https://www.splashawards.li/":
-  type: redirect
-  to: "https://splashawards.ch/"
-
