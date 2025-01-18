@@ -9,7 +9,7 @@
 // =============================================================================
 
 table {
-  margin: 0;
+  margin: 1rem 0;
   padding: 0;
   width: 100%;
   table-layout: fixed;
@@ -30,6 +30,7 @@ table {
         &:first-child {
           border-left: 1px solid $color-border;
         }
+
         &:last-child {
           border-right: 1px solid $color-border;
         }
@@ -38,6 +39,7 @@ table {
   }
 
   tr {
+
     // by default: styling for headings in columns
     th {
       padding: rem(10);
@@ -55,6 +57,7 @@ table {
       &:first-child {
         border-left: 1px solid $color-spot-1;
       }
+
       &:last-child {
         border-right: 1px solid $color-spot-1;
       }
@@ -82,8 +85,23 @@ table {
         &:first-child {
           border-left: 1px solid $color-spot-1;
         }
+
         &:last-child {
           border-right: 1px solid $color-spot-1;
+        }
+
+        a {
+          color: $color-white;
+
+          &:active,
+          &:visited,
+          &.is-active {
+            color: $color-white;
+          }
+
+          &:hover {
+            color: $color-gray-light-2;
+          }
         }
       }
     }
@@ -107,6 +125,7 @@ table {
           &:first-child {
             border-left: 1px solid $color-border;
           }
+
           &:last-child {
             border-right: 1px solid $color-border;
           }
@@ -139,6 +158,7 @@ caption {
     // -- most used, eg. in Commerce tables
     @include table-responsive('reformatted');
   }
+
   &.has-scroll {
     // -- use in CKE because safest
     @include table-responsive('scroll');
