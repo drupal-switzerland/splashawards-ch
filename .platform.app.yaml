@@ -49,7 +49,7 @@ mounts:
     source_path: uploads
 
 # The size of the persistent disk of the application (in MB).
-disk: 2048
+disk: 4096
 
 # Configuration of the build of this application.
 build:
