@@ -70,13 +70,9 @@ hooks:
       set -e
     deploy: |
       set -e
-      php ./drush/platformsh_generate_drush_yml.php
-      # if drupal is installed, will call the following drush commands:
-      #   - `cache-rebuild`
-      #   - `updatedb`
-      #   - and if config files are present, `config-import`
       cd docroot
-      bash drush/platformsh_deploy_drupal.sh
+      ../vendor/bin/drush -y cache-rebuild
+      ../vendor/bin/drush -y updatedb
 
 web:
   locations:
