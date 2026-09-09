@@ -112,3 +112,9 @@ foreach ($variables as $name => $value) {
       break;
   }
 }
+
+// Cap DB cache bins. Page cache rows are permanent and only trimmed by cron;
+// bots hitting unique URLs filled the DB disk once already (Sep 2026).
+// Platform.sh router cache handles page caching at the edge anyway.
+$settings['database_cache_max_rows']['bins']['page'] = 1000;
+$settings['database_cache_max_rows']['bins']['dynamic_page_cache'] = 1000;
