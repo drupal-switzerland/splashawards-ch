@@ -7,7 +7,7 @@ db:
     # the CLI will return an error.
     type: mariadb:10.6
     # The disk attribute is the size of the persistent disk (in MB) allocated to the service.
-    disk: 2560
+    disk: 2816
 
 # The name given to the Redis service (lowercase alphanumeric only).
 cache:
@@ -16,7 +16,7 @@ cache:
     # (https://docs.platform.sh/add-services/redis.html#supported-versions)
     # when choosing a version. If you specify a version number which is not available,
     # the CLI will return an error.
-    type: redis:7.0
+    type: redis:7.2
 
 # The name given to the Solr service (lowercase alphanumeric only).
 search:
