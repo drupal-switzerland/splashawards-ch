@@ -1,0 +1,33 @@
+uuid: 4f2d068d-a6f4-4e3b-9b96-c7de9c9b071b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_client_size
+field_name: field_client_size
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '<100'
+      label: 'less than 100 employees'
+    -
+      value: 100-500
+      label: '100 - 500 employees'
+    -
+      value: 500-5000
+      label: '500 - 5000 employees'
+    -
+      value: 5000+
+      label: '5000+ employees'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,13 @@
+langcode: en
+uuid: b91e1c08-2afd-4f27-83d1-127e2fcca8b8
+name: 'Splash Awards Switzerland'
+mail: info@splashawards.ch
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: ''

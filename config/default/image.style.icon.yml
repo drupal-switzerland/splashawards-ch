@@ -1,0 +1,15 @@
+uuid: ff42f385-7b66-444a-bf27-21226549b481
+langcode: en
+status: true
+dependencies: {  }
+name: icon
+label: 'Icon (16)'
+effects:
+  0284dd49-ef1f-431f-bee2-9a94164e6727:
+    uuid: 0284dd49-ef1f-431f-bee2-9a94164e6727
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 16
+      upscale: false

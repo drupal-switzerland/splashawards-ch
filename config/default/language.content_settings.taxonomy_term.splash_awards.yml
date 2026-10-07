@@ -1,0 +1,11 @@
+uuid: 5f477e1b-e844-4a66-a6cb-c8e7aa831516
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.splash_awards
+id: taxonomy_term.splash_awards
+target_entity_type_id: taxonomy_term
+target_bundle: splash_awards
+default_langcode: site_default
+language_alterable: false

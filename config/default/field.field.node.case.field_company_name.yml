@@ -1,0 +1,19 @@
+uuid: c5917038-646e-4500-801d-8b7fa983e576
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_company_name
+    - node.type.case
+id: node.case.field_company_name
+field_name: field_company_name
+entity_type: node
+bundle: case
+label: 'Name of the company'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

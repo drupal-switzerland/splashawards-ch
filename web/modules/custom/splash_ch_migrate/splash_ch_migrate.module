@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * @file
+ * Derived values for the legacy splashawards.ch migration.
+ */
+
+use Drupal\Core\Database\Database;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Row;
+use Drupal\splash_ch_migrate\Plugin\migrate\source\LegacyEntity;
+
+/**
+ * Legacy accounts that are migrated; content of everyone else goes to uid 1.
+ */
+const SPLASH_CH_MIGRATE_UIDS = [1, 36, 46, 48, 49, 86];
+
+/**
+ * Implements hook_migrate_prepare_row().
+ */
+function splash_ch_migrate_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+  if ($migration->id() === 'splash_ch_term_award') {
+    // Newest award first in the header award switcher (sorted by weight).
+    $row->setSourceProperty('weight', -(int) $row->getSourceProperty('name'));
+  }
+  if (!str_starts_with($migration->id(), 'splash_ch_node_')) {
+    return;
+  }
+  $db = Database::getConnection('default', 'migrate');
+  $nid = $row->getSourceProperty('nid');
+  $uid = (int) $row->getSourceProperty('uid');
+
+  $row->setSourceProperty('owner', in_array($uid, SPLASH_CH_MIGRATE_UIDS) ? $uid : 1);
+  $first = LegacyEntity::fieldValues($db, 'user', $uid, 'field_first_name')[0]['value'] ?? '';
+  $last = LegacyEntity::fieldValues($db, 'user', $uid, 'field_last_name')[0]['value'] ?? '';
+  $row->setSourceProperty('author_name', trim("$first $last") ?: NULL);
+
+  // Page header paragraph background, or the news canonical image.
+  $header = LegacyEntity::fieldValues($db, 'node', $nid, 'header')[0]['target_id'] ?? NULL;
+  $hero = $header ? (LegacyEntity::fieldValues($db, 'paragraph', $header, 'field_p_bg_image')[0]['target_id'] ?? NULL) : NULL;
+  $hero = $hero ?: (LegacyEntity::fieldValues($db, 'node', $nid, 'field_canonical_image')[0]['target_id'] ?? NULL);
+  $row->setSourceProperty('hero_fid', $hero);
+
+  if ($row->getSourceProperty('type') === 'product') {
+    $flag = fn($field) => (bool) (LegacyEntity::fieldValues($db, 'node', $nid, $field)[0]['value'] ?? FALSE);
+    $badges = [];
+    if ($flag('field_nominee')) {
+      $badges[] = 'nominated';
+    }
+    if ($flag('field_runnerup')) {
+      $badges[] = 'runner_up';
+    }
+    if ($flag('field_winner') || $flag('field_winneroftheyear')) {
+      $badges[] = 'winner';
+    }
+    $row->setSourceProperty('badges', $badges);
+
+    $description = $row->getSourceProperty('field_project_de')[0]['value'] ?? '';
+    if ($case_url = $row->getSourceProperty('field_case_url')[0]['uri'] ?? NULL) {
+      $description .= "\n\nCase study: $case_url";
+    }
+    $row->setSourceProperty('description', trim($description) ?: NULL);
+
+    $hosting = $row->getSourceProperty('field_hosting')[0]['value'] ?? '';
+    if ($stack = $row->getSourceProperty('field_drupal_stack')[0]['target_id'] ?? NULL) {
+      $name = $db->query('SELECT name FROM {taxonomy_term_field_data} WHERE tid = :tid', [':tid' => $stack])->fetchField();
+      $hosting = trim("$hosting\n\nDrupal stack: $name");
+    }
+    $row->setSourceProperty('hosting', $hosting ?: NULL);
+
+    $notes = array_filter([
+      $row->getSourceProperty('field_description')[0]['value'] ?? '',
+      $row->getSourceProperty('field_notes')[0]['value'] ?? '',
+    ]);
+    $row->setSourceProperty('note', $notes ? implode("\n\n", $notes) : NULL);
+
+    // ponytail: the new case allows 5 images; extra legacy images stay in the archive.
+    $row->setSourceProperty('images', array_slice($row->getSourceProperty('field_product_images') ?? [], 0, 5));
+  }
+}
+
+/**
+ * Implements hook_user_insert().
+ *
+ * Undoes splash_awards_base's automatic candidate role for migrated admins.
+ */
+function splash_ch_migrate_user_insert($user) {
+  if (in_array((int) $user->id(), SPLASH_CH_MIGRATE_UIDS) && $user->hasRole('candidate')) {
+    $user->removeRole('candidate');
+    $user->save();
+  }
+}

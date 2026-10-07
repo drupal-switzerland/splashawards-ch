@@ -1,0 +1,11 @@
+uuid: a26ef090-a5fd-4f2f-ae4e-f0b9a31878b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.edit
+label: Edit
+description: null
+targetEntityType: user
+cache: true

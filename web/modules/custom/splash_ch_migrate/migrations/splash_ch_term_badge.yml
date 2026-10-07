@@ -1,0 +1,19 @@
+id: splash_ch_term_badge
+label: 'Badges (from the legacy nominee/runner-up/winner flags)'
+migration_tags: [splash_ch]
+source:
+  plugin: embedded_data
+  data_rows:
+    - { id: nominated, name: Nominated, qualified: 1, weight: 0 }
+    - { id: runner_up, name: Runner-up, qualified: 0, weight: 10 }
+    - { id: winner, name: Winner, qualified: 0, weight: 20 }
+  ids:
+    id: { type: string }
+process:
+  vid: { plugin: default_value, default_value: badges }
+  name: name
+  field_qualified: qualified
+  field_weight: weight
+  weight: weight
+destination:
+  plugin: entity:taxonomy_term

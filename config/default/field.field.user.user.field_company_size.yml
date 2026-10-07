@@ -1,0 +1,21 @@
+uuid: 33287dc0-0fad-4955-87f6-1e48fa70dc64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_company_size
+  module:
+    - options
+    - user
+id: user.user.field_company_size
+field_name: field_company_size
+entity_type: user
+bundle: user
+label: 'Size of your company'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

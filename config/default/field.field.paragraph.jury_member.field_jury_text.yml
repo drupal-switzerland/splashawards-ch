@@ -1,0 +1,24 @@
+uuid: e85d081d-946e-4442-ac51-236417489935
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_jury_text
+    - filter.format.description
+    - paragraphs.paragraphs_type.jury_member
+  module:
+    - text
+id: paragraph.jury_member.field_jury_text
+field_name: field_jury_text
+entity_type: paragraph
+bundle: jury_member
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - description
+field_type: text_long

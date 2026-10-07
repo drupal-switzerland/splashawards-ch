@@ -1,0 +1,26 @@
+id: splash_ch_menu_link
+label: 'Main and footer menu links'
+migration_tags: [splash_ch]
+source:
+  plugin: splash_ch_legacy_entity
+  entity_type: menu_link_content
+  # Skipped: account Register (14), "Projekt einreichen" to splashawards.de
+  # (20) and the 2019/2020 children whose parent no longer exists (34, 39).
+  ids: [6, 10, 17, 26, 27, 28, 30, 31, 33, 35, 36, 37, 38, 40, 41, 42, 43, 44]
+process:
+  title: title
+  menu_name: menu_name
+  link/uri:
+    plugin: str_replace
+    source: link__uri
+    search: 'entity:node/'
+    replace: 'internal:/node/'
+  link/options: { plugin: default_value, default_value: [] }
+  weight: weight
+  enabled: enabled
+  expanded: expanded
+destination:
+  plugin: entity:menu_link_content
+  default_bundle: menu_link_content
+migration_dependencies:
+  required: [splash_ch_node_page, splash_ch_node_news]

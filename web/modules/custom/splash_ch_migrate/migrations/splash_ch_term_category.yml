@@ -1,0 +1,14 @@
+id: splash_ch_term_category
+label: 'Product categories -> categories terms'
+migration_tags: [splash_ch]
+source:
+  plugin: splash_ch_legacy_entity
+  entity_type: taxonomy_term
+  bundle: product_category
+process:
+  tid: tid
+  vid: { plugin: default_value, default_value: categories }
+  name: name
+  weight: weight
+destination:
+  plugin: entity:taxonomy_term

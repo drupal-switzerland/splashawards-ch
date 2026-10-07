@@ -1,0 +1,18 @@
+uuid: ed9bfd94-069a-46eb-92fd-15e49dc555ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.case
+  module:
+    - node
+    - splash_awards_base
+    - view_unpublished
+id: jury
+label: Jury
+weight: -6
+is_admin: false
+permissions:
+  - 'access content overview'
+  - 'access jury dashboard'
+  - 'view any unpublished case content'

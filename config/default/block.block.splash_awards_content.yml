@@ -1,0 +1,22 @@
+uuid: 24a6015f-d2a5-45ed-a034-a99ddca17f10
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - splash_awards
+_core:
+  default_config_hash: hBHXB7hC05XU7pDYzETt-GUcpFlogK1gkjyAsg0Ym58
+id: splash_awards_content
+theme: splash_awards
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

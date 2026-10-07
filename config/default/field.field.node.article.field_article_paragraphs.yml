@@ -1,0 +1,69 @@
+uuid: abca0f96-2aa7-4e74-bbbc-bac4598d54bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_paragraphs
+    - node.type.article
+    - paragraphs.paragraphs_type.columns
+    - paragraphs.paragraphs_type.cta
+    - paragraphs.paragraphs_type.images
+    - paragraphs.paragraphs_type.testimonial
+    - paragraphs.paragraphs_type.text
+  module:
+    - entity_reference_revisions
+id: node.article.field_article_paragraphs
+field_name: field_article_paragraphs
+entity_type: node
+bundle: article
+label: Paragraphs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      columns: columns
+      text: text
+      cta: cta
+      images: images
+      testimonial: testimonial
+    negate: 0
+    target_bundles_drag_drop:
+      columns:
+        weight: 3
+        enabled: true
+      cta:
+        weight: 13
+        enabled: true
+      icon_link:
+        weight: 14
+        enabled: false
+      images:
+        weight: 15
+        enabled: true
+      jury_grid:
+        weight: 16
+        enabled: false
+      jury_member:
+        weight: 17
+        enabled: false
+      news:
+        weight: 18
+        enabled: false
+      sponsor:
+        weight: 19
+        enabled: false
+      sponsor_grid:
+        weight: 20
+        enabled: false
+      testimonial:
+        weight: 21
+        enabled: true
+      text:
+        weight: 4
+        enabled: true
+field_type: entity_reference_revisions

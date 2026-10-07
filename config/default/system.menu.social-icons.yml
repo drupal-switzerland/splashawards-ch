@@ -1,0 +1,8 @@
+uuid: 582179a6-cdb0-408e-8939-772852d32f4d
+langcode: en
+status: true
+dependencies: {  }
+id: social-icons
+label: 'Social Icons'
+description: 'Icon links to social media channels'
+locked: false

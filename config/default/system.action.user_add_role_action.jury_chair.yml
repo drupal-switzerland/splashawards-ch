@@ -1,0 +1,14 @@
+uuid: 836373f8-7c7e-44ed-a8e2-a37927c643a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.jury_chair
+  module:
+    - user
+id: user_add_role_action.jury_chair
+label: 'Add the Jury chair role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: jury_chair

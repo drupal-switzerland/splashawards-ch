@@ -1,0 +1,40 @@
+uuid: 406035b2-702a-4564-9c0b-a77bdb8f8015
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+  module:
+    - ckeditor5
+_core:
+  default_config_hash: Qi2tIe-L97EutlMmhEvhsNxZOpOoA-RH82c4BQb5n4A
+format: basic_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - link
+      - bold
+      - italic
+      - bulletedList
+      - numberedList
+      - heading
+  plugins:
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+    ckeditor5_list:
+      properties:
+        reversed: false
+        startIndex: false
+        styles: false
+      multiBlock: false
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: null
+  max_dimensions:
+    width: null
+    height: null

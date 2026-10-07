@@ -1,0 +1,12 @@
+name: 'Splash Awards CH migration'
+type: module
+description: 'One-off migration of the legacy Drupal 8 splashawards.ch site. Uninstall and delete after cutover.'
+core_version_requirement: ^11
+package: Splash Awards
+dependencies:
+  - drupal:migrate
+  - drupal:media
+  - drupal:paragraphs
+  - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools
+  - redirect:redirect

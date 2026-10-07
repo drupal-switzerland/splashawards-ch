@@ -1,0 +1,67 @@
+uuid: 4c8c1df4-3e83-43e4-8b50-e2b121afbb16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_right_column
+    - paragraphs.paragraphs_type.columns
+    - paragraphs.paragraphs_type.cta
+    - paragraphs.paragraphs_type.images
+    - paragraphs.paragraphs_type.testimonial
+    - paragraphs.paragraphs_type.text
+  module:
+    - entity_reference_revisions
+id: paragraph.columns.field_right_column
+field_name: field_right_column
+entity_type: paragraph
+bundle: columns
+label: 'Right column'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      text: text
+      cta: cta
+      testimonial: testimonial
+      images: images
+    negate: 0
+    target_bundles_drag_drop:
+      columns:
+        weight: 3
+        enabled: false
+      cta:
+        weight: 5
+        enabled: true
+      icon_link:
+        weight: 14
+        enabled: false
+      images:
+        weight: 12
+        enabled: true
+      jury_grid:
+        weight: 13
+        enabled: false
+      jury_member:
+        weight: 14
+        enabled: false
+      news:
+        weight: 18
+        enabled: false
+      sponsor:
+        weight: 15
+        enabled: false
+      sponsor_grid:
+        weight: 16
+        enabled: false
+      testimonial:
+        weight: 5
+        enabled: true
+      text:
+        weight: 4
+        enabled: true
+field_type: entity_reference_revisions

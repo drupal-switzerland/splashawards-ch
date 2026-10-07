@@ -1,0 +1,19 @@
+uuid: 0bb7fb2a-2876-4e03-a588-ffabe0db77ff
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_goals_and_results
+field_name: field_goals_and_results
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

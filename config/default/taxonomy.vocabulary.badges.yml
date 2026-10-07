@@ -1,0 +1,9 @@
+uuid: 59911a18-4bd4-426b-93b5-ae1f83b04e2f
+langcode: en
+status: true
+dependencies: {  }
+name: Badges
+vid: badges
+description: null
+weight: 0
+new_revision: false

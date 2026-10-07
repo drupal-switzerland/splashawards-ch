@@ -1,0 +1,19 @@
+id: splash_ch_term_award
+label: 'Award years -> splash_awards terms'
+migration_tags: [splash_ch]
+source:
+  plugin: splash_ch_legacy_entity
+  entity_type: taxonomy_term
+  bundle: award_jahr
+  constants:
+    prefix: 'Splash Awards '
+process:
+  tid: tid
+  vid: { plugin: default_value, default_value: splash_awards }
+  name:
+    plugin: concat
+    source: [constants/prefix, name]
+  field_slug: name
+  weight: weight
+destination:
+  plugin: entity:taxonomy_term

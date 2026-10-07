@@ -1,0 +1,9 @@
+uuid: 8bd1f18f-aad1-4724-a3ec-d0716320cead
+langcode: en
+status: true
+dependencies: {  }
+id: jury_chair
+label: 'Jury chair'
+weight: -5
+is_admin: false
+permissions: {  }

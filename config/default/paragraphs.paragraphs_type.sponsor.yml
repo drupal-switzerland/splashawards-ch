@@ -1,0 +1,10 @@
+uuid: ca339d32-1830-4521-b6d6-41e5fa240c2d
+langcode: en
+status: true
+dependencies: {  }
+id: sponsor
+label: Sponsor
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

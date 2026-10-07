@@ -1,0 +1,21 @@
+uuid: 65b82e3c-d0fc-4dcf-8f4d-6525ca9e2520
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.description
+    - node.type.case
+  module:
+    - filter
+    - node
+    - splash_awards_base
+id: candidate
+label: Candidate
+weight: -8
+is_admin: false
+permissions:
+  - 'change own username'
+  - 'create case content'
+  - 'edit own case content'
+  - 'submit case via frontend form'
+  - 'use text format description'

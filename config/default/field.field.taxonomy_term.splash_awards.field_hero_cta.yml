@@ -1,0 +1,23 @@
+uuid: 80a43291-1688-46ae-b4de-6b33798eb956
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hero_cta
+    - taxonomy.vocabulary.splash_awards
+  module:
+    - link
+id: taxonomy_term.splash_awards.field_hero_cta
+field_name: field_hero_cta
+entity_type: taxonomy_term
+bundle: splash_awards
+label: Links
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

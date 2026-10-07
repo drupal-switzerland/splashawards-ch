@@ -1,0 +1,21 @@
+uuid: 3f957b48-93d1-434e-ad01-02d840e8144f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_qualified
+    - taxonomy.vocabulary.badges
+id: taxonomy_term.badges.field_qualified
+field_name: field_qualified
+entity_type: taxonomy_term
+bundle: badges
+label: Nominated
+description: 'Use this checkbox to determine if this <em>Badge</em> is the required for a case to be considered a nominated case. Nominated cases are displayed in the nominee views. This <em>Badge</em> is not availible as a filter.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

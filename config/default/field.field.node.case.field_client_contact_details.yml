@@ -1,0 +1,24 @@
+uuid: 13d68f3c-0dcd-41f6-9a4a-598d992c01fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_client_contact_details
+    - filter.format.plain_text
+    - node.type.case
+  module:
+    - text
+id: node.case.field_client_contact_details
+field_name: field_client_contact_details
+entity_type: node
+bundle: case
+label: 'Contact information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text_long

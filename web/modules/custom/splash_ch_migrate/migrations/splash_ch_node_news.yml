@@ -1,0 +1,36 @@
+id: splash_ch_node_news
+label: 'News -> articles'
+migration_tags: [splash_ch]
+source:
+  plugin: splash_ch_legacy_entity
+  entity_type: node
+  bundle: news
+  fields: [field_paragraphs]
+process:
+  nid: nid
+  title: title
+  uid: owner
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  langcode: { plugin: default_value, default_value: en }
+  field_author: author_name
+  field_date:
+    plugin: format_date
+    source: created
+    from_format: U
+    to_format: Y-m-d
+  field_article_paragraphs:
+    plugin: splash_ch_paragraphs
+    source: field_paragraphs
+  field_hero_media:
+    plugin: splash_ch_media
+    source: hero_fid
+  path/pathauto: { plugin: default_value, default_value: 1 }
+destination:
+  plugin: entity:node
+  default_bundle: article
+migration_dependencies:
+  required: [splash_ch_file, splash_ch_user]

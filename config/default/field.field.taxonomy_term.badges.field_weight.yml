@@ -1,0 +1,25 @@
+uuid: 670e1497-23d8-4ba5-9e8f-6a4c31c9283a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_weight
+    - taxonomy.vocabulary.badges
+id: taxonomy_term.badges.field_weight
+field_name: field_weight
+entity_type: taxonomy_term
+bundle: badges
+label: Weight
+description: 'Use this field to define which <em>Badge´s</em> image should be displayed for a <em>Case</em>, that references multiple <em>Badges</em>. For example a "Winner" Badge should have a heigher </em>Weight</em> as a "Nominee". '
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

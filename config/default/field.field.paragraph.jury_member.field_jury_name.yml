@@ -1,0 +1,24 @@
+uuid: b76328de-716d-41c9-9246-3ce0109ac47b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_jury_name
+    - filter.format.plain_text
+    - paragraphs.paragraphs_type.jury_member
+  module:
+    - text
+id: paragraph.jury_member.field_jury_name
+field_name: field_jury_name
+entity_type: paragraph
+bundle: jury_member
+label: Name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text

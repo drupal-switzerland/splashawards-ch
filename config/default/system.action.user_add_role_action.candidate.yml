@@ -1,0 +1,14 @@
+uuid: a66f03ad-7ae0-4c64-90db-693a45753211
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.candidate
+  module:
+    - user
+id: user_add_role_action.candidate
+label: 'Add the Candidate role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: candidate
