@@ -25,21 +25,11 @@ use PHP_CodeSniffer\Util\Tokens;
 class CloseBracketSpacingSniff implements Sniff
 {
 
-    /**
-     * A list of tokenizers this sniff supports.
-     *
-     * @var array
-     */
-    public $supportedTokenizers = [
-        'PHP',
-        'JS',
-    ];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -64,13 +54,6 @@ class CloseBracketSpacingSniff implements Sniff
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-
-        // Ignore curly brackets in javascript files.
-        if ($tokens[$stackPtr]['code'] === T_CLOSE_CURLY_BRACKET
-            && $phpcsFile->tokenizerType === 'JS'
-        ) {
-            return;
-        }
 
         if (isset($tokens[($stackPtr - 1)]) === true
             && $tokens[($stackPtr - 1)]['code'] === T_WHITESPACE

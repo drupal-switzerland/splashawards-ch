@@ -1,1 +1,0 @@
-This is the folder where your icons will be generated in

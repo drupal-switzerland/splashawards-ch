@@ -1,0 +1,10 @@
+langcode: de
+status: false
+dependencies:
+  module:
+    - user
+id: user.full
+label: Benutzerkonto
+description: ''
+targetEntityType: user
+cache: true

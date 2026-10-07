@@ -1,0 +1,25 @@
+<form{{ attributes }}>
+  <h2 class="mb-3">{{ 'Client details'|t }}</h2>
+  <div class="mb-3">
+    {{ element.field_client }}
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="mb-3">
+      {{ element.field_customer_logo }}
+    </div>
+    <div class="mb-3">
+      {{ element.field_client_size }}
+    </div>
+  </div>
+  <div class="mb-3">
+    {{ element.field_client_contact_details }}
+  </div>
+  <div class="border border-black border-b-0 mt-[30px] mb-3"></div>
+  <div class="flex justify-between">
+    {{ element.actions.back }}
+    {{ element.actions.submit }}
+  </div>
+  {{ element.form_build_id }}
+  {{ element.form_token }}
+  {{ element.form_id }}
+</form>

@@ -1,0 +1,14 @@
+langcode: de
+status: true
+dependencies: {  }
+name: logo_teaser
+label: 'Logo Teaser (26)'
+effects:
+  5b0f5ace-b0cb-4893-8e79-d0c0ec70c7da:
+    uuid: 5b0f5ace-b0cb-4893-8e79-d0c0ec70c7da
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 26
+      upscale: false

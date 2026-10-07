@@ -20,13 +20,10 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
  */
 class IsFalseValidator extends ConstraintValidator
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function validate($value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$constraint instanceof IsFalse) {
-            throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\IsFalse');
+            throw new UnexpectedTypeException($constraint, IsFalse::class);
         }
 
         if (null === $value || false === $value || 0 === $value || '0' === $value) {

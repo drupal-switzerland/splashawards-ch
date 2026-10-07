@@ -182,6 +182,13 @@ class OutputRules implements RulesInterface
         return $this;
     }
 
+    public function unsetTraverser()
+    {
+        $this->traverser = null;
+
+        return $this;
+    }
+
     public function document($dom)
     {
         $this->doctype();
@@ -199,6 +206,9 @@ class OutputRules implements RulesInterface
         $this->nl();
     }
 
+    /**
+     * @param \DOMElement $ele
+     */
     public function element($ele)
     {
         $name = $ele->tagName;
@@ -220,6 +230,9 @@ class OutputRules implements RulesInterface
         }
 
         $this->openTag($ele);
+        // The tag is already self-closed (`<svg />` or `<math />`) in `openTag` if there are no child nodes.
+        $handledAsVoidTag = $this->outputMode !== static::IM_IN_HTML && !$ele->hasChildNodes();
+
         if (Elements::isA($name, Elements::TEXT_RAW)) {
             foreach ($ele->childNodes as $child) {
                 if ($child instanceof \DOMCharacterData) {
@@ -241,7 +254,7 @@ class OutputRules implements RulesInterface
         }
 
         // If not unary, add a closing tag.
-        if (!Elements::isA($name, Elements::VOID_TAG)) {
+        if (!$handledAsVoidTag && !Elements::isA($name, Elements::VOID_TAG)) {
             $this->closeTag($ele);
         }
     }
@@ -441,7 +454,7 @@ class OutputRules implements RulesInterface
      */
     protected function wr($text)
     {
-        fwrite($this->out, $text);
+        fwrite($this->out, (string) $text);
 
         return $this;
     }

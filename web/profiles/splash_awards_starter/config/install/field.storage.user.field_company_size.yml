@@ -1,0 +1,35 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_company_size
+field_name: field_company_size
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '<5'
+      label: 1-5
+    -
+      value: '<20'
+      label: 5-20
+    -
+      value: '<50'
+      label: 20-50
+    -
+      value: '<100'
+      label: 50-100
+    -
+      value: '>100'
+      label: 100+
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -28,21 +28,11 @@ use PHP_CodeSniffer\Util\Tokens;
 class InlineCommentSniff implements Sniff
 {
 
-    /**
-     * A list of tokenizers this sniff supports.
-     *
-     * @var array
-     */
-    public $supportedTokenizers = [
-        'PHP',
-        'JS',
-    ];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -61,7 +51,7 @@ class InlineCommentSniff implements Sniff
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
      *
-     * @return void
+     * @return int|void
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -79,9 +69,11 @@ class InlineCommentSniff implements Sniff
             );
 
             $ignore = [
+                T_ATTRIBUTE,
                 T_CLASS,
                 T_INTERFACE,
                 T_TRAIT,
+                T_ENUM,
                 T_FUNCTION,
                 T_CLOSURE,
                 T_PUBLIC,
@@ -107,23 +99,6 @@ class InlineCommentSniff implements Sniff
                 return;
             }
 
-            if ($phpcsFile->tokenizerType === 'JS') {
-                // We allow block comments if a function or object
-                // is being assigned to a variable.
-                $ignore    = Tokens::$emptyTokens;
-                $ignore[]  = T_EQUAL;
-                $ignore[]  = T_STRING;
-                $ignore[]  = T_OBJECT_OPERATOR;
-                $nextToken = $phpcsFile->findNext($ignore, ($nextToken + 1), null, true);
-                if ($tokens[$nextToken]['code'] === T_FUNCTION
-                    || $tokens[$nextToken]['code'] === T_CLOSURE
-                    || $tokens[$nextToken]['code'] === T_OBJECT
-                    || $tokens[$nextToken]['code'] === T_PROTOTYPE
-                ) {
-                    return;
-                }
-            }
-
             $prevToken = $phpcsFile->findPrevious(
                 Tokens::$emptyTokens,
                 ($stackPtr - 1),
@@ -135,12 +110,19 @@ class InlineCommentSniff implements Sniff
                 return;
             }
 
-            // Inline doc blocks are allowed in JSDoc.
-            if ($tokens[$stackPtr]['content'] === '/**' && $phpcsFile->tokenizerType !== 'JS') {
-                // The only exception to inline doc blocks is the /** @var */
-                // declaration. Allow that in any form.
-                $varTag = $phpcsFile->findNext([T_DOC_COMMENT_TAG], ($stackPtr + 1), $tokens[$stackPtr]['comment_closer'], false, '@var');
-                if ($varTag === false) {
+            if ($tokens[$stackPtr]['content'] === '/**') {
+                // The only exception are inline doc blocks that start with a doc comment tag, e.g. /** @var */.
+                // Any trailing content after the comment tag is fine.
+                $anyTag = $phpcsFile->findNext([T_DOC_COMMENT_TAG], ($stackPtr + 1), $tokens[$stackPtr]['comment_closer'], false);
+
+                // Ensure that there is nothing but stars and whitespace before the tag starts.
+                // In particular, preceding text is not allowed.
+                $beforeTag = false;
+                if ($anyTag !== false) {
+                    $beforeTag = $phpcsFile->findNext([T_DOC_COMMENT_STAR, T_DOC_COMMENT_WHITESPACE], ($stackPtr + 1), $anyTag, true);
+                }
+
+                if ($anyTag === false || $beforeTag !== false) {
                     $error = 'Inline doc block comments are not allowed; use "/* Comment */" or "// Comment" instead';
                     $phpcsFile->addError($error, $stackPtr, 'DocBlock');
                 }
@@ -162,16 +144,6 @@ class InlineCommentSniff implements Sniff
         if ($tokens[$previousContent]['line'] === $tokens[$stackPtr]['line']) {
             if ($tokens[$previousContent]['code'] === T_CLOSE_CURLY_BRACKET) {
                 return;
-            }
-
-            // Special case for JS files.
-            if ($tokens[$previousContent]['code'] === T_COMMA
-                || $tokens[$previousContent]['code'] === T_SEMICOLON
-            ) {
-                $lastContent = $phpcsFile->findPrevious(T_WHITESPACE, ($previousContent - 1), null, true);
-                if ($tokens[$lastContent]['code'] === T_CLOSE_CURLY_BRACKET) {
-                    return;
-                }
             }
         }
 
@@ -216,7 +188,8 @@ class InlineCommentSniff implements Sniff
             $lastComment     = $nextComment;
         }//end while
 
-        $commentText = '';
+        $commentText      = '';
+        $lastCommentToken = $stackPtr;
         foreach ($commentTokens as $lastCommentToken) {
             $comment = rtrim($tokens[$lastCommentToken]['content']);
 
@@ -355,7 +328,11 @@ class InlineCommentSniff implements Sniff
 
         // Only check the end of comment character if the start of the comment
         // is a letter, indicating that the comment is just standard text.
-        if (preg_match('/^\p{L}/u', $commentText) === 1) {
+        // Also, when the comment starts with cspell: don't check the end of the
+        // comment.
+        if (preg_match('/^\p{L}/u', $commentText) === 1
+            && preg_match('/(cspell|spell\-checker|spellchecker):/i', $commentText) === 0
+        ) {
             $commentCloser   = $commentText[(strlen($commentText) - 1)];
             $acceptedClosers = [
                 'full-stops'             => '.',

@@ -11,11 +11,12 @@ namespace Drupal\Sniffs\Commenting;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\AbstractVariableSniff;
+use PHP_CodeSniffer\Util\Tokens;
 
 /**
  * Parses and verifies class property doc comments.
  *
- * Laregely copied from
+ * Largely copied from
  * \PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting\VariableCommentSniff.
  *
  * @category PHP
@@ -38,22 +39,44 @@ class VariableCommentSniff extends AbstractVariableSniff
     public function processMemberVar(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $ignore = [
-            T_PUBLIC,
-            T_PRIVATE,
-            T_PROTECTED,
-            T_VAR,
-            T_STATIC,
-            T_WHITESPACE,
-            T_STRING,
-            T_NS_SEPARATOR,
-            T_NULLABLE,
-        ];
+        $ignore = ([
+            T_PUBLIC            => T_PUBLIC,
+            T_PRIVATE           => T_PRIVATE,
+            T_PROTECTED         => T_PROTECTED,
+            T_VAR               => T_VAR,
+            T_STATIC            => T_STATIC,
+            T_READONLY          => T_READONLY,
+            T_WHITESPACE        => T_WHITESPACE,
+            T_STRING            => T_STRING,
+            T_NS_SEPARATOR      => T_NS_SEPARATOR,
+            T_NAMESPACE         => T_NAMESPACE,
+            T_NULLABLE          => T_NULLABLE,
+            T_TYPE_UNION        => T_TYPE_UNION,
+            T_TYPE_INTERSECTION => T_TYPE_INTERSECTION,
+            T_NULL              => T_NULL,
+            T_TRUE              => T_TRUE,
+            T_FALSE             => T_FALSE,
+            T_SELF              => T_SELF,
+            T_PARENT            => T_PARENT,
+        ] + Tokens::$phpcsCommentTokens);
 
-        $commentEnd = $phpcsFile->findPrevious($ignore, ($stackPtr - 1), null, true);
-        if ($commentEnd === false
-            || ($tokens[$commentEnd]['code'] !== T_DOC_COMMENT_CLOSE_TAG
-            && $tokens[$commentEnd]['code'] !== T_COMMENT)
+        for ($commentEnd = ($stackPtr - 1); $commentEnd >= 0; $commentEnd--) {
+            if (isset($ignore[$tokens[$commentEnd]['code']]) === true) {
+                continue;
+            }
+
+            if ($tokens[$commentEnd]['code'] === T_ATTRIBUTE_END
+                && isset($tokens[$commentEnd]['attribute_opener']) === true
+            ) {
+                $commentEnd = $tokens[$commentEnd]['attribute_opener'];
+                continue;
+            }
+
+            break;
+        }
+
+        if ($tokens[$commentEnd]['code'] !== T_DOC_COMMENT_CLOSE_TAG
+            && $tokens[$commentEnd]['code'] !== T_COMMENT
         ) {
             $phpcsFile->addError('Missing member variable doc comment', $stackPtr, 'Missing');
             return;
@@ -75,14 +98,6 @@ class VariableCommentSniff extends AbstractVariableSniff
             }
 
             return;
-        } else if ($tokens[$commentEnd]['code'] !== T_DOC_COMMENT_CLOSE_TAG) {
-            return;
-        } else {
-            // Make sure the comment we have found belongs to us.
-            $commentFor = $phpcsFile->findNext([T_VARIABLE, T_CLASS, T_INTERFACE], ($commentEnd + 1));
-            if ($commentFor !== $stackPtr) {
-                return;
-            }
         }//end if
 
         $commentStart = $tokens[$commentEnd]['comment_opener'];
@@ -116,6 +131,12 @@ class VariableCommentSniff extends AbstractVariableSniff
 
         // The @var tag is the only one we require.
         if ($foundVar === null) {
+            // If there's an inline type argument then you may omit the @var comment.
+            // Check if there's a type between the variable name and the comment end.
+            if ($phpcsFile->findPrevious([T_STRING], $stackPtr, $commentEnd) !== false) {
+                return;
+            }
+
             $error = 'Missing @var tag in member variable comment';
             $phpcsFile->addError($error, $commentEnd, 'MissingVar');
             return;

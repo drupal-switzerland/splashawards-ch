@@ -20,13 +20,10 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
  */
 class IsNullValidator extends ConstraintValidator
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function validate($value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$constraint instanceof IsNull) {
-            throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\IsNull');
+            throw new UnexpectedTypeException($constraint, IsNull::class);
         }
 
         if (null !== $value) {

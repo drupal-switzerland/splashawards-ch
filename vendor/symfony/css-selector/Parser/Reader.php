@@ -23,91 +23,64 @@ namespace Symfony\Component\CssSelector\Parser;
  */
 class Reader
 {
-    private $source;
-    private $length;
-    private $position = 0;
+    private static array $anchoredPatterns = [];
 
-    /**
-     * @param string $source
-     */
-    public function __construct($source)
-    {
-        $this->source = $source;
+    private int $length;
+    private int $position = 0;
+
+    public function __construct(
+        private string $source,
+    ) {
         $this->length = \strlen($source);
     }
 
-    /**
-     * @return bool
-     */
-    public function isEOF()
+    public function isEOF(): bool
     {
         return $this->position >= $this->length;
     }
 
-    /**
-     * @return int
-     */
-    public function getPosition()
+    public function getPosition(): int
     {
         return $this->position;
     }
 
-    /**
-     * @return int
-     */
-    public function getRemainingLength()
+    public function getRemainingLength(): int
     {
         return $this->length - $this->position;
     }
 
-    /**
-     * @param int $length
-     * @param int $offset
-     *
-     * @return string
-     */
-    public function getSubstring($length, $offset = 0)
+    public function getSubstring(int $length, int $offset = 0): string
     {
         return substr($this->source, $this->position + $offset, $length);
     }
 
-    /**
-     * @param string $string
-     *
-     * @return int
-     */
-    public function getOffset($string)
+    public function getOffset(string $string): int|false
     {
         $position = strpos($this->source, $string, $this->position);
 
         return false === $position ? false : $position - $this->position;
     }
 
-    /**
-     * @param string $pattern
-     *
-     * @return array|false
-     */
-    public function findPattern($pattern)
+    public function findPattern(string $pattern): array|false
     {
-        $source = substr($this->source, $this->position);
+        // Match in place instead of copying the remaining source before every probe.
+        // Combined with an offset, "^" still anchors at the start of the whole subject,
+        // so a leading anchor is turned into "\\G", which anchors at the offset instead.
+        $pattern = self::$anchoredPatterns[$pattern] ??= '^' === ($pattern[1] ?? '') ? $pattern[0].'\\G'.substr($pattern, 2) : $pattern;
 
-        if (preg_match($pattern, $source, $matches)) {
+        if (preg_match($pattern, $this->source, $matches, 0, $this->position)) {
             return $matches;
         }
 
         return false;
     }
 
-    /**
-     * @param int $length
-     */
-    public function moveForward($length)
+    public function moveForward(int $length): void
     {
         $this->position += $length;
     }
 
-    public function moveToEnd()
+    public function moveToEnd(): void
     {
         $this->position = $this->length;
     }

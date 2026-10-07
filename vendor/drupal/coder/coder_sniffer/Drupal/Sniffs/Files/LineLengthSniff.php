@@ -46,7 +46,7 @@ class LineLengthSniff extends GenericLineLengthSniff
      * Checks if a line is too long.
      *
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
-     * @param array                       $tokens    The token stack.
+     * @param array<int, mixed>           $tokens    The token stack.
      * @param int                         $stackPtr  The first token on the next line.
      *
      * @return void
@@ -54,6 +54,11 @@ class LineLengthSniff extends GenericLineLengthSniff
     protected function checkLineLength($phpcsFile, $tokens, $stackPtr)
     {
         if (isset(Tokens::$commentTokens[$tokens[($stackPtr - 1)]['code']]) === true) {
+            // Allow any PHPCS ignore comments to exceed the 80 character limit.
+            if (isset(Tokens::$phpcsCommentTokens[$tokens[($stackPtr - 1)]['code']]) === true) {
+                return;
+            }
+
             $docCommentTag = $phpcsFile->findFirstOnLine(T_DOC_COMMENT_TAG, ($stackPtr - 1));
             if ($docCommentTag !== false) {
                 // Allow doc comment tags such as long @param tags to exceed the 80

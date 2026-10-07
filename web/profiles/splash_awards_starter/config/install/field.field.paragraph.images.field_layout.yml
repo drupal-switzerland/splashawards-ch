@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_layout
+    - paragraphs.paragraphs_type.images
+  module:
+    - options
+id: paragraph.images.field_layout
+field_name: field_layout
+entity_type: paragraph
+bundle: images
+label: Layout
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,23 @@
+splash_awards.add_page:
+  route_name: node.add
+  route_parameters:
+    node_type: page
+  title: 'Add page'
+  appears_on:
+    - system.admin_content
+
+splash_awards.add_nominee:
+  route_name: node.add
+  route_parameters:
+    node_type: case
+  title: 'Add case'
+  appears_on:
+    - view.content.cases
+
+splash_awards.add_article:
+  route_name: node.add
+  route_parameters:
+    node_type: article
+  title: 'Add article'
+  appears_on:
+    - view.content.article

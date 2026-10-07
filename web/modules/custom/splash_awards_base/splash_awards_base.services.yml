@@ -1,0 +1,12 @@
+services:
+  splash_awards_base.case_route_subscriber:
+    class: Drupal\splash_awards_base\Routing\CaseRoutesSubscriber
+    tags:
+      - { name: event_subscriber, priority: -100 }
+  splash_awards_base.access_check:
+    class: Drupal\splash_awards_base\Access\RoleAccessCheck
+    tags:
+      - { name: access_check }
+  splash_awards_base.rating_helper:
+    class: Drupal\splash_awards_base\Services\RatingHelper
+    arguments: ['@user.data']

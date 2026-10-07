@@ -1,0 +1,14 @@
+<div class="border border-saw-bright-blue flex items-center gap-3 rounded-lg bg-white p-3">
+  {% if  meta.portrait %}
+    <img class="w-[48px] rounded-full" src="{{ meta.portrait }}" alt="">
+  {% endif %}
+  <div class="flex flex-col justify-center">
+    <span class="saw-copy-text text-saw-bright-blue block m-0">
+      {{ meta.author }}
+    </span>
+    <div>
+      <span class="text-black saw-tiny-text me-2">{{ meta.date }}</span>
+      <span class="text-black saw-tiny-text">{{ meta.readTime }}</span>
+    </div>
+  </div>
+</div>

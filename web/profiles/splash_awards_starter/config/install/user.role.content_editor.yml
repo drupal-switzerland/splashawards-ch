@@ -1,0 +1,73 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.description
+    - media.type.image
+    - media.type.video
+    - node.type.article
+    - node.type.case
+    - node.type.page
+    - taxonomy.vocabulary.badges
+    - taxonomy.vocabulary.categories
+  module:
+    - file
+    - filter
+    - media
+    - node
+    - path
+    - system
+    - taxonomy
+    - toolbar
+id: content_editor
+label: Redakteur
+weight: -7
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access files overview'
+  - 'access media overview'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'administer url aliases'
+  - 'create article content'
+  - 'create case content'
+  - 'create image media'
+  - 'create page content'
+  - 'create terms in badges'
+  - 'create terms in categories'
+  - 'create url aliases'
+  - 'create video media'
+  - 'delete any article content'
+  - 'delete any case content'
+  - 'delete any image media'
+  - 'delete any page content'
+  - 'delete any video media'
+  - 'delete own files'
+  - 'edit any article content'
+  - 'edit any case content'
+  - 'edit any image media'
+  - 'edit any page content'
+  - 'edit any video media'
+  - 'revert all revisions'
+  - 'revert article revisions'
+  - 'revert case revisions'
+  - 'revert page revisions'
+  - 'revert term revisions in badges'
+  - 'revert term revisions in categories'
+  - 'update any media'
+  - 'use text format basic_html'
+  - 'use text format description'
+  - 'view all revisions'
+  - 'view all taxonomy revisions'
+  - 'view article revisions'
+  - 'view case revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view page revisions'
+  - 'view term revisions in badges'
+  - 'view term revisions in categories'
+  - 'view the administration theme'
+  - 'view vocabulary labels'

@@ -1,0 +1,63 @@
+name: Splash Awards Starter
+type: profile
+core_version_requirement: '^11'
+version: 1.0.0
+distribution:
+  name: Splash Awards Starter
+
+# Modules to install to support the profile.
+# Unlike dependencies, these can be uninstalled later.
+install:
+  - admin_toolbar
+  - better_exposed_filters
+  - captcha
+  - image_captcha
+  - config_ignore
+  - field_group
+  - gin_login
+  - gin_toolbar
+  - login_emailusername
+  - menu_item_extras
+  - metatag
+  - paragraphs
+  - pathauto
+  - seckit
+  - shield
+  - svg_image
+  - symfony_mailer
+  - views_ui
+  - breakpoint
+  - config
+  - menu_ui
+  - menu_link_content
+  - page_cache
+  - dynamic_page_cache
+  - big_pipe
+  - dblog
+  - field_ui
+  - media_library
+  - update
+
+dependencies:
+  - block
+  - ckeditor5
+  - datetime
+  - dblog
+  - editor
+  - file
+  - image
+  - media
+  - menu_link_content
+  - node
+  - options
+  - path
+  - splash_awards_base
+  - system
+  - taxonomy
+  - user
+  - views
+  - language
+
+themes:
+  - gin
+  - splash_awards

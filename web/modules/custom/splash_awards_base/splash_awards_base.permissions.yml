@@ -1,0 +1,6 @@
+submit case via frontend form:
+  title: 'Submit cases via frontend form'
+  description: 'Allows the user to submit a case to the splash awards'
+access jury dashboard:
+  title: 'Access the jury dashboard'
+  description: 'Permission crucial to jury members who need to evaluate cases using the ui.'

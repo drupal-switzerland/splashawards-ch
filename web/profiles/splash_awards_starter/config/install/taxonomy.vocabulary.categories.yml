@@ -1,0 +1,8 @@
+langcode: de
+status: true
+dependencies: {  }
+name: Categories
+vid: categories
+description: null
+weight: 0
+new_revision: false

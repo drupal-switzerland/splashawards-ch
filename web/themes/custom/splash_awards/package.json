@@ -1,0 +1,29 @@
+{
+  "name": "splash_awards",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:drupal": "rimraf dist && webpack --config ./webpack.config.js",
+    "dev:drupal": "webpack --watch --config ./webpack.config.js"
+  },
+  "author": "simon.hagenberg@bitmade.de",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss": "^8.5.3",
+    "postcss-loader": "^8.1.1",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^3.4.17",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.9"
+  }
+}

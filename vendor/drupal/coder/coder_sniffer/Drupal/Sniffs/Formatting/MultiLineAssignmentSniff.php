@@ -17,13 +17,9 @@ use PHP_CodeSniffer\Sniffs\Sniff;
  *
  * If an assignment goes over two lines, ensure the equal sign is indented.
  *
- * @category  PHP
- * @package   PHP_CodeSniffer
- * @author    Greg Sherwood <gsherwood@squiz.net>
- * @copyright 2006 Squiz Pty Ltd (ABN 77 084 670 600)
- * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
- * @version   Release: 1.2.0RC3
- * @link      http://pear.php.net/package/PHP_CodeSniffer
+ * @category PHP
+ * @package  PHP_CodeSniffer
+ * @link     http://pear.php.net/package/PHP_CodeSniffer
  */
 class MultiLineAssignmentSniff implements Sniff
 {
@@ -32,7 +28,7 @@ class MultiLineAssignmentSniff implements Sniff
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -62,7 +58,7 @@ class MultiLineAssignmentSniff implements Sniff
         }
 
         // Make sure it is the first thing on the line, otherwise we ignore it.
-        $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), false, true);
+        $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
         if ($prev === false) {
             // Bad assignment.
             return;

@@ -13,7 +13,7 @@ use PHP_CodeSniffer\Files\File;
 use Drupal\Sniffs\Semantics\FunctionCall;
 
 /**
- * Verifiies that messages passed to form_set_error() run through t().
+ * Verifies that messages passed to form_set_error() run through t().
  *
  * @category PHP
  * @package  PHP_CodeSniffer
@@ -26,7 +26,7 @@ class FormErrorTSniff extends FunctionCall
     /**
      * Returns an array of function names this test wants to listen for.
      *
-     * @return array
+     * @return array<string>
      */
     public function registerFunctionNames()
     {

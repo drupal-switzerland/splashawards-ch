@@ -1,0 +1,20 @@
+<div class="relative">
+  {% if teaserData.badge %}
+    <img class="absolute top-2 right-2 w-1/4" src="{{ teaserData.badge }}" alt="">
+  {% endif %}
+  <img class="rounded w-full" src="{{ teaserData.img }}" alt="">
+  <div class="w-full flex justify-between items-center gap-3 my-3">
+    <div>
+      <img class="shrink-1" src="{{ teaserData.logo }}" alt="">
+    </div>
+    {% include '@splash_awards/templates/includes/button.twig' with {
+      buttonUrl: teaserData.url,
+      buttonText: 'Visit project'|t,
+      buttonType: 'cta',
+      customClasses : 'saw-tiny-text shrink-0 after:absolute after:inset-0',
+    } only %}
+  </div>
+
+  <h3 class="mb-2">{{ teaserData.title }}</h3>
+  {{ teaserData.teaserText }}
+</div>

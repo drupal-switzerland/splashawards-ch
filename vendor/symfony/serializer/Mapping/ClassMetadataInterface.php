@@ -18,7 +18,7 @@ namespace Symfony\Component\Serializer\Mapping;
  *
  * There may only exist one metadata for each attribute according to its name.
  *
- * @internal
+ * @psalm-inheritors ClassMetadata
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  */
@@ -26,32 +26,32 @@ interface ClassMetadataInterface
 {
     /**
      * Returns the name of the backing PHP class.
-     *
-     * @return string The name of the backing class
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Adds an {@link AttributeMetadataInterface}.
      */
-    public function addAttributeMetadata(AttributeMetadataInterface $attributeMetadata);
+    public function addAttributeMetadata(AttributeMetadataInterface $attributeMetadata): void;
 
     /**
      * Gets the list of {@link AttributeMetadataInterface}.
      *
-     * @return AttributeMetadataInterface[]
+     * @return array<string, AttributeMetadataInterface>
      */
-    public function getAttributesMetadata();
+    public function getAttributesMetadata(): array;
 
     /**
      * Merges a {@link ClassMetadataInterface} in the current one.
      */
-    public function merge(self $classMetadata);
+    public function merge(self $classMetadata): void;
 
     /**
      * Returns a {@link \ReflectionClass} instance for this class.
-     *
-     * @return \ReflectionClass
      */
-    public function getReflectionClass();
+    public function getReflectionClass(): \ReflectionClass;
+
+    public function getClassDiscriminatorMapping(): ?ClassDiscriminatorMapping;
+
+    public function setClassDiscriminatorMapping(?ClassDiscriminatorMapping $mapping): void;
 }

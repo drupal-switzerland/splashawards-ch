@@ -1,0 +1,15 @@
+<section class="space-y-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[25px]">
+    {% if rows %}
+        {{ rows }}
+    {% elseif empty %}
+        {{ empty }}
+    {% endif %}
+  </div>
+
+  {% if pager %}
+    <div class="w-full flex justify-center">
+      {{ pager }}
+    </div>
+  {% endif %}
+</section>

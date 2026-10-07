@@ -4,11 +4,12 @@
  *
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
- * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @license   https://github.com/PHPCSStandards/PHP_CodeSniffer/blob/HEAD/licence.txt BSD Licence
  */
 
 namespace PHP_CodeSniffer\Util;
 
+use DirectoryIterator;
 use PHP_CodeSniffer\Config;
 
 class Standards
@@ -35,7 +36,7 @@ class Standards
         $resolvedInstalledPaths = [];
         foreach ($installedPaths as $installedPath) {
             if (substr($installedPath, 0, 1) === '.') {
-                $installedPath = Common::realPath(__DIR__.$ds.'..'.$ds.'..'.$ds.$installedPath);
+                $installedPath = Common::realpath(__DIR__.$ds.'..'.$ds.'..'.$ds.$installedPath);
                 if ($installedPath === false) {
                     continue;
                 }
@@ -99,7 +100,7 @@ class Standards
                 continue;
             }
 
-            $di = new \DirectoryIterator($standardsDir);
+            $di = new DirectoryIterator($standardsDir);
             foreach ($di as $file) {
                 if ($file->isDir() === true && $file->isDot() === false) {
                     $filename = $file->getFilename();
@@ -180,7 +181,8 @@ class Standards
             // Check if the installed dir is actually a standard itself.
             $csFile = $standardsDir.'/ruleset.xml';
             if (is_file($csFile) === true) {
-                $installedStandards[] = basename($standardsDir);
+                $basename = basename($standardsDir);
+                $installedStandards[$basename] = $basename;
                 continue;
             }
 
@@ -189,7 +191,8 @@ class Standards
                 continue;
             }
 
-            $di = new \DirectoryIterator($standardsDir);
+            $di = new DirectoryIterator($standardsDir);
+            $standardsInDir = [];
             foreach ($di as $file) {
                 if ($file->isDir() === true && $file->isDot() === false) {
                     $filename = $file->getFilename();
@@ -202,10 +205,13 @@ class Standards
                     // Valid coding standard dirs include a ruleset.
                     $csFile = $file->getPathname().'/ruleset.xml';
                     if (is_file($csFile) === true) {
-                        $installedStandards[] = $filename;
+                        $standardsInDir[$filename] = $filename;
                     }
                 }
             }
+
+            natsort($standardsInDir);
+            $installedStandards += $standardsInDir;
         }//end foreach
 
         return $installedStandards;
@@ -233,7 +239,7 @@ class Standards
         } else {
             // This could be a custom standard, installed outside our
             // standards directory.
-            $standard = Common::realPath($standard);
+            $standard = Common::realpath($standard);
             if ($standard === false) {
                 return false;
             }

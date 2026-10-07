@@ -1,0 +1,524 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.case.field_approval_drupal
+    - field.field.node.case.field_award
+    - field.field.node.case.field_badge
+    - field.field.node.case.field_category
+    - field.field.node.case.field_challenges
+    - field.field.node.case.field_client
+    - field.field.node.case.field_client_approval
+    - field.field.node.case.field_client_contact_details
+    - field.field.node.case.field_client_size
+    - field.field.node.case.field_company_contact_person
+    - field.field.node.case.field_company_logo
+    - field.field.node.case.field_company_name
+    - field.field.node.case.field_company_size
+    - field.field.node.case.field_company_url
+    - field.field.node.case.field_contributions
+    - field.field.node.case.field_customer_logo
+    - field.field.node.case.field_description
+    - field.field.node.case.field_goals_and_results
+    - field.field.node.case.field_hosting
+    - field.field.node.case.field_images
+    - field.field.node.case.field_invoice_address
+    - field.field.node.case.field_launch
+    - field.field.node.case.field_mail_contact_person
+    - field.field.node.case.field_mail_invoice
+    - field.field.node.case.field_meta_tags
+    - field.field.node.case.field_motivation
+    - field.field.node.case.field_note
+    - field.field.node.case.field_phone_contact_person
+    - field.field.node.case.field_summary
+    - field.field.node.case.field_tax_id
+    - field.field.node.case.field_terms_of_submission
+    - field.field.node.case.field_url
+    - field.field.node.case.field_video_url
+    - image.style.thumbnail
+    - node.type.case
+  module:
+    - datetime
+    - field_group
+    - link
+    - metatag
+    - svg_image
+    - text
+third_party_settings:
+  field_group:
+    group_data:
+      children:
+        - group_submitting_company
+        - group_case_basics
+        - group_client
+        - group_categories
+        - group_badges
+        - group_case_data
+        - group_media
+        - group_legal
+        - group_drupal_promotion
+      label: Data
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        direction: vertical
+        width_breakpoint: 640
+    group_case_basics:
+      children:
+        - title
+        - field_url
+        - field_summary
+        - field_launch
+      label: 'Submission details'
+      region: content
+      parent_name: group_data
+      weight: 30
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_categories:
+      children:
+        - field_category
+      label: Kategorien
+      region: content
+      parent_name: group_data
+      weight: 32
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_client:
+      children:
+        - field_client
+        - field_customer_logo
+        - field_client_contact_details
+        - field_client_size
+      label: Client
+      region: content
+      parent_name: group_data
+      weight: 31
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_case_data:
+      children:
+        - field_description
+        - field_goals_and_results
+        - field_challenges
+        - field_contributions
+        - field_motivation
+        - field_note
+        - field_hosting
+      label: 'Case details'
+      region: content
+      parent_name: group_data
+      weight: 34
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_badges:
+      children:
+        - field_badge
+      label: Badges
+      region: content
+      parent_name: group_data
+      weight: 33
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_media:
+      children:
+        - field_video_url
+        - field_images
+      label: Media
+      region: content
+      parent_name: group_data
+      weight: 35
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_legal:
+      children:
+        - field_terms_of_submission
+        - field_client_approval
+      label: Legal
+      region: content
+      parent_name: group_data
+      weight: 36
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_submitting_company:
+      children:
+        - field_company_name
+        - field_company_url
+        - field_company_logo
+        - field_company_size
+        - field_company_contact_person
+        - field_mail_contact_person
+        - field_phone_contact_person
+        - field_mail_invoice
+        - field_invoice_address
+        - field_tax_id
+      label: 'Submitting company'
+      region: content
+      parent_name: group_data
+      weight: 29
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_drupal_promotion:
+      children:
+        - field_approval_drupal
+      label: 'Drupal promotion'
+      region: content
+      parent_name: group_data
+      weight: 37
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.case.default
+targetEntityType: node
+bundle: case
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_approval_drupal:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_award:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_badge:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_category:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_challenges:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_client:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_client_approval:
+    type: boolean_checkbox
+    weight: 30
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_client_contact_details:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_client_size:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_company_contact_person:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_company_logo:
+    type: image_image
+    weight: 6
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_company_name:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_company_size:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_company_url:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_contributions:
+    type: text_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_customer_logo:
+    type: image_image
+    weight: 6
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_goals_and_results:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hosting:
+    type: text_textarea
+    weight: 8
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_images:
+    type: image_image
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_invoice_address:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 4
+      placeholder: ''
+    third_party_settings: {  }
+  field_launch:
+    type: datetime_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_mail_contact_person:
+    type: email_default
+    weight: 9
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_mail_invoice:
+    type: email_default
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 3
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_motivation:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_note:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone_contact_person:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_summary:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_tax_id:
+    type: string_textfield
+    weight: 13
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_terms_of_submission:
+    type: boolean_checkbox
+    weight: 29
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_url:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_video_url:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  path: true
+  promote: true
+  sticky: true

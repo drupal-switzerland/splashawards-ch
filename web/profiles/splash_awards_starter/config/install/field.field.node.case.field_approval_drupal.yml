@@ -1,0 +1,20 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_approval_drupal
+    - node.type.case
+id: node.case.field_approval_drupal
+field_name: field_approval_drupal
+entity_type: node
+bundle: case
+label: 'Yes, I would like to help Drupal and allow this project to be included in the Drupal Pitchdeck and shown on the German (drupal.de) or Austrian (drupal.at) community website'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

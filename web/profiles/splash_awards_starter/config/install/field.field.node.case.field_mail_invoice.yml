@@ -1,0 +1,18 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mail_invoice
+    - node.type.case
+id: node.case.field_mail_invoice
+field_name: field_mail_invoice
+entity_type: node
+bundle: case
+label: 'Email for invoice'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

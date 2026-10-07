@@ -1,0 +1,9 @@
+name: Splash Awards Frontend Theme
+type: theme
+description: 'Splash Awards Frontend Theme'
+core_version_requirement: '>=10'
+base theme: false
+libraries:
+  - splash_awards/global-styling
+regions:
+  content: 'Content'

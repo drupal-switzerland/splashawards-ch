@@ -1,0 +1,45 @@
+{# The wrapper that takes the full width of the screen. #}
+<div class="bg-saw-dark-blue">
+  <div class="container relative overflow-hidden">
+
+    {% if image and not video %}
+      <img class="absolute inset-0 w-full h-full object-cover hidden lg:block opacity-70{{blurry ? ' blur-sm scale-105 transform-gpu'}}" src="{{ image }}" alt="">
+    {% endif %}
+
+    {% if video %}
+      <video class="absolute inset-0 w-full h-full object-cover hidden lg:block opacity-70" autoplay loop muted playsinline>
+        <source src="{{ video }}" type="video/mp4">
+      </video>
+    {% endif %}
+
+    {# The container that centeres the content. #}
+    <div class="{{ 'container px-[20px] py-3 max-w-[1200px] relative overflow-hidden flex' ~ (image or video ? ' lg:min-h-[420px] lg:items-end lg:justify-between' : ' lg:min-h-[122px]')  ~ (meta ? ' flex-col items-start') ~ (meta and (image or video) ? ' lg:flex-row') ~ (not meta and not (image or video) ? ' items-center') }}">
+      {# The content container. #}
+      <div class="{{ 'my-0 relative lg:max-w-[50%]' ~ (image or video ? ' lg:mb-[30px] lg:bg-saw-dark-blue lg:p-4 lg:rounded-lg') }}">
+        <h1 class="text-white m-0 rounded">{{ title }}</h1>
+
+        {% if cta %}
+          <div class="flex mt-3 lg:mt-[30px]">
+            {% for cta_item in cta %}
+              {% include '@splash_awards/templates/includes/button.twig' with {
+                buttonUrl: cta_item.url,
+                buttonText: cta_item.text,
+                buttonType: loop.index == 1 ? 'cta' : 'primary',
+                customClasses: 'me-3'
+              } only %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if meta %}
+        <div class="{{ 'mt-3 ms-auto' ~ (image or video ? ' lg:mb-[30px]') }}">
+          {% include '@splash_awards/templates/includes/meta.twig' with {
+            meta
+          } only %}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>

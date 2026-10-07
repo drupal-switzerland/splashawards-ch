@@ -1,0 +1,387 @@
+{% include '@splash_awards/templates/includes/hero.twig' with {
+  title: title,
+} only %}
+
+{% set cases %}
+  <div
+    class="mb-5 flex flex-col gap-3 "
+    x-data="{
+      isOpen: false,
+      loading: false,
+      saving: false,
+      currentUrl: null,
+      currentViewUrl: null,
+      toast: null,
+      async open(url, viewUrl) {
+        this.currentUrl = url;
+        this.currentViewUrl = viewUrl;
+        this.isOpen = true;
+        this.loading = true;
+        document.body.classList.add('overflow-hidden');
+        try {
+          const response = await fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+          this.inject(await response.text());
+        } catch (e) {
+          this.$refs.content.innerHTML = '<p>{{ 'Sorry, the rating form could not be loaded.'|t }}</p>';
+        } finally {
+          this.loading = false;
+        }
+      },
+      inject(html) {
+        this.$refs.content.innerHTML = html;
+        this.$nextTick(() => {
+          if (window.Drupal) {
+            Drupal.attachBehaviors(this.$refs.content);
+          }
+        });
+      },
+      async submit(event) {
+        if (this.saving) {
+          return;
+        }
+        this.saving = true;
+        const form = event.target;
+        try {
+          const response = await fetch(this.currentUrl, {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            body: new FormData(form, event.submitter),
+          });
+          const type = response.headers.get('content-type') || '';
+          if (type.includes('application/json')) {
+            const data = await response.json();
+            this.applyResult(data);
+            this.close();
+          } else {
+            // Validation failed — re-render the form with inline errors.
+            this.inject(await response.text());
+          }
+        } catch (e) {
+          this.showToast('{{ 'Sorry, your ratings could not be saved.'|t }}');
+        } finally {
+          this.saving = false;
+        }
+      },
+      applyResult(data) {
+        const score = document.querySelector('[data-rating-score=\'' + data.caseId + '\']');
+        if (score) {
+          score.textContent = data.score + '/40';
+        }
+        const emotion = document.querySelector('[data-rating-emotion=\'' + data.caseId + '\']');
+        if (emotion) {
+          emotion.textContent = data.emotion + '/5';
+        }
+        this.setStatus(data.caseId, data.ratingStatus);
+        this.showToast(data.message);
+      },
+      setStatus(caseId, status) {
+        const button = document.querySelector('[data-rate-button=\'' + caseId + '\']');
+        if (!button) {
+          return;
+        }
+        if (status === 'complete') {
+          button.innerHTML = '{{ 'Rated'|t }} <svg class=\'text-saw-green\' width=\'15\' height=\'15\' viewBox=\'0 0 16 16\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M3 8.5L6.5 12L13 4.5\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg>';
+        } else if (status === 'in_progress') {
+          button.innerHTML = '{{ 'In progress'|t }} <svg class=\'text-saw-yellow\' width=\'15\' height=\'15\' viewBox=\'0 0 16 16\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><circle cx=\'8\' cy=\'8\' r=\'6.5\' stroke=\'currentColor\' stroke-width=\'1.5\'/><path d=\'M8 4.5V8L10.5 9.5\' stroke=\'currentColor\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg>';
+        } else {
+          button.textContent = '{{ 'Rate'|t }}';
+        }
+      },
+      showToast(message) {
+        this.toast = message;
+        setTimeout(() => { this.toast = null; }, 4000);
+      },
+      async moveCategory(caseId, categoryId) {
+        if (!this.csrfToken) {
+          this.csrfToken = await (await fetch('/session/token')).text();
+        }
+        try {
+          const response = await fetch('/jury/case/' + caseId + '/category', {
+            method: 'POST',
+            headers: { 'X-CSRF-Token': this.csrfToken, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ category: categoryId }),
+          });
+          if (response.ok) {
+            window.location.reload();
+          } else {
+            this.showToast('{{ 'Sorry, the category could not be changed.'|t }}');
+          }
+        } catch (e) {
+          this.showToast('{{ 'Sorry, the category could not be changed.'|t }}');
+        }
+      },
+      csrfToken: null,
+      close() {
+        this.isOpen = false;
+        this.saving = false;
+        this.currentUrl = null;
+        this.currentViewUrl = null;
+        this.$refs.content.innerHTML = '';
+        document.body.classList.remove('overflow-hidden');
+      },
+    }"
+    @keydown.escape.window="close()"
+  >
+    {# My rating progress. #}
+    <div class="bg-white border border-saw-bright-blue rounded-lg p-4 mb-4 flex items-center gap-4">
+      <div class="flex-shrink-0 h-12 w-12 rounded-full bg-saw-dark-blue text-white flex items-center justify-center text-lg font-bold uppercase">
+        {{ name|slice(0, 1) }}
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <span class="font-bold text-saw-dark-blue truncate">{{ name }}</span>
+          <span class="saw-tiny-text text-saw-dark-blue flex-shrink-0">
+            {{ 'Rated @rated of @total cases'|t({'@rated': progress.rated, '@total': progress.total}) }}
+            {% if progress.inProgress %}
+              <span class="text-saw-yellow">({{ '@count in progress'|t({'@count': progress.inProgress}) }})</span>
+            {% endif %}
+          </span>
+        </div>
+        <div class="h-2.5 w-full rounded-full bg-saw-pale-blue overflow-hidden flex">
+          <div class="h-full bg-saw-green transition-all duration-500" style="width: {{ progress.percentage }}%"></div>
+          <div class="h-full bg-saw-yellow transition-all duration-500" style="width: {{ progress.inProgressPercentage }}%"></div>
+        </div>
+      </div>
+    </div>
+
+    {# Chair only: each jury member's progress, more compact. #}
+    {% if canSeeJuryRatings and juryProgress is not empty %}
+      <div class="mb-4 ms-4 ps-4 border-s-2 border-saw-pale-blue space-y-2">
+        <h3 class="saw-tiny-text uppercase tracking-wide text-saw-bright-blue m-0">{{ 'Jury members'|t }}</h3>
+        {% for member in juryProgress %}
+          <div class="bg-white border border-saw-pale-blue rounded-lg p-2 flex items-center gap-3">
+            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-saw-dark-blue text-white flex items-center justify-center text-sm font-bold uppercase">
+              {{ member.name|slice(0, 1) }}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="saw-tiny-text font-bold text-saw-dark-blue truncate">{{ member.name }}</span>
+                <span class="saw-tiny-text text-saw-dark-blue flex-shrink-0">
+                  {{ member.rated }}/{{ member.total }}{% if member.inProgress %} <span class="text-saw-yellow">(+{{ member.inProgress }})</span>{% endif %}
+                </span>
+              </div>
+              <div class="h-1.5 w-full rounded-full bg-saw-pale-blue overflow-hidden flex">
+                <div class="h-full bg-saw-green transition-all duration-500" style="width: {{ member.percentage }}%"></div>
+                <div class="h-full bg-saw-yellow transition-all duration-500" style="width: {{ member.inProgressPercentage }}%"></div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# Data is not live — reloading refreshes the figures above and the ranking. #}
+    <div class="mb-4 flex items-center justify-end gap-1.5 saw-tiny-text text-saw-dark-blue/60">
+      <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.5 8a5.5 5.5 0 1 1-1.65-3.92" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M13.6 2.3V5.1H10.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <button type="button" @click="window.location.reload()"
+        class="text-saw-bright-blue cursor-pointer">
+        <span>{{ 'Reload'|t }}</span>
+      </button>
+    </div>
+
+    {% for key, cases in caseData %}
+      <h2 class="mt-3">{{ key }} ({{ cases|length }})</h2>
+
+      {% for case in cases %}
+        <div
+          class="flex flex-col lg:flex-row justify-start lg:justify-center items-start lg:items-center bg-saw-pale-blue rounded-lg p-2">
+          <img class="w-[80px] me-3" src="{{ case.imageSrc }}" alt="">
+          <div>
+            <h4 class="m-0">{{ case.title }}</h4>
+
+            <div class="flex flex-col lg:flex-row">
+              {% if canSeeJuryRatings %}
+                <div>
+                  <span class="font-bold me-1">{{ 'Rank'|t }}:</span>
+                  <span class="me-3 strong">#{{ case.rank }}</span>
+                </div>
+                <div>
+                  <span class="font-bold me-1">{{ 'Jury rating'|t }}:</span>
+                  <span class="me-3">{{ case.rating }}</span>
+                </div>
+                <div>
+                  <span class="font-bold me-1">{{ 'Jury emotion'|t }}:</span>
+                  <span class="me-3">{{ case.emotion }}</span>
+                </div>
+              {% endif %}
+              <div>
+                <span class="font-bold me-1">{{ 'Your rating'|t }}:</span>
+                <span class="me-3" data-rating-score="{{ case.id }}">{{ case.myRating }}</span>
+              </div>
+              <div>
+                <span class="font-bold me-1">{{ 'Your emotion'|t }}:</span>
+                <span class="me-3" data-rating-emotion="{{ case.id }}">{{ case.myEmotion }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:ms-auto mt-3 lg:mt-0 flex-shrink-0 lg:ps-3 lg:w-44">
+            <button type="button"
+               data-rate-button="{{ case.id }}"
+               @click="open('{{ case.rateUrl }}', '{{ case.url }}')"
+               class="py-2 px-4 mb-1 hover:no-underline transition-all hover:opacity-80 flex items-center justify-center gap-1.5 rounded-lg text-white bg-saw-dark-blue w-full text-center cursor-pointer"
+            >
+              {% if case.status == 'complete' %}
+                {{ 'Rated'|t }}
+                <svg class="text-saw-green" width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% elseif case.status == 'in_progress' %}
+                {{ 'In progress'|t }}
+                <svg class="text-saw-yellow" width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% else %}
+                {{ 'Rate'|t }}
+              {% endif %}
+            </button>
+            <a href="{{ case.url }}" target="_blank"
+               class="py-2 px-4 hover:no-underline transition-all hover:opacity-80 inline-block rounded-lg  text-white bg-saw-bright-blue w-full text-center">
+              {{ 'View'|t }}
+            </a>
+
+            {% if canSeeJuryRatings %}
+              <label class="block mt-2">
+                <span class="saw-tiny-text text-saw-dark-blue block mb-1">{{ 'Jury category'|t }}:</span>
+                <select
+                  @change="moveCategory({{ case.id }}, $event.target.value)"
+                  class="w-full rounded-lg border border-saw-pale-blue p-2 cursor-pointer bg-white"
+                >
+                  {% for category in categories %}
+                    <option value="{{ category.id }}" {{ category.id == case.categoryId ? 'selected' : '' }}>
+                      {{ category.name }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </label>
+            {% endif %}
+
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+
+    {# Custom Alpine modal — the rating form is fetched into x-ref="content". #}
+    <template x-teleport="body">
+      <div
+        x-show="isOpen"
+        x-cloak
+        class="fixed inset-0 z-[2100] flex items-center justify-center p-4"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-0 bg-saw-dark-blue/80 backdrop-blur-sm"
+          @click="close()"
+          x-show="isOpen"
+          x-transition.opacity
+        ></div>
+
+        <div
+          class="relative z-10 flex max-h-[90vh] w-full max-w-[760px] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-saw-dark-blue/10"
+          x-show="isOpen"
+          x-transition
+          @click.stop
+        >
+          {# Branded header bar. #}
+          <div class="flex items-center justify-between gap-4 bg-saw-dark-blue px-6 py-4">
+            <img
+              class="h-9 w-auto"
+              src="/themes/custom/splash_awards/images/Splash-Awards-DE-AU-White.svg"
+              alt="Splash Awards"
+            >
+            <div class="flex items-center gap-2">
+              <a
+                :href="currentViewUrl"
+                target="_blank"
+                class="py-1 px-3 rounded-md text-xs text-white bg-saw-bright-blue hover:no-underline hover:opacity-80 transition-all"
+              >
+                {{ 'View'|t }}
+              </a>
+              <button
+                type="button"
+                @click="close()"
+                class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-white transition-colors hover:bg-white/15 cursor-pointer"
+                aria-label="{{ 'Close'|t }}"
+              >
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {# Scrollable body. #}
+          <div class="relative overflow-y-auto px-6 py-6">
+            <div x-show="loading" class="flex items-center justify-center gap-3 py-12 text-saw-dark-blue">
+              <svg class="h-6 w-6 animate-spin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z"/>
+              </svg>
+              <span>{{ 'Loading…'|t }}</span>
+            </div>
+
+            <div
+              class="saw-modal-form"
+              x-ref="content"
+              x-show="!loading"
+              @submit.prevent="submit($event)"
+              :class="saving ? 'opacity-50 pointer-events-none' : ''"
+            ></div>
+
+            {# Saving overlay spinner. #}
+            <div
+              x-show="saving"
+              x-cloak
+              class="absolute inset-0 flex items-center justify-center bg-white/60"
+            >
+              <svg class="h-7 w-7 animate-spin text-saw-bright-blue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    {# Success / error toast. #}
+    <template x-teleport="body">
+      <div
+        x-show="toast"
+        x-cloak
+        x-transition
+        class="fixed bottom-4 end-4 z-[2110] max-w-sm rounded-lg bg-saw-dark-blue px-4 py-3 text-white shadow-xl"
+        role="status"
+        x-text="toast"
+      ></div>
+    </template>
+  </div>
+{% endset %}
+
+{% set utils %}
+  <div class="mt-3">
+    <p>{{ 'Review each submission and rate it across all categories. Open a case with “Rate”, score every category and save — you can come back any time to finish a partial rating. Your progress is shown above.'|t }}</p>
+    <p class="saw-small-text">{{ 'The emotion rating is a tiebreaker: when two submissions are otherwise rated equally, the one with the higher emotion score ranks higher.'|t }}</p>
+    {% if canSeeJuryRatings %}
+      <p class="saw-small-text">{{ 'Cases are ranked by their total jury rating, with emotion breaking any ties.'|t }}</p>
+    {% endif %}
+    {% include '@splash_awards/templates/includes/button.twig' with {
+      buttonUrl: logoutUrl,
+      buttonText: 'Logout'|t,
+      buttonType: 'danger',
+      customClasses: 'w-full text-center mt-3'
+    } only %}
+  </div>
+{% endset %}
+<div class="mb-3">
+  {% include '@splash_awards/templates/includes/floater-skeleton.twig' with {
+    title: 'Welcome @name'|t({'@name': name}),
+    elements: [cases],
+    utils: utils,
+  } only %}
+</div>

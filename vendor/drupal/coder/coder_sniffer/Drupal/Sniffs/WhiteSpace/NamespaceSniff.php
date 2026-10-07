@@ -26,7 +26,7 @@ class NamespaceSniff implements Sniff
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -49,7 +49,7 @@ class NamespaceSniff implements Sniff
         $tokens = $phpcsFile->getTokens();
 
         if ($tokens[($stackPtr + 1)]['content'] !== ' ') {
-            $error = 'There must be exactly one space after the namepace keyword';
+            $error = 'There must be exactly one space after the namespace keyword';
             $fix   = $phpcsFile->addFixableError($error, ($stackPtr + 1), 'OneSpace');
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');

@@ -1,0 +1,10 @@
+splash_awards_base.settings:
+  title: 'Case submission'
+  route_name: splash_awards_base.settings
+  description: 'Open the case submission and set the deadline'
+  parent: system.admin
+  weight: -11
+  options:
+    attributes:
+      class:
+        - toolbar-icon-system-admin-config

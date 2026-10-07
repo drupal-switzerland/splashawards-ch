@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.article.field_article_paragraphs
+    - field.field.node.article.field_author
+    - field.field.node.article.field_author_portrait
+    - field.field.node.article.field_date
+    - field.field.node.article.field_hero_cta
+    - field.field.node.article.field_hero_media
+    - field.field.node.article.field_hero_title
+    - field.field.node.article.field_meta_tags
+    - field.field.node.article.field_reading_time
+    - field.field.node.article.field_teaser_text
+    - node.type.article
+  module:
+    - user
+id: node.article.teaser
+targetEntityType: node
+bundle: article
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_article_paragraphs: true
+  field_author: true
+  field_author_portrait: true
+  field_date: true
+  field_hero_cta: true
+  field_hero_media: true
+  field_hero_title: true
+  field_meta_tags: true
+  field_reading_time: true
+  field_teaser_text: true
+  langcode: true

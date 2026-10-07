@@ -17,7 +17,7 @@ use PHP_CodeSniffer\Sniffs\Sniff;
  * before the opening parenthesis.
  *
  * @deprecated in Coder 8.x, will be removed in Coder 9.x.
- * Squiz.Functions.MultiLineFunctionDeclaration is used instead, see ruleset.xml.
+ * MultiLineFunctionDeclarationSniff is used instead.
  *
  * @category PHP
  * @package  PHP_CodeSniffer
@@ -30,7 +30,7 @@ class FunctionDeclarationSniff implements Sniff
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {

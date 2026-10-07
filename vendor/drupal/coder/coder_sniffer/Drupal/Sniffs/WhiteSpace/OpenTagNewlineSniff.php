@@ -26,7 +26,7 @@ class OpenTagNewlineSniff implements Sniff
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -57,7 +57,7 @@ class OpenTagNewlineSniff implements Sniff
 
         $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
 
-        // If there is no furhter content in this file ignore it.
+        // If there is no further content in this file ignore it.
         if ($next === false) {
             return ($phpcsFile->numTokens + 1);
         }

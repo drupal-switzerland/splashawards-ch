@@ -1,0 +1,17 @@
+{% set layoutMap = {
+  'left': 'lg:justify-start',
+  'center': 'lg:justify-center',
+  'right': 'lg:justify-end'
+} %}
+
+{% set wrapperClasses = 'flex flex-wrap justify-center ' ~ (layoutMap[layout] ?? '') %}
+
+{% if not inColumn %}
+  {% set wrapperClasses = wrapperClasses ~ ' my-5' %}
+{% endif %}
+
+<div class="{{ wrapperClasses }}">
+  {% for image in images %}
+    <img class="me-3 mb-3 rounded-lg" src="{{ image.src }}" alt="{{ image.alt }}">
+  {% endfor %}
+</div>

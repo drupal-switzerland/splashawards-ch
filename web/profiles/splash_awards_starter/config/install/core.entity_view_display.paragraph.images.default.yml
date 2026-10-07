@@ -1,0 +1,31 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.images.field_images
+    - field.field.paragraph.images.field_layout
+    - paragraphs.paragraphs_type.images
+  module:
+    - options
+id: paragraph.images.default
+targetEntityType: paragraph
+bundle: images
+mode: default
+content:
+  field_images:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_layout:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

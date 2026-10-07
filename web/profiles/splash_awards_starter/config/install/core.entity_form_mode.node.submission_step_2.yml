@@ -1,0 +1,10 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.submission_step_2
+label: 'Submission step 2'
+description: ''
+targetEntityType: node
+cache: true

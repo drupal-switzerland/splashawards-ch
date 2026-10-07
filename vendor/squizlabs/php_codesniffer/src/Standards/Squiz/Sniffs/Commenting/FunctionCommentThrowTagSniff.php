@@ -4,7 +4,7 @@
  *
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
- * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @license   https://github.com/PHPCSStandards/PHP_CodeSniffer/blob/HEAD/licence.txt BSD Licence
  */
 
 namespace PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting;
@@ -20,7 +20,7 @@ class FunctionCommentThrowTagSniff implements Sniff
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -47,10 +47,24 @@ class FunctionCommentThrowTagSniff implements Sniff
             return;
         }
 
-        $find   = Tokens::$methodPrefixes;
-        $find[] = T_WHITESPACE;
+        $ignore = Tokens::$methodPrefixes;
+        $ignore[T_WHITESPACE] = T_WHITESPACE;
 
-        $commentEnd = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
+        for ($commentEnd = ($stackPtr - 1); $commentEnd >= 0; $commentEnd--) {
+            if (isset($ignore[$tokens[$commentEnd]['code']]) === true) {
+                continue;
+            }
+
+            if ($tokens[$commentEnd]['code'] === T_ATTRIBUTE_END
+                && isset($tokens[$commentEnd]['attribute_opener']) === true
+            ) {
+                $commentEnd = $tokens[$commentEnd]['attribute_opener'];
+                continue;
+            }
+
+            break;
+        }
+
         if ($tokens[$commentEnd]['code'] !== T_DOC_COMMENT_CLOSE_TAG) {
             // Function doesn't have a doc comment or is using the wrong type of comment.
             return;
@@ -90,7 +104,7 @@ class FunctionCommentThrowTagSniff implements Sniff
                 don't know the exception class.
             */
 
-            $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($currPos + 1), null, true);
+            $nextToken = $phpcsFile->findNext(Tokens::$emptyTokens, ($currPos + 1), null, true);
             if ($tokens[$nextToken]['code'] === T_NEW
                 || $tokens[$nextToken]['code'] === T_NS_SEPARATOR
                 || $tokens[$nextToken]['code'] === T_STRING
@@ -132,7 +146,7 @@ class FunctionCommentThrowTagSniff implements Sniff
                 }//end if
             } else if ($tokens[$nextToken]['code'] === T_VARIABLE) {
                 // Find the nearest catch block in this scope and, if the caught var
-                // matches our rethrown var, use the exception types being caught as
+                // matches our re-thrown var, use the exception types being caught as
                 // exception types that are being thrown as well.
                 $catch = $phpcsFile->findPrevious(
                     T_CATCH,

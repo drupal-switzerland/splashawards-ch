@@ -27,13 +27,17 @@ class DiscouragedFunctionsSniff extends ForbiddenFunctionsSniff
      * The value is NULL if no alternative exists, i.e., the function should
      * just not be used.
      *
-     * @var array|null)
+     * cspell:disable
+     *
+     * @var array<string, null>
      */
     public $forbiddenFunctions = [
-                                     // Devel module debugging functions.
+        // Devel module debugging functions.
         'dargs'               => null,
         'dcp'                 => null,
         'dd'                  => null,
+        'ddebug_backtrace'    => null,
+        'ddm'                 => null,
         'dfb'                 => null,
         'dfbt'                => null,
         'dpm'                 => null,
@@ -45,14 +49,17 @@ class DiscouragedFunctionsSniff extends ForbiddenFunctionsSniff
         'dvm'                 => null,
         'dvr'                 => null,
         'kdevel_print_object' => null,
+        'kint'                => null,
+        'ksm'                 => null,
         'kpr'                 => null,
         'kprint_r'            => null,
         'sdpm'                => null,
-                                  // Functions which are not available on all
-                                  // PHP builds.
+        // Functions which are not available on all
+        // PHP builds.
         'fnmatch'             => null,
-                                  // Functions which are a security risk.
+         // Functions which are a security risk.
         'eval'                => null,
+        // cspell:enable
     ];
 
     /**

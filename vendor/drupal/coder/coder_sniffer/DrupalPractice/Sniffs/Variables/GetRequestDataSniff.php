@@ -31,7 +31,7 @@ class GetRequestDataSniff implements Sniff
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -86,7 +86,7 @@ class GetRequestDataSniff implements Sniff
         ];
 
         $type  = 'SuperglobalAccessed';
-        $error = 'The %s super global must not be accessed directly; inject the request.stack service and use $stack->getCurrentRequest()->%s';
+        $error = 'The %s super global must not be accessed directly; inject the request_stack service and use $stack->getCurrentRequest()->%s';
         $data  = [
             $varName,
             $requestPropertyMap[$varName],

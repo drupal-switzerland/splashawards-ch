@@ -14,36 +14,50 @@ namespace Symfony\Component\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
+use Symfony\Component\Validator\Exception\UnexpectedValueException;
 
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
 class LengthValidator extends ConstraintValidator
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function validate($value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$constraint instanceof Length) {
-            throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\Length');
+            throw new UnexpectedTypeException($constraint, Length::class);
         }
 
-        if (null === $value || '' === $value) {
+        if (null === $value) {
             return;
         }
 
-        if (!is_scalar($value) && !(\is_object($value) && method_exists($value, '__toString'))) {
-            throw new UnexpectedTypeException($value, 'string');
+        if (!\is_scalar($value) && !$value instanceof \Stringable) {
+            throw new UnexpectedValueException($value, 'string');
         }
 
         $stringValue = (string) $value;
 
-        if (!$invalidCharset = !@mb_check_encoding($stringValue, $constraint->charset)) {
-            $length = mb_strlen($stringValue, $constraint->charset);
+        if (null !== $constraint->normalizer) {
+            $stringValue = ($constraint->normalizer)($stringValue);
         }
 
-        if ($invalidCharset) {
+        try {
+            $invalidCharset = !@mb_check_encoding($stringValue, $constraint->charset);
+        } catch (\ValueError $e) {
+            if (!str_starts_with($e->getMessage(), 'mb_check_encoding(): Argument #2 ($encoding) must be a valid encoding')) {
+                throw $e;
+            }
+
+            $invalidCharset = true;
+        }
+
+        $length = $invalidCharset ? 0 : match ($constraint->countUnit) {
+            Length::COUNT_BYTES => \strlen($stringValue),
+            Length::COUNT_CODEPOINTS => mb_strlen($stringValue, $constraint->charset),
+            Length::COUNT_GRAPHEMES => grapheme_strlen($stringValue),
+        };
+
+        if ($invalidCharset || false === ($length ?? false)) {
             $this->context->buildViolation($constraint->charsetMessage)
                 ->setParameter('{{ value }}', $this->formatValue($stringValue))
                 ->setParameter('{{ charset }}', $constraint->charset)
@@ -55,24 +69,42 @@ class LengthValidator extends ConstraintValidator
         }
 
         if (null !== $constraint->max && $length > $constraint->max) {
-            $this->context->buildViolation($constraint->min == $constraint->max ? $constraint->exactMessage : $constraint->maxMessage)
+            $exactlyOptionEnabled = $constraint->min == $constraint->max;
+
+            $builder = $this->context->buildViolation($exactlyOptionEnabled ? $constraint->exactMessage : $constraint->maxMessage);
+            if (null !== $constraint->min) {
+                $builder->setParameter('{{ min }}', $constraint->min);
+            }
+
+            $builder
                 ->setParameter('{{ value }}', $this->formatValue($stringValue))
                 ->setParameter('{{ limit }}', $constraint->max)
+                ->setParameter('{{ max }}', $constraint->max) // To be consistent with the min error message
+                ->setParameter('{{ value_length }}', $length)
                 ->setInvalidValue($value)
-                ->setPlural((int) $constraint->max)
-                ->setCode(Length::TOO_LONG_ERROR)
+                ->setPlural($constraint->max)
+                ->setCode($exactlyOptionEnabled ? Length::NOT_EQUAL_LENGTH_ERROR : Length::TOO_LONG_ERROR)
                 ->addViolation();
 
             return;
         }
 
         if (null !== $constraint->min && $length < $constraint->min) {
-            $this->context->buildViolation($constraint->min == $constraint->max ? $constraint->exactMessage : $constraint->minMessage)
+            $exactlyOptionEnabled = $constraint->min == $constraint->max;
+
+            $builder = $this->context->buildViolation($exactlyOptionEnabled ? $constraint->exactMessage : $constraint->minMessage);
+            if (null !== $constraint->max) {
+                $builder->setParameter('{{ max }}', $constraint->max);
+            }
+
+            $builder
                 ->setParameter('{{ value }}', $this->formatValue($stringValue))
                 ->setParameter('{{ limit }}', $constraint->min)
+                ->setParameter('{{ min }}', $constraint->min) // To be consistent with the max error message
+                ->setParameter('{{ value_length }}', $length)
                 ->setInvalidValue($value)
-                ->setPlural((int) $constraint->min)
-                ->setCode(Length::TOO_SHORT_ERROR)
+                ->setPlural($constraint->min)
+                ->setCode($exactlyOptionEnabled ? Length::NOT_EQUAL_LENGTH_ERROR : Length::TOO_SHORT_ERROR)
                 ->addViolation();
         }
     }

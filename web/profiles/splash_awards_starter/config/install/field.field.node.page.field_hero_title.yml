@@ -1,0 +1,23 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero_title
+    - filter.format.plain_text
+    - node.type.page
+  module:
+    - text
+id: node.page.field_hero_title
+field_name: field_hero_title
+entity_type: node
+bundle: page
+label: Titel
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text_long

@@ -175,7 +175,7 @@ class DOMTreeBuilder implements EventHandler
             // documents, and attempting to up-convert any older DTDs to HTML5.
             $dt = $impl->createDocumentType('html');
             // $this->doc = \DOMImplementation::createDocument(NULL, 'html', $dt);
-            $this->doc = $impl->createDocument(null, null, $dt);
+            $this->doc = $impl->createDocument(null, '', $dt);
             $this->doc->encoding = !empty($options['encoding']) ? $options['encoding'] : 'UTF-8';
         }
 
@@ -231,8 +231,6 @@ class DOMTreeBuilder implements EventHandler
      *
      * This is used for handling Processor Instructions as they are
      * inserted. If omitted, PI's are inserted directly into the DOM tree.
-     *
-     * @param InstructionProcessor $proc
      */
     public function setInstructionProcessor(InstructionProcessor $proc)
     {
@@ -359,6 +357,16 @@ class DOMTreeBuilder implements EventHandler
             $this->onlyInline = null;
         }
 
+        // some elements as table related tags might have optional end tags that force us to auto close multiple tags
+        // https://www.w3.org/TR/html401/struct/tables.html
+        if ($this->current instanceof \DOMElement && isset(Elements::$optionalEndElementsParentsToClose[$lname])) {
+            foreach (Elements::$optionalEndElementsParentsToClose[$lname] as $parentElName) {
+                if ($this->current instanceof \DOMElement && $this->current->tagName === $parentElName) {
+                    $this->autoclose($parentElName);
+                }
+            }
+        }
+
         try {
             $prefix = ($pos = strpos($lname, ':')) ? substr($lname, 0, $pos) : '';
 
@@ -405,6 +413,8 @@ class DOMTreeBuilder implements EventHandler
             } elseif ($this->insertMode === static::IM_IN_MATHML) {
                 $aName = Elements::normalizeMathMlAttribute($aName);
             }
+
+            $aVal = (string) $aVal;
 
             try {
                 $prefix = ($pos = strpos($aName, ':')) ? substr($aName, 0, $pos) : false;
@@ -474,8 +484,14 @@ class DOMTreeBuilder implements EventHandler
     {
         $lname = $this->normalizeTagName($name);
 
-        // Ignore closing tags for unary elements.
-        if (Elements::isA($name, Elements::VOID_TAG)) {
+        // Special case within 12.2.6.4.7: An end tag whose tag name is "br" should be treated as an opening tag
+        if ('br' === $name) {
+            $this->parseError('Closing tag encountered for void element br.');
+
+            $this->startTag('br');
+        }
+        // Ignore closing tags for other unary elements.
+        elseif (Elements::isA($name, Elements::VOID_TAG)) {
             return;
         }
 

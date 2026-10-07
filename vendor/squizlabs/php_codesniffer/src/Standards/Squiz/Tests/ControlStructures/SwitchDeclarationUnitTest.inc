@@ -315,3 +315,32 @@ switch ($foo) {
         'bar'
     );
 }
+
+$foo = $foo ?
+    function () {
+        switch ($a) {
+            case 'a':
+                break;
+
+            case (preg_match('/foo/i', $foo) ? $a : $b):
+                echo 'really?'
+                break;
+
+            default:
+                break;
+        }
+    } :
+    null;
+
+// Fix: goto should be recognized as terminating statement.
+switch ( $a ) {
+    case 1:
+        doSomething();
+        goto jumpOut;
+    default:
+        $other = $code;
+        goto jumpOut;
+}
+
+jumpOut:
+doSomething();

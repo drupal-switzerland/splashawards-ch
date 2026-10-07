@@ -1,0 +1,686 @@
+<?php
+
+/**
+ * @file
+ * Hooks and helper functions for the Splash Awards site.
+ */
+
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\file\Entity\File;
+use Drupal\splash_awards_base\Entity\Award;
+use Drupal\splash_awards_base\Entity\Badge;
+use Drupal\splash_awards_base\Entity\Candidate;
+use Drupal\splash_awards_base\Entity\Page;
+use Drupal\splash_awards_base\Entity\SplashAwardCase;
+use Drupal\user\Entity\User;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_theme().
+ */
+function splash_awards_base_theme(): array {
+  return [
+    'case_submission' => [
+      'variables' => [
+        'title' => NULL,
+        'subtitle' => NULL,
+        'step' => NULL,
+        'nextStepUrl' => NULL,
+        'cancelUrl' => NULL,
+        'form' => [],
+      ],
+    ],
+    'jury_dashboard' => [
+      'variables' => [
+        'title' => NULL,
+        'name' => NULL,
+        'award' => NULL,
+        'caseData' => [],
+        'juryData' => [],
+        'progress' => [],
+        'juryProgress' => [],
+        'categories' => [],
+        'canSeeJuryRatings' => FALSE,
+      ],
+    ],
+
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_form_alter().
+ */
+function splash_awards_base_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
+  if (!empty($variables['element']['#form_id'])) {
+
+    $formId = $variables['element']['#form_id'];
+    // Add suggestions for the submission steps to apply custom tempaltes.
+    if (str_contains($formId, 'submission_step_')) {
+      $suggestions[] = 'form__' . $variables['element']['#form_id'];
+    }
+
+    if ($formId === 'user_edit_form') {
+      $suggestions[] = 'form__candidate_edit';
+    }
+  }
+}
+
+/**
+ * Implements hook_user_insert().
+ *
+ * Automatically assigns candidate role to newly registered users.
+ */
+function splash_awards_base_user_insert(User $user): void {
+  if (!$user->hasRole('candidate')) {
+    $user->addRole('candidate');
+    $user->save();
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function splash_awards_base_entity_type_build(array &$entity_types): void {
+  if (
+    array_key_exists('node', $entity_types) &&
+    $entity_types['node'] instanceof EntityTypeInterface
+  ) {
+    $entity_types['node']->setFormClass('submission_step_1', 'Drupal\node\NodeForm');
+    $entity_types['node']->setFormClass('submission_step_2', 'Drupal\node\NodeForm');
+    $entity_types['node']->setFormClass('submission_step_3', 'Drupal\node\NodeForm');
+    $entity_types['node']->setFormClass('submission_step_4', 'Drupal\node\NodeForm');
+    $entity_types['node']->setFormClass('submission_step_5', 'Drupal\node\NodeForm');
+    $entity_types['node']->setFormClass('submission_step_6', 'Drupal\node\NodeForm');
+  }
+
+  if (
+    array_key_exists('user', $entity_types) &&
+    $entity_types['user'] instanceof EntityTypeInterface
+  ) {
+    $entity_types['user']->setFormClass('edit', 'Drupal\user\ProfileForm');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function splash_awards_base_form_alter(&$form, $form_state, $form_id): void {
+  if (in_array($form_id, [
+    'node_case_submission_step_1_form',
+    'node_case_submission_step_2_form',
+    'node_case_submission_step_3_form',
+    'node_case_submission_step_4_form',
+    'node_case_submission_step_5_form',
+    'node_case_submission_step_6_form',
+  ])) {
+    // Restrict access to certain fields not wanted in submission forms.
+    $form['meta']['#access'] = FALSE;
+    $form['author']['#access'] = FALSE;
+    $form['status']['#access'] = FALSE;
+    $form['options']['#access'] = FALSE;
+    $form['advanced']['#access'] = FALSE;
+    $form['revision_log']['#access'] = FALSE;
+    $form['revision']['#access'] = FALSE;
+    $form['actions']['delete']['#access'] = FALSE;
+
+    /** @var \Drupal\splash_awards_base\Entity\SplashAwardCase $case */
+    $case = $form_state->getFormObject()->getEntity();
+    $owner = $case->getOwner();
+
+    // Add a back button to the form.
+    $formIdBackUrlMap = [
+      'node_case_submission_step_1_form' => Url::fromRoute('user.page'),
+      'node_case_submission_step_2_form' => Url::fromRoute('splash_awards_base.case_submission', [
+        'uuid' => $case->uuid(),
+        'step' => 1,
+      ]),
+      'node_case_submission_step_3_form' => Url::fromRoute('splash_awards_base.case_submission', [
+        'uuid' => $case->uuid(),
+        'step' => 2,
+      ]),
+      'node_case_submission_step_4_form' => Url::fromRoute('splash_awards_base.case_submission', [
+        'uuid' => $case->uuid(),
+        'step' => 3,
+      ]),
+      'node_case_submission_step_5_form' => Url::fromRoute('splash_awards_base.case_submission', [
+        'uuid' => $case->uuid(),
+        'step' => 4,
+      ]),
+      'node_case_submission_step_6_form' => Url::fromRoute('splash_awards_base.case_submission', [
+        'uuid' => $case->uuid(),
+        'step' => 5,
+      ]),
+    ];
+
+    $form['actions']['submit']['#value'] = t('Save and continue');
+
+    $form['actions']['back'] = [
+      '#type' => 'link',
+      '#title' => t('Back'),
+      '#url' => $formIdBackUrlMap[$form_id],
+    ];
+
+    // Add a custom submit handler to save the form.
+    $form['actions']['submit']['#submit'][] = '_splash_awards_base_case_submission_form_submit';
+
+    // The category field label comes from field config, so it bypasses
+    // interface translation. Re-set it through t() so it is translatable like
+    // the rest of the submission form (field only present on step 4).
+    if (isset($form['field_category']['widget'])) {
+      $form['field_category']['widget']['#title'] = t('Category');
+    }
+
+    // Handle migration of user´s profile data for first step.
+    if ($form_id == 'node_case_submission_step_1_form') {
+      // Use account name as company name.
+      $form['field_company_name']['widget'][0]['value']['#default_value'] = $owner->getDisplayName();
+      $form['field_company_name']['#disabled'] = TRUE;
+
+      // Use account url.
+      if (!$owner->get('field_company_url')->isEmpty()) {
+        $form['field_company_url']['widget'][0]['uri']['#default_value'] = $owner->get('field_company_url')->uri;
+        $form['field_company_url']['#disabled'] = TRUE;
+      }
+
+      // Use account company size.
+      if (!$owner->get('field_company_size')->isEmpty()) {
+        $form['field_company_size']['widget']['#default_value'] = $owner->get('field_company_size')->value;
+        $form['field_company_size']['#disabled'] = 'disabled';
+      }
+
+      // Use account company logo.
+      // Because image uploads fields don't support default values, we present
+      // the accounts image in an item. A submit handler saves the value.
+      if (
+        $case->get('field_company_logo')->isEmpty() &&
+        !$owner->get('field_company_logo')->isEmpty()
+      ) {
+        $file = $owner->get('field_company_logo')->entity;
+
+        if ($file instanceof File) {
+          $storage = \Drupal::entityTypeManager()->getStorage('image_style');
+          $style = $storage->load('thumbnail');
+          $form['field_company_logo'][] = [
+            '#type' => 'item',
+            '#markup' => sprintf('<img src="%s" class="mt-3" alt="">', $style->buildUrl($file->getFileUri())),
+          ];
+          $form['field_company_logo']['#disabled'] = 'disabled';
+        }
+      }
+
+      if (!$case->get('field_company_logo')->isEmpty()) {
+        $form['field_company_logo']['#disabled'] = 'disabled';
+      }
+
+      // Use account contact person name.
+      if (!$owner->get('field_company_contact_person')->isEmpty()) {
+        $form['field_company_contact_person']['widget'][0]['value']['#default_value'] = $owner->get('field_company_contact_person')->value;
+        $form['field_company_contact_person']['#disabled'] = TRUE;
+      }
+
+      // Use account contact person mail.
+      if (!$owner->get('field_mail_contact_person')->isEmpty()) {
+        $form['field_mail_contact_person']['widget'][0]['value']['#default_value'] = $owner->get('field_mail_contact_person')->value;
+        $form['field_mail_contact_person']['#disabled'] = TRUE;
+      }
+
+      // Use account contact person phone.
+      if (!$owner->get('field_phone_contact_person')->isEmpty()) {
+        $form['field_phone_contact_person']['widget'][0]['value']['#default_value'] = $owner->get('field_phone_contact_person')->value;
+        $form['field_phone_contact_person']['#disabled'] = TRUE;
+      }
+
+      // Use account mail address for invoices.
+      if (!$owner->get('field_mail_invoice')->isEmpty()) {
+        $form['field_mail_invoice']['widget'][0]['value']['#default_value'] = $owner->get('field_mail_invoice')->value;
+        $form['field_mail_invoice']['#disabled'] = TRUE;
+      }
+
+      // Use account mail address for invoices.
+      if (!$owner->get('field_invoice_address')->isEmpty()) {
+        $form['field_invoice_address']['widget'][0]['#default_value'] = $owner->get('field_invoice_address')->value;
+        $form['field_invoice_address']['widget'][0]['#attributes']['disabled'] = 'disabled';
+      }
+
+      // Use account tax id.
+      if (!$owner->get('field_tax_id')->isEmpty()) {
+        $form['field_tax_id']['widget'][0]['value']['#default_value'] = $owner->get('field_tax_id')->value;
+        $form['field_tax_id']['#disabled'] = 'disabled';
+      }
+    }
+
+    // Add custom validation to last step.
+    if ($form_id == 'node_case_submission_step_6_form') {
+      $form['actions']['submit']['#value'] = t('Check and submit');
+      $form['#validate'][] = '_splash_awards_base_case_validation';
+    }
+  }
+
+  // Add custom cancel button to user edit form.
+  if ($form_id === 'user_edit_form') {
+    $form['actions']['back'] = [
+      '#type' => 'link',
+      '#title' => t('Cancel'),
+      '#url' => Url::fromRoute('user.page'),
+    ];
+  }
+
+  // Add padding top to user pass reset button.
+  if (in_array($form_id, ['user_form', 'user_pass_reset'])) {
+    $form['actions']['submit']['#attributes']['class'][] = 'mt-3';
+  }
+
+  // Overwrite the account name label to company name.
+  if (in_array($form_id, ['user_login_form', 'user_pass'])) {
+    $form['name']['#title'] = t('Name of the company or e-mail address');
+  }
+
+  // Make the account name title trnaslatable for user forms.
+  if (in_array($form_id, ['user_pass', 'user_register_form', 'user_form', 'user_edit_form'])) {
+    $form['account']['name']['#title'] = t('Name of the company');
+  }
+
+  // Add custom submit handler to redirect on user edit forms.
+  if (in_array($form_id, ['user_form', 'user_edit_form'])) {
+    $form['actions']['submit']['#submit'][] = '_splash_awards_base_user_redirect';
+  }
+
+  // Make the options of the client size field translatable.
+  if (
+    isset($form['field_client_size']) &&
+    !empty($form['field_client_size']['widget'])
+  ) {
+    $options = &$form['field_client_size']['widget']['#options'];
+    foreach ($options as $key => $label) {
+      // The label is a plain string stored in field config, not source code,
+      // so it can't be a t() literal here — this is what makes it show up in
+      // the interface translation UI.
+      // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
+      $options[$key] = t($label);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_form_element_label().
+ *
+ * Make labels that aren't translatable, translatable.
+ */
+function splash_awards_base_preprocess_form_element_label(&$variables) {
+  $element = $variables['element'];
+  $title = $element['#title'];
+
+  if (is_string($title)) {
+    // The title comes from the form element, not source code, so it can't
+    // be a t() literal here.
+    // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
+    $variables['title']['#markup'] = t($title);
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function splash_awards_base_entity_presave(EntityInterface $entity): void {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'case') {
+
+    $owner = $entity->getOwner();
+    $file = $owner->get('field_company_logo')->entity;
+
+    if ($file && $entity->get('field_company_logo')->isEmpty()) {
+
+      $entity->set('field_company_logo', [
+        'target_id' => $file->id(),
+        'alt' => '',
+      ]);
+    }
+  }
+}
+
+/**
+ * Custom submit handler for the user edit form.
+ */
+function _splash_awards_base_user_redirect($form, FormStateInterface $form_state): void {
+  $user = User::load($form_state->getValue('uid'));
+
+  // Redirect the user to their user page after saving the edit.
+  if ($user) {
+    $form_state->setRedirect('entity.user.canonical', ['user' => $user->id()]);
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ *
+ * Saves the cases fields to the author if not already set.
+ */
+function splash_awards_base_entity_update(EntityInterface $entity) {
+
+  if ($entity instanceof SplashAwardCase) {
+    $owner = $entity->getOwner();
+    $update = FALSE;
+
+    // Migrate field_company_url to account (have to load uri).
+    if (
+      $owner->get('field_company_url')->isEmpty() &&
+      !$entity->get('field_company_url')->isEmpty()
+    ) {
+      $owner->set('field_company_url', $entity->get('field_company_url')->uri);
+      $update = TRUE;
+    }
+
+    // Migrate field_company_logo to account.
+    if (
+      $owner->get('field_company_logo')->isEmpty() &&
+      !$entity->get('field_company_logo')->isEmpty()
+    ) {
+      $file = $entity->get('field_company_logo')->entity;
+
+      if ($file instanceof File) {
+        $owner->set('field_company_logo', [
+          'target_id' => $file->id(),
+          'alt' => '',
+        ]);
+        $update = TRUE;
+      }
+    }
+
+    // Migrate other fields to account (can load values).
+    $fields = [
+      'field_company_size',
+      'field_company_contact_person',
+      'field_mail_contact_person',
+      'field_phone_contact_person',
+      'field_mail_invoice',
+      'field_invoice_address',
+      'field_tax_id',
+    ];
+    foreach ($fields as $fieldName) {
+      if (
+        $owner->get($fieldName)->isEmpty() &&
+        !$entity->get($fieldName)->isEmpty()
+      ) {
+        $owner->set($fieldName, $entity->get($fieldName)->value);
+        $update = TRUE;
+      }
+    }
+
+    if ($update) {
+      \Drupal::messenger()->addStatus(t('Your profile settings have been updated.'));
+      $owner->save();
+    }
+  }
+}
+
+/**
+ * Redirects the user to the submission step with the first empty field.
+ */
+function _splash_awards_base_case_validation($form, FormStateInterface $form_state): void {
+  $case = $form_state->getFormObject()->getEntity();
+  $messages = [];
+  $step = NULL;
+
+  $validationMap = [
+    1 => [
+      'field_company_name' => t('Please enter a company name'),
+      'field_company_size' => t('Please enter the size of your company'),
+      'field_company_url' => t('Please enter the website of your company'),
+      'field_company_logo' => t('Please upload the logo of your company'),
+      'field_company_contact_person' => t('Please enter the name of a contact person'),
+      'field_mail_contact_person' => t('Please enter the mail address of the contact person'),
+      'field_phone_contact_person' => t('Please enter the phone number of the contact person'),
+      'field_mail_invoice' => t('Please enter a mail address for the invoice'),
+      'field_invoice_address' => t('Please enter the address for the invoice'),
+      'field_tax_id' => t('Please enter your tax id number'),
+    ],
+    2 => [
+      'title' => t('Please enter a name for your case'),
+      'field_url' => t('Please enter the web url for your case'),
+      'field_launch' => t('Please enter the date your project was launched'),
+      'field_summary' => t('Please enter a short summary of your case'),
+    ],
+    3 => [
+      'field_client' => t('Please enter your clients name'),
+      'field_client_size' => t('Please enter your clients company size'),
+      'field_customer_logo' => t('Please enter your clients company logo'),
+      'field_client_contact_details' => t('Please enter your clients contact details'),
+    ],
+    4 => [
+      'field_category' => t('Please select one or more categories'),
+      'field_description' => t('Please enter a description of your case'),
+      'field_goals_and_results' => t('Please describe goals and results of your case'),
+      'field_challenges' => t('Please describe the challenges your case provided'),
+      'field_motivation' => t('Please enter a reason your case should win a splash award'),
+    ],
+  ];
+
+  foreach ($validationMap as $id => $field) {
+
+    foreach ($field as $fieldName => $message) {
+      if ($case->get($fieldName)->isEmpty()) {
+        $step = $id;
+        $messages[] = $message;
+      }
+    }
+
+    if ($messages) {
+      break;
+    }
+  }
+
+  // Custom checks.
+  if (strlen(strip_tags($case->get('field_summary')->value ?? '')) > 160) {
+    $step = ($step === NULL || $step > 2) ? 2 : $step;
+    $messages[] = t('The summary of your case must not be longer than 160 characters');
+  }
+
+  // Add messages and redirect.
+  if ($step) {
+    $response = new RedirectResponse(Url::fromRoute('splash_awards_base.case_submission', [
+      'uuid' => $case->uuid(),
+      'step' => $step,
+    ])->toString());
+
+    foreach ($messages as $message) {
+      \Drupal::messenger()->addError($message);
+    }
+
+    $response->send();
+    // Prevent further processing.
+    exit;
+  }
+}
+
+/**
+ * Custom submit handler for case submission forms.
+ *
+ * Redirects to the next step in the case submission process.
+ */
+function _splash_awards_base_user_edit_form_submit($form, FormStateInterface $form_state): void {
+  $form_state->setRedirectUrl(Url::fromRoute('user.page'));
+}
+
+/**
+ * Custom submit handler for case submission forms.
+ *
+ * Redirects to the next step in the case submission process.
+ */
+function _splash_awards_base_case_submission_form_submit($form, FormStateInterface $form_state): void {
+  $case = $form_state->getFormObject()->getEntity();
+
+  // On the final step, mark the case as submitted. This handler only runs once
+  // validation has passed and the "Check and submit" button was clicked (the
+  // Back control is a link, not a submit button).
+  if ($form['#id'] === 'node-case-submission-step-6-form' && $case->hasField('field_submitted')) {
+    $case->set('field_submitted', TRUE);
+    $case->save();
+  }
+
+  $formIdUrlMap = [
+    'node-case-submission-step-1-form' => Url::fromRoute('splash_awards_base.case_submission', [
+      'uuid' => $case->uuid(),
+      'step' => 2,
+    ]),
+    'node-case-submission-step-2-form' => Url::fromRoute('splash_awards_base.case_submission', [
+      'uuid' => $case->uuid(),
+      'step' => 3,
+    ]),
+    'node-case-submission-step-3-form' => Url::fromRoute('splash_awards_base.case_submission', [
+      'uuid' => $case->uuid(),
+      'step' => 4,
+    ]),
+    'node-case-submission-step-4-form' => Url::fromRoute('splash_awards_base.case_submission', [
+      'uuid' => $case->uuid(),
+      'step' => 5,
+    ]),
+    'node-case-submission-step-5-form' => Url::fromRoute('splash_awards_base.case_submission', [
+      'uuid' => $case->uuid(),
+      'step' => 6,
+    ]),
+  ];
+
+  if (isset($formIdUrlMap[$form['#id']])) {
+    $form_state->setRedirectUrl($formIdUrlMap[$form['#id']]);
+  }
+}
+
+/**
+ * Implements hook_menu_local_actions_alter().
+ *
+ * Remove the standard add content button.
+ */
+function splash_awards_base_menu_local_actions_alter(&$local_actions): void {
+  unset($local_actions['node.add_page']);
+}
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function splash_awards_base_entity_bundle_info_alter(array &$bundles): void {
+  if (isset($bundles['taxonomy_term']['splash_awards'])) {
+    $bundles['taxonomy_term']['splash_awards']['class'] = Award::class;
+  }
+
+  if (isset($bundles['taxonomy_term']['badges'])) {
+    $bundles['taxonomy_term']['badges']['class'] = Badge::class;
+  }
+
+  if (isset($bundles['node']['page'])) {
+    $bundles['node']['page']['class'] = Page::class;
+  }
+
+  if (isset($bundles['node']['article'])) {
+    $bundles['node']['article']['class'] = Page::class;
+  }
+
+  if (isset($bundles['node']['case'])) {
+    $bundles['node']['case']['class'] = SplashAwardCase::class;
+  }
+
+  if (isset($bundles['user']['user'])) {
+    $bundles['user']['user']['class'] = Candidate::class;
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ *
+ * Adds the LegalCheckboxes constraint to the case submission's required
+ * consent checkboxes.
+ */
+function splash_awards_base_entity_bundle_field_info_alter(array &$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() === 'node' && $bundle === 'case') {
+
+    if (
+      isset($fields['field_client_approval']) &&
+      $fields['field_client_approval'] instanceof FieldConfig
+    ) {
+      $fields['field_client_approval']->addConstraint('LegalCheckboxes', []);
+    }
+    if (
+      isset($fields['field_terms_of_submission']) &&
+      $fields['field_terms_of_submission'] instanceof FieldConfig
+    ) {
+      $fields['field_terms_of_submission']->addConstraint('LegalCheckboxes', []);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function splash_awards_base_node_insert(EntityInterface $entity): void {
+  _splash_awards_base_invalidate_author_cache($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function splash_awards_base_node_update(EntityInterface $entity): void {
+  _splash_awards_base_invalidate_author_cache($entity);
+}
+
+/**
+ * Helper function to invalidate author's cache when a case node changes.
+ */
+function _splash_awards_base_invalidate_author_cache(EntityInterface $entity): void {
+  $owner = $entity->getOwner();
+
+  if ($owner instanceof User) {
+    Cache::invalidateTags(['user:' . $owner->id()]);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_form_element().
+ */
+function splash_awards_base_theme_suggestions_form_element(array $variables) {
+  $suggestions = [];
+  $type = $variables['element']['#type'] ?? NULL;
+
+  if ($type !== NULL) {
+    $suggestions[] = 'form_element__type__' . $type;
+  }
+
+  if (isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'form_element__form_id__' . $variables['element']['#form_id'];
+  }
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function splash_awards_base_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
+  $type = $variables['element']['#type'] ?? NULL;
+
+  if ($type === NULL) {
+    return;
+  }
+
+  $suggestions[] = 'form_element__' . $type;
+
+  // Custom suggestion for the rating form.
+  $name = $variables['element']['#name'] ?? NULL;
+  $ratingCategories = [
+    'business_case',
+    'community',
+    'concept',
+    'ux',
+    'quality',
+    'innovativeness',
+    'technology',
+    'accessibility',
+    'emotion',
+  ];
+
+  if ($name !== NULL && in_array($name, $ratingCategories, TRUE)) {
+    $suggestions[] = 'form_element__' . $type . '__rating';
+  }
+}

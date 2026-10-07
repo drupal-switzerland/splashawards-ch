@@ -1,0 +1,17 @@
+{% set is_emotion = element['#name'] == 'emotion' %}
+<span class="js-form-item form-item form-type-radio">
+  <input
+    class="peer hidden"
+    type="radio"
+    id="{{ element['#id'] }}"
+    name="{{ element['#name'] }}"
+    value="{{ element['#return_value'] }}"
+    {% if element['#attributes']['checked'] is defined %}checked="checked"{% endif %}
+  >
+  <label
+    for="{{ element['#id'] }}"
+    class="saw-tiny-text rounded me-2 mb-3 py-1 px-3 cursor-pointer hover:opacity-80 {{ is_emotion ? 'bg-pink-100 text-pink-600 peer-checked:bg-pink-500 peer-checked:text-white' : 'bg-saw-pale-blue peer-checked:bg-saw-green' }}"
+  >
+    {{ element['#title'] }}
+  </label>
+</span>

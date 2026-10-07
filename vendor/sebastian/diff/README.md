@@ -1,3 +1,7 @@
+[![Latest Stable Version](https://poser.pugx.org/sebastian/diff/v)](https://packagist.org/packages/sebastian/diff)
+[![CI Status](https://github.com/sebastianbergmann/diff/workflows/CI/badge.svg)](https://github.com/sebastianbergmann/diff/actions)
+[![codecov](https://codecov.io/gh/sebastianbergmann/diff/branch/main/graph/badge.svg)](https://codecov.io/gh/sebastianbergmann/diff)
+
 # sebastian/diff
 
 Diff implementation for PHP, factored out of PHPUnit into a stand-alone component.
@@ -6,30 +10,54 @@ Diff implementation for PHP, factored out of PHPUnit into a stand-alone componen
 
 You can add this library as a local, per-project dependency to your project using [Composer](https://getcomposer.org/):
 
-    composer require sebastian/diff
+```
+composer require sebastian/diff
+```
 
 If you only need this library during development, for instance to run your project's test suite, then you should add it as a development-time dependency:
 
-    composer require --dev sebastian/diff
+```
+composer require --dev sebastian/diff
+```
 
 ### Usage
+
+#### Generating diff
 
 The `Differ` class can be used to generate a textual representation of the difference between two strings:
 
 ```php
+<?php declare(strict_types=1);
 use SebastianBergmann\Diff\Differ;
+use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 
-$differ = new Differ;
+$differ = new Differ(new UnifiedDiffOutputBuilder);
+
 print $differ->diff('foo', 'bar');
 ```
 
 The code above yields the output below:
 
-    --- Original
-    +++ New
-    @@ @@
-    -foo
-    +bar
+```diff
+--- Original
++++ New
+@@ @@
+-foo
++bar
+```
+
+The `UnifiedDiffOutputBuilder` used in the example above generates output in "unified diff"
+format and is used by PHPUnit, for example.
+
+The `StrictUnifiedDiffOutputBuilder` generates output in "strict unified diff" format with
+hunks,  similar to `diff -u` and compatible with `patch` or `git apply`.
+
+The `DiffOnlyOutputBuilder` generates output that only contains the lines that differ.
+
+If none of these three output builders match your use case then you can implement
+`DiffOutputBuilderInterface` to generate custom output.
+
+#### Parsing diff
 
 The `Parser` class can be used to parse a unified diff into an object graph:
 
@@ -114,13 +142,10 @@ The code above yields the output below:
                                                 [type:SebastianBergmann\Diff\Line:private] => 3
                                                 [content:SebastianBergmann\Diff\Line:private] =>         $b = new Money(2, new Currency('EUR'));
                                             )
-
                                     )
-
                             )
-
                     )
-
             )
-
     )
+
+Note: If the chunk size is 0 lines, i.e., `getStartRange()` or `getEndRange()` return 0, the number of line returned by `getStart()` or `getEnd()` is one lower than one would expect. It is the line number after which the chunk should be inserted or deleted; in all other cases, it gives the first line number of the replaced range of lines.

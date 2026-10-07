@@ -1,0 +1,70 @@
+<form{{ attributes }}>
+  <h2 class="mb-3">{{ 'Login'|t }}</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div>
+      <div class="mb-3">
+        {{ element.account.mail }}
+      </div>
+      <div class="mb-3">
+        {{ element.account.current_pass }}
+      </div>
+    </div>
+    {{ element.account.pass }}
+  </div>
+  <div class="border border-black border-b-0 mt-[30px] mb-3"></div>
+
+  <p class="mt-5 lg:w-3/4">{{ 'Enter information about your company here so that you do not have to enter it again for each new case you want to submit'|t }}</p>
+  <h2 class="mt-5 mb-3">{{ 'Core data'|t }}</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div>
+      <div class="mb-3">
+        {{ element.account.name }}
+      </div>
+      <div class="mb-3">
+        {{ element.field_company_url }}
+      </div>
+    </div>
+    <div>
+      <div class="mb-3">
+        {{ element.field_company_size }}
+      </div>
+      <div class="mb-3">
+        {{ element.field_company_logo }}
+      </div>
+    </div>
+  </div>
+  <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div>
+      <h2 class="mb-3">{{ 'Contact details'|t }}</h2>
+      <div class="mb-3">
+        {{ element.field_company_contact_person }}
+      </div>
+      <div class="mb-3">
+        {{ element.field_mail_contact_person }}
+      </div>
+      <div class="mb-3">
+        {{ element.field_phone_contact_person }}
+      </div>
+    </div>
+    <div>
+      <h2 class="mb-3">{{ 'Invoice data'|t }}</h2>
+      <div class="mb-3">
+        {{ element.field_mail_invoice }}
+      </div>
+      <div class="mb-3">
+        {{ element.field_invoice_address|without('#attached') }}
+      </div>
+      <div class="mb-3">
+        {{ element.field_tax_id }}
+      </div>
+    </div>
+  </div>
+  <div class="border border-black border-b-0 mt-[30px] mb-3"></div>
+  <div class="flex justify-between">
+    {{ element.actions.back }}
+    {{ element.actions.submit }}
+  </div>
+  {{ element.form_build_id }}
+  {{ element.form_token }}
+  {{ element.form_id }}
+</form>

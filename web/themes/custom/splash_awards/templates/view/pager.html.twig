@@ -1,0 +1,18 @@
+{% if items %}
+  <nav role="navigation" class="flex gap-2 mt-5" aria-labelledby="{{ heading_id }}">
+    {% for key, item in items.pages %}
+      {% if current == key %}
+        {% set title = 'Current page'|t %}
+        {% set itemClasses = 'bg-saw-bright-blue text-white' %}
+      {% else %}
+        {% set title = 'Go to page @key'|t({'@key': key}) %}
+        {% set itemClasses = 'bg-saw-pale-blue text-saw-light-blue' %}
+      {% endif %}
+      <a class="{{ itemClasses }} ~ text-[14px] hover:no-underline hover:opacity-80 font-bold flex items-center justify-center w-[28px] h-[28px] rounded"
+        href="{{ item.href }}"
+        title="{{ title }}"{{ item.attributes|without('href', 'title') }}>
+        {{- key -}}
+      </a>
+    {% endfor %}
+  </nav>
+{% endif %}

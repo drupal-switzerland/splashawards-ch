@@ -1,0 +1,13 @@
+{% if hero %}
+  {% include '@splash_awards/templates/includes/hero.twig' with {
+    title: hero.title,
+    image: hero.image,
+    video: hero.video,
+    cta: hero.cta,
+    color: hero.color
+  } only %}
+{% endif %}
+
+<div class="container space-y-4 py-[50px] px-[20px] max-w-[1200px]">
+  {{ paragraphs }}
+</div>

@@ -1,0 +1,8 @@
+{% include '@splash_awards/templates/includes/header.twig' %}
+  {% include '@splash_awards/templates/includes/hero.twig' with {
+    title: 'Reset password'|t
+  } only %}
+<div class="container space-y-4 py-[50px] px-[20px] max-w-[1200px]">
+  {{ page }}
+</div>
+{% include '@splash_awards/templates/includes/footer.twig' %}

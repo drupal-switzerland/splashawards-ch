@@ -27,7 +27,7 @@ class ClassFilesSniff implements Sniff
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -72,7 +72,7 @@ class ClassFilesSniff implements Sniff
                 $searchTokens = token_get_all(file_get_contents($fileName));
                 foreach ($searchTokens as $token) {
                     if (is_array($token) === true
-                        && in_array($token[0], [T_CLASS, T_INTERFACE, T_TRAIT]) === true
+                        && in_array($token[0], [T_CLASS, T_INTERFACE, T_TRAIT, T_ENUM]) === true
                     ) {
                         continue 2;
                     }
@@ -80,6 +80,7 @@ class ClassFilesSniff implements Sniff
 
                 $ptr   = self::getPtr('files[]', $file, $phpcsFile);
                 $error = "It's only necessary to declare files[] if they declare a class or interface.";
+                // cspell:ignore UnecessaryFileDeclaration
                 $phpcsFile->addError($error, $ptr, 'UnecessaryFileDeclaration');
             }//end foreach
         }//end if
@@ -117,7 +118,7 @@ class ClassFilesSniff implements Sniff
      *
      * @param string $data The contents of the info file to parse
      *
-     * @return array The info array.
+     * @return array<mixed> The info array.
      */
     public static function drupalParseInfoFormat($data)
     {

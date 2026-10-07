@@ -1,0 +1,7 @@
+name: Splash Awards - Base Module
+description: Povides basic functionality for the Splash-Awards drupal system.
+package: custom
+type: module
+core_version_requirement: ^11
+requires:
+  - drupal:olivero

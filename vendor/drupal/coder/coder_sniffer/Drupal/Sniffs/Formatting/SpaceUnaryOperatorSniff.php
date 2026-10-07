@@ -30,7 +30,7 @@ class SpaceUnaryOperatorSniff implements Sniff
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -123,6 +123,7 @@ class SpaceUnaryOperatorSniff implements Sniff
                 T_CLOSE_SHORT_ARRAY,
                 T_VARIABLE,
                 T_STRING,
+                T_LINE,
             ]
         );
 

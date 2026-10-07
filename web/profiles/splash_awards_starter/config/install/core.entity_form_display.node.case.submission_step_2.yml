@@ -1,0 +1,116 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.submission_step_2
+    - field.field.node.case.field_approval_drupal
+    - field.field.node.case.field_award
+    - field.field.node.case.field_badge
+    - field.field.node.case.field_category
+    - field.field.node.case.field_challenges
+    - field.field.node.case.field_client
+    - field.field.node.case.field_client_approval
+    - field.field.node.case.field_client_contact_details
+    - field.field.node.case.field_client_size
+    - field.field.node.case.field_company_contact_person
+    - field.field.node.case.field_company_logo
+    - field.field.node.case.field_company_name
+    - field.field.node.case.field_company_size
+    - field.field.node.case.field_company_url
+    - field.field.node.case.field_contributions
+    - field.field.node.case.field_customer_logo
+    - field.field.node.case.field_description
+    - field.field.node.case.field_goals_and_results
+    - field.field.node.case.field_hosting
+    - field.field.node.case.field_images
+    - field.field.node.case.field_invoice_address
+    - field.field.node.case.field_launch
+    - field.field.node.case.field_mail_contact_person
+    - field.field.node.case.field_mail_invoice
+    - field.field.node.case.field_meta_tags
+    - field.field.node.case.field_motivation
+    - field.field.node.case.field_note
+    - field.field.node.case.field_phone_contact_person
+    - field.field.node.case.field_summary
+    - field.field.node.case.field_tax_id
+    - field.field.node.case.field_terms_of_submission
+    - field.field.node.case.field_url
+    - field.field.node.case.field_video_url
+    - node.type.case
+  module:
+    - datetime
+    - link
+    - text
+id: node.case.submission_step_2
+targetEntityType: node
+bundle: case
+mode: submission_step_2
+content:
+  field_launch:
+    type: datetime_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_summary:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_url:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_approval_drupal: true
+  field_award: true
+  field_badge: true
+  field_category: true
+  field_challenges: true
+  field_client: true
+  field_client_approval: true
+  field_client_contact_details: true
+  field_client_size: true
+  field_company_contact_person: true
+  field_company_logo: true
+  field_company_name: true
+  field_company_size: true
+  field_company_url: true
+  field_contributions: true
+  field_customer_logo: true
+  field_description: true
+  field_goals_and_results: true
+  field_hosting: true
+  field_images: true
+  field_invoice_address: true
+  field_mail_contact_person: true
+  field_mail_invoice: true
+  field_meta_tags: true
+  field_motivation: true
+  field_note: true
+  field_phone_contact_person: true
+  field_tax_id: true
+  field_terms_of_submission: true
+  field_video_url: true
+  langcode: true
+  path: true
+  promote: true
+  status: true
+  sticky: true
+  uid: true

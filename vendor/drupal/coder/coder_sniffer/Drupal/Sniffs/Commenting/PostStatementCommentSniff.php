@@ -24,18 +24,11 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 class PostStatementCommentSniff implements Sniff
 {
 
-    /**
-     * A list of tokenizers this sniff supports.
-     *
-     * @var array
-     */
-    public $supportedTokenizers = ['PHP'];
-
 
     /**
      * Returns an array of tokens this test wants to listen for.
      *
-     * @return array
+     * @return array<int|string>
      */
     public function register()
     {
@@ -70,16 +63,6 @@ class PostStatementCommentSniff implements Sniff
 
         if ($tokens[$lastContent]['code'] === T_CLOSE_CURLY_BRACKET) {
             return;
-        }
-
-        // Special case for JS files.
-        if ($tokens[$lastContent]['code'] === T_COMMA
-            || $tokens[$lastContent]['code'] === T_SEMICOLON
-        ) {
-            $lastContent = $phpcsFile->findPrevious(T_WHITESPACE, ($lastContent - 1), null, true);
-            if ($tokens[$lastContent]['code'] === T_CLOSE_CURLY_BRACKET) {
-                return;
-            }
         }
 
         $error = 'Comments may not appear after statements';

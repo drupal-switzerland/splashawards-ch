@@ -1,0 +1,17 @@
+{% set buttonType = buttonType ?? 'primary' %}
+{% set buttonTarget = buttonTarget ?? '_self' %}
+
+{% set typeMap = {
+  'primary': 'text-white bg-saw-bright-blue',
+  'secondary': 'text-white  bg-saw-light-blue',
+  'cta': 'text-saw-dark-blue bg-saw-green',
+  'light': 'text-saw-dark-blue bg-saw-pale-blue',
+  'danger': 'text-saw-dark-blue bg-saw-peach'
+} %}
+
+{% set buttonClasses = 'py-2 px-4 hover:no-underline transition-all hover:opacity-80 inline-block rounded-lg ' ~ (typeMap[buttonType] ?? '') ~ ' ' ~ customClasses %}
+{% set buttonClasses = buttonClasses|trim %}
+
+<a href="{{ buttonUrl }}" target="{{ buttonTarget }}" class="{{ buttonClasses }}">
+  {{ buttonText }}
+</a>

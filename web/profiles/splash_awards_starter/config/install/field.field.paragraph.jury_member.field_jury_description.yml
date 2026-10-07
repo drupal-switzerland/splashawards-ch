@@ -1,0 +1,23 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_jury_description
+    - filter.format.plain_text
+    - paragraphs.paragraphs_type.jury_member
+  module:
+    - text
+id: paragraph.jury_member.field_jury_description
+field_name: field_jury_description
+entity_type: paragraph
+bundle: jury_member
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text

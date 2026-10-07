@@ -1,0 +1,17 @@
+langcode: de
+status: true
+dependencies:
+  theme:
+    - splash_awards
+id: splash_awards_local_actions
+theme: splash_awards
+region: content
+weight: 1
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primäre Verwaltungsaktionen'
+  label_display: '0'
+  provider: core
+visibility: {  }

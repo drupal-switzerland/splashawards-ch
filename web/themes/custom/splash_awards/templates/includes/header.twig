@@ -1,0 +1,100 @@
+<header class="h-[60px] lg:h-[80px] bg-saw-bright-blue text-white flex items-center">
+  <div class="container flex justify-between items-center px-5 lg:px-10">
+
+    {# Render the logo on the left side of the header #}
+    <a href="{{ frontUrl }}" class="hover:no-underline">
+      <div class="flex">
+        <img class="w-[50px]" src="{{ base_path ~ directory }}/images/Splash-Awards-Mobile-White.svg" alt="Splash Awards Logo">
+        <div class="ms-5 hidden lg:flex lg:flex-col lg:justify-center">
+          <div class="font-bold text-lg tracking-wide">{{ siteName }}</div>
+          {% if siteSlogan  %}
+            <div class="font-light text-base tracking-tight">{{ siteSlogan }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </a>
+
+    {# Render the menu, dropdown and login on the right side of the header #}
+    <div class="flex items-center">
+      {# Render the main menu #}
+
+      {% if mainMenu %}
+        <nav x-data="{ open: false }" x-cloak class="relative me-3 lg:me-[60px]">
+
+          <!-- Menu Links (Desktop) -->
+          <div class="hidden lg:flex">
+            {% for item in mainMenu %}
+              <a href="{{ item.url }}" target="{{ item.target }}" class="ms-3">{{ item.text }}</a>
+            {% endfor %}
+          </div>
+
+          <!-- Mobile Button (visible on small screens) -->
+          <button @click="open=!open" class="transition-all py-2 px-4 rounded-lg bg-saw-pale-blue text-saw-dark-blue hover:bg-saw-green lg:hidden">
+            ☰
+          </button>
+
+          <!-- Mobile Dropdown (visible when open) -->
+          <div x-show="open" @click.away="open=false" class="absolute mt-1 left-0 w-48 rounded-lg bg-saw-pale-blue overflow-hidden z-10">
+              {% for item in mainMenu %}
+                <a href="{{ item.url }}" target="{{ item.target }}" class="block px-4 py-2 text-saw-dark-blue hover:bg-saw-green hover:no-underline">{{ item.text }}</a>
+              {% endfor %}
+          </div>
+        </nav>
+      {% endif %}
+
+      {# Render the dropdown menu #}
+      {% if nomineeDropdown.url %}
+        {% set buttonClasses = [
+          'lg:flex',
+          'bg-saw-pale-blue',
+          'text-saw-dark-blue',
+          'hover:no-underline',
+          'hover:opacity-80',
+          'text-white',
+          'py-2',
+          'px-2',
+          'lg:px-4',
+          'rounded-lg',
+          'me-3',
+          'transition-all',
+        ] %}
+
+        <div x-data="{ open: false }"  x-cloak class="relative block">
+          <div class="{{ buttonClasses|join(' ') }}">
+            {# The main link. #}
+            <a href="{{ nomineeDropdown.url }}" class="hidden lg:block text-saw-dark-blue hover:no-underline">
+              {{ nomineeDropdown.text }}
+            </a>
+
+            {# The dropdown button. #}
+            <button @click="open=!open" class="flex items-center hover:opacity-80">
+              {# Display the splash logo for mobile devices to trigger the dropdown #}
+              <img class="lg:hidden max-w-[30px]" src="/themes/custom/splash_awards/images/Splash-Awards-Mobile.svg" alt="Splash Awards Logo">
+              <svg class="hidden lg:block lg:ms-3" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1.5L6 6.5L1 1.5" stroke="#120B47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          {# The dropdown options. #}
+          <div x-show="open" @click.away="open=false" class="absolute mt-1 left-0 w-48 rounded-lg bg-saw-pale-blue overflow-hidden z-10">
+            {# Render first option from text only on mobile. #}
+            <a href="{{ nomineeDropdown.url }}" class="block px-4 py-2 text-saw-dark-blue hover:opacity-80 hover:no-underline lg:hidden">{{ nomineeDropdown.text }}</a>
+            {% for option in nomineeDropdown.options %}
+              <a href="{{ option.url }}" class="block px-4 py-2 text-saw-dark-blue hover:opacity-80 hover:no-underline">{{ option.text }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {# Render the login button #}
+      {% include '@splash_awards/templates/includes/button.twig' with {
+        buttonUrl: loginButton.url,
+        buttonText: loginButton.text,
+        buttonType: 'secondary'
+      } only %}
+    </div>
+
+
+  </div>
+</header>

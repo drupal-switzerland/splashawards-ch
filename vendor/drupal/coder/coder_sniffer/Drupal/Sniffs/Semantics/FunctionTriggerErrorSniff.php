@@ -1,6 +1,6 @@
 <?php
 /**
- * \Drupal\Sniffs\Semanitcs\FunctionTriggerErrorSniff.
+ * \Drupal\Sniffs\Semantics\FunctionTriggerErrorSniff.
  *
  * @category PHP
  * @package  PHP_CodeSniffer
@@ -25,7 +25,7 @@ class FunctionTriggerErrorSniff extends FunctionCall
     /**
      * Returns an array of function names this test wants to listen for.
      *
-     * @return array
+     * @return array<string>
      */
     public function registerFunctionNames()
     {
@@ -37,13 +37,13 @@ class FunctionTriggerErrorSniff extends FunctionCall
     /**
      * Processes this function call.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile    The file being scanned.
-     * @param int                  $stackPtr     The position of the function call in
-     *                                           the stack.
-     * @param int                  $openBracket  The position of the opening
-     *                                           parenthesis in the stack.
-     * @param int                  $closeBracket The position of the closing
-     *                                           parenthesis in the stack.
+     * @param \PHP_CodeSniffer\Files\File $phpcsFile    The file being scanned.
+     * @param int                         $stackPtr     The position of the function call in
+     *                                                  the stack.
+     * @param int                         $openBracket  The position of the opening
+     *                                                  parenthesis in the stack.
+     * @param int                         $closeBracket The position of the closing
+     *                                                  parenthesis in the stack.
      *
      * @return void
      */
@@ -69,6 +69,11 @@ class FunctionTriggerErrorSniff extends FunctionCall
         // Get the first argument passed to trigger_error().
         $argument = $this->getArgument(1);
 
+        // Skip variable deprecation messages.
+        if ($tokens[$argument['start']]['code'] === T_VARIABLE) {
+            return;
+        }
+
         // Extract the message text to check. If if it formed using sprintf()
         // then find the single overall string using ->findNext.
         if ($tokens[$argument['start']]['code'] === T_STRING
@@ -79,13 +84,16 @@ class FunctionTriggerErrorSniff extends FunctionCall
             // quotes away and possibly not report a faulty message.
             $messageText = substr($tokens[$messagePosition]['content'], 1, ($tokens[$messagePosition]['length'] - 2));
         } else {
+            $messageParts = [];
             // If not sprintf() then extract and store all the items except
             // whitespace, concatenation operators and comma. This will give all
             // real content such as concatenated strings and constants.
             for ($i = $argument['start']; $i <= $argument['end']; $i++) {
                 if (in_array($tokens[$i]['code'], [T_WHITESPACE, T_STRING_CONCAT, T_COMMA]) === false) {
                     // For strings, remove the quotes using substr not trim.
-                    if ($tokens[$i]['code'] === T_CONSTANT_ENCAPSED_STRING) {
+                    // Simple strings are T_CONSTANT_ENCAPSED_STRING and strings
+                    // with variable interpolation are T_DOUBLE_QUOTED_STRING.
+                    if ($tokens[$i]['code'] === T_CONSTANT_ENCAPSED_STRING || $tokens[$i]['code'] === T_DOUBLE_QUOTED_STRING) {
                         $messageParts[] = substr($tokens[$i]['content'], 1, ($tokens[$i]['length'] - 2));
                     } else {
                         $messageParts[] = $tokens[$i]['content'];
@@ -112,7 +120,10 @@ class FunctionTriggerErrorSniff extends FunctionCall
             $block         = $phpcsFile->findPrevious(T_DOC_COMMENT_OPEN_TAG, $argument['start']);
         }
 
-        if (isset($block) === true && $tokens[$block]['level'] === $requiredLevel && isset($tokens[$block]['comment_tags']) === true) {
+        if (isset($tokens[$block]['level']) === true
+            && $tokens[$block]['level'] === $requiredLevel
+            && isset($tokens[$block]['comment_tags']) === true
+        ) {
             foreach ($tokens[$block]['comment_tags'] as $tag) {
                 $strictStandard = $strictStandard || (strtolower($tokens[$tag]['content']) === '@deprecated');
             }
@@ -146,13 +157,12 @@ class FunctionTriggerErrorSniff extends FunctionCall
             $phpcsFile->addError($error, $argument['start'], $sniff, [$messageText]);
         } else {
             // The text follows the basic layout. Now check that the version
-            // matches drupal:n.n.n or project:n.x-n.n. The text must be all
+            // matches drupal:n.n.n or project:n.x-n.n or project:n.x-n.n-label[n]
+            // or project:n.n.n or project:n.n.n-label[n]. The text must be all
             // lower case and numbers can be one or two digits.
             foreach (['deprecation-version' => $matches[2], 'removal-version' => $matches[4]] as $name => $version) {
-                if (preg_match('/^drupal:\d{1,2}\.\d{1,2}\.\d{1,2}$/', $version) === 0
-                    && preg_match('/^[a-z\d_]+:\d{1,2}\.x\-\d{1,2}\.\d{1,2}$/', $version) === 0
-                ) {
-                    $error = "The %s '%s' does not match the lower-case machine-name standard: drupal:n.n.n or project:n.x-n.n";
+                if (preg_match('/^[a-z\d_]+:(\d{1,2}\.\d{1,2}\.\d{1,2}|\d{1,2}\.x\-\d{1,2}\.\d{1,2})(-[a-z]{1,5}\d{1,2})?$/', $version) === 0) {
+                    $error = "The %s '%s' does not match the lower-case machine-name standard: drupal:n.n.n or project:n.x-n.n or project:n.x-n.n-label[n] or project:n.n.n or project:n.n.n-label[n]";
                     $phpcsFile->addWarning($error, $argument['start'], 'TriggerErrorVersion', [$name, $version]);
                 }
             }

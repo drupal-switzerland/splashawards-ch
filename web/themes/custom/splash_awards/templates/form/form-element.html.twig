@@ -1,0 +1,25 @@
+{%
+  set classes = [
+    'js-form-item',
+    'form-item',
+    'form-type-' ~ type|clean_class,
+    'js-form-type-' ~ type|clean_class,
+    'form-item-' ~ name|clean_class,
+    'js-form-item-' ~ name|clean_class,
+    title_display not in ['after', 'before'] ? 'form-no-label',
+    disabled == 'disabled' ? 'form-disabled',
+    errors ? 'form-item--error',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {% if label_display in ['before', 'invisible'] %}
+    <div class="mb-2">{{ label }}</div>
+  {% endif %}
+  {{ children }}
+  {% if errors %}
+    <div class="form-item--error-message">
+      {{ errors }}
+    </div>
+  {% endif %}
+</div>

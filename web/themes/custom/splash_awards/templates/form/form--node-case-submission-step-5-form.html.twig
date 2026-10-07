@@ -1,0 +1,23 @@
+<form{{ attributes }}>
+  <h2 class="mb-3">{{ 'Video & images'|t }}</h2>
+  <div class="mb-3">
+    {{ element.field_video_url }}
+  </div>
+  <div class="mb-5">
+    <small><strong>{{ 'Hint'|t }}:</strong> {{ 'Full, external URL to video hoster. Example: https://myvideohoster.com/myvideos/123'|t }}.</small>
+  </div>
+  <div class="mb-3">
+    {{ element.field_images }}
+  </div>
+  <div class="mb-5">
+    <small><strong>{{ 'Hinweis'|t }}:</strong> {{ 'A maximum of five images are possible. Limit 100MB. Permitted formats: png, jpg, jpeg, webp'|t }}.</small>
+  </div>
+  <div class="border border-black border-b-0 mt-[30px] mb-3"></div>
+  <div class="flex justify-between">
+    {{ element.actions.back }}
+    {{ element.actions.submit }}
+  </div>
+  {{ element.form_build_id }}
+  {{ element.form_token }}
+  {{ element.form_id }}
+</form>
