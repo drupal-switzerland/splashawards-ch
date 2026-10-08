@@ -1,0 +1,19 @@
+uuid: 7db267e9-2813-4491-9fee-f41a4add959a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_invoice_address
+field_name: field_invoice_address
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

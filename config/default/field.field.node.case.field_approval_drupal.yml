@@ -1,0 +1,21 @@
+uuid: c3cb8208-dd6e-421b-b58d-239a3de4df33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_approval_drupal
+    - node.type.case
+id: node.case.field_approval_drupal
+field_name: field_approval_drupal
+entity_type: node
+bundle: case
+label: 'Yes, I would like to help Drupal and allow this project to be included in the Drupal Pitchdeck and shown on the Swiss community website (drupal.ch)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

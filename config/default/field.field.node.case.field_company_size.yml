@@ -1,0 +1,21 @@
+uuid: eeab5a3c-5d0f-4e4b-b2d2-1fa19cb09661
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_company_size
+    - node.type.case
+  module:
+    - options
+id: node.case.field_company_size
+field_name: field_company_size
+entity_type: node
+bundle: case
+label: 'Size of your company'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

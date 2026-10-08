@@ -1,0 +1,16 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Einfache Seite'
+type: page
+description: '<em>Einfache Seiten</em> sind für statischen Inhalt gedacht, z. B. eine „Über uns“-Seite.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

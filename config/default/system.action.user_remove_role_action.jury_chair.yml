@@ -1,0 +1,14 @@
+uuid: 6dddfa39-2850-4a89-88f5-b4cd88e498f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.jury_chair
+  module:
+    - user
+id: user_remove_role_action.jury_chair
+label: 'Remove the Jury chair role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: jury_chair

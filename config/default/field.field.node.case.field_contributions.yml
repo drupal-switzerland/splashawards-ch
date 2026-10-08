@@ -1,0 +1,24 @@
+uuid: 7cffdcac-3ad4-4ada-854c-9e9b08e5849c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contributions
+    - filter.format.description
+    - node.type.case
+  module:
+    - text
+id: node.case.field_contributions
+field_name: field_contributions
+entity_type: node
+bundle: case
+label: 'Community contributions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - description
+field_type: text_long

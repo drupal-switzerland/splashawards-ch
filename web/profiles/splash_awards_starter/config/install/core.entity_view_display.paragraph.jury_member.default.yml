@@ -1,0 +1,58 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.jury_member.field_icon_links
+    - field.field.paragraph.jury_member.field_jury_description
+    - field.field.paragraph.jury_member.field_jury_name
+    - field.field.paragraph.jury_member.field_jury_text
+    - field.field.paragraph.jury_member.field_portrait
+    - paragraphs.paragraphs_type.jury_member
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.jury_member.default
+targetEntityType: paragraph
+bundle: jury_member
+mode: default
+content:
+  field_icon_links:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_jury_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_jury_name:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_jury_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_portrait:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

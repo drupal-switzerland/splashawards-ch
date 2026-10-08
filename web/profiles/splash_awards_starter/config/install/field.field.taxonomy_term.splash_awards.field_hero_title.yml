@@ -1,0 +1,23 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hero_title
+    - filter.format.plain_text
+    - taxonomy.vocabulary.splash_awards
+  module:
+    - text
+id: taxonomy_term.splash_awards.field_hero_title
+field_name: field_hero_title
+entity_type: taxonomy_term
+bundle: splash_awards
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text_long

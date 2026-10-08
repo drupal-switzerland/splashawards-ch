@@ -1,0 +1,19 @@
+id: splash_ch_file
+label: 'Legacy files (referenced by content only)'
+migration_tags: [splash_ch]
+source:
+  plugin: splash_ch_legacy_file
+process:
+  fid: fid
+  filename: filename
+  uri:
+    plugin: file_copy
+    source: [source_path, uri]
+    file_exists: replace
+  filemime: filemime
+  status: { plugin: default_value, default_value: 1 }
+  uid: { plugin: default_value, default_value: 1 }
+  created: created
+  changed: changed
+destination:
+  plugin: entity:file

@@ -1,0 +1,23 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sponsors_title
+    - filter.format.plain_text
+    - paragraphs.paragraphs_type.sponsor_grid
+  module:
+    - text
+id: paragraph.sponsor_grid.field_sponsors_title
+field_name: field_sponsors_title
+entity_type: paragraph
+bundle: sponsor_grid
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text

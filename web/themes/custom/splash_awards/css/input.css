@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @font-face {
+    font-family: 'Barlow';
+    src: url('../fonts/Barlow-Regular.woff2') format('woff2'),
+    url('../fonts/Barlow-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Barlow Semi Condensed';
+    src: url('../fonts/BarlowSemiCondensed-SemiBold.woff2') format('woff2'),
+    url('../fonts/BarlowSemiCondensed-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Barlow Semi Condensed';
+    src: url('../fonts/BarlowSemiCondensed-SemiBoldItalic.woff2') format('woff2'),
+    url('../fonts/BarlowSemiCondensed-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Barlow';
+    src: url('../fonts/Barlow-Bold.woff2') format('woff2'),
+    url('../fonts/Barlow-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Barlow';
+    src: url('../fonts/Barlow-Italic.woff2') format('woff2'),
+    url('../fonts/Barlow-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+
+}
+
+@layer components {
+  body {
+    @apply antialiased flex flex-col min-h-dvh;
+  }
+
+  img {
+    @apply block max-w-full h-auto;
+  }
+
+  a:hover {
+    @apply underline;
+  }
+
+  ul {
+    @apply list-disc space-y-2 pl-5;
+  }
+
+  ol {
+    @apply list-decimal space-y-2 pl-5;
+  }
+
+  li::marker {
+    @apply text-saw-bright-blue;
+    @apply font-bold;
+  }
+
+  h1, .saw-large-headline {
+    @apply text-[36px] font-bold;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+  }
+
+  h2, h3, .saw-small-headline {
+    @apply text-[24px] font-semibold;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+  }
+
+  p, label, .saw-copy-text {
+    @apply text-[16px] mb-4;
+
+    a {
+      @apply text-saw-bright-blue;
+    }
+  }
+
+  p:last-of-type {
+    @apply mb-0;
+  }
+
+  span, .saw-tiny-text, .saw-small-text-wrapper p {
+    @apply text-[12px] leading-snug;
+  }
+
+  @media (min-width: 1024px) {
+    .text-columns {
+      column-count: 2;
+      column-gap: 50px;
+    }
+  }
+
+  /* Add border to input elements. */
+  input[type="text"], input[type="password"], input[type="url"], input[type="email"], input[type="date"], input[type="file"] ,textarea, select {
+    @apply w-full border border-saw-bright-blue rounded p-2;
+  }
+
+  input:disabled, textarea:disabled, select:disabled {
+    background-color: #E0F9EC;
+    @apply text-black;
+  }
+
+  input[type="submit"]:disabled {
+    background-color: #E0F9EC;
+    @apply cursor-not-allowed;
+  }
+
+  /* Style the back button in custom forms. */
+  a[data-drupal-selector="edit-back"] {
+    @apply py-3 px-4 transition-all rounded-lg text-saw-dark-blue hover:no-underline bg-saw-pale-blue hover:opacity-80;
+  }
+
+  /* Style the submit button in custom forms. */
+  input[type="submit"] {
+    @apply ms-auto py-2 px-4 transition-all rounded-lg text-saw-dark-blue hover:no-underline bg-saw-green hover:opacity-80;
+  }
+
+  input[type="checkbox"], input[type="checkbox"] + label {
+    z-index: 0;
+    -webkit-appearance: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  input[type="checkbox"]:checked+label::before {
+    box-shadow: inset 0 0 0 3px #fff;
+    background-color: #3232FF;
+  }
+
+  input[type="checkbox"] + label::before {
+    @apply w-[20px] h-[20px] me-2 relative z-10 border border-saw-bright-blue rounded cursor-pointer block float-left;
+    content: "";
+  }
+
+  [x-cloak] {
+    display: none !important;
+  }
+}

@@ -1,0 +1,15 @@
+uuid: bb5dd58f-aa66-4541-b1d0-6c8c98ebf79c
+langcode: en
+status: true
+dependencies: {  }
+name: image_grid
+label: 'Bilder (280)'
+effects:
+  f330fc07-f80f-4d07-ba75-085d6f53ad85:
+    uuid: f330fc07-f80f-4d07-ba75-085d6f53ad85
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 280
+      upscale: true

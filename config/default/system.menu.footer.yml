@@ -1,0 +1,10 @@
+uuid: ca6a212b-560e-45ab-b167-6627038fe0d8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 7yrlW5z9zdg2eBucB2GPqXKSMQfH9lSRSO4DbWF7AFc
+id: footer
+label: Footer
+description: 'Links zu Website-Informationen'
+locked: true

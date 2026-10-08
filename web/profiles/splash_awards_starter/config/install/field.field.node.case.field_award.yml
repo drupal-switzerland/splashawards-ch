@@ -1,0 +1,28 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_award
+    - node.type.case
+    - taxonomy.vocabulary.splash_awards
+id: node.case.field_award
+field_name: field_award
+entity_type: node
+bundle: case
+label: Award
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      splash_awards: splash_awards
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

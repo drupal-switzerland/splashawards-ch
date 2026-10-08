@@ -1,0 +1,9 @@
+langcode: de
+status: true
+dependencies: {  }
+id: columns
+label: Columns
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

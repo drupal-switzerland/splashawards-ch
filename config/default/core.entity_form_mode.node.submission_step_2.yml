@@ -1,0 +1,11 @@
+uuid: 2dc79679-da0e-4bcd-8db0-c35f6fbfd22b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.submission_step_2
+label: 'Submission step 2'
+description: null
+targetEntityType: node
+cache: true

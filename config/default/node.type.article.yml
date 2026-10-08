@@ -1,0 +1,19 @@
+uuid: 08e35ccc-a7bf-4c83-9118-d09e862d79f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: Fe3N1uqaAyyKJbVkqT-btXy3t98puW8GCRD822xjl10
+name: Article
+type: article
+description: 'Use <em>articles</em> for time-critical content such as news, press releases or blog entries.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

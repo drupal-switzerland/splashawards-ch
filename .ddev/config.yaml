@@ -1,16 +1,12 @@
-name: splashawardsswiss
-type: drupal
-docroot: docroot
-php_version: "7.2"
+name: splashawardsch
+type: drupal11
+docroot: web
+php_version: "8.3"
 webserver_type: nginx-fpm
 xdebug_enabled: false
-additional_hostnames: []
-additional_fqdns: []
 database:
     type: mariadb
     version: "10.11"
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
-corepack_enable: false
-
+corepack_enable: true

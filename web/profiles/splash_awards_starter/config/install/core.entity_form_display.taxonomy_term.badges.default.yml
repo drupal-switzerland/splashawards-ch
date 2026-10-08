@@ -1,0 +1,55 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.badges.field_badge
+    - field.field.taxonomy_term.badges.field_qualified
+    - field.field.taxonomy_term.badges.field_weight
+    - taxonomy.vocabulary.badges
+  module:
+    - media_library
+id: taxonomy_term.badges.default
+targetEntityType: taxonomy_term
+bundle: badges
+mode: default
+content:
+  field_badge:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_qualified:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_weight:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

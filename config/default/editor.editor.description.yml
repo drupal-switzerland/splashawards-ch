@@ -1,0 +1,26 @@
+uuid: f9da74ac-908c-40b4-99e6-3173f22be5a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.description
+  module:
+    - ckeditor5
+format: description
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - bold
+      - italic
+      - bulletedList
+      - numberedList
+  plugins:
+    ckeditor5_list:
+      properties:
+        reversed: false
+        startIndex: false
+        styles: false
+      multiBlock: false
+image_upload:
+  status: false

@@ -1,0 +1,15 @@
+uuid: c6291dfe-bce4-454e-a71c-ec8a65ea2642
+langcode: en
+status: true
+dependencies: {  }
+name: jury
+label: 'Jury (240x180)'
+effects:
+  0c300e5d-da97-43fb-8b9b-cd3dae7175bb:
+    uuid: 0c300e5d-da97-43fb-8b9b-cd3dae7175bb
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 240
+      height: 180
+      anchor: center-center

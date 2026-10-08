@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Theme functions and preprocess hooks for the Splash Awards theme.
+ */
+
+use Drupal\file\Entity\File;
+use Drupal\media\Entity\Media;
+use Drupal\menu_item_extras\Entity\MenuItemExtrasMenuLinkContent;
+use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
+use Drupal\views\Plugin\Menu\ViewsMenuLink;
+
+include 'theme_includes/page.theme.inc';
+include 'theme_includes/node.theme.inc';
+include 'theme_includes/view.theme.inc';
+include 'theme_includes/paragraphs.theme.inc';
+include 'theme_includes/user.theme.inc';
+
+/**
+ * Helper function tu build data structures based on menus.
+ */
+function _splash_awards_menu_structure(string $name): array {
+  /** @var \Drupal\Core\Menu\MenuLinkTree $menuTree */
+  $menuTree = \Drupal::service('menu.link_tree');
+
+  $menu = [];
+  $parameters = $menuTree->getCurrentRouteMenuTreeParameters($name);
+  $tree = $menuTree->load($name, $parameters);
+  $tree = $menuTree->transform($tree, [
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ]);
+
+  foreach ($tree as $item) {
+    /** @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $link */
+    $link = $item->link;
+
+    if (
+      $item->link->isEnabled() &&
+      (
+        $link instanceof MenuLinkContent || $link instanceof ViewsMenuLink
+      )
+    ) {
+      $media = NULL;
+      // Load menu-items entity if it is a menu-link-content.
+      /** @var \Drupal\menu_item_extras\Entity\MenuItemExtrasMenuLinkContent $menuLinkEntity */
+      $menuLinkEntity = $link->getDerivativeId()
+        ? \Drupal::service('entity.repository')->loadEntityByUuid('menu_link_content', $link->getDerivativeId())
+        : NULL;
+
+      if (
+        $menuLinkEntity instanceof MenuItemExtrasMenuLinkContent &&
+        $menuLinkEntity->hasField('field_icon') &&
+        !$menuLinkEntity->get('field_icon')->isEmpty()
+      ) {
+        /** @var \Drupal\media\Entity\Media $media */
+        $media = $menuLinkEntity->get('field_icon')->entity;
+        /** @var \Drupal\file\Entity\File $file */
+        $file = $media instanceof Media ? $media->get('field_media_image')->entity : NULL;
+        $iconUrl = $file instanceof File
+          ? \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri())
+          : NULL;
+      }
+
+      $menu[] = [
+        'text' => $link->getTitle(),
+        'url' => $link->getUrlObject()->setAbsolute()->toString(),
+        'target' => $link->getUrlObject()->isExternal()
+          ? '_blank'
+          : '_self',
+        'icon' => $iconUrl ?? '',
+        'alt' => $media?->get('field_media_image')->alt,
+      ];
+    }
+  }
+
+  return $menu;
+}

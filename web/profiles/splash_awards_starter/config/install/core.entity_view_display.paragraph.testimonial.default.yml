@@ -1,0 +1,48 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.testimonial.field_portrait
+    - field.field.paragraph.testimonial.field_testimonial_description
+    - field.field.paragraph.testimonial.field_testimonial_text
+    - field.field.paragraph.testimonial.field_testimonial_type
+    - paragraphs.paragraphs_type.testimonial
+  module:
+    - options
+    - text
+id: paragraph.testimonial.default
+targetEntityType: paragraph
+bundle: testimonial
+mode: default
+content:
+  field_portrait:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_testimonial_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_testimonial_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_testimonial_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

@@ -1,0 +1,21 @@
+uuid: 8037586d-2f9c-4b72-9e40-0b27778e212a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_teaser_mode
+    - paragraphs.paragraphs_type.news
+id: paragraph.news.field_teaser_mode
+field_name: field_teaser_mode
+entity_type: paragraph
+bundle: news
+label: 'Teaser mode'
+description: 'If this is checked, only the most recent three articles will be presented.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

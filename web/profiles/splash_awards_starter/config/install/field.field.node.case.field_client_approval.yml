@@ -1,0 +1,20 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_client_approval
+    - node.type.case
+id: node.case.field_client_approval
+field_name: field_client_approval
+entity_type: node
+bundle: case
+label: "Yes, I have the client's permission to submit this project"
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

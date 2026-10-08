@@ -1,0 +1,8 @@
+langcode: de
+status: true
+dependencies: {  }
+name: Badges
+vid: badges
+description: null
+weight: 0
+new_revision: false

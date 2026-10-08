@@ -1,0 +1,10 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - user
+id: user.edit
+label: Edit
+description: ''
+targetEntityType: user
+cache: true

@@ -1,0 +1,21 @@
+uuid: 10371eee-f94f-485e-8a50-c2d9f65c429d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_launch
+    - node.type.case
+  module:
+    - datetime
+id: node.case.field_launch
+field_name: field_launch
+entity_type: node
+bundle: case
+label: Launch
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

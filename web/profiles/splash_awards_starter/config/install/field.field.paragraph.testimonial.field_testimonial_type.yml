@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_testimonial_type
+    - paragraphs.paragraphs_type.testimonial
+  module:
+    - options
+id: paragraph.testimonial.field_testimonial_type
+field_name: field_testimonial_type
+entity_type: paragraph
+bundle: testimonial
+label: Type
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: primary
+default_value_callback: ''
+settings: {  }
+field_type: list_string

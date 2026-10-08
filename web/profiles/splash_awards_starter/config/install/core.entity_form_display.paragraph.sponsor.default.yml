@@ -1,0 +1,33 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sponsor.field_sponsor_logo
+    - field.field.paragraph.sponsor.field_sponsor_url
+    - paragraphs.paragraphs_type.sponsor
+  module:
+    - link
+    - media_library
+id: paragraph.sponsor.default
+targetEntityType: paragraph
+bundle: sponsor
+mode: default
+content:
+  field_sponsor_logo:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_sponsor_url:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

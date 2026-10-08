@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+id: social-icons
+label: 'Social Icons'
+description: 'Links mit Icons zu Social-Media Kanälen'
+locked: false

@@ -1,0 +1,18 @@
+uuid: 69b10c8e-c46d-425f-a00b-7a24757a60e8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_submitted
+field_name: field_submitted
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

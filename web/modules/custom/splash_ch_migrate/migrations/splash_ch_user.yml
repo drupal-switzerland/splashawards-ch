@@ -1,0 +1,36 @@
+id: splash_ch_user
+label: 'Active admin/webadmin users (jurors and blocked accounts skipped)'
+migration_tags: [splash_ch]
+source:
+  plugin: splash_ch_legacy_entity
+  entity_type: user
+  ids: [1, 36, 46, 48, 49, 86]
+  fields: [roles]
+process:
+  uid: uid
+  name: name
+  # Legacy $S$ hashes are kept (pre_hashed); core phpass verifies them and
+  # rehashes on next login. uid 1 keeps the password set at install.
+  pass: pass
+  mail: mail
+  init: init
+  status: status
+  created: created
+  changed: changed
+  access: access
+  login: login
+  timezone: timezone
+  langcode: { plugin: default_value, default_value: en }
+  roles:
+    plugin: sub_process
+    source: roles
+    process:
+      target_id:
+        plugin: static_map
+        source: target_id
+        map:
+          administrator: administrator
+          webadmin: content_editor
+        default_value: null
+destination:
+  plugin: entity:user

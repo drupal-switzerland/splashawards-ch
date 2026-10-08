@@ -1,0 +1,60 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_jury_member
+    - paragraphs.paragraphs_type.jury_grid
+    - paragraphs.paragraphs_type.jury_member
+  module:
+    - entity_reference_revisions
+id: paragraph.jury_grid.field_jury_member
+field_name: field_jury_member
+entity_type: paragraph
+bundle: jury_grid
+label: 'Jury Member'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      jury_member: jury_member
+    negate: 0
+    target_bundles_drag_drop:
+      columns:
+        weight: 10
+        enabled: false
+      cta:
+        weight: 11
+        enabled: false
+      icon_link:
+        weight: 14
+        enabled: false
+      images:
+        weight: 15
+        enabled: false
+      jury_grid:
+        weight: 9
+        enabled: false
+      jury_member:
+        weight: 12
+        enabled: true
+      news:
+        weight: 18
+        enabled: false
+      sponsor:
+        weight: 13
+        enabled: false
+      sponsor_grid:
+        weight: 14
+        enabled: false
+      testimonial:
+        weight: 15
+        enabled: false
+      text:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

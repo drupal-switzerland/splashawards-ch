@@ -1,0 +1,18 @@
+<div class="relative">
+  <img class="rounded w-full" src="{{ teaserData.img }}" alt=""/>
+  <h3 class="mb-0">
+    {{ teaserData.title }}
+  </h3>
+  <small class="block">{{ teaserData.date }}</small>
+  <div class="mt-3">
+    {{ teaserData.teaserText }}
+  </div>
+  <div class="mt-4">
+    {% include '@splash_awards/templates/includes/button.twig' with {
+      buttonUrl: teaserData.url,
+      buttonText: 'Read article'|t,
+      buttonType: 'primary',
+      customClasses: 'after:absolute after:inset-0'
+    } only %}
+  </div>
+</div>

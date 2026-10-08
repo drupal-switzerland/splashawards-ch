@@ -1,0 +1,82 @@
+splash_awards_base.settings:
+  path: '/admin/config/case-submission-settings'
+  defaults:
+    _form: '\Drupal\splash_awards_base\Form\SettingsForm'
+    _title: 'Splash Awards Case Submission Settings'
+  requirements:
+    _permission: 'administer splash awards settings'
+  options:
+    _admin_route: TRUE
+splash_awards_base.case_submission:
+  path: '/case-submission/{uuid}/{step}'
+  defaults:
+    _controller: '\Drupal\splash_awards_base\Controller\CaseSubmissionController::caseSubmission'
+    _title: 'Case submission'
+  requirements:
+    _permission: 'submit case via frontend form'
+
+# Render user edit in frontend
+splash_awards_base.user_edit_form:
+  path: '/candidate-edit/{user}'
+  defaults:
+    _entity_form: 'user.edit'
+    _title: 'Edit'
+  requirements:
+    _entity_access: 'user.update'
+  options:
+    _admin_route: FALSE
+
+splash_awards_base.jury_dashboard:
+  path: '/jury/{user}'
+  defaults:
+    _controller: '\Drupal\splash_awards_base\Controller\JuryController::dashboard'
+    _title: 'Jury dashboard'
+  requirements:
+    _permission: 'access jury dashboard'
+  options:
+    _admin_route: FALSE
+    parameters:
+      user:
+        type: entity:user
+
+splash_awards_base.rating_form:
+  path: '/jury/rating/{case}'
+  defaults:
+    _form: '\Drupal\splash_awards_base\Form\RatingForm'
+    _title: 'Splash awards submission rating'
+  requirements:
+    _permission: 'access jury dashboard'
+  options:
+    _admin_route: FALSE
+    parameters:
+      case:
+        type: entity:node
+
+# Jury chair re-sorts a case into another category (override only).
+splash_awards_base.set_jury_category:
+  path: '/jury/case/{case}/category'
+  defaults:
+    _controller: '\Drupal\splash_awards_base\Controller\JuryController::setJuryCategory'
+  methods: [POST]
+  requirements:
+    _role: 'jury_chair'
+    _csrf_request_header_token: 'TRUE'
+  options:
+    _admin_route: FALSE
+    parameters:
+      case:
+        type: entity:node
+
+# Returns the bare rating form markup for loading into the Alpine modal.
+splash_awards_base.rating_form_partial:
+  path: '/jury/rating/{case}/modal'
+  defaults:
+    _controller: '\Drupal\splash_awards_base\Controller\JuryController::ratingFormPartial'
+    _title: 'Splash awards submission rating'
+  requirements:
+    _permission: 'access jury dashboard'
+  options:
+    _admin_route: FALSE
+    parameters:
+      case:
+        type: entity:node

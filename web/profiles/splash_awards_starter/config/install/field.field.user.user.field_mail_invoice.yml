@@ -1,0 +1,19 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_mail_invoice
+  module:
+    - user
+id: user.user.field_mail_invoice
+field_name: field_mail_invoice
+entity_type: user
+bundle: user
+label: 'Email for invoice'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

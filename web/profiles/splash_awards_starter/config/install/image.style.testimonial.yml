@@ -1,0 +1,14 @@
+langcode: de
+status: true
+dependencies: {  }
+name: testimonial
+label: 'Testimonial (130x130)'
+effects:
+  7de9055d-247f-434e-97e9-d2b550a5e3cd:
+    uuid: 7de9055d-247f-434e-97e9-d2b550a5e3cd
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 130
+      height: 130
+      anchor: center-center

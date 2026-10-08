@@ -1,0 +1,73 @@
+<div class="container relative py-12">
+
+  <div class="mx-auto max-w-[880px] grid sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-12 relative z-10">
+
+    {# render all items #}
+    {% for item in juryData %}
+      <div x-data="{ showOverlay:false}" class="text-center flex flex-col rounded-lg border border-saw-dark-blue bg-white overflow-hidden relative">
+
+        {# Image & Overlay #}
+        <div class="relative">
+
+          {# Image #}
+          <img class="block mx-auto w-full" src="{{ item.img }}" alt="{{ item.alt }}">
+
+          {# Overlay to toggle description #}
+          <div @click="showOverlay=true" class="absolute inset-0 bg-saw-dark-blue bg-opacity-80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+            <svg class="block" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.25 9.52148L9.291 9.50148C9.41923 9.43742 9.56313 9.41145 9.70567 9.42664C9.8482 9.44183 9.9834 9.49755 10.0952 9.5872C10.2071 9.67684 10.2909 9.79666 10.3368 9.93247C10.3826 10.0683 10.3886 10.2144 10.354 10.3535L9.646 13.1895C9.61114 13.3287 9.61694 13.4749 9.66269 13.6109C9.70845 13.7469 9.79224 13.8669 9.90414 13.9566C10.016 14.0464 10.1513 14.1023 10.294 14.1175C10.4367 14.1327 10.5807 14.1067 10.709 14.0425L10.75 14.0215M19 10.2715C19 11.4534 18.7672 12.6237 18.3149 13.7156C17.8626 14.8076 17.1997 15.7997 16.364 16.6354C15.5282 17.4712 14.5361 18.1341 13.4442 18.5864C12.3522 19.0387 11.1819 19.2715 10 19.2715C8.8181 19.2715 7.64778 19.0387 6.55585 18.5864C5.46392 18.1341 4.47177 17.4712 3.63604 16.6354C2.80031 15.7997 2.13738 14.8076 1.68508 13.7156C1.23279 12.6237 1 11.4534 1 10.2715C1 7.88454 1.94821 5.59535 3.63604 3.90752C5.32387 2.2197 7.61305 1.27148 10 1.27148C12.3869 1.27148 14.6761 2.2197 16.364 3.90752C18.0518 5.59535 19 7.88454 19 10.2715ZM10 6.52148H10.008V6.52948H10V6.52148Z" stroke="#31D57C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="block text-white">mehr erfahren</span>
+          </div>
+
+        </div>
+
+        <div class="p-3 space-y-2">
+
+          {# Card Name #}
+          <h3 class="saw-small-headline text-saw-dark-blue">{{ item.name }}</h3>
+
+          {# Card Text/Description #}
+          <p class="saw-tiny-text">{{ item.description }}</p>
+
+          {# Social Media Icons #}
+          <div class="flex justify-center align-center gap-2">
+
+            {% for iconLink in item.iconLinks %}
+
+              {# links and icons for social media #}
+              <a href="{{ iconLink.url }}" target="_blank">
+                <img src="{{ iconLink.img }}"  alt="{{ iconLink.alt }}">
+              </a>
+
+            {% endfor %}
+          </div>
+
+        </div>
+
+        {# Overlay #}
+        <div x-show="showOverlay" @click.outside="showOverlay=false" x-transition class="absolute inset-0 bg-white p-[20px] overflow-y-scroll">
+          <div class="w-full flex justify-end">
+            <button @click="showOverlay=false">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 13L13 1M1 1L13 13" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <h3 class="saw-small-headline text-saw-dark-blue mb-2">{{ item.name }}</h3>
+          <div class="saw-small-text-wrapper text-left prose prose-sm">{{ item.text }}</div>
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+
+  {# large background visual #}
+  <svg class="absolute z-0 inset-0 m-auto hidden lg:block" width="787" height="638" viewBox="0 0 787 638" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.2">
+      <path d="M787 386.718L749.527 349.18C710.436 388.34 665.947 420.162 617.872 444.183C659.778 393.592 684.991 328.712 684.991 258H631.982C631.982 389.73 525.001 496.899 393.5 496.899C261.999 496.899 155.018 389.73 155.018 258H102.009C102.009 328.712 127.221 393.592 169.127 444.183C121.053 420.162 76.5642 388.34 37.4725 349.18L0 386.718C105.093 491.994 244.844 550 393.5 550C542.118 550 681.869 492.033 787 386.718Z" fill="#31D57C"/>
+      <path d="M658 585H128V638H658V585Z" fill="#31D57C"/>
+      <path d="M393.5 441C440.25 441 487 423.183 522.611 387.586C593.796 316.355 593.796 200.426 522.611 129.195L393.5 0L264.389 129.195C193.204 200.426 193.204 316.355 264.389 387.586C299.962 423.183 346.75 441 393.5 441ZM301.85 166.643L393.5 74.9334L485.15 166.643C509.623 191.132 523.112 223.72 523.112 258.352C523.112 292.984 509.623 325.573 485.15 350.062C434.623 400.622 352.377 400.622 301.85 350.062C277.377 325.573 263.887 292.984 263.887 258.352C263.887 223.72 277.377 191.132 301.85 166.643Z" fill="#31D57C"/>
+    </g>
+  </svg>
+</div>

@@ -1,0 +1,107 @@
+id: splash_ch_node_case
+label: 'Products -> cases'
+migration_tags: [splash_ch]
+source:
+  plugin: splash_ch_legacy_entity
+  entity_type: node
+  bundle: product
+  fields:
+    - field_award_jahr
+    - field_product_category
+    - field_organisation
+    - field_name_
+    - field_email
+    - field_phone_number
+    - field_invoice_address
+    - field_mail_invoice
+    - field_vat_registration_id
+    - field_client_name
+    - field_project_link
+    - field_case_url
+    - field_case_video
+    - field_date_when_website_went_liv
+    - field_project_de
+    - field_case_summary
+    - field_challenges
+    - field_why
+    - field_community_contributions
+    - field_extra
+    - field_hosting
+    - field_drupal_stack
+    - field_description
+    - field_notes
+    - field_submitted_by
+    - field_logo_client
+    - field_product_images
+    - field_client_permission
+    - field_field_agree
+    - field_allow_case_added
+  constants:
+    description: description
+    plain: plain_text
+process:
+  nid: nid
+  title: title
+  uid: owner
+  status: status
+  created: created
+  changed: changed
+  langcode: { plugin: default_value, default_value: en }
+  field_award: field_award_jahr/0/target_id
+  field_category:
+    plugin: sub_process
+    source: field_product_category
+    process:
+      target_id: target_id
+  field_badge:
+    plugin: migration_lookup
+    migration: splash_ch_term_badge
+    source: badges
+  field_company_name: field_organisation/0/value
+  field_company_contact_person: field_name_/0/value
+  field_mail_contact_person: field_email/0/value
+  field_phone_contact_person: field_phone_number/0/value
+  field_invoice_address/value: field_invoice_address/0/value
+  field_invoice_address/format: constants/plain
+  field_mail_invoice: field_mail_invoice/0/value
+  field_tax_id: field_vat_registration_id/0/value
+  field_client: field_client_name/0/value
+  field_url/uri: field_project_link/0/uri
+  field_video_url/uri: field_case_video/0/value
+  field_launch: field_date_when_website_went_liv/0/value
+  field_description/value: description
+  field_description/format: constants/description
+  field_summary/value: field_case_summary/0/value
+  field_summary/format: constants/description
+  field_challenges/value: field_challenges/0/value
+  field_challenges/format: constants/description
+  field_motivation/value: field_why/0/value
+  field_motivation/format: constants/description
+  field_contributions/value: field_community_contributions/0/value
+  field_contributions/format: constants/description
+  field_goals_and_results/value: field_extra/0/value
+  field_goals_and_results/format: constants/description
+  field_hosting/value: hosting
+  field_hosting/format: constants/plain
+  field_note/value: note
+  field_note/format: constants/plain
+  field_company_logo/target_id: field_submitted_by/0/target_id
+  field_company_logo/alt: field_submitted_by/0/alt
+  field_customer_logo/target_id: field_logo_client/0/target_id
+  field_customer_logo/alt: field_logo_client/0/alt
+  field_images:
+    plugin: sub_process
+    source: images
+    process:
+      target_id: target_id
+      alt: alt
+  field_client_approval: field_client_permission/0/value
+  field_terms_of_submission: field_field_agree/0/value
+  field_approval_drupal: field_allow_case_added/0/value
+  field_submitted: { plugin: default_value, default_value: 1 }
+  path/pathauto: { plugin: default_value, default_value: 1 }
+destination:
+  plugin: entity:node
+  default_bundle: case
+migration_dependencies:
+  required: [splash_ch_file, splash_ch_user, splash_ch_term_award, splash_ch_term_category, splash_ch_term_badge]

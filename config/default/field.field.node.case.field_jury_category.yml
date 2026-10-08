@@ -1,0 +1,28 @@
+uuid: 800126d9-cab6-4d3a-bad7-6e541e15bf4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jury_category
+    - node.type.case
+    - taxonomy.vocabulary.categories
+id: node.case.field_jury_category
+field_name: field_jury_category
+entity_type: node
+bundle: case
+label: 'Jury category'
+description: 'Category override set by the jury chair. Does not change the original Category field.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      categories: categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+field_type: entity_reference

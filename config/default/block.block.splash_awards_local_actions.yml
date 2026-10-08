@@ -1,0 +1,20 @@
+uuid: 6c9fa314-ec4a-4cb1-85e4-3a58a437c225
+langcode: en
+status: true
+dependencies:
+  theme:
+    - splash_awards
+_core:
+  default_config_hash: OQ9aJ-4qVwK1x00o9EOYK4eFDjQr_HLpbPiJaPSVZiQ
+id: splash_awards_local_actions
+theme: splash_awards
+region: content
+weight: 1
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

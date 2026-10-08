@@ -1,0 +1,25 @@
+<form{{ attributes }}>
+  <h2 class="mb-3">{{ 'Completion'|t }}</h2>
+  <div class="flex mb-3">
+    {{ element.field_terms_of_submission }}*
+  </div>
+  <div class="flex mb-3">
+    {{ element.field_client_approval }}*
+  </div>
+  <div class="mb-3">
+    {{ element.field_approval_drupal }}
+  </div>
+  <small><strong>{{ 'Hint'|t }}:</strong> {{ 'Fields marked with * are mandatory fields'|t }}.</small>
+
+  <div class="border border-black border-b-0 mt-[30px] mb-3"></div>
+  <div class="flex justify-between">
+    {{ element.actions.back }}
+    {{ element.actions.submit }}
+  </div>
+  <div class="mt-3">
+    <small><strong>{{ 'Hint'|t }}:</strong> {{ 'Projects are considered submitted if they are in the system by the submission deadline. Submitted projects can be edited until the deadline expires'|t }}.</small>
+  </div>
+  {{ element.form_build_id }}
+  {{ element.form_token }}
+  {{ element.form_id }}
+</form>

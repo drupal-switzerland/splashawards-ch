@@ -1,0 +1,17 @@
+<div class="container grid gap-4 text-center">
+  <h2 class="saw-large-headline leading-tight text-saw-bright-blue">{{ title }}</h2>
+  <div class="grid gap-[40px]">
+    <h3>{{ text }}</h3>
+    <div class="grid grid-cols-2 gap-x-[40px] gap-y-[30px] md:grid-cols-3 lg:grid-cols-4">
+      {% for sponsor in sponsors %}
+        <a
+          href="{{ sponsor.url }}"
+          target="_blank"
+          class="h-[144px] p-[30px] border border-saw-light-blue rounded hover:opacity-80"
+        >
+          <img class="size-full object-contain" src="{{ sponsor.img }}" alt="{{ sponsor.alt }}">
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>

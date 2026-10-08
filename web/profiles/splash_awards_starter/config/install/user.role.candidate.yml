@@ -1,0 +1,20 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - filter.format.description
+    - node.type.case
+  module:
+    - filter
+    - node
+    - splash_awards_base
+id: candidate
+label: Anwärter
+weight: -8
+is_admin: false
+permissions:
+  - 'change own username'
+  - 'create case content'
+  - 'edit own case content'
+  - 'submit case via frontend form'
+  - 'use text format description'

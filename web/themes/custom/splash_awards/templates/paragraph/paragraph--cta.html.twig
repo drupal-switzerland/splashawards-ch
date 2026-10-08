@@ -1,0 +1,36 @@
+{% set containerClasses = {
+  'default': 'border border-saw-bright-blue',
+  'primary': 'bg-saw-bright-blue',
+  'secondary': 'bg-saw-pale-blue',
+} %}
+
+{% set headlineClasses = {
+  'default': 'text-saw-light-blue',
+  'primary': 'text-white',
+  'secondary': 'text-saw-bright-blue',
+} %}
+
+{% set textClasses = {
+  'default': 'text-saw-dark-blue',
+  'primary': 'text-white',
+  'secondary': 'text-saw-dark-blue',
+} %}
+
+{% set buttonTypeMap = {
+  'default': 'cta',
+  'primary': 'light',
+  'secondary': 'primary',
+} %}
+
+<div class="{{ containerClasses[type] ~ ' flex flex-col items-center text-center p-5 rounded-lg' }}">
+  <h2 class="{{ headlineClasses[type]  ~ ' saw-large-headline mt-0 mb-3'}}">{{ title }}</h2>
+  <p class="{{ textClasses[type] }}">{{ text }}</p>
+
+  {% include '@splash_awards/templates/includes/button.twig' with {
+    buttonUrl: cta.url,
+    buttonText: cta.text,
+    buttonType: buttonTypeMap[type],
+    customClasses: 'mt-3'
+  } only %}
+
+</div>

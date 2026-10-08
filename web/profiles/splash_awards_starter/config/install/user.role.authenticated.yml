@@ -1,0 +1,13 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+    - system
+id: authenticated
+label: 'Angemeldeter Benutzer'
+weight: -9
+is_admin: false
+permissions:
+  - 'access content'
+  - 'view media'

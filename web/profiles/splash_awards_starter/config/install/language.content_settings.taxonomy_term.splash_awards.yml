@@ -1,0 +1,10 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.splash_awards
+id: taxonomy_term.splash_awards
+target_entity_type_id: taxonomy_term
+target_bundle: splash_awards
+default_langcode: site_default
+language_alterable: false

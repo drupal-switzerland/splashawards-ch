@@ -1,0 +1,24 @@
+uuid: 919ec974-c9df-4578-b970-21a87cfbc789
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_note
+    - filter.format.plain_text
+    - node.type.case
+  module:
+    - text
+id: node.case.field_note
+field_name: field_note
+entity_type: node
+bundle: case
+label: 'Note to the jury'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text_long

@@ -1,0 +1,23 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_motivation
+    - filter.format.description
+    - node.type.case
+  module:
+    - text
+id: node.case.field_motivation
+field_name: field_motivation
+entity_type: node
+bundle: case
+label: 'Why should this project win at the Splash Awards?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - description
+field_type: text_long

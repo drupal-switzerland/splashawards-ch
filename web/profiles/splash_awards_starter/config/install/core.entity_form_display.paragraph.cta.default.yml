@@ -1,0 +1,50 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta.field_cta_link
+    - field.field.paragraph.cta.field_cta_text
+    - field.field.paragraph.cta.field_cta_title
+    - field.field.paragraph.cta.field_type
+    - paragraphs.paragraphs_type.cta
+  module:
+    - link
+    - text
+id: paragraph.cta.default
+targetEntityType: paragraph
+bundle: cta
+mode: default
+content:
+  field_cta_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_cta_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_cta_title:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_type:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

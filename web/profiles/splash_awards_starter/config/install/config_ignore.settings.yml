@@ -1,0 +1,5 @@
+mode: simple
+ignored_config_entities:
+  - splash_awards_base.settings
+  - 'symfony_mailer.*'
+  - system.site

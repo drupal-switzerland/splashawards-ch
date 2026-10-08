@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_company_contact_person
+    - field.field.user.user.field_company_logo
+    - field.field.user.user.field_company_size
+    - field.field.user.user.field_company_url
+    - field.field.user.user.field_invoice_address
+    - field.field.user.user.field_mail_contact_person
+    - field.field.user.user.field_mail_invoice
+    - field.field.user.user.field_phone_contact_person
+    - field.field.user.user.field_tax_id
+    - field.field.user.user.user_picture
+  module:
+    - user
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content: {  }
+hidden:
+  field_company_contact_person: true
+  field_company_logo: true
+  field_company_size: true
+  field_company_url: true
+  field_invoice_address: true
+  field_mail_contact_person: true
+  field_mail_invoice: true
+  field_phone_contact_person: true
+  field_tax_id: true
+  langcode: true
+  member_for: true
+  user_picture: true

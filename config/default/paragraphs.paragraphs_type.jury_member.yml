@@ -1,0 +1,10 @@
+uuid: 51ed71f3-eaf4-4bb7-ab24-605025d8caea
+langcode: en
+status: true
+dependencies: {  }
+id: jury_member
+label: 'Jury member'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

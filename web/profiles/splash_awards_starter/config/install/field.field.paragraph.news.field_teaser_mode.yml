@@ -1,0 +1,20 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_teaser_mode
+    - paragraphs.paragraphs_type.news
+id: paragraph.news.field_teaser_mode
+field_name: field_teaser_mode
+entity_type: paragraph
+bundle: news
+label: 'Teaser mode'
+description: 'If this is checked, only the most recent three articles will be presented.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

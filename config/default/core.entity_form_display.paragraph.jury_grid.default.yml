@@ -1,0 +1,37 @@
+uuid: 5b2bafeb-7b72-460c-9827-a3e4c6d7a9f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.jury_grid.field_jury_member
+    - paragraphs.paragraphs_type.jury_grid
+  module:
+    - paragraphs
+id: paragraph.jury_grid.default
+targetEntityType: paragraph
+bundle: jury_grid
+mode: default
+content:
+  field_jury_member:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: 'Jury Mitglied'
+      title_plural: 'Jury Mitglieder'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: '0'
+        convert: '0'
+        duplicate: '0'
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

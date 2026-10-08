@@ -1,0 +1,57 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.columns.field_left_column
+    - field.field.paragraph.columns.field_right_column
+    - paragraphs.paragraphs_type.columns
+  module:
+    - paragraphs
+id: paragraph.columns.default
+targetEntityType: paragraph
+bundle: columns
+mode: default
+content:
+  field_left_column:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Seitenabschnitt
+      title_plural: Seitenabschnitte
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: '0'
+        convert: '0'
+        duplicate: '0'
+    third_party_settings: {  }
+  field_right_column:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Seitenabschnitt
+      title_plural: Seitenabschnitte
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: '0'
+        convert: '0'
+        duplicate: '0'
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

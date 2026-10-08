@@ -1,0 +1,57 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon_links
+    - paragraphs.paragraphs_type.icon_link
+    - paragraphs.paragraphs_type.jury_member
+  module:
+    - entity_reference_revisions
+id: paragraph.jury_member.field_icon_links
+field_name: field_icon_links
+entity_type: paragraph
+bundle: jury_member
+label: Icon-Links
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      icon_link: icon_link
+    negate: 0
+    target_bundles_drag_drop:
+      columns:
+        weight: 12
+        enabled: false
+      cta:
+        weight: 13
+        enabled: false
+      icon_link:
+        weight: 11
+        enabled: true
+      images:
+        weight: 14
+        enabled: false
+      jury_grid:
+        weight: 15
+        enabled: false
+      jury_member:
+        weight: 16
+        enabled: false
+      sponsor:
+        weight: 17
+        enabled: false
+      sponsor_grid:
+        weight: 18
+        enabled: false
+      testimonial:
+        weight: 19
+        enabled: false
+      text:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

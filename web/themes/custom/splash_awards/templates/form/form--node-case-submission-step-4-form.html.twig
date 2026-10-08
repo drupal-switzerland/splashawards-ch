@@ -1,0 +1,42 @@
+<form{{ attributes }}>
+  <h2 class="mb-3">{{ 'General information'|t }}</h2>
+  <div class="mb-3">
+    {{ element.field_category }}
+  </div>
+  <div class="mb-3">
+    <small><strong>{{ 'Hint'|t }}:</strong>{{ 'Select at least one category, maximum three categories'|t }}.</small>
+  </div>
+  <div class="mb-3">
+    {{ element.field_description }}
+  </div>
+  <div class="mb-3">
+    {{ element.field_goals_and_results }}
+  </div>
+  <h2 class="mb-3">{{ 'Project details'|t }}</h2>
+  <div class="mb-3">
+    {{ element.field_challenges }}
+  </div>
+  <div class="mb-3">
+    {{ element.field_contributions }}
+  </div>
+  <div class="mb-3">
+    {{ element.field_motivation }}
+  </div>
+  <h2 class="mb-3">{{ 'Additional information'|t }}</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="mb-3">
+      {{ element.field_note }}
+    </div>
+    <div class="mb-3">
+      {{ element.field_hosting }}
+    </div>
+  </div>
+  <div class="border border-black border-b-0 mt-[30px] mb-3"></div>
+  <div class="flex justify-between">
+    {{ element.actions.back }}
+    {{ element.actions.submit }}
+  </div>
+  {{ element.form_build_id }}
+  {{ element.form_token }}
+  {{ element.form_id }}
+</form>

@@ -1,0 +1,21 @@
+uuid: dfd24259-c2d5-4c5c-99e2-3d902602a2d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_submitted
+    - node.type.case
+id: node.case.field_submitted
+field_name: field_submitted
+entity_type: node
+bundle: case
+label: Submitted
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

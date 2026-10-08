@@ -1,0 +1,21 @@
+uuid: 6eb298c5-fa3f-4f48-9947-bfe8b4357303
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_terms_of_submission
+    - node.type.case
+id: node.case.field_terms_of_submission
+field_name: field_terms_of_submission
+entity_type: node
+bundle: case
+label: 'I agree to the terms and conditions of the submission'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

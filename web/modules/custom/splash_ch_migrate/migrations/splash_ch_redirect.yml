@@ -1,0 +1,15 @@
+id: splash_ch_redirect
+label: 'Old URLs -> 301 redirects'
+migration_tags: [splash_ch]
+source:
+  plugin: splash_ch_legacy_redirect
+process:
+  redirect_source/path: source_path
+  redirect_redirect/uri: target
+  status_code: { plugin: default_value, default_value: 301 }
+  language: { plugin: default_value, default_value: und }
+  uid: { plugin: default_value, default_value: 1 }
+destination:
+  plugin: entity:redirect
+migration_dependencies:
+  required: [splash_ch_node_page, splash_ch_node_news, splash_ch_node_case]

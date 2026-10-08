@@ -1,0 +1,19 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - splash_awards
+id: splash_awards_messages
+theme: splash_awards
+region: content
+weight: -1
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Status-Nachrichten
+  label_display: '0'
+  provider: system
+visibility: {  }

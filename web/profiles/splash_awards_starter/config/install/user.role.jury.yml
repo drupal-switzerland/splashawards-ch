@@ -1,0 +1,8 @@
+langcode: de
+status: true
+dependencies: {  }
+id: jury
+label: Jury
+weight: -6
+is_admin: false
+permissions: {  }

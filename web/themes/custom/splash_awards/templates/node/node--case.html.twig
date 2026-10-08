@@ -1,0 +1,188 @@
+{# Build the elements for the side content #}
+{% set utils %}
+  <span class="my-3 flex justify-between">
+          {% include '@splash_awards/templates/includes/button.twig' with {
+            buttonUrl: overviewUrl,
+            buttonText: 'Overview'|t,
+            buttonType: 'light',
+          } only %}
+    {% include '@splash_awards/templates/includes/button.twig' with {
+      buttonUrl: projectUrl,
+      buttonText: 'Visit project'|t,
+      buttonType: 'cta'
+    } only %}
+  </span>
+
+  {% if category %}
+    <div class="saw-tiny-text">
+      <span class="font-bold">{{ 'Category'|t }}: </span> {{ category }}
+    </div>
+  {% endif %}
+
+  {% if status %}
+    <div class="saw-tiny-text mt-2">
+      <span class="font-bold">{{ 'State'|t }}: </span> {{ status }}
+    </div>
+  {% endif %}
+
+  {% if hero.title %}
+    <div class="saw-tiny-text mt-2">
+      <span class="font-bold">{{ 'Title'|t }}: </span> {{  hero.title }}
+    </div>
+  {% endif %}
+
+  {%  if candidateUrl or candidateName or candidateLogo %}
+    <div class="saw-tiny-text mt-5">
+      <span class="font-bold block">{{ 'Submitting company'|t }}: </span>
+      <a class="flex items-center" href="{{ candidateUrl }}">
+        {{ candidateName }}
+        <svg class="ms-1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 4H3.5C3.10218 4 2.72064 4.15804 2.43934 4.43934C2.15804 4.72064 2 5.10218 2 5.5V12.5C2 12.8978 2.15804 13.2794 2.43934 13.5607C2.72064 13.842 3.10218 14 3.5 14H10.5C10.8978 14 11.2794 13.842 11.5607 13.5607C11.842 13.2794 12 12.8978 12 12.5V7M5 11L14 2M14 2H10.5M14 2V5.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <img class="mt-2" src="{{ candidateLogo }}" alt=""/>
+    </div>
+  {% endif %}
+
+  {%  if clientName or clientLogo %}
+    <div class="saw-tiny-text mt-5">
+      <span class="font-bold block">{{ 'For client'|t }}: </span>
+      {{ clientName }}
+      <img class="mt-2" src="{{ clientLogo }}" alt=""/>
+    </div>
+  {% endif %}
+{% endset %}
+
+{# Build the elements for the main content #}
+{% set elements = [] %}
+
+{% set case_intro %}
+  {% if badgeUrl %}
+    <img role="presentation" class="hidden lg:block absolute right-0 left-auto translate-y-[-65%]" src="{{ badgeUrl }}" alt="">
+  {% endif %}
+
+  {% if summary %}
+    <div class="py-[50px]">
+      <h2 class="saw-large-headline text-saw-dark-blue">{{ 'Summary'|t }}</h2>
+      <div class="prose">
+        {{ summary }}
+      </div>
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set case_description %}
+  {% if description %}
+    <div class="py-3">
+      <h2 class="saw-large-headline text-saw-dark-blue">{{ 'Project description'|t }}</h2>
+      <div class="prose">
+        {{ description }}
+      </div>
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set case_media %}
+  {% if imagesTop or goals or imagesBottom or videoUrl %}
+
+    <div class="space-y-4">
+      {% if imagesTop %}
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {% for image in imagesTop %}
+            <img class="rounded-lg" src="{{ image.src }}" alt="{{ image.alt }}"/>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if goals %}
+        <h2 class="saw-large-headline text-saw-dark-blue">{{ 'Project goals and results'|t }}</h2>
+        <div class="max-w-full prose text-columns">
+          {{ goals }}
+        </div>
+      {% endif %}
+
+      {% if imagesBottom or videoUrl %}
+        <h2 class="saw-large-headline text-saw-dark-blue">{{ 'Further information'|t }}</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {% for image in imagesBottom %}
+            <img class="rounded-lg" src="{{ image.src }}" alt="{{ image.alt }}"/>
+          {% endfor %}
+
+          {% if videoUrl %}
+            <a class="flex p-5 flex-col items-center justify-center rounded-lg bg-saw-dark-blue" href="{{ videoUrl }}" target="_blank">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45.1376 26.2915C45.1376 28.8047 44.6426 31.2934 43.6808 33.6153C42.7191 35.9373 41.3094 38.0471 39.5322 39.8242C37.7551 41.6013 35.6453 43.0111 33.3233 43.9728C31.0014 44.9346 28.5127 45.4296 25.9995 45.4296C23.4862 45.4296 20.9976 44.9346 18.6756 43.9728C16.3537 43.0111 14.2439 41.6013 12.4668 39.8242C10.6896 38.0471 9.27992 35.9373 8.31813 33.6153C7.35635 31.2934 6.86133 28.8047 6.86133 26.2915C6.86133 21.2157 8.87766 16.3479 12.4668 12.7588C16.0559 9.16966 20.9237 7.15332 25.9995 7.15332C31.0752 7.15332 35.9431 9.16966 39.5322 12.7588C43.1213 16.3479 45.1376 21.2157 45.1376 26.2915Z" stroke="#31D57C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M34.3148 25.5939C34.4393 25.6629 34.5431 25.764 34.6154 25.8867C34.6876 26.0093 34.7257 26.1491 34.7257 26.2914C34.7257 26.4338 34.6876 26.5735 34.6154 26.6962C34.5431 26.8188 34.4393 26.9199 34.3148 26.9889L22.4003 33.6086C22.2789 33.676 22.1419 33.7105 22.0031 33.7087C21.8642 33.707 21.7283 33.669 21.6086 33.5985C21.489 33.528 21.3898 33.4276 21.3209 33.307C21.252 33.1864 21.2158 33.05 21.2158 32.9111V19.6717C21.2158 19.0636 21.8686 18.6808 22.4003 18.9764L34.3148 25.5939Z" stroke="#31D57C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="text-white">{{ 'Watch video'|t }}</span>
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set case_challenges %}
+  {% if challenges %}
+    <div class="space-y-4 pb-[50px]">
+      <h2 class="saw-large-headline text-saw-dark-blue">{{ 'Challenges'|t }}</h2>
+      <div class="prose">
+        {{ challenges }}
+      </div>
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set case_contributions %}
+  {% if contributions %}
+    <div class="space-y-4 pb-[50px]">
+      <h2 class="saw-large-headline text-saw-dark-blue">{{ 'Community contributions'|t }}</h2>
+      <div class="prose">
+        {{ contributions }}
+      </div>
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set case_motivation %}
+  {% if motivation %}
+    <div class="space-y-4 pb-[50px]">
+      <h2 class="saw-large-headline text-saw-dark-blue">{{ 'Why should this project win at the Splash Awards?'|t }}</h2>
+      <div class="prose">
+        {{ motivation }}
+      </div>
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set elements = elements|merge([
+  case_intro,
+  case_description,
+  case_media,
+  case_challenges
+]) %}
+
+{# Only emit the contributions band when the field is filled -- an empty block
+   would still render as a bare background strip. It lands on an odd zebra
+   index here, which is what gives it the white background. #}
+{% if contributions %}
+  {% set elements = elements|merge([case_contributions]) %}
+{% endif %}
+
+{% set elements = elements|merge([case_motivation]) %}
+
+{% if hero %}
+  {% include '@splash_awards/templates/includes/hero.twig' with {
+    title: hero.title,
+    image: hero.image,
+    blurry: true,
+  } only %}
+{% endif %}
+
+{% include '@splash_awards/templates/includes/floater-skeleton.twig' with {
+  title: 'Project details'|t,
+  elements,
+  utils,
+  zebra: true,
+} only %}

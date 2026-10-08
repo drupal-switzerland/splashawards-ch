@@ -1,0 +1,9 @@
+langcode: de
+status: true
+dependencies: {  }
+id: jury_grid
+label: Jury
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

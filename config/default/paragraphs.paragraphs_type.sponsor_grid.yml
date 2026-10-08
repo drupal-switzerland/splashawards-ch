@@ -1,0 +1,10 @@
+uuid: 3dac9428-28f5-455e-baf9-f9c2e10ce1cc
+langcode: en
+status: true
+dependencies: {  }
+id: sponsor_grid
+label: Sponsors
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

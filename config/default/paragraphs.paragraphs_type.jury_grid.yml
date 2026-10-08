@@ -1,0 +1,10 @@
+uuid: d202a4cf-b5c0-4887-9b46-f865a0e3d1aa
+langcode: en
+status: true
+dependencies: {  }
+id: jury_grid
+label: Jury
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

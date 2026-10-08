@@ -1,0 +1,19 @@
+uuid: c66677be-355f-451c-a0ce-59c7a7932f47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_slug
+    - taxonomy.vocabulary.splash_awards
+id: taxonomy_term.splash_awards.field_slug
+field_name: field_slug
+entity_type: taxonomy_term
+bundle: splash_awards
+label: Slug
+description: 'This field will be used as part of the case overview urls. Example <em>/nominees/[slug]</em>.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

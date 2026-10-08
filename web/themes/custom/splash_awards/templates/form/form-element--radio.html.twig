@@ -1,0 +1,10 @@
+{% set active = element['#return_value'] == element['#value'] %}
+<button
+  value="{{ element['#return_value'] }}"
+  name="{{ element['#name'] }}"
+  id="{{ element['#id'] }}"
+  data-drupal-selector="{{ element['#attributes']['data-drupal-selector'] }}"
+  class="saw-tiny-text rounded me-2 mb-3 py-1 px-3 hover:opacity-80 {{ active ? ' bg-saw-bright-blue text-white' : ' bg-saw-pale-blue'}}"
+>
+  {{ element['#title'] }}
+</button>
