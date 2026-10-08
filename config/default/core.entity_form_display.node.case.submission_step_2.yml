@@ -121,3 +121,4 @@ hidden:
   status: true
   sticky: true
   uid: true
+  url_redirects: true

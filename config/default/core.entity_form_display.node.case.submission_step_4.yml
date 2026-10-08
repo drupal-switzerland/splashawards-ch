@@ -147,3 +147,4 @@ hidden:
   sticky: true
   title: true
   uid: true
+  url_redirects: true
