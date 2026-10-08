@@ -43,7 +43,7 @@ hooks:
   # system.site and the case submission settings as edited on prod.
   deploy: |
     set -e
-    php ./vendor/bin/drush -y deploy
+    ./vendor/bin/drush -y deploy
 
 web:
   locations:
